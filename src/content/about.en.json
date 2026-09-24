@@ -1,0 +1,27 @@
+{
+ "title": "About this model",
+ "body": [
+  "An interactive 3D atlas of the head and neck of an average adult Kazakh man and woman. It is a statistical composite, not a portrait of any real person.",
+  "Anatomy: 640+ structures from Z-Anatomy / BodyParts3D, warped with a smooth thin-plate deformation so that 11 standard skull measurements match published means for Kazakh skulls (Ismagulov et al., 2018; Mussabekova et al., 2022, 2024).",
+  "Face and skin: the ICT-FaceKit statistical face model (built from ~4,000 3D scans), fitted to measurements of living ethnic Kazakhs (Ai et al., 2001, n = 404; Cui et al., 1991, n = 258) and laid over the skull with published facial soft-tissue thicknesses.",
+  "Female head: female Kazakh cranial and facial means plus regional sex differences from CT studies (brow ridge, forehead, mastoid, larynx).",
+  "Every fact shown was checked against its source by an independent verification pass."
+ ],
+ "simpl": [
+  "Soft-tissue thickness comes from a Buryat ultrasound sample (Veselovskaya & Balueva) as the closest available proxy; no open Kazakh data exist.",
+  "Living measurements come from Kazakhs of Xinjiang (China); skull means from Kazakhstan. The two samples differ slightly, e.g. head length by ~5 mm.",
+  "Neck and scalp follow the reference anatomy where no Kazakh data exist; neck circumference is not fitted.",
+  "Internal organs, vessels and nerves keep the shape of one reference body, scaled with the skull; small branches are schematic.",
+  "Hair, eyebrows and skin colour are not modelled; the surface is shown as a neutral cast.",
+  "Some Kazakh anatomical terms have no approved equivalent yet; about 175 terms are marked for review by a Kazakh-speaking anatomist.",
+  "The inner-ear model (cochlea, vestibule) is omitted because its licence does not permit this use."
+ ],
+ "lic": [
+  "BodyParts3D © The Database Center for Life Science — CC BY-SA 2.1 Japan",
+  "Z-Anatomy, the open-source atlas of anatomy — CC BY-SA 4.0",
+  "Cranial nerves and foramina — University of Dundee, CAHID — CC BY 4.0",
+  "ICT-FaceKit © 2020 USC Institute for Creative Technologies — MIT License",
+  "three.js — MIT License",
+  "The adapted 3D model is shared under CC BY-SA 4.0."
+ ]
+}

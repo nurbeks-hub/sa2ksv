@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="kk">
+<head>
+<meta charset="utf-8">
+<title>Адам басы — бас пен мойынның 3D атласы</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Орташа ересек қазақ ер адамы мен әйелінің басы мен мойнының интерактивті 3D атласы. Interactive 3D atlas of the head and neck of the average adult Kazakh man and woman.">
+<meta name="theme-color" content="#07080a">
+<meta property="og:title" content="АДАМ БАСЫ — The Head">
+<meta property="og:description" content="Interactive 3D atlas of the head and neck of the average adult Kazakh man and woman.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2307080a'/%3E%3Cpath d='M32 12c-10 0-17 8-17 18 0 6 3 10 5 13v7c0 2 2 3 4 3h10c7 0 12-5 12-11v-4l3-1-3-6c1-10-5-19-14-19z' fill='none' stroke='%23e9dcc3' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/manrope-cyrillic-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/manrope-cyrillic-ext-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">
+{ "imports": { "three": "./vendor/three/three.module.js", "three/addons/": "./vendor/three/jsm/" } }
+</script>
+</head>
+<body>
+<canvas id="gl" aria-label="3D"></canvas>
+
+<div id="tip" aria-hidden="true"><b></b><i></i></div>
+<div id="grip" aria-hidden="true"><span></span></div>
+
+<header id="brand">
+  <div class="wordmark" data-i18n="brand">АДАМ БАСЫ</div>
+  <div class="sub mono" id="brand-sub" data-i18n="sub"></div>
+</header>
+
+<nav id="top">
+  <button id="btn-search" class="icon" data-i18n-aria="searchAria"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/></svg></button>
+  <div id="sex" class="seg mono" role="group" data-i18n-aria="sexAria">
+    <button data-sex="m" class="on"><span class="glyph">♂</span><span class="lbl" data-i18n="sex.m"></span></button>
+    <button data-sex="f"><span class="glyph">♀</span><span class="lbl" data-i18n="sex.f"></span></button>
+    <i class="knob"></i>
+  </div>
+  <div id="langs" class="mono" role="group" data-i18n-aria="langAria">
+    <button class="lang" data-lang="kk" lang="kk">ҚАЗ</button>
+    <button class="lang" data-lang="ru" lang="ru">РУС</button>
+    <button class="lang" data-lang="en" lang="en">ENG</button>
+  </div>
+  <button id="sound" class="icon" data-i18n-aria="sound"><svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path class="w1" d="M16 9.5c1 .8 1 4.2 0 5"/><path class="w2" d="M18.5 7c2.4 2 2.4 8 0 10"/></svg></button>
+  <button id="about" class="icon" data-i18n-aria="aboutAria"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.6" r=".6"/></svg></button>
+</nav>
+
+<aside id="rail" aria-label="depth">
+  <div class="rail-label mono" data-i18n="depthLabel"></div>
+  <ol></ol>
+  <div class="rail-hint mono" data-i18n="depthHint"></div>
+</aside>
+
+<div id="caption" aria-live="polite"><div class="t"></div><div class="s mono"></div><div class="n mono"></div></div>
+
+<div id="hint" class="mono"></div>
+
+<div id="dock">
+  <div id="sections" class="seg3" role="group">
+    <button data-sec="sagittal" data-i18n-title="section.sagittal"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="8" ry="9"/><path d="M12 2.5v19" class="hl"/></svg></button>
+    <button data-sec="axial" data-i18n-title="section.axial"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="8" ry="9"/><path d="M3.5 12h17" class="hl"/></svg></button>
+    <button data-sec="coronal" data-i18n-title="section.coronal"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="8" ry="9"/><ellipse cx="12" cy="12" rx="2.6" ry="9" class="hl"/></svg></button>
+  </div>
+  <button id="btn-tour" class="pill mono"></button>
+</div>
+
+<aside id="panel" aria-live="polite">
+  <button id="panel-close" class="icon" data-i18n-aria="panel.close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <div class="sys mono"></div>
+  <h1 class="name"></h1>
+  <div class="la"></div>
+  <p class="role"></p>
+  <div class="alt mono"></div>
+  <ul class="facts"></ul>
+  <div class="nav mono"><button id="prev">←</button><span class="keys" data-i18n="keys"></span><button id="next">→</button></div>
+</aside>
+
+<section id="search" hidden>
+  <div class="box">
+    <input id="q" type="search" autocomplete="off" spellcheck="false">
+    <div class="shint mono" data-i18n="search.hint"></div>
+    <ol id="results"></ol>
+  </div>
+</section>
+
+<section id="aboutbox" hidden>
+  <div class="inner">
+    <button id="about-close" class="icon" data-i18n-aria="panel.close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <h2></h2>
+    <div class="about-body"></div>
+    <h3 class="mono simpl-t"></h3>
+    <ul class="simpl"></ul>
+    <h3 class="mono lic-t"></h3>
+    <ul class="lic mono"></ul>
+    <h3 class="mono src-t"></h3>
+    <ol class="sources mono"></ol>
+    <p class="credit mono"></p>
+  </div>
+</section>
+
+<div id="loader">
+  <div class="ttl" data-i18n="brand">АДАМ БАСЫ</div>
+  <div class="bar"><i></i></div>
+  <div class="lsub mono"><span data-i18n="loading">Жүктелуде</span> <b>0</b></div>
+</div>
+
+<noscript><p style="color:#ccc;font:14px sans-serif;padding:40px">JavaScript + WebGL2 required.</p></noscript>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
