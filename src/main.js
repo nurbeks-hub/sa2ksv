@@ -22,6 +22,7 @@ const canvas = $('#gl');
 const stage = createStage(canvas);
 const { scene, camera, renderer } = stage;
 const sound = new Sound();
+if (Q.get('kiosk') === '1') sound.enabled = false;   // kiosk: silent until a visitor turns sound on
 const IS_TOUCH = matchMedia('(pointer: coarse)').matches;
 const NO_INTRO = Q.has('nointro');
 const FILES = ['skin', 'bones', 'muscles', 'vessels', 'nerves', 'organs', 'joints', 'lymph'];
@@ -337,12 +338,43 @@ function gpuPick(px, py) {
   const id = pickBuf[0] + pickBuf[1] * 256 + pickBuf[2] * 65536 - 1;
   return id >= 0 && id < M.nodes.length && !sidToStruct[id]?.excluded ? id : -1;
 }
+// ---- skin regions: the auricle, nose, eyes, lips are all one Skin mesh; a ray against it (only when the GPU pick
+// says «skin») gives the rest-space point, classified against landmarks found on the mesh at load.
+const REGION_LA = { auricle: 'Auricula', nose: 'Nasus externus', eye: 'Regio orbitalis', mouth: 'Regio oralis', forehead: 'Regio frontalis', scalp: 'Regio parietalis', cheek: 'Regio buccalis', chin: 'Regio mentalis', neck: 'Regio cervicalis' };
+const REGION_DIVE = { auricle: ['ear'], nose: ['nose-sinuses'], eye: ['eye'], mouth: ['tongue', 'teeth'], forehead: ['face-muscles'], cheek: ['face-muscles', 'teeth'], chin: ['face-muscles'], scalp: ['skull'], neck: ['larynx-voice'] };
+const skinRay = new THREE.Raycaster();
+function skinMesh() { const r = renderables.find(r => r.cls === 'skin'); return r ? r.mesh : null; }
+function classifyRegion(p) {
+  const m = skinMesh(); const L = m?.geometry.userData.landmarks; const e = U.uEye.value;
+  if (!L) return null;
+  const ax = Math.abs(p.x);
+  if (p.y < 1.475 && p.z < L.li.z - 0.03) return 'neck';
+  if (ax > 0.056 && p.y > e.y - 0.075 && p.y < e.y + 0.045 && p.z < 0.03 && p.z > -0.075) return 'auricle';
+  if (Math.hypot(ax - e.x, p.y - e.y) < 0.021 && p.z > e.z - 0.012) return 'eye';
+  if (ax < 0.024 && p.y > L.sn.y - 0.004 && p.y < e.y + 0.004 && p.z > e.z) return 'nose';
+  if (ax < 0.031 && p.y < L.sn.y - 0.002 && p.y > L.li.y - 0.009 && p.z > L.st.z - 0.022) return 'mouth';
+  if (ax < 0.04 && p.y <= L.li.y - 0.009 && p.y > 1.455 && p.z > L.li.z - 0.045) return 'chin';
+  if (p.y > e.y + 0.012 && p.z > 0.035 && p.y < e.y + 0.085) return 'forehead';
+  if (p.y > e.y + 0.012) return 'scalp';
+  if (p.y < 1.475) return 'neck';
+  return 'cheek';
+}
+function skinRegionAt(px, py) {
+  const m = skinMesh(); if (!m) return null;
+  skinRay.setFromCamera(new THREE.Vector2(px / innerWidth * 2 - 1, -(py / innerHeight) * 2 + 1), camera);
+  const hit = skinRay.intersectObject(m, false)[0]; if (!hit) return null;
+  const p = rig.worldToLocal(hit.point.clone());
+  return { region: classifyRegion(p), point: p };
+}
 let pickDirty = false, lastPick = 0;
 function hoverPick(now) {
   if (!pickDirty || now - lastPick < 55) return;
   pickDirty = false; lastPick = now;
   if (!S.pointerIn || S.dragging || S.intro < 1 || gripDrag) { setHover(-1); return; }
-  setHover(gpuPick(S.pointerPx.x, S.pointerPx.y));
+  const sid = gpuPick(S.pointerPx.x, S.pointerPx.y);
+  const reg = sid >= 0 && sidToStruct[sid]?.id === 'skin' ? skinRegionAt(S.pointerPx.x, S.pointerPx.y) : null;
+  if ((reg?.region || null) !== S.hoverRegion) { S.hoverRegion = reg?.region || null; if (sidToStruct[sid] === S.hoverStruct) updateTip(); }
+  setHover(sid);
 }
 function setHover(sid) {
   const st = sid >= 0 ? sidToStruct[sid] : null;
@@ -375,7 +407,7 @@ function sysKey(st) {
   if (c === 'ear') return 'organs';
   return 'brain';
 }
-function inspect(id, sid = -1, { fromTour = false } = {}) {
+function inspect(id, sid = -1, { fromTour = false, region = null, point = null } = {}) {
   const st = structs.get(id);
   if (!st) return false;
   if (dive && dive.active) dive.close();
@@ -386,11 +418,11 @@ function inspect(id, sid = -1, { fromTour = false } = {}) {
     for (const s of st.sids) { const d = M.nodes[s].center.clone().applyMatrix4(rig.matrixWorld).distanceTo(camera.position); if (d < best) { best = d; sid = s; } }
     if (st.sids.every(s => M.nodes[s].side === 'M')) sid = -1;
   }
-  S.inspect = id; S.inspectSid = sid >= 0 ? sid : st.sids[0];
+  S.inspect = id; S.inspectSid = sid >= 0 ? sid : st.sids[0]; S.inspectRegion = id === 'skin' ? region : null;
   targetsDirty = true;
   // camera: frame the clicked node (or the whole structure when midline / searched)
   const rec = M.nodes[S.inspectSid];
-  const box = sid >= 0 ? rec.box : st.box;
+  const box = point ? new THREE.Box3().setFromCenterAndSize(point, new THREE.Vector3(0.07, 0.07, 0.07)) : sid >= 0 ? rec.box : st.box;
   const c = box.getCenter(new THREE.Vector3());
   const radius = Math.max(0.012, box.getSize(new THREE.Vector3()).length() / 2);
   const wc = c.clone().applyMatrix4(rig.matrixWorld);
@@ -560,12 +592,14 @@ function fillPanel(id) {
   const st = structs.get(id); if (!st) return;
   const T = UI[S.lang];
   panel.querySelector('.sys').textContent = systemLabel(st);
-  panel.querySelector('.name').textContent = nameOf(id);
+  const reg = id === 'skin' && S.inspectRegion ? S.inspectRegion : null;
+  const nameFor = (l) => reg ? (UI[l].regions?.[reg] || nameOf(id, l)) : nameOf(id, l);
+  panel.querySelector('.name').textContent = nameFor(S.lang);
   panel.querySelector('.name').lang = S.lang;
-  panel.querySelector('.la').textContent = content.latin(id);
+  panel.querySelector('.la').textContent = reg ? REGION_LA[reg] : content.latin(id);
   panel.querySelector('.role').textContent = content.role(id, S.lang);
   panel.querySelector('.role').lang = S.lang;
-  panel.querySelector('.alt').textContent = LANGS.filter(l => l !== S.lang).map(l => nameOf(id, l)).filter((v, i, a) => a.indexOf(v) === i && v !== nameOf(id)).join('  ·  ');
+  panel.querySelector('.alt').textContent = LANGS.filter(l => l !== S.lang).map(l => nameFor(l)).filter((v, i, a) => a.indexOf(v) === i && v !== nameFor(S.lang)).join('  ·  ');
   const ul = panel.querySelector('.facts'); ul.replaceChildren();
   const facts = content.facts(id).slice(0, 2);
   for (const f of facts) {
@@ -583,8 +617,20 @@ function fillPanel(id) {
     ul.append(li);
   }
   if (!ul.children.length) { const li = document.createElement('li'); li.className = 'empty'; li.textContent = T.panel.noFacts; ul.append(li); }
-  const dvb = $('#btn-dive'), entry = dive && !dive.active ? dive.entryFor(id) : null;
-  dvb.hidden = !entry; if (entry) dvb.textContent = (T.dive && T.dive.explore) || 'Explore';
+  // deep-dive links: the region's organ(s) for skin, otherwise the index trigger
+  const links = $('#dive-links'); links.replaceChildren();
+  if (dive && !dive.active) {
+    const ids = reg ? (REGION_DIVE[reg] || []) : (dive.entryFor(id) ? [dive.entryFor(id).id] : []);
+    ids.filter(did => dive.D.index.some(e => e.id === did)).forEach((did, k) => {
+      const entry = dive.D.index.find(e => e.id === did);
+      const b = document.createElement('button');
+      if (k === 0) { b.className = 'pill mono'; b.textContent = (T.dive && T.dive.explore) || 'Explore'; b.id = 'btn-dive'; }
+      else { b.className = 'also mono'; b.textContent = `${T.organs?.also || 'Also'}: ${entry.title?.[S.lang] || entry.title?.en || did}`; }
+      b.dataset.dive = did;
+      b.addEventListener('click', () => openDive(did));
+      links.append(b);
+    });
+  }
 }
 function localNum(str) {
   if (S.lang === 'en' || !str) return str;
@@ -593,9 +639,10 @@ function localNum(str) {
 const tip = $('#tip');
 function updateTip() {
   const st = S.hoverStruct;
-  if (!st || S.dragging || (S.inspect && st.id === S.inspect)) { tip.classList.remove('show'); return; }
-  tip.querySelector('b').textContent = nameOf(st.id);
-  tip.querySelector('i').textContent = content.latin(st.id);
+  if (!st || S.dragging || (S.inspect && st.id === S.inspect && !(st.id === 'skin' && S.hoverRegion && S.hoverRegion !== S.inspectRegion))) { tip.classList.remove('show'); return; }
+  const hr = st.id === 'skin' && S.hoverRegion ? S.hoverRegion : null;
+  tip.querySelector('b').textContent = hr ? (UI[S.lang].regions?.[hr] || nameOf(st.id)) : nameOf(st.id);
+  tip.querySelector('i').textContent = hr ? REGION_LA[hr] : content.latin(st.id);
   tip.classList.add('show');
   positionTip();
 }
@@ -716,48 +763,84 @@ function applyLang() {
 
 // ============================================================ tour («Саяхат»)
 const MIMIC = ['zygomaticus-major-muscle', 'zygomaticus-minor-muscle', 'orbicularis-oris-muscle', 'levator-labii-superioris', 'levator-anguli-oris', 'depressor-anguli-oris', 'depressor-labii-inferioris', 'risorius-muscle', 'mentalis-muscle', 'nasalis-muscle', 'procerus-muscle', 'frontalis-muscle', 'corrugator-supercilii', 'orbital-part-of-orbicularis-oculi', 'palpebral-part-of-orbicularis-oculi', 'buccinator', 'levator-nasolabialis', 'depressor-septi-nasi', 'occipitalis-muscle', 'temporoparietalis-muscle'];
+// Attract tour: head layers → section → deep dives (brain, ear, larynx, tongue, eye) → back to the head.
+// Loops forever until real user activity. Kiosk (?kiosk=1): starts itself, cycles ♂/♀ and kk → ru → en each loop,
+// and resumes after 60 s of inactivity.
+const KIOSK = Q.get('kiosk') === '1';
+const TOUR_SPEED = Math.max(0.2, +(Q.get('tourspeed') || 1));
+const IDLE_MS = +(Q.get('idle') || 60000);
 const TOUR = [
-  { at: 0, stop: 0, go() { exitInspect(); setSection(null); setDepth(0, { user: false }); S.tourHl = null; }, cam: { yaw: -0.32, pitch: 0.05, dist: 1.02 } },
-  { at: 6.5, stop: 1, go() { setDepth(1, { user: false }); S.tourHl = new Set(MIMIC); }, cam: { yaw: -0.2, pitch: 0.06, dist: 0.92 } },
-  { at: 13, stop: 2, go() { S.tourHl = null; inspect(findStruct(['superficial-part-of-masseter']), -1, { fromTour: true }); } },
-  { at: 19.5, stop: 3, go() { exitInspect(); setDepth(2, { user: false }); }, cam: { yaw: -0.85, pitch: 0.1, dist: 1.05 } },
-  { at: 26, stop: 4, go() { setDepth(3, { user: false }); S.tourHl = new Set(CRANIAL()); }, cam: { yaw: -1.05, pitch: -0.05, dist: 1.0 } },
-  { at: 32.5, stop: 5, go() { S.tourHl = null; setDepth(4, { user: false }); }, cam: { yaw: -0.55, pitch: 0.12, dist: 1.12 } },
-  { at: 39, stop: 6, go() { setDepth(5, { user: false }); }, cam: { yaw: -0.75, pitch: 0.35, dist: 1.0 } },
-  { at: 43.5, stop: -1, go() { setSection('sagittal'); } },
-  { at: 49, stop: 7, go() { setSection(null); setDepth(0, { user: false }); }, cam: { yaw: -0.3, pitch: 0.03, dist: 0.36, target: new THREE.Vector3(0.031, 1.592, 0.06) } },
-  { at: 57, stop: -2, go() { stopTour(); } },
+  { d: 6.5, stop: 0, go() { closeDiveForTour(); exitInspect(); setSection(null); setDepth(0, { user: false }); S.tourHl = null; }, cam: { yaw: -0.32, pitch: 0.05, dist: 1.02 } },
+  { d: 6.5, stop: 1, go() { setDepth(1, { user: false }); S.tourHl = new Set(MIMIC); }, cam: { yaw: -0.2, pitch: 0.06, dist: 0.92 } },
+  { d: 6.5, stop: 2, go() { S.tourHl = null; inspect(findStruct(['superficial-part-of-masseter']), -1, { fromTour: true }); } },
+  { d: 6.5, stop: 3, go() { exitInspect(); setDepth(2, { user: false }); }, cam: { yaw: -0.85, pitch: 0.1, dist: 1.05 } },
+  { d: 6.5, stop: 4, go() { setDepth(3, { user: false }); S.tourHl = new Set(CRANIAL()); }, cam: { yaw: -1.05, pitch: -0.05, dist: 1.0 } },
+  { d: 6.5, stop: 5, go() { S.tourHl = null; setDepth(4, { user: false }); }, cam: { yaw: -0.55, pitch: 0.12, dist: 1.12 } },
+  { d: 5, stop: 6, go() { setDepth(5, { user: false }); }, cam: { yaw: -0.75, pitch: 0.35, dist: 1.0 } },
+  { d: 5.5, stop: -1, go() { setSection('sagittal'); } },
+  { d: 7, dive: ['brain', 0] }, { d: 6.5, dive: ['brain', 1], explode: 0.35 }, { d: 6.5, dive: ['brain', 3] },
+  { d: 7, dive: ['ear', 1] }, { d: 7, dive: ['ear', 2], explode: 0.5 },
+  { d: 7, dive: ['larynx-voice', 0] }, { d: 6.5, dive: ['larynx-voice', 1] },
+  { d: 7, dive: ['tongue', 0] }, { d: 6.5, dive: ['tongue', 1] },
+  { d: 20, eye: true },
+  { d: 7, stop: 0, sex: true, go() { closeDiveForTour(); setSection(null); setDepth(0, { user: false }); setSex(S.sexTarget < 0.5); }, cam: { yaw: -0.3, pitch: 0.04, dist: 0.98 } },
 ];
 const CRANIAL = () => [...structs.keys()].filter(id => /-(i|ii|iii|iv|v|vi|vii|viii|ix|x|xi|xii)$/.test(id) && /nerve/.test(id));
 function findStruct(cands) { for (const c of cands) if (structs.has(c)) return c; const k = [...structs.keys()].find(id => cands.some(c => id.includes(c))); return k || null; }
-const tour = { on: false, t: 0, i: 0, stop: -1, cam: null };
-function startTour() {
-  sound.start(); syncSoundBtn();
-  tour.on = true; tour.t = 0; tour.i = 0; tour.stop = -1; tour.cam = null;
-  S.intro = 1; resetView(); closeSearch();
+const tour = { on: false, t: 0, i: 0, next: 0, stop: -1, cam: null, loops: 0, step: -1 };
+function closeDiveForTour() { if (dive && dive.active) dive.close(); }
+function startTour({ auto = false } = {}) {
+  if (!KIOSK) { sound.start(); syncSoundBtn(); }
+  tour.on = true; tour.t = 0; tour.i = 0; tour.next = 0; tour.stop = -1; tour.cam = null; tour.step = -1;
+  S.intro = 1; resetView(); closeSearch(); $('#aboutbox').hidden = true; $('#organs').hidden = true;
+  if (auto) { closeDiveForTour(); exitInspect(); }
   document.body.classList.add('touring'); updateTourBtn();
 }
 function stopTour() {
   if (!tour.on) return;
   tour.on = false; tour.cam = null; S.tourHl = null; targetsDirty = true;
   document.body.classList.remove('touring'); hideCaption(); updateTourBtn();
+  S.lastActivity = performance.now();
 }
 function showTourCaption(k) {
   const st = UI[S.lang].tourStops[k]; if (!st) return;
-  caption(st.t, st.s, `${String(k + 1).padStart(2, '0')} / ${String(UI[S.lang].tourStops.length).padStart(2, '0')}`, 0);
+  caption(st.t, st.s, '', 0);
+}
+function runStep(s) {
+  if (s.dive) {
+    const [id, ch] = s.dive;
+    const go = () => { if (!tour.on) return; if (s.explode != null) dive.setExplode(s.explode); const D = dive.D; const c = D.data?.chapters?.[D.chapter]; caption(D.data ? (D.data.title?.[S.lang] || D.data.title?.en || '') : '', c ? (c.title?.[S.lang] || c.title?.en || '') : '', '', 0); };
+    if (!dive || !dive.D.index.some(e => e.id === id)) return false;
+    if (dive.active === id) { dive.setChapter(ch); go(); } else { exitInspect(); dive.open(id, ch).then(go); }
+    return true;
+  }
+  if (s.eye) {
+    if (!dive || !dive.D.index.some(e => e.iframe)) return false;
+    closeDiveForTour(); dive.open(dive.D.index.find(e => e.iframe).id, 0, { tour: true });
+    showTourCaption(7);
+    return true;
+  }
+  s.go(); targetsDirty = true;
+  tour.cam = s.cam || null;
+  if (s.stop >= 0) { tour.stop = s.stop; showTourCaption(s.stop); sound.swell(); }
+  if (s.sex) caption(UI[S.lang].brand, S.sexTarget > 0.5 ? (UI[S.lang].subF || '') : (UI[S.lang].subM || ''), '', 0);
+  return true;
 }
 function tickTour(dt) {
   if (!tour.on) return;
-  tour.t += dt;
-  while (tour.i < TOUR.length && tour.t >= TOUR[tour.i].at) {
-    const s = TOUR[tour.i]; s.go(); targetsDirty = true;
-    if (s.cam) tour.cam = s.cam; else if (s.stop >= 0) tour.cam = null;
-    if (s.stop >= 0) { tour.stop = s.stop; showTourCaption(s.stop); sound.swell(); }
-    tour.i++;
-    if (!tour.on) return;
+  tour.t += dt * TOUR_SPEED;
+  if (tour.t >= tour.next) {
+    tour.step++;
+    if (tour.step >= TOUR.length) {       // loop: back to the top; kiosk cycles the language
+      tour.step = 0; tour.loops++;
+      if (KIOSK) { const l = LANGS[(LANGS.indexOf(S.lang) + 1) % LANGS.length]; S.lang = l; applyLang(); buildSearch(); }
+    }
+    const s = TOUR[tour.step];
+    const ran = runStep(s);
+    tour.next = tour.t + (ran ? s.d : 0);
+    if (!s.dive && !s.eye) {} else tour.cam = null;
   }
-  S.yawOff = Math.sin(tour.t * 0.21) * 0.1;
-  S.pitchOff = Math.sin(tour.t * 0.16) * 0.03;
+  if (!(dive && dive.active)) { S.yawOff = Math.sin(tour.t * 0.21) * 0.1; S.pitchOff = Math.sin(tour.t * 0.16) * 0.03; }
 }
 function updateTourBtn() { const b = $('#btn-tour'); b.textContent = tour.on ? UI[S.lang].tour.stop : UI[S.lang].tour.start; b.classList.toggle('on', tour.on); }
 
@@ -797,7 +880,8 @@ const endPointer = (e) => {
     if (sid < 0 && downAt.hoverSid >= 0) sid = downAt.hoverSid;   // thin structures: trust what was highlighted under the finger
     const st = sid >= 0 ? sidToStruct[sid] : null;
     if (dive && dive.active) { dive.selectPart(st ? st.id : null); downAt = null; pickDirty = true; return; }
-    if (st && st.id !== S.inspect) inspect(st.id, sid);
+    const reg = st && st.id === 'skin' ? skinRegionAt(e.clientX, e.clientY) : null;
+    if (st && (st.id !== S.inspect || (reg && reg.region !== S.inspectRegion))) inspect(st.id, sid, reg ? { region: reg.region, point: reg.point } : {});
     else if (!st && S.inspect) exitInspect();
   }
   downAt = null; pickDirty = true;
@@ -825,6 +909,7 @@ window.addEventListener('keydown', (e) => {
   if (dive && dive.active && k === 'Escape' && $('#aboutbox').hidden && searchEl.hidden) { if (dive.sel) dive.selectPart(null); else dive.close(); return; }
   if (dive && dive.active && !dive.frame && (k === 'ArrowRight' || k === 'ArrowLeft')) { const n = dive.D.chapter + (k === 'ArrowRight' ? 1 : -1); dive.setChapter(n); return; }
   if (dive && dive.active && (k === 'ArrowDown' || k === 'ArrowUp' || (k >= '1' && k <= '6') || k === 's' || k === 'S' || k === 't' || k === 'T')) return;
+  if (k === 'Escape' && !organsEl.hidden) { organsEl.hidden = true; return; }
   if (k === 'Escape') {
     if (!$('#aboutbox').hidden) $('#aboutbox').hidden = true;
     else if (!searchEl.hidden) closeSearch();
@@ -856,13 +941,77 @@ $('#btn-search').addEventListener('click', openSearch);
 $('#panel-close').addEventListener('click', () => { if (dive && dive.sel) dive.selectPart(null); else exitInspect(); });
 $('#prev').addEventListener('click', () => { if (dive && dive.active) dive.stepPart(-1); else stepInspect(-1); });
 $('#next').addEventListener('click', () => { if (dive && dive.active) dive.stepPart(1); else stepInspect(1); });
-$('#btn-dive').addEventListener('click', () => { const e = dive && S.inspect ? dive.entryFor(S.inspect) : null; if (e) openDive(e.id); });
 async function openDive(id, chapter = 0) { if (!dive) return false; stopTour(); closeSearch(); return dive.open(id, chapter); }
 function syncSoundBtn() { const b = $('#sound'); if (sound.started) b.classList.remove('pulse'); b.classList.toggle('on', sound.started && sound.enabled); }
 $('#sound').addEventListener('click', () => { const was = sound.started; sound.start(); sound.setEnabled(was ? !sound.enabled : true); syncSoundBtn(); });
 $('#about').addEventListener('click', () => { stopTour(); fillAbout(); $('#aboutbox').hidden = false; });
 $('#about-close').addEventListener('click', () => { $('#aboutbox').hidden = true; });
 $('#aboutbox').addEventListener('click', (e) => { if (e.target.id === 'aboutbox') $('#aboutbox').hidden = true; });
+
+// ============================================================ activity, kiosk, organs menu
+S.lastActivity = performance.now(); let lastMove = { x: -1, y: -1, t: performance.now() }; let swallowClick = false;
+function activity() { S.lastActivity = performance.now(); document.body.classList.remove('cursor-hidden'); }
+function onUserInput(e, kind) {
+  activity();
+  if (!tour.on) return;
+  if (kind === 'down' && e.target && e.target.closest && e.target.closest('#btn-tour')) return;   // the tour button toggles itself
+  stopTour();
+  if (KIOSK && kind === 'down') { e.preventDefault(); e.stopPropagation(); swallowClick = true; }   // first touch only wakes the UI
+}
+window.addEventListener('pointerdown', (e) => onUserInput(e, 'down'), true);
+window.addEventListener('click', (e) => { if (swallowClick) { swallowClick = false; e.preventDefault(); e.stopPropagation(); } }, true);
+window.addEventListener('wheel', (e) => onUserInput(e, 'wheel'), { capture: true, passive: true });
+window.addEventListener('keydown', (e) => { if (e.key === 't' || e.key === 'T' || e.key === 'е' || e.key === 'Е') { activity(); return; } onUserInput(e, 'key'); }, true);
+window.addEventListener('touchstart', (e) => onUserInput(e, 'touch'), { capture: true, passive: true });
+window.addEventListener('pointermove', (e) => {
+  const d = lastMove.x < 0 ? 0 : Math.hypot(e.clientX - lastMove.x, e.clientY - lastMove.y);
+  if (lastMove.x < 0 || d > 0) { lastMove = { x: e.clientX, y: e.clientY, t: performance.now() }; }
+  if (d > 6) onUserInput(e, 'move'); else if (d > 0) document.body.classList.remove('cursor-hidden');
+}, true);
+if (KIOSK) {
+  document.body.classList.add('kiosk');
+  const vp = document.querySelector('meta[name=viewport]'); if (vp) vp.content = 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover';
+  for (const ev of ['gesturestart', 'gesturechange', 'contextmenu', 'selectstart', 'dragstart']) document.addEventListener(ev, (e) => e.preventDefault(), { passive: false });
+  document.addEventListener('touchmove', (e) => { if (e.touches && e.touches.length > 1 && e.target !== canvas) e.preventDefault(); }, { passive: false });
+}
+function returnToOverview() {
+  exitInspect(); closeDiveForTour(); closeSearch(); $('#aboutbox').hidden = true; $('#organs').hidden = true;
+  setSection(null); resetView();
+}
+function tickIdle(now) {
+  if (!S.ready) return;
+  if (KIOSK && now - lastMove.t > 3000 && now - S.lastActivity > 3000) document.body.classList.add('cursor-hidden');
+  if (KIOSK && !tour.on && now - S.lastActivity > IDLE_MS) { returnToOverview(); startTour({ auto: true }); }
+}
+// organs menu
+const organsEl = $('#organs'); const diveMeta = {};
+async function openOrgans() {
+  stopTour(); organsEl.hidden = false;
+  const T = UI[S.lang]; const grid = organsEl.querySelector('.ogrid'); grid.replaceChildren();
+  for (const e of dive.D.index) {
+    const li = document.createElement('li'); li.tabIndex = 0; li.dataset.id = e.id;
+    const b = document.createElement('b'); b.textContent = e.title?.[S.lang] || e.title?.en || e.id;
+    const sp = document.createElement('span'); li.append(b, sp); grid.append(li);
+    const open = () => { organsEl.hidden = true; openDive(e.id); };
+    li.addEventListener('click', open); li.addEventListener('keydown', (k) => { if (k.key === 'Enter') open(); });
+    if (e.iframe) { sp.textContent = T.tourStops?.[7]?.s || ''; continue; }
+    const meta = diveMeta[e.id] || (diveMeta[e.id] = await fetch(`src/content/deepdives/${e.id}.json`).then(r => r.ok ? r.json() : null).catch(() => null));
+    if (meta) { const n = (meta.chapters || []).length; const c0 = meta.chapters?.[0]?.title; sp.textContent = `${n} ${T.organs?.chapters || ''} · ${c0?.[S.lang] || c0?.en || ''}`; }
+  }
+}
+$('#btn-organs').addEventListener('click', openOrgans);
+// activity inside the embedded eye page also counts (same origin)
+$('#diveframe iframe').addEventListener('load', (ev) => {
+  try {
+    const w = ev.target.contentWindow; if (!w || w.location.href === 'about:blank') return;
+    const wake = () => { activity(); if (tour.on) stopTour(); };
+    let lm = null;
+    w.addEventListener('pointerdown', wake, true); w.addEventListener('keydown', wake, true); w.addEventListener('wheel', wake, { capture: true, passive: true });
+    w.addEventListener('pointermove', (e) => { if (lm && Math.hypot(e.clientX - lm[0], e.clientY - lm[1]) > 6) wake(); lm = [e.clientX, e.clientY]; }, true);
+  } catch {}
+});
+$('#organs-close').addEventListener('click', () => { organsEl.hidden = true; });
+organsEl.addEventListener('click', (e) => { if (e.target === organsEl) organsEl.hidden = true; });
 
 // ============================================================ living head: gaze, breathing, micro-turn
 const _v = new THREE.Vector3(), _q = new THREE.Quaternion(), FWD = new THREE.Vector3(0, 0, 1);
@@ -965,6 +1114,7 @@ function tick() {
   U.uCordY.value = S.depth > 4.5 && !S.section ? 1.505 : -10;
 
   tickTour(dt);
+  tickIdle(performance.now());
   if (dive && dive.active) { dive.step(dt, t); targetsDirty = true; }
   updateLife(dt, t);
   section.update(dt);
@@ -1005,7 +1155,7 @@ window.__head = {
       tour: tour.on, tourT: +tour.t.toFixed(1), tourStop: tour.stop, off: [...S.off], dpr: stage.dpr, fps: Math.round(perf.fps),
       panelName: S.inspect ? $('#panel .name').textContent : null,
       structures: structs.size, nodes: M ? M.nodes.length : 0,
-      dive: dive ? dive.state() : null,
+      dive: dive ? dive.state() : null, tourStep: tour.step, tourLoops: tour.loops, kiosk: KIOSK, inspectRegion: S.inspectRegion || null, hoverRegion: S.hoverRegion || null, organsOpen: !organsEl.hidden, idleMs: Math.round(performance.now() - S.lastActivity),
       camYaw: +cam.yaw.toFixed(3), camPitch: +cam.pitch.toFixed(3), camDist: +cam.dist.toFixed(3), zoom: +S.zoom.toFixed(3), yawOff: +S.yawOff.toFixed(3),
       search: !searchEl.hidden, about: !$('#aboutbox').hidden, panelOpen: document.body.classList.contains('inspecting'),
     };
@@ -1024,6 +1174,19 @@ window.__head = {
   // hair integration point: attachHair({ object: THREE.Object3D (rest/glTF coordinates), update?({skin, sex, time, dt, camera}) })
   attachHair(mod) { if (!mod || !mod.object) return false; hairMod = mod; if (mod.object.parent !== rig) rig.add(mod.object); return true; },
   dive(id, chapter = 0) { if (!id) { dive?.close(); return Promise.resolve(true); } return openDive(id, chapter); },
+  region(x, y) { const r = skinRegionAt(x, y); return r ? r.region : null; },
+  // a screen point on the skin that classifies as the given region (and is really the visible skin there)
+  projectRegion(name) {
+    const m = skinMesh(); if (!m) return null; const P = m.geometry.attributes.position; const v = new THREE.Vector3();
+    for (let i = 0; i < P.count; i += 7) {
+      v.fromBufferAttribute(P, i); if (classifyRegion(v) !== name) continue;
+      const w = v.clone().applyMatrix4(rig.matrixWorld).project(camera); if (Math.abs(w.x) > 0.95 || Math.abs(w.y) > 0.95 || w.z > 1) continue;
+      const x = (w.x * 0.5 + 0.5) * innerWidth, y = (-w.y * 0.5 + 0.5) * innerHeight;
+      const sid = gpuPick(x, y); if (sid < 0 || sidToStruct[sid].id !== 'skin') continue;
+      if (skinRegionAt(x, y)?.region === name) return [Math.round(x), Math.round(y)];
+    }
+    return null;
+  },
   diveIndex() { return dive ? dive.D.index : []; },
   pick(x, y) { const sid = gpuPick(x, y); return sid >= 0 ? { sid, id: sidToStruct[sid].id, node: M.nodes[sid].node } : null; },
   // a screen point where the structure is actually visible (verified by the GPU pick), or null
@@ -1138,7 +1301,11 @@ async function boot() {
   if (Q.get('section')) setSection(Q.get('section'));
   if (Q.get('inspect')) { S.intro = 1; inspect(Q.get('inspect')); }
   if (Q.get('dive')) { S.intro = 1; openDive(Q.get('dive'), +(Q.get('chapter') || 0)); }
-  if (Q.has('tour')) setTimeout(startTour, NO_INTRO ? 300 : 5600);
+  if (Q.has('tour') || KIOSK) setTimeout(() => startTour({ auto: KIOSK }), NO_INTRO ? 300 : 5600);
+  // eye deep dive: load the eye page hidden in the background so it opens instantly
+  // (a little later, when the visitor is not interacting: the eye page compiles its shaders on the main thread)
+  const preload = () => { if (performance.now() - S.lastActivity < 4000 || tour.on && !KIOSK) return setTimeout(preload, 3000); try { dive.preloadFrame(); } catch (e) { console.warn("[head] eye preload", e); } };
+  setTimeout(preload, NO_INTRO ? 20000 : 25000);
   applyLang();
   clock.getDelta();
   requestAnimationFrame(tick);

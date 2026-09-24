@@ -101,7 +101,10 @@ export const PALETTE = {
   nerve: 0xefe6d6,
   ciliary: 0x2a140c,
   lens: 0xf4e6c8,
-  iris: { deep: 0x2b1407, mid: 0x7a4a1c, light: 0xc79a4a, fleck: 0x6f8a52 },
+  // ?iris=brown (used by the head atlas): dark brown, as in the predominantly brown-eyed Kazakh population
+  iris: (typeof location !== 'undefined' && new URLSearchParams(location.search).get('iris') === 'brown')
+    ? { deep: 0x160a04, mid: 0x3f2310, light: 0x6e4724, fleck: 0x4b3018 }
+    : { deep: 0x2b1407, mid: 0x7a4a1c, light: 0xc79a4a, fleck: 0x6f8a52 },
   accent: 0xd8ff3e,
 };
 

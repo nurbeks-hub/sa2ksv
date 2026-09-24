@@ -52,10 +52,10 @@ export function createDive(ctx) {
   const entryFor = (structId) => D.index.find(e => arr(e.trigger).includes(structId)) || null;
 
   // ------------------------------------------------------------------ open / close
-  async function open(id, chapter = 0) {
+  async function open(id, chapter = 0, opts = {}) {
     if (typeof id !== 'string' || !/^[a-z0-9-]{1,64}$/.test(id)) return false;
     const entry = D.index.find(e => e.id === id) || { id };
-    if (entry.iframe) return openFrame(entry);
+    if (entry.iframe) return openFrame(entry, opts);
     const data = await getJSON(new URL(`${id}.json`, base));
     if (!data || !Array.isArray(data.parts)) { console.warn('[head] deep dive not found', id); return false; }
     ctx.beforeEnter();
@@ -113,22 +113,40 @@ export function createDive(ctx) {
     ctx.afterExit();
     ctx.dirty();
   }
-  function openFrame(entry) {
+  function frameUrl(entry) {
+    const url = new URL(entry.iframe, new URL('../../', import.meta.url));
+    if (url.origin !== location.origin) return null;
+    url.searchParams.set('embed', '1'); url.searchParams.set('iris', 'brown');
+    return url;
+  }
+  // load the eye page hidden in the background so the eye dive opens instantly
+  function preloadFrame() {
+    const entry = D.index.find(e => e.iframe); if (!entry) return;
+    const f = frameEl.querySelector('iframe'); const url = frameUrl(entry); if (!url || D.frameLoaded) return;
+    url.searchParams.set('lang', ctx.lang()); url.searchParams.set('paused', '1'); f.src = url.href; D.frameLoaded = url.pathname;
+  }
+  const pauseEye = (p) => { try { frameEl.querySelector('iframe').contentWindow.postMessage({ type: 'eye-pause', paused: p }, location.origin); } catch {} };
+  frameEl.querySelector('iframe').addEventListener('load', () => { pauseEye(!D.frame); setTimeout(() => pauseEye(!D.frame), 1500); });
+  function eyeApi() { try { return frameEl.querySelector('iframe').contentWindow.__eye || null; } catch { return null; } }
+  function openFrame(entry, opts = {}) {
+    const url = frameUrl(entry);
+    if (!url) { console.warn('[head] deep-dive iframe must be same-origin'); return false; }
     ctx.beforeEnter();
     D.frame = true;
     const f = frameEl.querySelector('iframe');
-    const url = new URL(entry.iframe, new URL('../../', import.meta.url));
-    if (url.origin !== location.origin) { console.warn('[head] deep-dive iframe must be same-origin'); return false; }
-    url.searchParams.set('embed', '1'); url.searchParams.set('lang', ctx.lang());
-    f.src = url.href;
+    if (D.frameLoaded !== url.pathname) { url.searchParams.set('lang', ctx.lang()); f.src = url.href; D.frameLoaded = url.pathname; }
+    else { try { f.contentWindow.postMessage({ type: 'eye-lang', lang: ctx.lang() }, location.origin); } catch {} }
     frameEl.hidden = false; document.body.classList.add('diving-frame');
+    pauseEye(false);
     D.active = entry.id;
+    if (opts.tour) { const t0 = performance.now(); const go = () => { const e = eyeApi(); if (e && e.ready) e.tour(true); else if (performance.now() - t0 < 8000) setTimeout(go, 300); }; go(); }
     return true;
   }
   function closeFrame() {
     D.frame = false; D.active = null;
-    const f = frameEl.querySelector('iframe'); f.src = 'about:blank';
+    const e = eyeApi(); try { e?.tour(false); e?.set({ inspect: null, explode: 0, vessels: 0 }); } catch {}
     frameEl.hidden = true; document.body.classList.remove('diving-frame');
+    pauseEye(true);
     ctx.afterExit();
   }
   window.addEventListener('message', (e) => { if (D.frame && (e.data === 'close' || e.data?.type === 'close')) closeFrame(); });
@@ -394,7 +412,7 @@ export function createDive(ctx) {
   $('#dive-x').addEventListener('input', (e) => { D.explodeTarget = +e.target.value; });
 
   return {
-    D, loadIndex, entryFor, open, close, setChapter, targetFor, cameraPose, step, selectPart, stepPart, applyLang,
+    D, loadIndex, entryFor, open, close, preloadFrame, setChapter, targetFor, cameraPose, step, selectPart, stepPart, applyLang,
     get active() { return D.active; }, get frame() { return D.frame; }, get sel() { return D.sel; },
     setExplode(v) { D.explodeTarget = Math.max(0, Math.min(1, v)); },
     get explode() { return D.explode; }, get explodeTarget() { return D.explodeTarget; },

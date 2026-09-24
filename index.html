@@ -62,6 +62,7 @@
     <button data-sec="axial" data-i18n-title="section.axial"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="8" ry="9"/><path d="M3.5 12h17" class="hl"/></svg></button>
     <button data-sec="coronal" data-i18n-title="section.coronal"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="8" ry="9"/><ellipse cx="12" cy="12" rx="2.6" ry="9" class="hl"/></svg></button>
   </div>
+  <button id="btn-organs" class="pill mono ghostpill" data-i18n="organs.button"></button>
   <button id="btn-tour" class="pill mono"></button>
 </div>
 
@@ -72,7 +73,7 @@
   <div class="la"></div>
   <p class="role"></p>
   <div class="alt mono"></div>
-  <button id="btn-dive" class="pill mono" hidden></button>
+  <div id="dive-links"></div>
   <ul class="facts"></ul>
   <div class="nav mono"><button id="prev">←</button><span class="keys" data-i18n="keys"></span><button id="next">→</button></div>
 </aside>
@@ -94,6 +95,14 @@
 <section id="diveframe" hidden>
   <iframe title="eye" allow="autoplay"></iframe>
   <button id="diveframe-back" class="mono"><span>←</span> <b data-i18n="dive.back"></b></button>
+</section>
+
+<section id="organs" hidden>
+  <div class="box">
+    <div class="otitle" data-i18n="organs.title"></div>
+    <button id="organs-close" class="icon" data-i18n-aria="panel.close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <ol class="ogrid"></ol>
+  </div>
 </section>
 
 <section id="search" hidden>

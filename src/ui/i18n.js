@@ -111,6 +111,8 @@ export const UI = {
       ],
       credit: 'Жасаған: Claude (Opus 5.5)',
     },
+    regions: { auricle: 'Құлақ қалқаны', nose: 'Мұрын', eye: 'Көз аймағы', mouth: 'Ауыз бен ерін', forehead: 'Маңдай', scalp: 'Бас терісі', cheek: 'Бет', chin: 'Иек', neck: 'Мойын' },
+    organs: { button: 'Мүшелер', title: 'Мүшелерді зерттеу', chapters: 'тарау', parts: 'бөлік', also: 'Сондай-ақ' },
     dive: { explore: 'Толығырақ', back: 'Бас моделіне оралу', explode: 'Ажырату', parts: 'бөлік', open: 'Ашылуда…', more: 'Толығырақ оқу', less: 'Жасыру' },
     cap: {
       sectionOn: 'Жазықтықты сүйреңіз',
@@ -205,6 +207,8 @@ export const UI = {
       ],
       credit: 'Сделано Claude (Opus 5.5)',
     },
+    regions: { auricle: 'Ушная раковина', nose: 'Нос', eye: 'Область глаза', mouth: 'Рот и губы', forehead: 'Лоб', scalp: 'Волосистая часть головы', cheek: 'Щека', chin: 'Подбородок', neck: 'Шея' },
+    organs: { button: 'Органы', title: 'Органы крупным планом', chapters: 'глав', parts: 'частей', also: 'Также' },
     dive: { explore: 'Подробнее', back: 'К голове', explode: 'Разобрать', parts: 'частей', open: 'Открываем…', more: 'Читать дальше', less: 'Свернуть' },
     cap: {
       sectionOn: 'Перетащите плоскость',
@@ -299,6 +303,8 @@ export const UI = {
       ],
       credit: 'Built by Claude (Opus 5.5)',
     },
+    regions: { auricle: 'Auricle', nose: 'Nose', eye: 'Eye region', mouth: 'Mouth and lips', forehead: 'Forehead', scalp: 'Scalp', cheek: 'Cheek', chin: 'Chin', neck: 'Neck' },
+    organs: { button: 'Organs', title: 'Organs up close', chapters: 'chapters', parts: 'parts', also: 'Also' },
     dive: { explore: 'Explore', back: 'Back to the head', explode: 'Take apart', parts: 'parts', open: 'Opening…', more: 'Read more', less: 'Show less' },
     cap: {
       sectionOn: 'Drag the plane',

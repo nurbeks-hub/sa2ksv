@@ -14,6 +14,7 @@ const Q = new URLSearchParams(location.search);
 // ?embed=1 — running inside the head atlas (iframe): no standalone header and no own back button (the parent shows one);
 // Esc (when no panel/about is open) posts 'close' + {type:'eye-close'} to the parent; short intro.
 const EMBED = Q.get('embed') === '1';
+if (Q.get('paused') === '1') window.__eyePaused = true;
 const INTRO_S = EMBED ? 1.8 : 3.6;
 function postParent(msg) { try { if (window.parent && window.parent !== window) window.parent.postMessage(msg, '*'); } catch {} }
 function closeEye() {
@@ -478,6 +479,7 @@ $('#back').addEventListener('click', closeEye);
 window.addEventListener('message', e => {
   const d = e.data;
   if (d && (d.type === 'eye-lang' || d.type === 'head-lang') && LANG_OK(d.lang) && d.lang !== S.lang) setLang(d.lang, true);
+  if (d && d.type === 'eye-pause') window.__eyePaused = !!d.paused;   // the head atlas preloads this page hidden: no rendering until shown
 });
 $('#sound').addEventListener('click', () => { const was = sound.started; sound.start(); sound.setEnabled(was ? !sound.enabled : true); $('#sound').classList.remove('pulse'); $('#sound').classList.toggle('on', sound.enabled); });
 $('#about').addEventListener('click', () => { $('#aboutbox').hidden = false; });
@@ -537,6 +539,7 @@ const frame = { time: 0, dt: 0, explode: 0, vessels: 0, pupilR: 1.9, camera, gho
 const tmp = [0, 0, 0];
 let lastExplode = S.explode;
 function tick() {
+  if (window.__eyePaused) { clock.getDelta(); requestAnimationFrame(tick); return; }
   const dt = Math.min(clock.getDelta(), 1 / 20);
   S.time += dt; const t = S.fixedTime != null ? S.fixedTime : S.time;
   if (S.intro < 1) S.intro = Math.min(1, S.intro + dt / INTRO_S);
