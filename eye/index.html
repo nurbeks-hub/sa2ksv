@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="kk">
+<head>
+<meta charset="utf-8">
+<title>Көз — The Eye</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="An explodable, anatomically grounded 3D atlas of the human eye: every coat, lens, muscle and vessel, taken apart.">
+<meta name="theme-color" content="#020203">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%23e9e3da'/%3E%3Ccircle cx='32' cy='32' r='13' fill='%237a4a1c'/%3E%3Ccircle cx='32' cy='32' r='6' fill='%23000'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+<script>/* set embed class before first paint so the standalone header never flashes inside the head atlas */
+if (new URLSearchParams(location.search).get('embed') === '1') document.documentElement.classList.add('embed', window.parent === window ? 'embed-top' : 'embed-frame');</script>
+<script type="importmap">
+{ "imports": { "three": "../vendor/three/three.module.js", "three/addons/": "../vendor/three/jsm/" } }
+</script>
+</head>
+<body>
+<canvas id="gl" aria-label="Interactive 3D model of the human eye"></canvas>
+
+<svg id="leaders" aria-hidden="true"></svg>
+<div id="labels" aria-hidden="true"></div>
+<div id="tip" aria-hidden="true"></div>
+
+<button id="back" class="mono" data-i18n-aria="backAria" aria-label="Back to the head"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span data-i18n="back">Back to the head</span></button>
+
+<header id="brand">
+  <div class="wordmark">THE EYE</div>
+  <div class="sub mono" data-i18n="sub">Human · right eye · 24 mm</div>
+</header>
+
+<nav id="top">
+  <div id="langs" class="mono" role="group" data-i18n-aria="langAria">
+    <button class="lang" data-lang="kk" lang="kk" aria-label="Қазақша">ҚАЗ</button>
+    <button class="lang" data-lang="ru" lang="ru" aria-label="Русский">РУС</button>
+    <button class="lang" data-lang="en" lang="en" aria-label="English">ENG</button>
+  </div>
+  <button id="sound" class="icon" aria-label="Sound" data-i18n-aria="sound"><svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path class="w1" d="M16 9.5c1 .8 1 4.2 0 5"/><path class="w2" d="M18.5 7c2.4 2 2.4 8 0 10"/></svg></button>
+  <button id="about" class="icon" aria-label="About and sources" data-i18n-aria="about"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.6" r=".6"/></svg></button>
+</nav>
+
+<ol id="index" class="mono" aria-label="Parts"></ol>
+
+<div id="caption" aria-live="polite"></div>
+
+<div id="hint" class="mono"><span data-i18n="hint">Scroll to take it apart</span><i></i></div>
+
+<div id="dock">
+  <button id="btn-tour" class="pill mono" data-i18n="tour">▶ Tour</button>
+  <button id="btn-explode" class="pill mono" data-i18n="takeApart">Take apart</button>
+  <button id="btn-vessels" class="pill mono" data-i18n="vessels">Vessels</button>
+</div>
+
+<aside id="panel" aria-live="polite">
+  <button id="panel-close" class="icon" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <div class="idx mono"></div>
+  <h1 class="name"></h1>
+  <div class="group mono"></div>
+  <p class="desc"></p>
+  <ul class="facts"></ul>
+  <div class="nav mono">
+    <button id="prev" aria-label="Previous">←</button>
+    <span class="hintkeys" data-i18n="keys">drag to turn · scroll to zoom · esc</span>
+    <button id="next" aria-label="Next">→</button>
+  </div>
+</aside>
+
+<section id="aboutbox" hidden>
+  <div class="inner">
+    <button id="about-close" class="icon" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <h2 data-i18n="aboutTitle">About this model</h2>
+    <div class="about-body"></div>
+    <h3 class="mono" data-i18n="sources">Sources</h3>
+    <ol class="sources mono"></ol>
+  </div>
+</section>
+
+<div id="loader" class="mono"><span data-i18n="loading">Building the eye</span> <b>0</b></div>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>

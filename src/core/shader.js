@@ -15,6 +15,7 @@ export const MAX_SF = 64;
 // ------------------------------------------------------------------ shared uniforms (same objects in all programs)
 export const U = {
   uState: { value: null },
+  uOffset: { value: null },   // per-structure rigid offset (deep-dive explode / animation): rows t, q, pivot
   uStatic: { value: null },
   uLayerDis: { value: new Float32Array(8) },
   uTime: { value: 0 },
@@ -57,6 +58,7 @@ const VERT_HEAD = /* glsl */`
 attribute float aSid;
 uniform sampler2D uState;
 uniform sampler2D uStatic;
+uniform sampler2D uOffset;
 uniform float uLayerDis[8];
 uniform float uSex;
 uniform int uSFCount;
@@ -80,6 +82,7 @@ varying vec3 vRest;
   uniform mat4 uRigInv;
   varying vec3 vHead;
 #endif
+vec3 hQrot(vec4 q, vec3 v) { return v + 2.0 * cross(q.xyz, cross(q.xyz, v) + q.w * v); }
 void hField(vec3 p, out vec3 d, out mat3 J) {
   d = uSFA * p + uSFT; J = uSFA;
   for (int i = 0; i < ${MAX_SF}; i++) {
@@ -97,6 +100,10 @@ const VERT_PROLOGUE = /* glsl */`
   vec4 hS = texelFetch(uState, hSt, 0);
   vec4 hT0 = texelFetch(uStatic, ivec2(hSt.x, hSt.y * 2), 0);
   vec4 hT1 = texelFetch(uStatic, ivec2(hSt.x, hSt.y * 2 + 1), 0);
+  vec4 hOT = texelFetch(uOffset, ivec2(hSt.x, hSt.y * 3), 0);
+  vec4 hOQ = texelFetch(uOffset, ivec2(hSt.x, hSt.y * 3 + 1), 0);
+  vec4 hOP = texelFetch(uOffset, ivec2(hSt.x, hSt.y * 3 + 2), 0);
+  bool hHasOff = hOT.w > 0.5;
   float hLd = uLayerDis[int(hT0.a + 0.5)];
   vState = vec4(hS.r, hS.g, mix(max(hLd, hS.b), hS.b, hS.a), hS.a);
   vTint = hT0;
@@ -118,6 +125,7 @@ const VERT_PROLOGUE = /* glsl */`
 
 // normals: n' = cof(F) n,  F = I + s·J   (cof(F) = det(F)·F^-T; we normalise afterwards)
 const VERT_NORMAL = /* glsl */`
+  if (hHasOff) objectNormal = hQrot(hOQ, objectNormal);
   if (hHasField) {
     mat3 hF = mat3(1.0) + uSex * hJ;
     objectNormal = normalize(transpose(inverse(hF)) * objectNormal);
@@ -125,6 +133,7 @@ const VERT_NORMAL = /* glsl */`
 `;
 const VERT_DISPLACE = /* glsl */`
   if (hHasField) transformed += uSex * hD;
+  if (hHasOff) transformed = hOP.xyz + hQrot(hOQ, transformed - hOP.xyz) + hOT.xyz;
   #ifdef H_SKIN
     vRest = transformed;   // skin: bust cut + noise follow the female morph (clean neck edge for both sexes)
   #endif
@@ -250,7 +259,7 @@ const LIT_COLOR = /* glsl */`
       float hBeard = vSkA.w * (1.0 - uSexF) * (0.75 + 0.25 * hNoise(vRest * 2400.0));
       hC = mix(hC, hC * vec3(0.74, 0.76, 0.82), hBeard * 0.42);
       vec3 hLip = mix(vec3(0.33, 0.15, 0.13), vec3(0.3, 0.16, 0.14), uSexF) * (0.92 + 0.16 * hNoise(vec3(vRest.x * 900.0, vRest.y * 3000.0, vRest.z * 900.0)));
-      hC = mix(hC, hLip, smoothstep(0.0, 1.0, vSkA.y) * mix(0.72, 0.55, uSexF));
+      hC = mix(hC, hLip, smoothstep(0.15, 1.0, vSkA.y) * mix(0.66, 0.4, uSexF));   // softer vermilion border, esp. ♀
       hC = mix(hC, hC * vec3(0.62, 0.5, 0.5), vSkC * 0.6);
       hC *= 1.0 - vSkB.z * 0.22;
       hC *= 0.98 + 0.04 * hNoise(vRest * 1300.0);
@@ -340,6 +349,7 @@ const LIT_COLOR = /* glsl */`
     diffuseColor.rgb = hCol;
   }
   #endif
+  if (vState.y < 0.0) { float hDm = -vState.y; float hL = dot(diffuseColor.rgb, vec3(0.3, 0.5, 0.2)); diffuseColor.rgb = mix(diffuseColor.rgb, vec3(hL) * vec3(0.95, 0.95, 1.0), hDm * 0.55) * (1.0 - hDm * 0.55); }   // deep-dive context: dimmed
   #ifdef H_EYEBALL
   {
     // soft shadow of the upper lid and lid occlusion at the canthi (head space: the lids stay put)
@@ -378,7 +388,8 @@ const SKIN_ROUGH = /* glsl */`
   #include <roughnessmap_fragment>
   #ifdef H_SKIN
     roughnessFactor = mix(roughnessFactor, 0.4, vSkB.y * 0.55);                 // oilier T-zone
-    roughnessFactor = mix(roughnessFactor, 0.3, clamp(vSkA.y * 0.6 + vSkC, 0.0, 1.0));   // lips, wet lid margin
+    roughnessFactor = mix(roughnessFactor, mix(0.34, 0.5, uSexF), clamp(vSkA.y * 0.6, 0.0, 1.0));   // lips (♀ softer sheen)
+    roughnessFactor = mix(roughnessFactor, 0.3, clamp(vSkC, 0.0, 1.0));   // wet lid margin
     roughnessFactor += (hNoise(vRest * 240.0) - 0.5) * 0.08;
   #endif
 `;
@@ -400,7 +411,7 @@ const LIT_EMISSIVE = /* glsl */`
     float hFr = pow(1.0 - clamp(abs(dot(hNn, hV)), 0.0, 1.0), 3.0);
     totalEmissiveRadiance += vec3(1.0, 0.52, 0.22) * hDisEdge * mix(2.2, 0.9, uSecOn);
     totalEmissiveRadiance += vec3(0.55, 0.75, 1.0) * hGhostEdge * 1.4;
-    totalEmissiveRadiance += (vTint.rgb * 0.22 + vec3(0.05, 0.045, 0.04) + vec3(0.9, 0.75, 0.55) * hFr * 0.55) * vState.y;
+    totalEmissiveRadiance += (vTint.rgb * 0.22 + vec3(0.05, 0.045, 0.04) + vec3(0.9, 0.75, 0.55) * hFr * 0.55) * max(vState.y, 0.0);
     #if NUM_CLIPPING_PLANES > 0
       float hKd = clippingPlanes[0].w - dot(vClipPosition, clippingPlanes[0].xyz);
       totalEmissiveRadiance += vec3(1.0, 0.7, 0.42) * uSecOn * exp(-max(hKd, 0.0) / 0.00035) * 0.9;

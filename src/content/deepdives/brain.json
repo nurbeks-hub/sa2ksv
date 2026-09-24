@@ -1,0 +1,1382 @@
+{
+ "id": "brain",
+ "title": {
+  "kk": "Ми",
+  "ru": "Головной мозг",
+  "en": "The brain"
+ },
+ "subtitle": {
+  "kk": "Қыртыс бөліктері, терең құрылымдар, сұйықтық жолдары мен қан тамырлары — және мида шын мәнінде не жоқ",
+  "ru": "Доли коры, глубокие структуры, пути ликвора и сосуды — и то, чего в мозге на самом деле нет",
+  "en": "Cortical lobes, deep structures, fluid pathways and blood vessels, and what the brain is not"
+ },
+ "trigger": [
+  "posterior-transverse-collateral-sulcus",
+  "accessory-nucleus-of-oculomotor-nerve",
+  "amygdaloid-body",
+  "angular-gyrus",
+  "anterior-cochlear-nucleus",
+  "anterior-commissure",
+  "anterior-occipital-sulcus",
+  "anterior-quadrangular-lobule",
+  "aqueduct-of-midbrain",
+  "base-of-peduncle",
+  "biventral-lobule",
+  "calcarine-sulcus",
+  "caudate-nucleus",
+  "central-lobule",
+  "central-sulcus",
+  "choroid-plexus",
+  "cingulate-gyrus-posteroventral-part",
+  "cingulate-gyrus-and-sulcus-middle-anterior-part",
+  "cingulate-gyrus-and-sulcus-middle-posterior-part",
+  "cingulate-gyrus-and-sulcus-posterior-dorsal-part",
+  "cingulate-sulcus-marginal-part",
+  "circular-sulcus-of-insula",
+  "collateral-sulcus",
+  "corpus-callosum",
+  "culmen",
+  "cuneus",
+  "declive",
+  "falx-cerebri",
+  "flocculus",
+  "folium-of-vermis",
+  "fornix",
+  "fourth-ventricle",
+  "globus-pallidus",
+  "gracile-lobule",
+  "habenula",
+  "hippocampal-commissure",
+  "hippocampus",
+  "hypothalamus",
+  "inferior-colliculus",
+  "inferior-frontal-sulcus",
+  "inferior-occipital-gyrus-and-sulcus",
+  "inferior-salivatory-nucleus",
+  "inferior-semilunar-lobule",
+  "inferior-temporal-gyrus",
+  "inferior-temporal-sulcus",
+  "insula-subcentral-gyrus-and-ant-and-post-sulci",
+  "interpeduncular-fossa",
+  "intraparietal-sulcus",
+  "lateral-geniculate-body",
+  "lateral-occipital-gyrus-middle-occipital-gyrus",
+  "lateral-occipitotemporal-gyrus",
+  "lateral-ventricle",
+  "lentiform-nucleus",
+  "lingual-gyrus",
+  "lingula-of-cerebellum",
+  "lunate-sulcus",
+  "mamillary-body",
+  "medial-geniculate-body",
+  "medial-occipitotemporal-gyrus-parahippocampal",
+  "medulla-oblongata",
+  "midbrain",
+  "middle-frontal-gyrus",
+  "middle-temporal-gyrus",
+  "motor-nucleus-of-facial-nerve",
+  "nodule-of-vermis",
+  "nucleus-ambiguus",
+  "nucleus-of-abducens-nerve",
+  "nucleus-of-hypoglossal-nerve",
+  "nucleus-of-oculomotor-nerve",
+  "nucleus-of-solitary-tract",
+  "nucleus-of-trochlear-nerve",
+  "occipital-pole",
+  "occipitotemporal-sulcus-lateral-part",
+  "olfactory-sulcus",
+  "olive",
+  "opercular-part-of-inferior-frontal-gyrus",
+  "orbital-gyri-frontomarginal-gyrus-and-sulcus",
+  "orbital-gyri",
+  "orbital-part-of-inferior-frontal-gyrus",
+  "orbital-sulci-h-shaped-orbital-sulci",
+  "orbital-sulci-lateral-orbital-sulcus",
+  "paracentral-gyrus-and-sulcus",
+  "paracentral-sulcus",
+  "parieto-occipital-sulcus",
+  "peduncle-of-flocculus",
+  "pons",
+  "postcentral-gyrus",
+  "postcentral-sulcus",
+  "posterior-cochlear-nucleus",
+  "posterior-commissure",
+  "posterior-nucleus-of-vagus-nerve",
+  "posterior-quadrangular-lobule",
+  "precentral-gyrus",
+  "precentral-sulcus-inferior-part",
+  "precentral-sulcus-superior-part",
+  "precuneus",
+  "putamen",
+  "pyramid-of-medulla-oblongata",
+  "pyramis-of-vermis",
+  "red-nucleus",
+  "septal-nuclei",
+  "septum-pellucidum",
+  "straight-gyrus-gyrus-rectus",
+  "stria-medullaris-thalami",
+  "stria-terminalis",
+  "subparietal-sulcus",
+  "superior-cerebellar-peduncle",
+  "superior-colliculus",
+  "superior-frontal-gyrus",
+  "superior-frontal-sulcus",
+  "superior-occipital-gyri",
+  "superior-parietal-lobule",
+  "superior-salivatory-nucleus",
+  "superior-semilunar-lobule",
+  "superior-temporal-gyrus-lateral-part",
+  "superior-temporal-sulcus",
+  "supramarginal-gyrus",
+  "temporal-plane",
+  "temporal-pole",
+  "tentorium-cerebelli",
+  "thalamus",
+  "third-ventricle",
+  "tonsil-of-cerebellum",
+  "transverse-frontopolar-gyrus-and-sulcus",
+  "transverse-occipital-sulcus",
+  "transverse-temporal-gyri",
+  "triangular-part-of-inferior-frontal-gyrus",
+  "tuber-of-vermis",
+  "uvula-of-vermis",
+  "vestibular-nuclei",
+  "white-matter-of-telencephalon",
+  "wing-of-central-lobule",
+  "anterior-cerebral-artery",
+  "anterior-communicating-artery",
+  "middle-cerebral-artery-m1-segment",
+  "posterior-communicating-artery",
+  "posterior-cerebral-artery",
+  "basilar-artery"
+ ],
+ "parts": [
+  "posterior-transverse-collateral-sulcus",
+  "accessory-nucleus-of-oculomotor-nerve",
+  "amygdaloid-body",
+  "angular-gyrus",
+  "anterior-cochlear-nucleus",
+  "anterior-commissure",
+  "anterior-occipital-sulcus",
+  "anterior-quadrangular-lobule",
+  "aqueduct-of-midbrain",
+  "base-of-peduncle",
+  "biventral-lobule",
+  "calcarine-sulcus",
+  "caudate-nucleus",
+  "central-lobule",
+  "central-sulcus",
+  "choroid-plexus",
+  "cingulate-gyrus-posteroventral-part",
+  "cingulate-gyrus-and-sulcus-middle-anterior-part",
+  "cingulate-gyrus-and-sulcus-middle-posterior-part",
+  "cingulate-gyrus-and-sulcus-posterior-dorsal-part",
+  "cingulate-sulcus-marginal-part",
+  "circular-sulcus-of-insula",
+  "collateral-sulcus",
+  "corpus-callosum",
+  "culmen",
+  "cuneus",
+  "declive",
+  "falx-cerebri",
+  "flocculus",
+  "folium-of-vermis",
+  "fornix",
+  "fourth-ventricle",
+  "globus-pallidus",
+  "gracile-lobule",
+  "habenula",
+  "hippocampal-commissure",
+  "hippocampus",
+  "hypothalamus",
+  "inferior-colliculus",
+  "inferior-frontal-sulcus",
+  "inferior-occipital-gyrus-and-sulcus",
+  "inferior-salivatory-nucleus",
+  "inferior-semilunar-lobule",
+  "inferior-temporal-gyrus",
+  "inferior-temporal-sulcus",
+  "insula-subcentral-gyrus-and-ant-and-post-sulci",
+  "interpeduncular-fossa",
+  "intraparietal-sulcus",
+  "lateral-geniculate-body",
+  "lateral-occipital-gyrus-middle-occipital-gyrus",
+  "lateral-occipitotemporal-gyrus",
+  "lateral-ventricle",
+  "lingual-gyrus",
+  "lingula-of-cerebellum",
+  "lunate-sulcus",
+  "mamillary-body",
+  "medial-geniculate-body",
+  "medial-occipitotemporal-gyrus-parahippocampal",
+  "medulla-oblongata",
+  "midbrain",
+  "middle-frontal-gyrus",
+  "middle-temporal-gyrus",
+  "motor-nucleus-of-facial-nerve",
+  "nodule-of-vermis",
+  "nucleus-ambiguus",
+  "nucleus-of-abducens-nerve",
+  "nucleus-of-hypoglossal-nerve",
+  "nucleus-of-oculomotor-nerve",
+  "nucleus-of-solitary-tract",
+  "nucleus-of-trochlear-nerve",
+  "occipital-pole",
+  "occipitotemporal-sulcus-lateral-part",
+  "olfactory-sulcus",
+  "olive",
+  "opercular-part-of-inferior-frontal-gyrus",
+  "orbital-gyri-frontomarginal-gyrus-and-sulcus",
+  "orbital-gyri",
+  "orbital-part-of-inferior-frontal-gyrus",
+  "orbital-sulci-h-shaped-orbital-sulci",
+  "orbital-sulci-lateral-orbital-sulcus",
+  "paracentral-gyrus-and-sulcus",
+  "paracentral-sulcus",
+  "parieto-occipital-sulcus",
+  "peduncle-of-flocculus",
+  "pons",
+  "postcentral-gyrus",
+  "postcentral-sulcus",
+  "posterior-cochlear-nucleus",
+  "posterior-commissure",
+  "posterior-nucleus-of-vagus-nerve",
+  "posterior-quadrangular-lobule",
+  "precentral-gyrus",
+  "precentral-sulcus-inferior-part",
+  "precentral-sulcus-superior-part",
+  "precuneus",
+  "putamen",
+  "pyramid-of-medulla-oblongata",
+  "pyramis-of-vermis",
+  "red-nucleus",
+  "septal-nuclei",
+  "septum-pellucidum",
+  "straight-gyrus-gyrus-rectus",
+  "stria-medullaris-thalami",
+  "stria-terminalis",
+  "subparietal-sulcus",
+  "superior-cerebellar-peduncle",
+  "superior-colliculus",
+  "superior-frontal-gyrus",
+  "superior-frontal-sulcus",
+  "superior-occipital-gyri",
+  "superior-parietal-lobule",
+  "superior-salivatory-nucleus",
+  "superior-semilunar-lobule",
+  "superior-temporal-gyrus-lateral-part",
+  "superior-temporal-sulcus",
+  "supramarginal-gyrus",
+  "temporal-plane",
+  "temporal-pole",
+  "tentorium-cerebelli",
+  "thalamus",
+  "third-ventricle",
+  "tonsil-of-cerebellum",
+  "transverse-frontopolar-gyrus-and-sulcus",
+  "transverse-occipital-sulcus",
+  "transverse-temporal-gyri",
+  "triangular-part-of-inferior-frontal-gyrus",
+  "tuber-of-vermis",
+  "uvula-of-vermis",
+  "vestibular-nuclei",
+  "white-matter-of-telencephalon",
+  "wing-of-central-lobule",
+  "internal-carotid-artery",
+  "vertebral-artery",
+  "basilar-artery",
+  "anterior-cerebral-artery",
+  "anterior-communicating-artery",
+  "middle-cerebral-artery-m1-segment",
+  "posterior-communicating-artery",
+  "posterior-cerebral-artery",
+  "superior-sagittal-sinus",
+  "inferior-sagittal-sinus",
+  "straight-sinus",
+  "transverse-sinus",
+  "sigmoid-sinus",
+  "adenohypophysis",
+  "neurohypophysis",
+  "pineal-gland"
+ ],
+ "explode": {
+  "posterior-transverse-collateral-sulcus": [
+   0,
+   0.002,
+   -0.018
+  ],
+  "accessory-nucleus-of-oculomotor-nerve": [
+   0,
+   -0.022,
+   0.002
+  ],
+  "angular-gyrus": [
+   0,
+   0.016,
+   -0.004
+  ],
+  "anterior-cochlear-nucleus": [
+   0,
+   -0.022,
+   0.002
+  ],
+  "anterior-occipital-sulcus": [
+   0,
+   0.002,
+   -0.018
+  ],
+  "anterior-quadrangular-lobule": [
+   0,
+   -0.014,
+   -0.022
+  ],
+  "base-of-peduncle": [
+   0,
+   -0.022,
+   0.002
+  ],
+  "biventral-lobule": [
+   0,
+   -0.014,
+   -0.022
+  ],
+  "calcarine-sulcus": [
+   0,
+   0.002,
+   -0.018
+  ],
+  "central-lobule": [
+   0,
+   -0.014,
+   -0.022
+  ],
+  "central-sulcus": [
+   0,
+   0.012,
+   0.006
+  ],
+  "cingulate-gyrus-posteroventral-part": [
+   0,
+   0.006,
+   0
+  ],
+  "cingulate-gyrus-and-sulcus-middle-anterior-part": [
+   0,
+   0.006,
+   0
+  ],
+  "cingulate-gyrus-and-sulcus-middle-posterior-part": [
+   0,
+   0.006,
+   0
+  ],
+  "cingulate-gyrus-and-sulcus-posterior-dorsal-part": [
+   0,
+   0.006,
+   0
+  ],
+  "cingulate-sulcus-marginal-part": [
+   0,
+   0.012,
+   -0.004
+  ],
+  "circular-sulcus-of-insula": [
+   0,
+   -0.002,
+   0.004
+  ],
+  "collateral-sulcus": [
+   0,
+   -0.01,
+   -0.004
+  ],
+  "culmen": [
+   0,
+   -0.014,
+   -0.022
+  ],
+  "cuneus": [
+   0,
+   0.002,
+   -0.018
+  ],
+  "declive": [
+   0,
+   -0.014,
+   -0.022
+  ],
+  "falx-cerebri": [
+   0,
+   0.03,
+   0
+  ],
+  "flocculus": [
+   0,
+   -0.014,
+   -0.022
+  ],
+  "folium-of-vermis": [
+   0,
+   -0.014,
+   -0.022
+  ],
+  "gracile-lobule": [
+   0,
+   -0.014,
+   -0.022
+  ],
+  "inferior-colliculus": [
+   0,
+   -0.022,
+   0.002
+  ],
+  "inferior-frontal-sulcus": [
+   0,
+   0.004,
+   0.018
+  ],
+  "inferior-occipital-gyrus-and-sulcus": [
+   0,
+   0.002,
+   -0.018
+  ],
+  "inferior-salivatory-nucleus": [
+   0,
+   -0.022,
+   0.002
+  ],
+  "inferior-semilunar-lobule": [
+   0,
+   -0.014,
+   -0.022
+  ],
+  "inferior-temporal-gyrus": [
+   0,
+   -0.012,
+   0.002
+  ],
+  "inferior-temporal-sulcus": [
+   0,
+   -0.012,
+   0.002
+  ],
+  "insula-subcentral-gyrus-and-ant-and-post-sulci": [
+   0,
+   -0.002,
+   0.004
+  ],
+  "interpeduncular-fossa": [
+   0,
+   -0.022,
+   0.002
+  ],
+  "intraparietal-sulcus": [
+   0,
+   0.016,
+   -0.004
+  ],
+  "lateral-occipital-gyrus-middle-occipital-gyrus": [
+   0,
+   0.002,
+   -0.018
+  ],
+  "lateral-occipitotemporal-gyrus": [
+   0,
+   -0.012,
+   0.002
+  ],
+  "lingual-gyrus": [
+   0,
+   0.002,
+   -0.018
+  ],
+  "lingula-of-cerebellum": [
+   0,
+   -0.014,
+   -0.022
+  ],
+  "lunate-sulcus": [
+   0,
+   0.002,
+   -0.018
+  ],
+  "medial-occipitotemporal-gyrus-parahippocampal": [
+   0,
+   -0.01,
+   0
+  ],
+  "medulla-oblongata": [
+   0,
+   -0.022,
+   0.002
+  ],
+  "midbrain": [
+   0,
+   -0.022,
+   0.002
+  ],
+  "middle-frontal-gyrus": [
+   0,
+   0.004,
+   0.018
+  ],
+  "middle-temporal-gyrus": [
+   0,
+   -0.012,
+   0.002
+  ],
+  "motor-nucleus-of-facial-nerve": [
+   0,
+   -0.022,
+   0.002
+  ],
+  "nodule-of-vermis": [
+   0,
+   -0.014,
+   -0.022
+  ],
+  "nucleus-ambiguus": [
+   0,
+   -0.022,
+   0.002
+  ],
+  "nucleus-of-abducens-nerve": [
+   0,
+   -0.022,
+   0.002
+  ],
+  "nucleus-of-hypoglossal-nerve": [
+   0,
+   -0.022,
+   0.002
+  ],
+  "nucleus-of-oculomotor-nerve": [
+   0,
+   -0.022,
+   0.002
+  ],
+  "nucleus-of-solitary-tract": [
+   0,
+   -0.022,
+   0.002
+  ],
+  "nucleus-of-trochlear-nerve": [
+   0,
+   -0.022,
+   0.002
+  ],
+  "occipital-pole": [
+   0,
+   0.002,
+   -0.018
+  ],
+  "occipitotemporal-sulcus-lateral-part": [
+   0,
+   -0.012,
+   0.002
+  ],
+  "olfactory-sulcus": [
+   0,
+   0.004,
+   0.018
+  ],
+  "olive": [
+   0,
+   -0.022,
+   0.002
+  ],
+  "opercular-part-of-inferior-frontal-gyrus": [
+   0,
+   0.004,
+   0.018
+  ],
+  "orbital-gyri-frontomarginal-gyrus-and-sulcus": [
+   0,
+   0.004,
+   0.018
+  ],
+  "orbital-gyri": [
+   0,
+   0.004,
+   0.018
+  ],
+  "orbital-part-of-inferior-frontal-gyrus": [
+   0,
+   0.004,
+   0.018
+  ],
+  "orbital-sulci-h-shaped-orbital-sulci": [
+   0,
+   0.004,
+   0.018
+  ],
+  "orbital-sulci-lateral-orbital-sulcus": [
+   0,
+   0.004,
+   0.018
+  ],
+  "paracentral-gyrus-and-sulcus": [
+   0,
+   0.016,
+   -0.004
+  ],
+  "paracentral-sulcus": [
+   0,
+   0.004,
+   0.018
+  ],
+  "parieto-occipital-sulcus": [
+   0,
+   0.01,
+   -0.012
+  ],
+  "peduncle-of-flocculus": [
+   0,
+   -0.014,
+   -0.022
+  ],
+  "pons": [
+   0,
+   -0.022,
+   0.002
+  ],
+  "postcentral-gyrus": [
+   0,
+   0.016,
+   -0.004
+  ],
+  "postcentral-sulcus": [
+   0,
+   0.016,
+   -0.004
+  ],
+  "posterior-cochlear-nucleus": [
+   0,
+   -0.022,
+   0.002
+  ],
+  "posterior-nucleus-of-vagus-nerve": [
+   0,
+   -0.022,
+   0.002
+  ],
+  "posterior-quadrangular-lobule": [
+   0,
+   -0.014,
+   -0.022
+  ],
+  "precentral-gyrus": [
+   0,
+   0.004,
+   0.018
+  ],
+  "precentral-sulcus-inferior-part": [
+   0,
+   0.004,
+   0.018
+  ],
+  "precentral-sulcus-superior-part": [
+   0,
+   0.004,
+   0.018
+  ],
+  "precuneus": [
+   0,
+   0.016,
+   -0.004
+  ],
+  "pyramid-of-medulla-oblongata": [
+   0,
+   -0.022,
+   0.002
+  ],
+  "pyramis-of-vermis": [
+   0,
+   -0.014,
+   -0.022
+  ],
+  "red-nucleus": [
+   0,
+   -0.022,
+   0.002
+  ],
+  "straight-gyrus-gyrus-rectus": [
+   0,
+   0.004,
+   0.018
+  ],
+  "subparietal-sulcus": [
+   0,
+   0.01,
+   -0.006
+  ],
+  "superior-cerebellar-peduncle": [
+   0,
+   -0.014,
+   -0.022
+  ],
+  "superior-colliculus": [
+   0,
+   -0.022,
+   0.002
+  ],
+  "superior-frontal-gyrus": [
+   0,
+   0.004,
+   0.018
+  ],
+  "superior-frontal-sulcus": [
+   0,
+   0.004,
+   0.018
+  ],
+  "superior-occipital-gyri": [
+   0,
+   0.002,
+   -0.018
+  ],
+  "superior-parietal-lobule": [
+   0,
+   0.016,
+   -0.004
+  ],
+  "superior-salivatory-nucleus": [
+   0,
+   -0.022,
+   0.002
+  ],
+  "superior-semilunar-lobule": [
+   0,
+   -0.014,
+   -0.022
+  ],
+  "superior-temporal-gyrus-lateral-part": [
+   0,
+   -0.012,
+   0.002
+  ],
+  "superior-temporal-sulcus": [
+   0,
+   -0.012,
+   0.002
+  ],
+  "supramarginal-gyrus": [
+   0,
+   0.016,
+   -0.004
+  ],
+  "temporal-plane": [
+   0,
+   -0.012,
+   0.002
+  ],
+  "temporal-pole": [
+   0,
+   -0.012,
+   0.002
+  ],
+  "tentorium-cerebelli": [
+   0,
+   -0.004,
+   -0.03
+  ],
+  "tonsil-of-cerebellum": [
+   0,
+   -0.014,
+   -0.022
+  ],
+  "transverse-frontopolar-gyrus-and-sulcus": [
+   0,
+   0.004,
+   0.018
+  ],
+  "transverse-occipital-sulcus": [
+   0,
+   0.002,
+   -0.018
+  ],
+  "transverse-temporal-gyri": [
+   0,
+   -0.012,
+   0.002
+  ],
+  "triangular-part-of-inferior-frontal-gyrus": [
+   0,
+   0.004,
+   0.018
+  ],
+  "tuber-of-vermis": [
+   0,
+   -0.014,
+   -0.022
+  ],
+  "uvula-of-vermis": [
+   0,
+   -0.014,
+   -0.022
+  ],
+  "vestibular-nuclei": [
+   0,
+   -0.022,
+   0.002
+  ],
+  "wing-of-central-lobule": [
+   0,
+   -0.014,
+   -0.022
+  ],
+  "internal-carotid-artery": [
+   0,
+   -0.034,
+   0.006
+  ],
+  "vertebral-artery": [
+   0,
+   -0.034,
+   0.006
+  ],
+  "basilar-artery": [
+   0,
+   -0.034,
+   0.006
+  ],
+  "anterior-cerebral-artery": [
+   0,
+   -0.034,
+   0.006
+  ],
+  "anterior-communicating-artery": [
+   0,
+   -0.034,
+   0.006
+  ],
+  "middle-cerebral-artery-m1-segment": [
+   0,
+   -0.034,
+   0.006
+  ],
+  "posterior-communicating-artery": [
+   0,
+   -0.034,
+   0.006
+  ],
+  "posterior-cerebral-artery": [
+   0,
+   -0.034,
+   0.006
+  ],
+  "superior-sagittal-sinus": [
+   0,
+   0.034,
+   0
+  ],
+  "inferior-sagittal-sinus": [
+   0,
+   0.02,
+   0
+  ],
+  "straight-sinus": [
+   0,
+   0.004,
+   -0.022
+  ],
+  "transverse-sinus": [
+   0,
+   -0.004,
+   -0.032
+  ],
+  "sigmoid-sinus": [
+   0,
+   -0.01,
+   -0.03
+  ],
+  "adenohypophysis": [
+   0,
+   -0.02,
+   0.006
+  ],
+  "neurohypophysis": [
+   0,
+   -0.02,
+   0.006
+  ]
+ },
+ "chapters": [
+  {
+   "title": {
+    "kk": "Бөліктер, желілер және мифтер",
+    "ru": "Доли, сети и мифы",
+    "en": "Lobes, networks and myths"
+   },
+   "text": {
+    "en": [
+     "The cerebrum is the large folded mantle that makes up most of the visible brain. A deep longitudinal fissure splits it into right and left hemispheres, and deep inside, the corpus callosum is the main pathway between them. Its wrinkled surface, the cerebral cortex, is a thin sheet of grey matter: each ridge is a gyrus, each groove a sulcus. Folding lets more grey matter fit inside the skull.",
+     "Large sulci divide each hemisphere into four lobes. The central sulcus separates the frontal lobe from the parietal lobe, the lateral sulcus sets off the temporal lobe below, and on the inner surface the parieto-occipital sulcus marks the occipital lobe. On the outer surface the occipital lobe has no obvious border at all, which, as one textbook notes, is consistent with the functions of these regions being interrelated.",
+     "Specialised areas exist, but abilities arise from networks. Dividing people into 'left-brained' and 'right-brained' is a persistent myth: language leans to the left and spatial, non-verbal reasoning to the right, yet neither side has a monopoly, and language is distributed widely across the cerebrum. The claim that we use only 10% of the brain is classed as a neuromyth; the brain's high metabolic activity continues even when we are completely at rest."
+    ],
+    "ru": [
+     "Большой мозг — крупный складчатый покров, составляющий бо́льшую часть видимого мозга. Глубокая продольная щель делит его на правое и левое полушария, а в глубине главным путём между ними служит мозолистое тело. Его морщинистая поверхность — кора большого мозга, тонкий слой серого вещества: каждый валик — извилина, каждая канавка — борозда. Складки позволяют уместить в черепе больше серого вещества.",
+     "Крупные борозды делят каждое полушарие на четыре доли. Центральная борозда отделяет лобную долю от теменной, латеральная борозда отграничивает снизу височную долю, а на внутренней поверхности затылочную долю отмечает теменно-затылочная борозда. На наружной поверхности у затылочной доли вообще нет явной границы — как отмечает один учебник, это согласуется с тем, что функции этих областей взаимосвязаны.",
+     "Специализированные области существуют, но способности возникают из сетей. Деление людей на «левополушарных» и «правополушарных» — живучий миф: язык тяготеет к левому полушарию, а пространственное, невербальное мышление — к правому, но ни одна сторона не владеет ими монопольно, а язык широко распределён по большому мозгу. Утверждение, что мы используем лишь 10% мозга, относят к нейромифам; высокая метаболическая активность мозга сохраняется даже в полном покое."
+    ],
+    "kk": [
+     "Үлкен ми — мидың көзге көрінетін бөлігінің басым көпшілігін құрайтын ірі, қатпарлы жамылғы. Терең бойлық саңылау оны оң және сол ми сыңарларына бөледі, ал тереңде олардың арасындағы басты байланыс жолы — күсті дене. Оның бұдыр беті — ми қыртысы, сұр заттың жұқа қабаты: әр білік — қатпар, әр ойық — жүлге. Қатпарлану арқасында бассүйекке сұр заттың көбірек мөлшері сыяды.",
+     "Ірі жүлгелер әр сыңарды төрт бөлікке бөледі. Орталық жүлге маңдай бөлігін төбе бөлігінен ажыратады, бүйір жүлге төменде самай бөлігін бөліп тұрады, ал ішкі бетте шүйде бөлігін төбе-шүйде жүлгесі белгілейді. Сыртқы бетте шүйде бөлігінің айқын шекарасы мүлде жоқ — бір оқулықта айтылғандай, бұл осы аймақтардың қызметтері өзара байланысты екенімен үйлеседі.",
+     "Мида арнаулы аймақтар бар, бірақ қабілеттер желілерден туады. Адамдарды «сол сыңарлы» және «оң сыңарлы» деп бөлу — берік орныққан миф: тіл көбіне сол жаққа, ал кеңістіктік, сөзсіз ойлау оң жаққа ойысады, бірақ бұл қызметтерді бірде-бір жақ толық иеленбейді, ал тіл үлкен мидың кең аумағына таралған. «Миымыздың небәрі 10%-ын пайдаланамыз» деген пікір нейромифтерге жатады; мидың жоғары зат алмасу белсенділігі біз толық тыныштықта жатқанда да сақталады."
+    ]
+   },
+   "highlight": [
+    "central-sulcus",
+    "parieto-occipital-sulcus",
+    "corpus-callosum"
+   ],
+   "explode": 0.3,
+   "camera": {
+    "yaw": 0.8,
+    "pitch": 0.3,
+    "zoom": 1.0
+   },
+   "section": null,
+   "anim": null,
+   "facts": [
+    {
+     "en": "In a survey of 242 teachers interested in brain science, 48% in the UK and 46% in the Netherlands agreed that 'we only use 10% of our brain'.",
+     "ru": "В опросе 242 учителей, интересующихся наукой о мозге, с утверждением «мы используем только 10% мозга» согласились 48% учителей в Великобритании и 46% — в Нидерландах.",
+     "kk": "Ми туралы ғылымға қызығатын 242 мұғалімге жүргізілген сауалнамада «біз миымыздың тек 10%-ын пайдаланамыз» деген тұжырыммен Ұлыбританиядағы мұғалімдердің 48%-ы, Нидерландтағылардың 46%-ы келіскен.",
+     "src": {
+      "title": "Dekker S, Lee NC, Howard-Jones P, Jolles J (2012). Neuromyths in Education: Prevalence and Predictors of Misconceptions among Teachers. Frontiers in Psychology",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3475349/"
+     }
+    },
+    {
+     "en": "Resting-state brain scans of 1,011 people aged 7–29 showed no whole-brain pattern of being more 'left-brained' or 'right-brained': lateralisation was a local property of particular networks.",
+     "ru": "Сканирование мозга в состоянии покоя у 1011 человек 7–29 лет не выявило общемозгового типа «левополушарности» или «правополушарности»: латерализация оказалась локальным свойством отдельных сетей.",
+     "kk": "7–29 жастағы 1011 адамның тыныштық күйіндегі ми сканерлеуі тұтас мидың «сол сыңарлы» не «оң сыңарлы» үлгісін көрсетпеді: бір жаққа ойысу тек жекелеген желілердің жергілікті қасиеті болып шықты.",
+     "src": {
+      "title": "Nielsen JA, Zielinski BA, Ferguson MA, Lainhart JE, Anderson JS (2013). An evaluation of the left-brain vs. right-brain hypothesis with resting state functional connectivity magnetic resonance imaging. PLoS One",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3743825/"
+     }
+    },
+    {
+     "en": "The brain is about 2% of body weight but accounts for about 20% of the body's oxygen consumption, and this high rate stays remarkably constant whatever the mind and body are doing.",
+     "ru": "Мозг составляет около 2% массы тела, но на него приходится около 20% потребляемого организмом кислорода, и этот высокий уровень остаётся удивительно постоянным, чем бы ни были заняты ум и тело.",
+     "kk": "Ми дене салмағының шамамен 2%-ын құраса да, организм тұтынатын оттегінің шамамен 20%-ы соның үлесіне тиеді, әрі бұл жоғары деңгей ақыл мен дене немен айналысса да таңғаларлықтай тұрақты.",
+     "src": {
+      "title": "Raichle ME, Gusnard DA (2002). Appraising the brain's energy budget. Proceedings of the National Academy of Sciences USA",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC124895/"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Қимыл, сезім және сөйлеу карталары",
+    "ru": "Карты движения, чувств и речи",
+    "en": "Maps for movement, senses and speech"
+   },
+   "text": {
+    "en": [
+     "In front of the central sulcus lies the precentral gyrus, the primary motor cortex: its cells instruct the spinal cord to move skeletal muscles. Just behind it, the postcentral gyrus is the primary somatosensory cortex, where touch, pressure, pain, itch, vibration and the sense of body position are processed. The left hemisphere controls the right half of the body, and the right hemisphere the left.",
+     "Vision begins at the back. The primary visual cortex (V1) lines the banks of the calcarine sulcus on the inner surface of the occipital lobe; this sulcus separates the cuneus from the lingual gyrus, and the upper and lower halves of the visual field are mapped mainly on its opposite sides. Sound reaches the upper temporal lobe, where the transverse temporal (Heschl's) gyri include the primary auditory cortex.",
+     "Language calls for care. Broca's area, the opercular and triangular parts of the left inferior frontal gyrus (Brodmann areas 44 and 45), is linked with producing speech and in most people lies only on the left. 'Wernicke's area', at the back of the left lateral sulcus, is traditionally tied to comprehension, yet modern evidence gives it a large role in speech production; the supramarginal and angular gyri also join these networks. Even Broca's own patients had damage reaching far deeper than the surface area he described."
+    ],
+    "ru": [
+     "Впереди от центральной борозды лежит предцентральная извилина — первичная двигательная кора: её клетки отдают спинному мозгу команды двигать скелетными мышцами. Сразу позади неё постцентральная извилина — первичная соматосенсорная кора, где обрабатываются прикосновение, давление, боль, зуд, вибрация и чувство положения тела. Левое полушарие управляет правой половиной тела, а правое — левой.",
+     "Зрение начинается сзади. Первичная зрительная кора (V1) выстилает стенки шпорной борозды на внутренней поверхности затылочной доли; эта борозда отделяет клин от язычной извилины, а верхняя и нижняя половины поля зрения представлены в основном на её противоположных сторонах. Звук приходит в верхнюю часть височной доли, где поперечные височные извилины (извилины Гешля) включают первичную слуховую кору.",
+     "С языком нужна осторожность. Зона Брока — покрышечная и треугольная части левой нижней лобной извилины (поля Бродмана 44 и 45) — связана с порождением речи и у большинства людей находится только слева. «Зону Вернике» у заднего края левой латеральной борозды традиционно связывают с пониманием речи, но современные данные отводят ей и большую роль в порождении речи; в эти сети входят также надкраевая и угловая извилины. Даже у пациентов самого Брока поражения уходили намного глубже описанного им участка поверхности."
+    ],
+    "kk": [
+     "Орталық жүлгенің алдында орталық алдындағы қатпар жатыр — алғашқы қозғалыс қыртысы: оның жасушалары жұлынға қаңқа бұлшықеттерін қозғалту бұйрығын береді. Одан сәл артта орталықтан кейінгі қатпар — алғашқы сезім қыртысы орналасқан: мұнда жанасу, қысым, ауырсыну, қышу, діріл және дене қалпын сезу өңделеді. Сол ми сыңары дененің оң жартысын, ал оң сыңар сол жартысын басқарады.",
+     "Көру мидың артқы жағынан басталады. Алғашқы көру қыртысы (V1) шүйде бөлігінің ішкі бетіндегі шпор жүлгесінің қабырғаларын жауып жатыр; бұл жүлге сынаны тілдік қатпардан бөледі, ал көру аймағының жоғарғы және төменгі жартылары негізінен оның қарама-қарсы жақтарында бейнеленеді. Дыбыс самай бөлігінің жоғарғы жағына жетеді: алғашқы есту қыртысы көлденең самай (Гешль) қатпарларында жатыр.",
+     "Тіл мәселесінде сақтық керек. Броканың сөйлеу аймағы — сол жақ төменгі маңдай қатпарының қақпақшалық және үшбұрышты бөліктері (Бродманның 44 және 45 алаңдары) — сөйлеуді құрумен байланысты және адамдардың көбінде тек сол жақта болады. Сол жақ бүйір жүлгенің артқы жағындағы «Вернике аймағын» дәстүрлі түрде сөзді түсінумен байланыстырады, бірақ қазіргі деректер оған сөйлеуді құруда да үлкен рөл береді; бұл желілерге жиек үстілік және бұрыштық қатпарлар да қатысады. Броканың өз науқастарының өзінде зақымдану ол сипаттаған беткі аймақтан әлдеқайда тереңге жеткен."
+    ]
+   },
+   "highlight": [
+    "precentral-gyrus",
+    "postcentral-gyrus",
+    "calcarine-sulcus",
+    "cuneus",
+    "lingual-gyrus",
+    "transverse-temporal-gyri",
+    "opercular-part-of-inferior-frontal-gyrus",
+    "triangular-part-of-inferior-frontal-gyrus",
+    "supramarginal-gyrus",
+    "angular-gyrus"
+   ],
+   "explode": 0.0,
+   "camera": {
+    "yaw": 1.3,
+    "pitch": 0.15,
+    "zoom": 1.1
+   },
+   "section": null,
+   "anim": null,
+   "facts": [
+    {
+     "en": "In blind people who read Braille, reading activates the visual cortex, including V1 on the banks of the calcarine sulcus.",
+     "ru": "У незрячих людей, читающих шрифтом Брайля, чтение активирует зрительную кору, включая V1 на стенках шпорной борозды.",
+     "kk": "Брайль әрпімен оқитын зағип адамдарда оқу кезінде көру қыртысы, соның ішінде шпор жүлгесінің қабырғаларындағы V1 белсенеді.",
+     "src": {
+      "title": "Burton H, Snyder AZ, Diamond JB, Raichle ME (2002). Adaptive changes in early and late blind: a FMRI study of verb generation to heard nouns. Journal of Neurophysiology",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3704164/"
+     }
+    },
+    {
+     "en": "In 12 professional musicians, grey-matter volume in the front inner part of Heschl's gyrus was 130% larger than in 12 non-musicians.",
+     "ru": "У 12 профессиональных музыкантов объём серого вещества в передне-медиальной части извилины Гешля был на 130% больше, чем у 12 немузыкантов.",
+     "kk": "12 кәсіби музыкантта Гешль қатпарының алдыңғы ішкі бөлігіндегі сұр зат көлемі музыкант емес 12 адамға қарағанда 130%-ға үлкен болған.",
+     "src": {
+      "title": "Schneider P, Scherg M, Dosch HG, Specht HJ, Gutschalk A, Rupp A (2002). Morphology of Heschl's gyrus reflects enhanced activation in the auditory cortex of musicians. Nature Neuroscience",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12068300/"
+     }
+    },
+    {
+     "en": "A 2016 review, drawing on a survey of language researchers, found no consistent anatomical definition of 'Broca's area' and 'Wernicke's area' and proposed replacing both terms with precise anatomical ones.",
+     "ru": "Обзор 2016 года с опросом исследователей речи показал, что единого анатомического определения «зоны Брока» и «зоны Вернике» нет, и предложил заменить оба термина точными анатомическими названиями.",
+     "kk": "Тіл зерттеушілері арасында жүргізілген сауалнамаға сүйенген 2016 жылғы шолу «Брока аймағы» мен «Вернике аймағының» бірізді анатомиялық анықтамасы жоқ екенін көрсетіп, екі терминді де дәл анатомиялық атаулармен алмастыруды ұсынған.",
+     "src": {
+      "title": "Tremblay P, Dick AS (2016). Broca and Wernicke are dead, or moving past the classic model of language neurobiology. Brain and Language",
+      "url": "https://europepmc.org/article/MED/27584714"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Мишық және ми бағаны",
+    "ru": "Мозжечок и ствол мозга",
+    "en": "Cerebellum and brainstem"
+   },
+   "text": {
+    "en": [
+     "The cerebellum, the 'little brain', sits on the back of the brainstem beneath the occipital lobes, separated from them by the tentorium cerebelli. Covered in folds like the cerebrum, it accounts for about 10% of the brain's mass. It compares the cortex's movement commands with feedback from muscles, joints and the sense of balance and sends out corrections; it coordinates gait, posture and muscle tone but cannot start a contraction by itself.",
+     "The brainstem, made of the midbrain, pons and medulla oblongata, connects the brain to the spinal cord. Ten of the twelve cranial nerves arise from nuclei here. The midbrain coordinates visual, auditory and body maps of space; the pons is the main connection with the cerebellum; the pons and medulla regulate heart, blood vessels and breathing. The reticular formation running through the brainstem is linked to sleep, wakefulness and attention.",
+     "The brainstem is also the main highway for movement commands. The corticospinal tract descends from the cortex through the cerebral peduncles of the midbrain, burrows through the pons and forms the pyramids of the medulla. At the pyramidal decussation most of its fibres cross to the opposite side, one reason the left hemisphere mainly controls the right half of the body."
+    ],
+    "ru": [
+     "Мозжечок, «малый мозг», лежит на задней поверхности ствола под затылочными долями и отделён от них намётом мозжечка. Покрытый складками, как большой мозг, он составляет около 10% массы мозга. Он сравнивает двигательные команды коры с обратной связью от мышц, суставов и чувства равновесия и посылает поправки; координирует походку, позу и мышечный тонус, но сам запустить сокращение мышцы не может.",
+     "Ствол мозга — средний мозг, мост и продолговатый мозг — соединяет головной мозг со спинным. Десять из двенадцати черепных нервов начинаются от ядер, лежащих здесь. Средний мозг согласует зрительную, слуховую и телесную карты пространства; мост — главная связь с мозжечком; мост и продолговатый мозг регулируют работу сердца, сосудов и дыхание. Проходящая через ствол ретикулярная формация связана со сном, бодрствованием и вниманием.",
+     "Ствол — ещё и главная магистраль двигательных команд. Корково-спинномозговой путь спускается от коры через ножки мозга в среднем мозге, пронизывает мост и образует пирамиды продолговатого мозга. В перекресте пирамид большинство его волокон переходит на противоположную сторону — одна из причин, почему левое полушарие управляет в основном правой половиной тела."
+    ],
+    "kk": [
+     "Мишық — «кішкентай ми» — ми бағанының артқы бетінде, шүйде бөліктерінің астында жатыр, олардан мишық шатыры бөліп тұрады. Үлкен ми сияқты қатпарларға толы ол ми массасының шамамен 10%-ын құрайды. Мишық қыртыстың қимыл бұйрықтарын бұлшықеттерден, буындардан және тепе-теңдік сезімінен келетін кері байланыспен салыстырып, түзету жібереді; жүрісті, дене қалпын және бұлшықет тонусын үйлестіреді, бірақ бұлшықет жиырылуын өзі бастай алмайды.",
+     "Ми бағаны — ортаңғы ми, ми көпірі және сопақша ми — миды жұлынмен жалғайды. Он екі бассүйек нервінің оны осындағы ядролардан басталады. Ортаңғы ми кеңістіктің көру, есту және дене карталарын үйлестіреді; ми көпірі — мишықпен басты байланыс; ми көпірі мен сопақша ми жүректің, қантамырлардың жұмысын және тыныс алуды реттейді. Ми бағанын бойлай өтетін торлы құрылым ұйқымен, сергектікпен және зейінмен байланысты.",
+     "Ми бағаны — қимыл бұйрықтарының да басты күретамыры. Қыртыс-жұлын жолы қыртыстан төмен түсіп, ортаңғы мидағы ми аяқшалары арқылы өтеді, ми көпірін тесіп өтіп, сопақша мидың пирамидаларын түзеді. Пирамидалар қиылысында оның талшықтарының көбі қарсы жаққа өтеді — сол ми сыңарының негізінен дененің оң жартысын басқаруының бір себебі осы."
+    ]
+   },
+   "highlight": [
+    "anterior-quadrangular-lobule",
+    "biventral-lobule",
+    "central-lobule",
+    "culmen",
+    "declive",
+    "flocculus",
+    "folium-of-vermis",
+    "gracile-lobule",
+    "inferior-semilunar-lobule",
+    "lingula-of-cerebellum",
+    "nodule-of-vermis",
+    "peduncle-of-flocculus",
+    "posterior-quadrangular-lobule",
+    "pyramis-of-vermis",
+    "superior-cerebellar-peduncle",
+    "superior-semilunar-lobule",
+    "tonsil-of-cerebellum",
+    "tuber-of-vermis",
+    "uvula-of-vermis",
+    "wing-of-central-lobule",
+    "midbrain",
+    "pons",
+    "medulla-oblongata",
+    "base-of-peduncle",
+    "pyramid-of-medulla-oblongata",
+    "olive"
+   ],
+   "explode": 0.5,
+   "camera": {
+    "yaw": 2.4,
+    "pitch": 0.05,
+    "zoom": 1.3
+   },
+   "section": null,
+   "anim": {
+    "type": "pulse-path",
+    "ids": [
+     "precentral-gyrus",
+     "base-of-peduncle",
+     "pons",
+     "pyramid-of-medulla-oblongata"
+    ],
+    "path": [
+     "precentral-gyrus",
+     "base-of-peduncle",
+     "pons",
+     "pyramid-of-medulla-oblongata"
+    ],
+    "period": 2.8
+   },
+   "facts": [
+    {
+     "en": "The cerebellum weighs only about 154 g, yet it holds about 69 billion neurons, most of the roughly 86 billion in the whole brain.",
+     "ru": "Мозжечок весит всего около 154 г, но содержит около 69 миллиардов нейронов — бо́льшую часть примерно 86 миллиардов во всём мозге.",
+     "kk": "Мишықтың салмағы небәрі 154 г шамасында, бірақ онда шамамен 69 миллиард нейрон бар — бүкіл мидағы шамамен 86 миллиардтың басым бөлігі.",
+     "src": {
+      "title": "Herculano-Houzel S (2009). The human brain in numbers: a linearly scaled-up primate brain. Frontiers in Human Neuroscience",
+      "url": "https://www.frontiersin.org/articles/10.3389/neuro.09.031.2009/full"
+     }
+    },
+    {
+     "en": "When one preserved cerebellum was reconstructed down to its smallest folds, its surface measured about 1,590 cm², 78% of the neocortex's area; unfolded, it made a strip about 10 cm wide and almost 1 m long.",
+     "ru": "Когда один сохранённый мозжечок реконструировали до мельчайших складок, площадь его поверхности составила около 1590 см² — 78% площади новой коры; в развёрнутом виде это полоса шириной около 10 см и длиной почти 1 м.",
+     "kk": "Сақталған бір мишықтың беті ең ұсақ қатпарларына дейін қалпына келтірілгенде, оның ауданы шамамен 1590 см² болып шықты — жаңа қыртыс ауданының 78%-ы; жазып жібергенде ені шамамен 10 см, ұзындығы 1 метрге жуық жолақ түзілген.",
+     "src": {
+      "title": "Sereno MI, Diedrichsen J, Tachrount M, Testa-Silva G, d'Arceuil H, De Zeeuw C (2020). The human cerebellum has almost 80% of the surface area of the neocortex. Proceedings of the National Academy of Sciences USA",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7431020/"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Терең құрылымдар",
+    "ru": "Глубокие структуры",
+    "en": "Deep structures"
+   },
+   "text": {
+    "en": [
+     "Hidden beneath the cortex, the thalamus and hypothalamus form the walls of the third ventricle. All sensory information except smell passes through the thalamus before the cortex processes it, and the thalamus does not just pass it on but processes it too. Below and in front, the hypothalamus regulates homeostasis and commands the autonomic nervous system and, through the anterior pituitary gland, the endocrine system.",
+     "The hippocampus and the amygdala, in the medial temporal lobe, take part in forming long-term memories and in emotional responses. In 1953 a patient known as H. M. had his hippocampus and amygdala removed to control severe seizures. Afterwards he could no longer form many types of new memories: he could learn new skills but had no recollection of learning them.",
+     "The basal nuclei, the caudate nucleus, putamen and globus pallidus, lie deep in the cerebrum; together the caudate and putamen are called the striatum. They weigh cortical activity against the general state of the nervous system and influence how likely a movement is; they are what stops a student in a lecture from jumping up and shouting. In Parkinson's disease, dopamine-releasing neurons of the substantia nigra die, and movement becomes reduced."
+    ],
+    "ru": [
+     "Скрытые под корой таламус и гипоталамус образуют стенки третьего желудочка. Вся чувствительная информация, кроме обоняния, проходит через таламус, прежде чем её обработает кора, — и таламус не просто передаёт её, но и обрабатывает. Ниже и впереди лежит гипоталамус: он регулирует гомеостаз и управляет вегетативной нервной системой, а через переднюю долю гипофиза — эндокринной системой.",
+     "Гиппокамп и миндалевидное тело в медиальной части височной доли участвуют в формировании долговременной памяти и в эмоциональных реакциях. В 1953 году пациенту, известному как Г. М., удалили гиппокамп и миндалевидное тело, чтобы справиться с тяжёлыми припадками. После этого он утратил способность формировать многие виды новых воспоминаний: он мог осваивать новые навыки, но не помнил, как им учился.",
+     "Базальные ядра — хвостатое ядро, скорлупа и бледный шар — лежат в глубине большого мозга; хвостатое ядро и скорлупу вместе называют полосатым телом. Они соотносят активность коры с общим состоянием нервной системы и влияют на вероятность движения: именно они удерживают студента на лекции от того, чтобы вскочить и закричать. При болезни Паркинсона гибнут выделяющие дофамин нейроны чёрной субстанции, и движений становится меньше."
+    ],
+    "kk": [
+     "Қыртыстың астында жасырынған таламус пен гипоталамус үшінші қарыншаның қабырғаларын түзеді. Иістен басқа барлық сезім ақпараты қыртыс өңдемей тұрып таламус арқылы өтеді, әрі таламус оны жай ғана жеткізбей, өзі де өңдейді. Одан төмен әрі алдырақ гипоталамус жатыр: ол гомеостазды реттейді, вегетативтік жүйке жүйесін, ал гипофиздің алдыңғы бөлігі арқылы эндокриндік жүйені басқарады.",
+     "Самай бөлігінің ішкі жағындағы гиппокамп пен бадамша пішінді дене ұзақ мерзімді жадтың қалыптасуына және эмоциялық жауаптарға қатысады. 1953 жылы Г. М. деген атпен белгілі науқастың ауыр ұстамаларын басу үшін гиппокампы мен бадамша пішінді денесі алынды. Содан кейін ол жаңа естеліктердің көп түрін қалыптастыра алмай қалды: жаңа дағдыларды үйрене алды, бірақ оларды үйренгенін есіне түсіре алмады.",
+     "Негіздік ядролар — құйрықты ядро, қауыз және бозғылт шар — үлкен мидың тереңінде жатыр; құйрықты ядро мен қауызды бірге жолақ дене деп атайды. Олар қыртыстың белсенділігін жүйке жүйесінің жалпы күйімен салыстырып, қимылдың орындалу ықтималдығына әсер етеді: дәрістегі студенттің орнынан атып тұрып айқайлап жібермеуі де солардың арқасы. Паркинсон ауруында қара заттағы дофамин бөлетін нейрондар өліп, қимыл азаяды."
+    ]
+   },
+   "highlight": [
+    "thalamus",
+    "hypothalamus",
+    "hippocampus",
+    "amygdaloid-body",
+    "caudate-nucleus",
+    "putamen",
+    "globus-pallidus"
+   ],
+   "explode": 0.0,
+   "camera": {
+    "yaw": 1.57,
+    "pitch": 0.1,
+    "zoom": 1.6
+   },
+   "section": "sagittal",
+   "anim": null,
+   "facts": [
+    {
+     "kk": "Екі бадамша пішінді денесі де зақымданған науқас әйел тірі жыландар мен өрмекшілерді көріп, «елесті үйді» аралап, қорқынышты фильмдер көрсе де, бірде-бір рет қорқыныш байқатпаған.",
+     "ru": "Пациентка с поражением обоих миндалевидных тел встречалась с живыми змеями и пауками, прошла «дом с привидениями» и смотрела фильмы ужасов — и ни разу не проявила страха.",
+     "en": "A patient with damage to both amygdalae met live snakes and spiders, toured a haunted house and watched horror films, and never showed fear.",
+     "src": {
+      "title": "Feinstein JS, Adolphs R, Damasio A, Tranel D (2011). The human amygdala and the induction and experience of fear. Curr Biol",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21167712/"
+     }
+    },
+    {
+     "kk": "Гипоталамустың салмағы небәрі 4 г шамасында, бірақ ол энергия теңгерімін және гормондық реттелудің едәуір бөлігін басқарады.",
+     "ru": "Гипоталамус весит всего около 4 г, но управляет энергетическим балансом и значительной частью гормональной регуляции.",
+     "en": "The hypothalamus weighs only about 4 g, yet governs energy balance and much of hormonal control.",
+     "src": {
+      "title": "van Santen HM (2025). The Central Control of Energy Metabolism: Hypothalamic Obesity Is Not One Disease. Hormone Research in Paediatrics 99(2)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13012768/"
+     }
+    },
+    {
+     "kk": "Паркинсон ауруымен ауырған сегіз адамның миын өлгеннен кейін зерттегенде қауыздың артқы бөліктерінде дофаминнің қалыпты мөлшерінің 1%-ынан азы ғана қалған.",
+     "ru": "В посмертном исследовании мозга восьми людей с болезнью Паркинсона в задних отделах скорлупы оставалось менее 1% нормального количества дофамина.",
+     "en": "In a post-mortem study of eight people with Parkinson's disease, the rear putamen retained less than 1% of its normal dopamine.",
+     "src": {
+      "title": "Kish SJ, Shannak K, Hornykiewicz O (1988). Uneven pattern of dopamine loss in the striatum of patients with idiopathic Parkinson's disease. Pathophysiologic and clinical implications. N Engl J Med",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/3352672/"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Қарыншалар, ми-жұлын сұйықтығы және ми қабықтары",
+    "ru": "Желудочки, ликвор и оболочки",
+    "en": "Ventricles, CSF and meninges"
+   },
+   "text": {
+    "en": [
+     "Inside the brain are four fluid-filled ventricles. The two C-shaped lateral ventricles lie deep in the cerebrum and open through the interventricular foramina into the third ventricle, the space between the left and right halves of the diencephalon. From there the cerebral aqueduct passes through the midbrain to the fourth ventricle, between the cerebellum and the pons and upper medulla. A choroid plexus in each ventricle filters blood to make cerebrospinal fluid (CSF): essentially water, small molecules and electrolytes.",
+     "CSF flows from the lateral ventricles into the third, through the aqueduct into the fourth, and leaves through the median and lateral apertures into the subarachnoid space around the brain and spinal cord. There it acts as a liquid cushion and carries metabolic wastes away. Textbooks describe its return to the blood through arachnoid granulations in the dural sinuses, although an MRI study has questioned how essential they are.",
+     "Three meninges wrap the brain: the tough dura mater, named from the Latin for 'tough mother', the arachnoid with its spider-web trabeculae, and the thin pia mater that follows every gyrus and sulcus. Infoldings of the dura divide the skull cavity: the falx cerebri between the hemispheres and the tentorium cerebelli, a shelf-like tent between the occipital lobes and the cerebellum. The superior sagittal sinus runs within the falx, and venous blood drains through the transverse and sigmoid sinuses into the jugular veins."
+    ],
+    "ru": [
+     "Внутри мозга четыре заполненных жидкостью желудочка. Два С-образных боковых желудочка лежат в глубине большого мозга и через межжелудочковые отверстия открываются в третий желудочек — пространство между левой и правой половинами промежуточного мозга. Оттуда водопровод проходит через средний мозг в четвёртый желудочек, лежащий между мозжечком, мостом и верхней частью продолговатого мозга. Сосудистое сплетение в каждом желудочке фильтрует кровь и образует спинномозговую жидкость (ликвор) — по сути воду, мелкие молекулы и электролиты.",
+     "Ликвор течёт из боковых желудочков в третий, через водопровод в четвёртый и через срединное и латеральные отверстия выходит в подпаутинное пространство вокруг головного и спинного мозга. Там он служит жидкой подушкой и уносит продукты обмена. Учебники описывают его возврат в кровь через пахионовы грануляции в синусах твёрдой оболочки, хотя исследование на МРТ поставило под вопрос, насколько они необходимы.",
+     "Мозг окружают три оболочки: прочная твёрдая мозговая оболочка — её название восходит к латинскому «суровая мать», — паутинная оболочка с похожими на паутину трабекулами и тонкая мягкая оболочка, повторяющая каждую извилину и борозду. Складки твёрдой оболочки делят полость черепа: серп большого мозга — между полушариями, намёт мозжечка — полкой-шатром между затылочными долями и мозжечком. Верхний сагиттальный синус проходит в серпе, а венозная кровь оттекает через поперечные и сигмовидные синусы в яремные вены."
+    ],
+    "kk": [
+     "Мидың ішінде сұйықтыққа толы төрт қарынша бар. С әрпі тәрізді екі бүйір қарынша үлкен мидың тереңінде жатыр және қарыншааралық тесіктер арқылы үшінші қарыншаға ашылады — бұл аралық мидың сол және оң жартыларының арасындағы кеңістік. Одан ортаңғы ми акведугы ортаңғы ми арқылы төртінші қарыншаға өтеді; ол мишық пен ми көпірі және сопақша мидың жоғарғы бөлігінің арасында орналасқан. Әр қарыншадағы тамырлы өрім қанды сүзіп, ми-жұлын сұйықтығын түзеді: ол негізінен су, ұсақ молекулалар мен электролиттерден тұрады.",
+     "Ми-жұлын сұйықтығы бүйір қарыншалардан үшіншіге, акведук арқылы төртіншіге ағады да, ортаңғы және бүйір тесіктер арқылы ми мен жұлынды қоршайтын өрмекті қабық асты кеңістігіне шығады. Онда ол сұйық жастық қызметін атқарып, зат алмасу қалдықтарын алып кетеді. Оқулықтарда сұйықтық қанға қатты ми қабығы қойнауларындағы өрмекті қабық түйіршіктері арқылы қайтады деп сипатталады, бірақ бір МРТ зерттеуі олардың қаншалықты қажет екеніне күмән келтірді.",
+     "Миды үш қабық орап тұрады: берік қатты ми қабығы — атауы латынша «қатал ана» деген сөзден шыққан, өрмек тәрізді талшықтары бар өрмекті қабық және әр қатпар мен жүлгеге еніп жататын жұқа жұмсақ ми қабығы. Қатты ми қабығының қатпарлары бассүйек қуысын бөледі: ми сыңарларының арасында үлкен ми орағы, ал шүйде бөліктері мен мишықтың арасында сөре тәрізді шатыр — мишық шатыры жатыр. Жоғарғы сагиттальды қойнау орақтың ішімен өтеді, ал веналық қан көлденең және сигма тәрізді қойнаулар арқылы мойындырық веналарына ағады."
+    ]
+   },
+   "highlight": [
+    "lateral-ventricle",
+    "third-ventricle",
+    "aqueduct-of-midbrain",
+    "fourth-ventricle",
+    "choroid-plexus",
+    "falx-cerebri",
+    "tentorium-cerebelli",
+    "superior-sagittal-sinus",
+    "transverse-sinus",
+    "sigmoid-sinus"
+   ],
+   "explode": 0.0,
+   "camera": {
+    "yaw": 1.57,
+    "pitch": 0.12,
+    "zoom": 1.5
+   },
+   "section": "sagittal",
+   "anim": {
+    "type": "pulse-path",
+    "ids": [
+     "lateral-ventricle",
+     "third-ventricle",
+     "aqueduct-of-midbrain",
+     "fourth-ventricle"
+    ],
+    "path": [
+     "lateral-ventricle",
+     "third-ventricle",
+     "aqueduct-of-midbrain",
+     "fourth-ventricle"
+    ],
+    "period": 3.2
+   },
+   "facts": [
+    {
+     "en": "Each choroid plexus filters only a very small amount of CSF, yet together they make about 500 mL a day.",
+     "ru": "Каждое сосудистое сплетение фильтрует совсем немного ликвора, но вместе они образуют около 500 мл в сутки.",
+     "kk": "Әр тамырлы өрім өте аз ғана сұйықтық сүзеді, бірақ бәрі бірге тәулігіне шамамен 500 мл ми-жұлын сұйықтығын түзеді.",
+     "src": {
+      "title": "Betts JG, Young KA, Wise JA, et al. (2022). Anatomy and Physiology 2e, 13.3 Circulation and the Central Nervous System. OpenStax, Rice University",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-3-circulation-and-the-central-nervous-system"
+     }
+    },
+    {
+     "kk": "100 науқасқа жасалған 3 Тл МРТ деректері бойынша ортаңғы ми акведугының ұзындығы орта есеппен шамамен 14 мм, ал ең тар жерінің ені небәрі 0,9 мм.",
+     "ru": "По данным МРТ 3 Тл у 100 пациентов длина водопровода в среднем около 14 мм, а в самом узком месте его ширина всего 0,9 мм.",
+     "en": "On 3-tesla MRI of 100 patients, the aqueduct averaged about 14 mm in length and only 0.9 mm in width at its narrowest point.",
+     "src": {
+      "title": "Matys T, Horsburgh A, Kirollos RW, Massoud TF (2013). The aqueduct of Sylvius: applied 3-T magnetic resonance imaging anatomy and morphometry with neuroendoscopic relevance. Neurosurgery",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23615083/"
+     }
+    },
+    {
+     "kk": "Ми-жұлын сұйықтығын осы қойнауға қайтарады деп есептелетін өрмекті қабық түйіршіктері жаңа туған нәрестелер мен екі жасар балалардың 85%-ында МРТ-да көрінбейді — бұл олардың шешуші рөліне күмән келтіреді.",
+     "ru": "Пахионовы грануляции, которым приписывают возврат ликвора в этот синус, на МРТ не видны у 85% новорождённых и двухлетних детей — это ставит под вопрос их ключевую роль.",
+     "en": "Arachnoid granulations, long credited with returning cerebrospinal fluid to this sinus, are not visible on MRI in 85% of newborns and 2-year-olds, which questions their essential role.",
+     "src": {
+      "title": "Radoš M, Živko M, Periša A, Orešković D, Klarica M (2021). No Arachnoid Granulations-No Problems: Number, Size, and Distribution of Arachnoid Granulations From Birth to 80 Years of Age. Front Aging Neurosci",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34276348/"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Қанмен қамту: Виллизий шеңбері",
+    "ru": "Кровоснабжение: виллизиев круг",
+    "en": "Blood supply: the circle of Willis"
+   },
+   "text": {
+    "en": [
+     "Two pairs of arteries feed the brain. The internal carotid arteries enter the skull through the carotid canal of the temporal bone. The vertebral arteries climb through the transverse foramina of the neck vertebrae, enter the skull through the foramen magnum and merge into the single basilar artery, which sends branches to the brainstem and cerebellum.",
+     "At the base of the brain these vessels join in the circle of Willis. The anterior cerebral artery supplies the frontal lobe and the middle cerebral artery the temporal and parietal lobes; the posterior cerebral arteries, arising from the basilar artery, supply the back of the cerebrum and the brainstem. The anterior communicating artery joins the two anterior cerebral arteries and the posterior communicating arteries form the back of the circle, so perfusion can be maintained even if one part is narrowed or blocked.",
+     "About 20% of the body's blood flow is directed to the brain at any given time. An interruption of just a few seconds can cause a transient ischaemic attack, and loss of flow for about 3–4 minutes will likely produce irreversible brain damage or a stroke. The temporal and parietal lobes, supplied by the middle cerebral artery, are the most common sites of stroke."
+    ],
+    "ru": [
+     "Мозг питают две пары артерий. Внутренние сонные артерии входят в череп через сонный канал височной кости. Позвоночные артерии поднимаются через отверстия поперечных отростков шейных позвонков, входят в череп через большое затылочное отверстие и сливаются в одну базилярную артерию, которая отдаёт ветви к стволу мозга и мозжечку.",
+     "На основании мозга эти сосуды соединяются в виллизиев круг. Передняя мозговая артерия снабжает лобную долю, средняя — височную и теменную доли; задние мозговые артерии, отходящие от базилярной, питают задние отделы большого мозга и ствол. Передняя соединительная артерия связывает две передние мозговые, а задние соединительные артерии образуют заднюю часть круга, поэтому кровоснабжение может сохраняться, даже если одна часть сужена или закупорена.",
+     "В каждый момент к мозгу направлено около 20% кровотока организма. Перерыв даже на несколько секунд может вызвать транзиторную ишемическую атаку, а прекращение кровотока примерно на 3–4 минуты, вероятно, приведёт к необратимому повреждению мозга или инсульту. Височная и теменная доли, которые снабжает средняя мозговая артерия, — самые частые места инсульта."
+    ],
+    "kk": [
+     "Миды екі жұп артерия қоректендіреді. Ішкі ұйқы артериялары бассүйекке самай сүйегінің ұйқы өзегі арқылы кіреді. Омыртқа артериялары мойын омыртқаларының көлденең өсінді тесіктері арқылы көтеріліп, бассүйекке шүйде сүйегінің үлкен тесігі арқылы енеді де, бір негіздік артерияға қосылады; ол ми бағаны мен мишыққа тармақ береді.",
+     "Ми негізінде бұл тамырлар Виллизий шеңберіне тоғысады. Алдыңғы ми артериясы маңдай бөлігін, ортаңғы ми артериясы самай және төбе бөліктерін қанмен қамтиды; негіздік артериядан басталатын артқы ми артериялары үлкен мидың артқы бөлігі мен ми бағанын қоректендіреді. Алдыңғы дәнекер артерия екі алдыңғы ми артериясын жалғайды, ал артқы дәнекер артериялар шеңбердің артқы бөлігін түзеді, сондықтан бір бөлігі тарылса не бітелсе де миды қанмен қамту сақталуы мүмкін.",
+     "Кез келген сәтте организмдегі қан ағысының шамамен 20%-ы миға бағытталады. Ол бірнеше секундқа ғана үзілсе де өтпелі ишемиялық шабуыл болуы мүмкін, ал шамамен 3–4 минутқа тоқтаса, мидың қайтымсыз зақымдануы немесе инсульт болуы ықтимал. Ортаңғы ми артериясы қоректендіретін самай және төбе бөліктері — инсульт ең жиі болатын орындар."
+    ]
+   },
+   "highlight": [
+    "internal-carotid-artery",
+    "vertebral-artery",
+    "basilar-artery",
+    "anterior-cerebral-artery",
+    "anterior-communicating-artery",
+    "middle-cerebral-artery-m1-segment",
+    "posterior-communicating-artery",
+    "posterior-cerebral-artery"
+   ],
+   "explode": 0.8,
+   "camera": {
+    "yaw": 0.45,
+    "pitch": -0.3,
+    "zoom": 1.35
+   },
+   "section": null,
+   "anim": {
+    "type": "pulse-path",
+    "ids": [
+     "vertebral-artery",
+     "basilar-artery",
+     "posterior-cerebral-artery"
+    ],
+    "path": [
+     "vertebral-artery",
+     "basilar-artery",
+     "posterior-cerebral-artery"
+    ],
+    "period": 2.4
+   },
+   "facts": [
+    {
+     "en": "In MRI flow measurements of 94 healthy adults, the carotid arteries delivered 72% of the brain's blood and the vertebral arteries 28%, regardless of age or sex; each middle cerebral artery carried about 21%.",
+     "ru": "По МРТ-измерениям кровотока у 94 здоровых взрослых сонные артерии доставляли 72% крови мозга, позвоночные — 28%, независимо от возраста и пола; каждая средняя мозговая артерия несла около 21%.",
+     "kk": "94 сау ересектің МРТ арқылы өлшенген қан ағысы бойынша мидың қанының 72%-ын ұйқы артериялары, 28%-ын омыртқа артериялары жеткізген — жасқа да, жынысқа да қарамастан; әр ортаңғы ми артериясы шамамен 21%-ын тасыған.",
+     "src": {
+      "title": "Zarrinkoob L, Ambarki K, Wåhlin A, Birgander R, Eklund A, Malm J (2015). Blood flow distribution in cerebral arteries. Journal of Cerebral Blood Flow and Metabolism",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25564234/"
+     }
+    },
+    {
+     "kk": "«Оқулықтағыдай» Виллизий шеңбері сирек кездеседі. 40–87 жастағы 1864 ересектің МР-ангиографиясында (Тромсё зерттеуі) толық шеңбер (барлық бөліктері кемінде 1 мм) тек 11,9%-ында табылған; барлығы 47 нұсқа анықталған.",
+     "ru": "Виллизиев круг «как в учебнике» — скорее исключение. При МР-ангиографии у 1864 взрослых 40–87 лет (Тромсё) полный круг (все сегменты не тоньше 1 мм) нашли лишь у 11,9%; всего выявлено 47 вариантов.",
+     "en": "The 'textbook' circle of Willis is the exception. In MR angiography of 1,864 adults aged 40–87 (Tromsø Study), a complete circle (all segments at least 1 mm) was found in only 11.9%; there were 47 different variants.",
+     "src": {
+      "title": "Hindenes LB, Håberg AK, Johnsen LH, Mathiesen EB, Robben D, Vangberg TR (2020). Variations in the Circle of Willis in a large population sample using 3D TOF angiography: The Tromsø Study. PLoS One",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33141840/"
+     }
+    },
+    {
+     "kk": "Кейбір адамдарда артқы ми артериясы қанды негізінен негіздік артериядан емес, ішкі ұйқы артериясынан алады. Бұл «ұрықтық» нұсқа қалыпты саналады және адамдардың 3–36%-ында кездеседі.",
+     "ru": "У части людей задняя мозговая артерия получает кровь в основном от внутренней сонной, а не от базилярной артерии. Этот «фетальный» вариант считается нормой и встречается у 3–36% людей.",
+     "en": "In some people the posterior cerebral artery is fed mainly by the internal carotid instead of the basilar artery. This 'fetal-type' variant is normal and occurs in 3–36% of people.",
+     "src": {
+      "title": "Ryu JC, Kim JS (2022). Mechanisms of Stroke in Patients with Fetal Posterior Cerebral Artery. Journal of Stroke and Cerebrovascular Diseases",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35605387/"
+     }
+    }
+   ]
+  }
+ ]
+}

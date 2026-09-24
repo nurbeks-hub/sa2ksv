@@ -219,3 +219,64 @@ body.loaded #loader { opacity: 0; }
 @media (prefers-reduced-motion: reduce) { #sound.pulse, body.show-rail-hint .rail-hint { animation: none; } }
 #panel { z-index: 3; }
 @media (max-width: 760px) { body.inspecting #rail { opacity: 0; pointer-events: none; } }
+
+/* ---- organ deep dive */
+#btn-dive { align-self: flex-start; margin: 8px 0 2px; border-color: var(--warm); color: var(--ink); }
+#btn-dive::after { content: '  →'; }
+#dive { position: fixed; inset: 0; pointer-events: none; z-index: 2; }
+#dive::before { content: ''; position: fixed; left: 0; top: 0; bottom: 0; width: min(560px, 42vw); background: linear-gradient(90deg, rgba(7,8,10,.9), rgba(7,8,10,.72) 70%, rgba(7,8,10,0)); pointer-events: none; }
+#dive[hidden] { display: none; }
+body.diving #rail, body.diving #dock, body.diving #hint, body.diving #brand .sub { opacity: 0 !important; pointer-events: none; }
+#dive-back { pointer-events: auto; position: fixed; left: var(--pad); top: calc(var(--pad) + 34px); font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--dim); display: flex; gap: 10px; align-items: center; transition: color .3s; }
+#dive-back:hover, #diveframe-back:hover { color: var(--ink); }
+#dive-back b, #diveframe-back b { font-weight: 400; }
+#dive .dive-col { pointer-events: auto; position: fixed; left: var(--pad); top: calc(var(--pad) + 96px); bottom: calc(var(--pad) + 60px); width: min(430px, 33vw); overflow-y: auto; scrollbar-width: none; display: flex; flex-direction: column; gap: 10px; }
+#dive .dive-col::-webkit-scrollbar { display: none; }
+#dive .eyebrow { font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; color: var(--warm); }
+#dive .ct { font-weight: 250; font-size: clamp(26px, 2.2vw, 38px); line-height: 1.08; letter-spacing: -.02em; }
+#dive .cx { max-width: 30em; }
+#dive .cx p { margin: 0 0 10px; font-size: 15px; line-height: 1.6; color: rgba(239,233,224,.82); font-weight: 350; }
+#dive .cx p.rest { display: none; }
+#dive .dive-col.open .cx p.rest { display: block; }
+#dive .more { align-self: flex-start; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--dim); border-bottom: 1px solid var(--faint); padding-bottom: 2px; }
+#dive .more:hover { color: var(--ink); }
+#dive .dfacts { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; max-width: 30em; }
+#dive .dfacts li { cursor: pointer; border: 1px solid var(--hair); border-radius: 6px; padding: 9px 12px; font-size: 13px; line-height: 1.5; color: rgba(239,233,224,.72); }
+#dive .dfacts li .ft { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#dive .dfacts li .fs { display: none; margin-top: 6px; font-size: 10.5px; color: rgba(239,233,224,.5); }
+#dive .dfacts li .fs a { color: rgba(239,233,224,.6); }
+#dive .dfacts li.open .ft { white-space: normal; }
+#dive .dfacts li.open .fs { display: block; }
+#dive .dfacts li:hover { border-color: var(--faint); }
+#dive .dive-steps { pointer-events: auto; position: fixed; left: var(--pad); bottom: var(--pad); display: flex; gap: 8px; align-items: center; list-style: none; margin: 0; padding: 0; }
+#dive .dive-steps li { cursor: pointer; display: flex; align-items: center; gap: 8px; height: 28px; min-width: 28px; justify-content: center; font-size: 10.5px; letter-spacing: .08em; color: var(--dim); border: 1px solid var(--hair); border-radius: 999px; padding: 0 9px; transition: color .3s, border-color .3s, background .3s; white-space: nowrap; }
+#dive .dive-steps li span { display: none; text-transform: uppercase; letter-spacing: .16em; font-size: 10px; }
+#dive .dive-steps li b { font-weight: 500; }
+#dive .dive-steps li:hover { color: var(--ink); border-color: var(--faint); }
+#dive .dive-steps li.on { color: #0b0b0c; background: var(--ink); border-color: var(--ink); padding: 0 12px 0 10px; }
+#dive .dive-steps li.on span { display: inline; }
+#dive .dive-explode { pointer-events: auto; position: fixed; right: var(--pad); bottom: var(--pad); display: flex; align-items: center; gap: 12px; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--dim); }
+body.dive-card #dive .dive-explode { right: calc(min(430px, 92vw) + 12px); }
+#dive-x { -webkit-appearance: none; appearance: none; width: 160px; height: 1px; background: var(--faint); outline: none; }
+#dive-x::-webkit-slider-thumb { -webkit-appearance: none; width: 13px; height: 13px; border-radius: 50%; background: var(--warm); box-shadow: 0 0 12px 2px rgba(240,178,122,.45); cursor: pointer; }
+#dive .dive-leaders { position: fixed; inset: 0; width: 100vw; height: 100vh; overflow: visible; }
+#dive .dive-leaders line { stroke: rgba(239,233,224,.3); stroke-width: 1; }
+#dive .dive-leaders circle { fill: var(--ink); }
+#dive .dive-labels .lab { position: absolute; left: 0; top: 0; font-size: 12px; letter-spacing: .01em; white-space: nowrap; color: rgba(239,233,224,.86); transition: opacity .4s; text-shadow: 0 0 12px rgba(0,0,0,.8); }
+#dive .dive-labels .lab.dim { opacity: .35; }
+#dive .dive-labels .lab.hot { color: var(--warm); }
+body.dive-card #panel { transform: none; pointer-events: auto; }
+body.dive-card #panel #btn-dive { display: none; }
+#diveframe { position: fixed; inset: 0; z-index: 9; background: #000; }
+#diveframe[hidden] { display: none; }
+#diveframe iframe { width: 100%; height: 100%; border: 0; display: block; }
+#diveframe-back { position: fixed; left: var(--pad); bottom: var(--pad); font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--dim); display: flex; gap: 10px; padding: 10px 14px; border: 1px solid var(--hair); border-radius: 999px; background: rgba(7,8,10,.5); }
+@media (max-width: 760px) {
+  #dive .dive-col { top: auto; bottom: 104px; width: auto; right: var(--pad); max-height: 34vh; }
+  #dive::before { width: 100vw; top: auto; height: 56vh; background: linear-gradient(0deg, rgba(7,8,10,.94), rgba(7,8,10,.8) 70%, rgba(7,8,10,0)); }
+  #dive .dive-steps li.on span { max-width: 52vw; overflow: hidden; text-overflow: ellipsis; }
+  #dive .ct { font-size: 24px; }
+  #dive .cx p { font-size: 13.5px; }
+  #dive .dive-steps { overflow-x: auto; max-width: calc(100vw - 2 * var(--pad)); bottom: 64px; }
+  #dive .dive-explode { right: auto; left: var(--pad); bottom: 18px; }
+}

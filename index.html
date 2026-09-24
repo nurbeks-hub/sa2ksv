@@ -72,9 +72,29 @@
   <div class="la"></div>
   <p class="role"></p>
   <div class="alt mono"></div>
+  <button id="btn-dive" class="pill mono" hidden></button>
   <ul class="facts"></ul>
   <div class="nav mono"><button id="prev">←</button><span class="keys" data-i18n="keys"></span><button id="next">→</button></div>
 </aside>
+
+<section id="dive" hidden>
+  <button id="dive-back" class="mono"><span>←</span> <b data-i18n="dive.back"></b></button>
+  <div class="dive-col">
+    <div class="eyebrow mono"></div>
+    <div class="ct"></div>
+    <div class="cx"></div>
+    <button class="more mono" hidden></button>
+    <ul class="dfacts"></ul>
+  </div>
+  <ol class="dive-steps mono"></ol>
+  <div class="dive-explode mono"><span data-i18n="dive.explode"></span><input id="dive-x" type="range" min="0" max="1" step="0.001" value="0"></div>
+  <svg class="dive-leaders" aria-hidden="true"></svg>
+  <div class="dive-labels" aria-hidden="true"></div>
+</section>
+<section id="diveframe" hidden>
+  <iframe title="eye" allow="autoplay"></iframe>
+  <button id="diveframe-back" class="mono"><span>←</span> <b data-i18n="dive.back"></b></button>
+</section>
 
 <section id="search" hidden>
   <div class="box">

@@ -1,0 +1,600 @@
+{
+ "id": "larynx-voice",
+ "title": {
+  "kk": "Көмей және дауыс",
+  "ru": "Гортань и голос",
+  "en": "Larynx and voice"
+ },
+ "subtitle": {
+  "kk": "Тыныс жолын қорғайтын қақпақша әрі дауыс аспабы",
+  "ru": "Клапан, охраняющий дыхательные пути, и голосовой инструмент",
+  "en": "A valve that guards the airway — and the instrument of the voice"
+ },
+ "trigger": [
+  "thyroid-cartilage",
+  "cricoid-cartilage",
+  "arytenoid-cartilage",
+  "corniculate-cartilage",
+  "epiglottis",
+  "hyoid-bone",
+  "median-thyrohyoid-ligament",
+  "lateral-thyrohyoid-ligament",
+  "median-cricothyroid-ligament",
+  "quadrangular-membrane",
+  "cricopharyngeal-ligament",
+  "straight-part-of-cricothyroid-muscle",
+  "oblique-part-of-cricothyroid-muscle",
+  "posterior-crico-arytenoid-muscle",
+  "lateral-crico-arytenoid-muscle",
+  "transverse-arytenoid-muscle",
+  "external-part-of-thyro-arytenoid-muscle",
+  "thyro-epiglottic-part-of-thyro-arytenoid-muscle",
+  "ary-epiglottic-part-of-oblique-arytenoid-muscle"
+ ],
+ "parts": [
+  "hyoid-bone",
+  "thyroid-cartilage",
+  "cricoid-cartilage",
+  "arytenoid-cartilage",
+  "corniculate-cartilage",
+  "epiglottis",
+  "median-thyrohyoid-ligament",
+  "lateral-thyrohyoid-ligament",
+  "median-cricothyroid-ligament",
+  "quadrangular-membrane",
+  "cricopharyngeal-ligament",
+  "straight-part-of-cricothyroid-muscle",
+  "oblique-part-of-cricothyroid-muscle",
+  "posterior-crico-arytenoid-muscle",
+  "lateral-crico-arytenoid-muscle",
+  "transverse-arytenoid-muscle",
+  "external-part-of-thyro-arytenoid-muscle",
+  "thyro-epiglottic-part-of-thyro-arytenoid-muscle",
+  "ary-epiglottic-part-of-oblique-arytenoid-muscle",
+  "thyrohyoid-muscle",
+  "laryngopharynx",
+  "trachea",
+  "vagus-nerve-x"
+ ],
+ "explode": {
+  "hyoid-bone": [
+   0,
+   0.012,
+   0.004
+  ],
+  "epiglottis": [
+   0,
+   0.01,
+   0.006
+  ],
+  "thyroid-cartilage": [
+   0,
+   0.002,
+   0.014
+  ],
+  "median-thyrohyoid-ligament": [
+   0,
+   0.006,
+   0.017
+  ],
+  "lateral-thyrohyoid-ligament": [
+   0,
+   0.01,
+   -0.004
+  ],
+  "quadrangular-membrane": [
+   0,
+   0.008,
+   0.002
+  ],
+  "cricoid-cartilage": [
+   0,
+   -0.008,
+   0
+  ],
+  "median-cricothyroid-ligament": [
+   0,
+   -0.004,
+   0.017
+  ],
+  "cricopharyngeal-ligament": [
+   0,
+   -0.006,
+   -0.004
+  ],
+  "straight-part-of-cricothyroid-muscle": [
+   0,
+   -0.004,
+   0.012
+  ],
+  "oblique-part-of-cricothyroid-muscle": [
+   0,
+   -0.008,
+   0.012
+  ],
+  "arytenoid-cartilage": [
+   0,
+   0.002,
+   -0.008
+  ],
+  "corniculate-cartilage": [
+   0,
+   0.006,
+   -0.01
+  ],
+  "posterior-crico-arytenoid-muscle": [
+   0,
+   -0.002,
+   -0.016
+  ],
+  "lateral-crico-arytenoid-muscle": [
+   0,
+   -0.002,
+   -0.006
+  ],
+  "transverse-arytenoid-muscle": [
+   0,
+   0.002,
+   -0.012
+  ],
+  "external-part-of-thyro-arytenoid-muscle": [
+   0,
+   0,
+   0.006
+  ],
+  "thyro-epiglottic-part-of-thyro-arytenoid-muscle": [
+   0,
+   0.006,
+   0.009
+  ],
+  "ary-epiglottic-part-of-oblique-arytenoid-muscle": [
+   0,
+   0.008,
+   -0.006
+  ],
+  "thyrohyoid-muscle": [
+   0,
+   0.004,
+   0.012
+  ],
+  "laryngopharynx": [
+   0,
+   0.004,
+   -0.012
+  ],
+  "trachea": [
+   0,
+   -0.018,
+   0
+  ],
+  "vagus-nerve-x": [
+   0.008,
+   0,
+   -0.008
+  ]
+ },
+ "chapters": [
+  {
+   "title": {
+    "kk": "Шеміршек қаңқасы",
+    "ru": "Хрящевой каркас",
+    "en": "The cartilage framework"
+   },
+   "text": {
+    "en": [
+     "The larynx joins the lower pharynx to the trachea and has three jobs: it is a valve that guards the air passages, especially during swallowing; it keeps the airway open; and it produces the voice. Its skeleton consists of three single cartilages — thyroid, cricoid and epiglottic — and three paired ones: arytenoid, corniculate and cuneiform. The largest, the thyroid cartilage, forms the laryngeal prominence, the “Adam's apple”, which tends to be more prominent in males.",
+     "Below it lies the cricoid cartilage, shaped like a signet ring, at the level of the sixth cervical vertebra. The small arytenoid cartilages sit on its back plate; each carries a corniculate cartilage on its apex and sends a vocal process forward for the vocal ligament. Above, the stalk of the leaf-shaped epiglottis is anchored to the back of the thyroid cartilage.",
+     "Membranes tie the pieces together. The thyrohyoid membrane joins the thyroid cartilage to the hyoid bone — a bone that touches no other bone — and its thickened middle forms a ligament. In front, the cricothyroid ligament bridges the cricoid arch and the thyroid cartilage; in acute airway obstruction, entering the larynx here (cricothyrotomy) is preferable to tracheotomy for the non-surgeon. Inside, fibroelastic membranes such as the quadrangular membrane partition the larynx."
+    ],
+    "ru": [
+     "Гортань соединяет нижний отдел глотки с трахеей и выполняет три задачи: служит клапаном, охраняющим дыхательные пути, особенно при глотании; поддерживает их проходимость; и производит голос. Её скелет образуют три непарных хряща — щитовидный, перстневидный и надгортанный — и три парных: черпаловидные, рожковидные и клиновидные. Самый крупный, щитовидный хрящ, образует выступ гортани — «кадык», который обычно заметнее у мужчин.",
+     "Под ним лежит перстневидный хрящ, похожий на перстень с печаткой, — на уровне VI шейного позвонка. На его задней пластинке сидят маленькие черпаловидные хрящи; на верхушке каждого находится рожковидный хрящ, а вперёд отходит голосовой отросток, к которому крепится голосовая связка. Сверху стебелёк листовидного надгортанника прикреплён к задней поверхности щитовидного хряща.",
+     "Части скрепляют мембраны. Щитоподъязычная мембрана соединяет щитовидный хрящ с подъязычной костью — костью, которая не соприкасается ни с одной другой, — а её утолщённая середина образует связку. Спереди перстнещитовидная связка перекрывает промежуток между дугой перстневидного хряща и щитовидным хрящом; при острой непроходимости дыхательных путей вход в гортань здесь (коникотомия) для не-хирурга предпочтительнее трахеотомии. Внутри гортань разделяют фиброэластические мембраны, например четырёхугольная."
+    ],
+    "kk": [
+     "Көмей жұтқыншақтың төменгі бөлігін кеңірдекпен жалғайды және үш қызмет атқарады: тыныс жолдарын, әсіресе жұтыну кезінде, қорғайтын қақпақша болады; тыныс жолын ашық ұстайды; дауыс шығарады. Оның қаңқасын үш жұпсыз шеміршек — қалқанша, жүзіктәрізді және көмей қақпашығы шеміршегі — және үш жұп шеміршек: ожауша, мүйізтәрізді және сынатәрізді шеміршектер құрайды. Ең ірісі — қалқанша шеміршек; ол көмей томпағын, яғни «өндіршекті» түзеді, ол әдетте ер адамдарда айқынырақ болады.",
+     "Оның астында VI мойын омыртқасы деңгейінде жүзікке ұқсас жүзіктәрізді шеміршек жатады. Оның артқы табақшасында кішкентай ожауша шеміршектер орналасқан; әрқайсысының ұшында мүйізтәрізді шеміршек бар, ал алға қарай дауыс байламы бекитін дауыс өсіндісі шығады. Жоғарыда жапырақ пішінді көмей қақпашығының сабағы қалқанша шеміршектің артқы бетіне бекиді.",
+     "Бөліктерді жарғақтар біріктіреді. Қалқанша-тіласты жарғақ қалқанша шеміршекті басқа ешбір сүйекпен түйіспейтін тіласты сүйегімен жалғайды, ал оның қалыңдаған ортаңғы бөлігі байлам түзеді. Алдыңғы жақта жүзік-қалқанша байламы жүзіктәрізді шеміршек доғасы мен қалқанша шеміршектің арасын жабады; тыныс жолы кенеттен бітелгенде хирург емес дәрігер үшін көмейге осы жерден ену (коникотомия) трахеотомиядан гөрі қолайлы. Ішкі жағынан көмейді төртбұрышты жарғақ сияқты фиброэластикалық жарғақтар бөліктерге бөледі."
+    ]
+   },
+   "highlight": [
+    "thyroid-cartilage",
+    "cricoid-cartilage",
+    "arytenoid-cartilage",
+    "corniculate-cartilage",
+    "epiglottis",
+    "hyoid-bone",
+    "median-thyrohyoid-ligament",
+    "lateral-thyrohyoid-ligament",
+    "median-cricothyroid-ligament",
+    "quadrangular-membrane"
+   ],
+   "explode": 0.7,
+   "camera": {
+    "yaw": 0.6,
+    "pitch": 0.15,
+    "zoom": 1.3
+   },
+   "section": null,
+   "anim": null,
+   "facts": [
+    {
+     "en": "The larynx has nine cartilages: three single (thyroid, cricoid, epiglottic) and three pairs (arytenoid, corniculate, cuneiform).",
+     "ru": "В гортани девять хрящей: три непарных (щитовидный, перстневидный, надгортанный) и три пары (черпаловидные, рожковидные, клиновидные).",
+     "kk": "Көмейде тоғыз шеміршек бар: үшеуі жұпсыз (қалқанша, жүзіктәрізді, көмей қақпашығы) және үш жұп (ожауша, мүйізтәрізді, сынатәрізді).",
+     "src": {
+      "title": "O'Rahilly R, Müller F, Carpenter S, Swenson R (2004). Basic Human Anatomy: A Regional Study of Human Structure, Chapter 53: The Pharynx and Larynx. Dartmouth Medical School (online edition)",
+      "url": "https://humananatomy.host.dartmouth.edu/BHA/public_html/part_8/chapter_53.html"
+     }
+    },
+    {
+     "en": "The two plates of the thyroid cartilage meet at about 90° in men versus 120° in women, so the male Adam's apple protrudes more.",
+     "ru": "Две пластинки щитовидного хряща сходятся под углом около 90° у мужчин и около 120° у женщин, поэтому мужской кадык выступает сильнее.",
+     "kk": "Қалқанша шеміршектің екі табақшасы ер адамдарда шамамен 90°, әйелдерде 120° бұрышпен түйіседі, сондықтан ер адамның өндіршегі көбірек шығып тұрады.",
+     "src": {
+      "title": "Dang BN, Hu AC, Bertrand AA, et al. (2022). Evaluation and treatment of facial feminization surgery: part II. lips, midface, mandible, chin, and laryngeal prominence. Arch Plast Surg (full text checked via Europe PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8795653/"
+     }
+    },
+    {
+     "en": "The cricoid is the only complete ring of cartilage in the airway.",
+     "ru": "Перстневидный хрящ — единственное полное хрящевое кольцо в дыхательных путях.",
+     "kk": "Жүзіктәрізді шеміршек — тыныс жолындағы жалғыз тұйық шеміршек сақина.",
+     "src": {
+      "title": "Simioniuc-Petrescu A, Dumitru M, Costache A, et al. (2026). Laryngeal Anatomy and Morphometry: Foundations for Interdisciplinary Collaboration and Personalized Management of Laryngeal Pathology. Diagnostics (Basel) (full text checked via Europe PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13565635/"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Дауыс қатпарлары мен дауыс саңылауы",
+    "ru": "Голосовые складки и голосовая щель",
+    "en": "Vocal folds and the glottis"
+   },
+   "text": {
+    "en": [
+     "The vocal folds themselves are not modelled here, but they stretch between cartilages you can see. Each vocal ligament runs from the thyroid cartilage in front to the vocal process of an arytenoid behind, and the bulk of each fold is the vocalis muscle, part of the thyroarytenoid. The gap between the folds, the rima glottidis, is the narrowest part of the laryngeal cavity. Above them lie the vestibular or “false” folds, which are protective rather than vocal.",
+     "Everything hinges on the arytenoids, which glide and rotate on the cricoid. The lateral cricoarytenoid muscles rotate them inward and close the glottis, as in phonation; the transverse and oblique arytenoids keep the back ends of the folds together. Only the posterior cricoarytenoid muscles open the glottis: they rotate the arytenoids outward, widening the gap for breathing. The rima is wider during inspiration and narrower during expiration and phonation."
+    ],
+    "ru": [
+     "Сами голосовые складки в модели не показаны, но они натянуты между видимыми хрящами. Каждая голосовая связка идёт от щитовидного хряща спереди к голосовому отростку черпаловидного хряща сзади, а основную массу складки составляет голосовая мышца — часть щиточерпаловидной. Промежуток между складками — голосовая щель — самое узкое место полости гортани. Выше лежат вестибулярные, или «ложные», складки, которые выполняют защитную, а не голосовую функцию.",
+     "Всё держится на черпаловидных хрящах, которые скользят и вращаются на перстневидном. Латеральные перстнечерпаловидные мышцы поворачивают их внутрь и смыкают голосовую щель, как при фонации; поперечная и косая черпаловидные мышцы удерживают вместе задние концы складок. Открывают щель только задние перстнечерпаловидные мышцы: они поворачивают черпаловидные хрящи наружу, расширяя просвет для дыхания. На вдохе щель шире, а на выдохе и при фонации — уже."
+    ],
+    "kk": [
+     "Дауыс қатпарларының өзі модельде көрсетілмеген, бірақ олар көрініп тұрған шеміршектердің арасында керіліп жатады. Әр дауыс байламы алдында қалқанша шеміршектен артында ожауша шеміршектің дауыс өсіндісіне дейін созылады, ал қатпардың негізгі массасын қалқанша-ожауша бұлшықеттің бөлігі — дауыс бұлшықеті құрайды. Қатпарлардың арасындағы дауыс саңылауы — көмей қуысының ең тар жері. Олардың үстінде кіреберіс, яғни «жалған», қатпарлар жатады; олардың қызметі дауыс шығару емес, қорғау.",
+     "Барлығы жүзіктәрізді шеміршектің үстінде сырғанап әрі бұрылатын ожауша шеміршектерге байланысты. Латералды жүзік-ожауша бұлшықеттер оларды ішке бұрып, дауыс шығарғандағыдай дауыс саңылауын жабады; көлденең және қиғаш ожауша бұлшықеттер қатпарлардың артқы ұштарын жақын ұстайды. Саңылауды тек артқы жүзік-ожауша бұлшықеттер ашады: олар ожауша шеміршектерді сыртқа бұрып, тыныс алу үшін саңылауды кеңейтеді. Дем алғанда саңылау кеңірек, ал дем шығарғанда және дауыс шығарғанда тарырақ болады."
+    ]
+   },
+   "highlight": [
+    "arytenoid-cartilage",
+    "corniculate-cartilage",
+    "posterior-crico-arytenoid-muscle",
+    "lateral-crico-arytenoid-muscle",
+    "transverse-arytenoid-muscle",
+    "external-part-of-thyro-arytenoid-muscle"
+   ],
+   "explode": 0.3,
+   "camera": {
+    "yaw": 3.14,
+    "pitch": 0.35,
+    "zoom": 1.8
+   },
+   "section": null,
+   "anim": {
+    "type": "oscillate",
+    "ids": [
+     "arytenoid-cartilage",
+     "corniculate-cartilage",
+     "posterior-crico-arytenoid-muscle",
+     "lateral-crico-arytenoid-muscle",
+     "transverse-arytenoid-muscle"
+    ],
+    "axis": [
+     0,
+     0,
+     1
+    ],
+    "amp": 0.0008
+   },
+   "facts": [
+    {
+     "en": "Opening the vocal folds is the job of a single pair of muscles — the posterior cricoarytenoids. They are the only abductors of the vocal cords.",
+     "ru": "Раскрывает голосовые складки одна-единственная пара мышц — задние перстнечерпаловидные. Это единственные мышцы, отводящие голосовые связки.",
+     "kk": "Дауыс қатпарларын бір ғана жұп бұлшықет — артқы жүзік-ожауша бұлшықеттер ашады. Дауыс байламдарын екі жаққа әкететін бұлшықеттер тек осылар.",
+     "src": {
+      "title": "O'Rahilly R, Müller F, Carpenter S, Swenson R (2004). Basic Human Anatomy: A Regional Study of Human Structure, Chapter 53: The Pharynx and Larynx. Dartmouth Medical School (online edition)",
+      "url": "https://humananatomy.host.dartmouth.edu/BHA/public_html/part_8/chapter_53.html"
+     }
+    },
+    {
+     "en": "Swelling of the laryngeal lining does not spread below the vocal folds, because there the mucosa is tightly bound to the vocal ligaments.",
+     "ru": "Отёк слизистой гортани не распространяется ниже голосовых складок, потому что там слизистая плотно сращена с голосовыми связками.",
+     "kk": "Көмейдің шырышты қабығының ісінуі дауыс қатпарларынан төмен таралмайды, өйткені ол жерде шырышты қабық дауыс байламдарымен тығыз бекіген.",
+     "src": {
+      "title": "O'Rahilly R, Müller F, Carpenter S, Swenson R (2004). Basic Human Anatomy: A Regional Study of Human Structure, Chapter 53: The Pharynx and Larynx. Dartmouth Medical School (online edition)",
+      "url": "https://humananatomy.host.dartmouth.edu/BHA/public_html/part_8/chapter_53.html"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Дауыс қалай пайда болады",
+    "ru": "Как рождается голос",
+    "en": "How the voice is made"
+   },
+   "text": {
+    "en": [
+     "Voice begins in the lungs. Air streaming upward raises the pressure below the closed vocal folds; once it passes a certain level, the folds begin small oscillations that settle into a steady vibration. Voice is formed by the interplay of airflow, vocal fold tissue and fold movement. Depending on sex and age, the folds oscillate roughly 100 to 350 times per second during normal phonation.",
+     "That raw sound is shaped above the larynx. The throat and mouth form an air column that resonates in response to vibrations in the voice box, and the mix of overtones changes with mouth shape and tongue position to form different sounds. Speech science therefore separates the sound source — the larynx — from the resonator, the vocal tract. Variations in these shapes help make each voice recognizable."
+    ],
+    "ru": [
+     "Голос начинается в лёгких. Поднимающийся поток воздуха повышает давление под сомкнутыми голосовыми складками; когда оно превышает определённый уровень, складки начинают совершать небольшие колебания, которые переходят в устойчивую вибрацию. Голос возникает из взаимодействия воздушного потока, ткани голосовых складок и их движений. В зависимости от пола и возраста при обычной фонации складки колеблются примерно от 100 до 350 раз в секунду.",
+     "Этот «сырой» звук оформляется выше гортани. Глотка и рот образуют воздушный столб, который резонирует в ответ на колебания в гортани, а набор обертонов меняется с формой рта и положением языка, образуя разные звуки. Поэтому наука о речи разделяет источник звука — гортань — и резонатор — голосовой тракт. Различия в этих формах помогают узнавать каждый голос."
+    ],
+    "kk": [
+     "Дауыс өкпеден басталады. Жоғары көтерілген ауа ағыны жабық дауыс қатпарларының астындағы қысымды арттырады; қысым белгілі бір деңгейден асқанда қатпарлар шағын тербеле бастайды да, бұл тербеліс тұрақты дірілге ұласады. Дауыс ауа ағынының, дауыс қатпары тінінің және қатпарлар қозғалысының өзара әрекетінен түзіледі. Жынысы мен жасына қарай қалыпты дауыс шығарғанда қатпарлар секундына шамамен 100-ден 350 ретке дейін тербеледі.",
+     "Бұл «шикі» дыбыс көмейден жоғарыда пішінделеді. Жұтқыншақ пен ауыз қуысы көмейдегі тербеліске жауап ретінде резонанс беретін ауа бағанын құрайды, ал обертондар жиынтығы ауыздың пішіні мен тілдің орнына қарай өзгеріп, түрлі дыбыстар түзіледі. Сондықтан сөйлеу ғылымы дыбыс көзін — көмейді — резонатордан, яғни дауыс жолынан бөліп қарастырады. Осы пішіндердегі айырмашылықтар әр адамның дауысын танып білуге көмектеседі."
+    ]
+   },
+   "highlight": [
+    "external-part-of-thyro-arytenoid-muscle",
+    "arytenoid-cartilage",
+    "lateral-crico-arytenoid-muscle",
+    "thyroid-cartilage",
+    "trachea",
+    "laryngopharynx"
+   ],
+   "explode": 0.15,
+   "camera": {
+    "yaw": 1.57,
+    "pitch": 0.1,
+    "zoom": 1.4
+   },
+   "section": "sagittal",
+   "anim": {
+    "type": "oscillate",
+    "ids": [
+     "external-part-of-thyro-arytenoid-muscle",
+     "arytenoid-cartilage"
+    ],
+    "axis": [
+     0,
+     1,
+     0
+    ],
+    "amp": 0.0005
+   },
+   "facts": [
+    {
+     "en": "Typical oscillation rates in normal phonation: women about 200–250 Hz, men about 100–150 Hz, children about 200–350 Hz — that is, hundreds of openings and closings every second.",
+     "ru": "Типичная частота колебаний при обычной фонации: у женщин около 200–250 Гц, у мужчин около 100–150 Гц, у детей около 200–350 Гц — сотни размыканий и смыканий каждую секунду.",
+     "kk": "Қалыпты дауыс шығарғандағы тербеліс жиілігі: әйелдерде шамамен 200–250 Гц, ер адамдарда 100–150 Гц, балаларда 200–350 Гц — яғни секунд сайын жүздеген рет ашылып-жабылу.",
+     "src": {
+      "title": "Döllinger M, Gómez P, Patel RR, Alexiou C, Bohr C, Schützenberger A (2017). Biomechanical simulation of vocal fold dynamics in adults based on laryngeal high-speed videoendoscopy. PLoS One",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5679561/"
+     }
+    },
+    {
+     "en": "The voice box can be replaced with a mechanical vibrator and understandable speech is still possible — the throat, mouth and tongue do much of the shaping.",
+     "ru": "Гортань можно заменить механическим вибратором — и понятная речь всё равно возможна: большую часть звука формируют глотка, рот и язык.",
+     "kk": "Көмейді механикалық вибратормен алмастыруға болады, сонда да түсінікті сөйлеу мүмкін: дыбыстың көп бөлігін жұтқыншақ, ауыз және тіл пішіндейді.",
+     "src": {
+      "title": "Urone PP, Hinrichs R (2022). College Physics 2e, 17.5 Sound Interference and Resonance: Standing Waves in Air Columns. OpenStax (Rice University)",
+      "url": "https://openstax.org/books/college-physics-2e/pages/17-5-sound-interference-and-resonance-standing-waves-in-air-columns"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Дауыс жоғарылығын баптау",
+    "ru": "Настройка высоты голоса",
+    "en": "Tuning the pitch"
+   },
+   "text": {
+    "en": [
+     "Once the glottis is closed, the cricothyroid muscles tune the pitch. By tipping the thyroid cartilage forward on the cricoid, they lengthen the larynx from front to back and tighten the vocal folds; the tension and thickness of the folds set how fast they vibrate. The muscle has two bellies, a straight part and an oblique part. In muscle recordings from patients after thyroid surgery, both worked together to lengthen and tense the folds, and the straight part seemed more active when pitch rose in a question.",
+     "Size matters too. The larynx is smaller in women than in men, grows during puberty, and a large larynx correlates with a deeper voice. Typical speaking frequencies are about 100–150 Hz in men and 200–250 Hz in women. In one study of Taiwanese adults, vocal folds measured about 14.6 mm in men and 11.1 mm in women."
+    ],
+    "ru": [
+     "Когда голосовая щель сомкнута, высоту голоса настраивают перстнещитовидные мышцы. Наклоняя щитовидный хрящ вперёд относительно перстневидного, они удлиняют гортань в переднезаднем направлении и натягивают голосовые складки; натяжение и толщина складок определяют частоту их колебаний. У мышцы два брюшка — прямая и косая части. В записях мышечной активности у пациентов после операции на щитовидной железе обе работали вместе, удлиняя и натягивая складки, а прямая часть, по-видимому, была активнее при повышении тона в вопросе.",
+     "Важен и размер. Гортань у женщин меньше, чем у мужчин, растёт в период полового созревания, и крупная гортань связана с более низким голосом. Типичная частота речи — около 100–150 Гц у мужчин и 200–250 Гц у женщин. В одном исследовании взрослых тайваньцев длина голосовых складок составила около 14,6 мм у мужчин и 11,1 мм у женщин."
+    ],
+    "kk": [
+     "Дауыс саңылауы жабылғаннан кейін дауыс жоғарылығын жүзік-қалқанша бұлшықеттер баптайды. Олар қалқанша шеміршекті жүзіктәрізді шеміршектің үстінде алға еңкейтіп, көмейді алдыңғы-артқы бағытта ұзартады және дауыс қатпарларын керіп тартады; қатпарлардың керілуі мен қалыңдығы олардың тербеліс жиілігін анықтайды. Бұл бұлшықеттің екі қарыншасы бар — тік және қиғаш бөліктері. Қалқанша безіне ота жасалған науқастардың бұлшықет белсенділігін жазып алғанда екеуі бірге жұмыс істеп, қатпарларды ұзартып, керген, ал сұрақ қойғанда үн көтерілгенде тік бөлігі белсендірек болған сияқты.",
+     "Өлшемнің де маңызы бар. Әйелдерде көмей ер адамдардікінен кіші, ол жыныстық жетілу кезінде өседі, ал ірі көмей жуан дауыспен байланысты. Сөйлеу кезіндегі әдеттегі жиілік ер адамдарда шамамен 100–150 Гц, әйелдерде 200–250 Гц. Тайваньдық ересектерге жүргізілген бір зерттеуде дауыс қатпарларының ұзындығы ер адамдарда шамамен 14,6 мм, әйелдерде 11,1 мм болған."
+    ]
+   },
+   "highlight": [
+    "straight-part-of-cricothyroid-muscle",
+    "oblique-part-of-cricothyroid-muscle",
+    "thyroid-cartilage",
+    "cricoid-cartilage",
+    "median-cricothyroid-ligament"
+   ],
+   "explode": 0.2,
+   "camera": {
+    "yaw": 1.1,
+    "pitch": 0.1,
+    "zoom": 1.6
+   },
+   "section": null,
+   "anim": {
+    "type": "oscillate",
+    "ids": [
+     "thyroid-cartilage"
+    ],
+    "axis": [
+     0,
+     -0.6,
+     0.8
+    ],
+    "amp": 0.0007
+   },
+   "facts": [
+    {
+     "en": "The vocal folds can be stretched about 30% beyond their resting length to tense their fibres — but this rarely happens in speech; singing and calling use it.",
+     "ru": "Голосовые складки можно растянуть примерно на 30% сверх длины покоя, чтобы натянуть их волокна, — но в речи это бывает редко; такое растяжение используют пение и оклик.",
+     "kk": "Дауыс қатпарларын талшықтарын кергізу үшін тыныштық күйдегі ұзындығынан шамамен 30%-ға созуға болады, бірақ сөйлеу кезінде бұл сирек болады; мұндай созылу ән айтқанда және біреуді айқайлап шақырғанда қолданылады.",
+     "src": {
+      "title": "Titze IR (2017). Human Speech: A Restricted Use of the Mammalian Larynx. J Voice (author manuscript, full text)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5219873/"
+     }
+    },
+    {
+     "en": "The vocal-fold lengths of 14.6 mm (men) and 11.1 mm (women) were measured under light anaesthesia; under general anaesthesia the same study found longer folds, 15.3 mm and 13.5 mm.",
+     "ru": "Длины 14,6 мм (мужчины) и 11,1 мм (женщины) измерены при лёгкой (нейролептической) анестезии; под общим наркозом то же исследование показало более длинные складки — 15,3 и 13,5 мм.",
+     "kk": "14,6 мм (ер адамдар) және 11,1 мм (әйелдер) ұзындықтары жеңіл (нейролептикалық) анестезия кезінде өлшенген; жалпы наркозда сол зерттеу қатпарлардың ұзынырақ екенін көрсеткен — 15,3 және 13,5 мм.",
+     "src": {
+      "title": "Su MC, Yeh TH, Tan CT, Lin CD, Linne OC, Lee SY (2002). Measurement of adult vocal fold length. J Laryngol Otol",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/12385357/"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Жұтынғанда тыныс жолын қорғау",
+    "ru": "Защита дыхательных путей при глотании",
+    "en": "Guarding the airway when we swallow"
+   },
+   "text": {
+    "en": [
+     "Food and air share the pharynx, so every swallow must briefly close the airway. In the pharyngeal phase, a swallowing centre in the medulla oblongata sends impulses that lift the soft palate to seal off the nasopharynx, and the laryngeal muscles constrict to prevent food from entering the trachea. For a very brief moment breathing stops — a pause called deglutition apnea.",
+     "At the same time the larynx is pulled upward. The suprahyoid muscles raise the hyoid bone and larynx, and the thyrohyoid lifts the thyroid cartilage. Because this raises the base of the epiglottis more than its tip, the epiglottis tilts backward over the inlet, while the aryepiglottic and transverse arytenoid muscles close it. Food is usually steered to the sides, through the piriform recesses, towards the oesophagus."
+    ],
+    "ru": [
+     "Пища и воздух проходят через общую глотку, поэтому при каждом глотке дыхательные пути должны ненадолго закрыться. В глоточную фазу центр глотания в продолговатом мозге посылает импульсы, которые поднимают мягкое нёбо и отгораживают носоглотку, а мышцы гортани сжимаются, не давая пище попасть в трахею. На очень короткое время дыхание останавливается — это называют апноэ глотания.",
+     "Одновременно гортань подтягивается вверх. Надподъязычные мышцы поднимают подъязычную кость и гортань, а щитоподъязычная мышца поднимает щитовидный хрящ. Поскольку основание надгортанника при этом поднимается сильнее, чем его верхушка, надгортанник наклоняется назад над входом в гортань, а черпалонадгортанные и поперечная черпаловидная мышцы закрывают вход. Пища обычно отводится в стороны, через грушевидные карманы, к пищеводу."
+    ],
+    "kk": [
+     "Тамақ пен ауа жұтқыншақ арқылы ортақ өтеді, сондықтан әр жұтқан сайын тыныс жолы аз уақытқа жабылуы керек. Жұтқыншақ кезеңінде сопақша мидағы жұтыну орталығы импульс жіберіп, жұмсақ таңдайды көтереді де мұрынжұтқыншақты бөгейді, ал көмей бұлшықеттері жиырылып, тамақтың кеңірдекке түсуіне жол бермейді. Өте қысқа сәтке тыныс алу тоқтайды — мұны жұтыну апноэсі деп атайды.",
+     "Сонымен бір мезгілде көмей жоғары тартылады. Тіласты үсті бұлшықеттері тіласты сүйегі мен көмейді көтереді, ал қалқанша-тіласты бұлшықеті қалқанша шеміршекті көтереді. Бұл кезде көмей қақпашығының түбі ұшына қарағанда көбірек көтерілетіндіктен, қақпашық көмей кірісінің үстіне қарай артқа еңкейеді, ал ожауша-көмей қақпашығы және көлденең ожауша бұлшықеттер кірісті жабады. Тамақ әдетте екі жаққа, алмұрт тәрізді қалталар арқылы өңешке қарай бұрылады."
+    ]
+   },
+   "highlight": [
+    "hyoid-bone",
+    "thyroid-cartilage",
+    "epiglottis",
+    "ary-epiglottic-part-of-oblique-arytenoid-muscle",
+    "transverse-arytenoid-muscle",
+    "thyrohyoid-muscle",
+    "laryngopharynx"
+   ],
+   "explode": 0.0,
+   "camera": {
+    "yaw": 1.57,
+    "pitch": 0.1,
+    "zoom": 1.1
+   },
+   "section": "sagittal",
+   "anim": {
+    "type": "oscillate",
+    "ids": [
+     "hyoid-bone",
+     "thyroid-cartilage"
+    ],
+    "axis": [
+     0,
+     1,
+     0
+    ],
+    "amp": 0.003
+   },
+   "facts": [
+    {
+     "en": "The larynx can seal itself at three levels: the inlet (closed in swallowing), the vestibular folds (closing them traps air so pressure can build, as in coughing) and the vocal folds (brought together in phonation).",
+     "ru": "Гортань может закрываться на трёх уровнях: вход (закрывается при глотании), вестибулярные складки (их смыкание задерживает воздух и позволяет поднять давление, как при кашле) и голосовые складки (смыкаются при фонации).",
+     "kk": "Көмей үш деңгейде жабыла алады: кірісі (жұтынғанда жабылады), кіреберіс қатпарлары (олар жабылғанда ауа ұсталып, жөтелгендегідей қысым артады) және дауыс қатпарлары (дауыс шығарғанда түйіседі).",
+     "src": {
+      "title": "O'Rahilly R, Müller F, Carpenter S, Swenson R (2004). Basic Human Anatomy: A Regional Study of Human Structure, Chapter 53: The Pharynx and Larynx. Dartmouth Medical School (online edition)",
+      "url": "https://humananatomy.host.dartmouth.edu/BHA/public_html/part_8/chapter_53.html"
+     }
+    },
+    {
+     "en": "The epiglottis has taste buds on its posterior surface.",
+     "ru": "На задней поверхности надгортанника есть вкусовые почки.",
+     "kk": "Көмей қақпашығының артқы бетінде дәм бүртіктері бар.",
+     "src": {
+      "title": "O'Rahilly R, Müller F, Carpenter S, Swenson R (2004). Basic Human Anatomy: A Regional Study of Human Structure, Chapter 53: The Pharynx and Larynx. Dartmouth Medical School (online edition)",
+      "url": "https://humananatomy.host.dartmouth.edu/BHA/public_html/part_8/chapter_53.html"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Көмей нервтері",
+    "ru": "Нервы гортани",
+    "en": "The nerves of the larynx"
+   },
+   "text": {
+    "en": [
+     "Every laryngeal nerve is a branch of the vagus, the longest cranial nerve; the branches themselves are not shown in this model. The superior laryngeal nerve leaves the vagus just below its inferior ganglion and divides in two. Its internal branch pierces the thyrohyoid membrane and supplies sensation to the laryngeal lining as far down as the vocal folds; its external branch supplies the cricothyroid, and injuring it makes high-pitched sounds harder to produce.",
+     "All other intrinsic muscles are supplied by the recurrent laryngeal nerve, which takes a remarkable detour. The right one hooks around the subclavian artery; the left one arises where the vagus crosses the arch of the aorta, hooks under the arch and climbs back up between trachea and oesophagus. The left nerve is therefore about 12 cm long, against 5–6 cm on the right. Damage to it paralyses the posterior cricoarytenoid, the only muscle that opens the vocal folds."
+    ],
+    "ru": [
+     "Все нервы гортани — ветви блуждающего нерва, самого длинного из черепных; сами ветви в модели не показаны. Верхний гортанный нерв отходит от блуждающего чуть ниже его нижнего узла и делится на две ветви. Внутренняя прободает щитоподъязычную мембрану и обеспечивает чувствительность слизистой гортани вплоть до голосовых складок; наружная иннервирует перстнещитовидную мышцу, и её повреждение затрудняет воспроизведение высоких звуков.",
+     "Все остальные внутренние мышцы иннервирует возвратный гортанный нерв, который делает удивительный крюк. Правый огибает подключичную артерию; левый отходит там, где блуждающий нерв пересекает дугу аорты, огибает дугу снизу и поднимается обратно между трахеей и пищеводом. Поэтому левый нерв имеет длину около 12 см против 5–6 см справа. Его повреждение парализует заднюю перстнечерпаловидную мышцу — единственную, раскрывающую голосовые складки."
+    ],
+    "kk": [
+     "Көмейдің барлық нервтері — бассүйек нервтерінің ең ұзыны, кезбе нервтің тармақтары; тармақтардың өзі модельде көрсетілмеген. Көмейдің жоғарғы нерві кезбе нервтен оның төменгі түйінінің сәл төменінен шығып, екі тармаққа бөлінеді. Ішкі тармағы қалқанша-тіласты жарғақты тесіп өтіп, көмейдің шырышты қабығына дауыс қатпарларына дейін сезімталдық береді; сыртқы тармағы жүзік-қалқанша бұлшықетті нервтендіреді, ал ол зақымданса, жоғары дыбыстарды шығару қиындайды.",
+     "Қалған барлық ішкі бұлшықеттерді көмейдің қайырылма нерві нервтендіреді, ал оның жолы таңғаларлық айналма. Оң жақтағысы бұғанаасты артериясын орап өтеді; сол жақтағысы кезбе нерв қолқа доғасын кесіп өтетін жерден шығып, доғаны астынан орап, кеңірдек пен өңештің арасымен қайта жоғары көтеріледі. Сондықтан сол жақ нервтің ұзындығы шамамен 12 см, ал оң жақта 5–6 см. Ол зақымданса, дауыс қатпарларын ашатын жалғыз бұлшықет — артқы жүзік-ожауша бұлшықет сал болады."
+    ]
+   },
+   "highlight": [
+    "vagus-nerve-x",
+    "straight-part-of-cricothyroid-muscle",
+    "oblique-part-of-cricothyroid-muscle",
+    "posterior-crico-arytenoid-muscle",
+    "lateral-crico-arytenoid-muscle",
+    "transverse-arytenoid-muscle",
+    "external-part-of-thyro-arytenoid-muscle"
+   ],
+   "explode": 0.4,
+   "camera": {
+    "yaw": -0.9,
+    "pitch": 0.1,
+    "zoom": 0.7
+   },
+   "section": null,
+   "anim": {
+    "type": "pulse-path",
+    "ids": [
+     "vagus-nerve-x",
+     "oblique-part-of-cricothyroid-muscle",
+     "posterior-crico-arytenoid-muscle"
+    ],
+    "axis": [
+     0,
+     1,
+     0
+    ],
+    "amp": 0
+   },
+   "facts": [
+    {
+     "en": "Why the detour? As the heart and great vessels descend during embryonic development, the recurrent laryngeal nerves are dragged down by the aortic arches.",
+     "ru": "Откуда этот крюк? Когда при развитии зародыша сердце и крупные сосуды опускаются, аортальные дуги утягивают возвратные гортанные нервы вниз.",
+     "kk": "Бұл айналманың себебі неде? Ұрықтың дамуы кезінде жүрек пен ірі тамырлар төмен түскенде, қолқа доғалары қайырылма нервтерді өзімен бірге төмен сүйреп әкетеді.",
+     "src": {
+      "title": "Varaldo E, Ansaldo GL, Mascherini M, Cafiero F, Minuto MN (2014). Neurological Complications in Thyroid Surgery: A Surgical Point of View on Laryngeal Nerves. Front Endocrinol (Lausanne)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4097206/"
+     }
+    },
+    {
+     "en": "Damage to one recurrent laryngeal nerve paralyses all intrinsic muscles of that side of the larynx except the cricothyroid.",
+     "ru": "Повреждение одного возвратного гортанного нерва парализует все внутренние мышцы гортани на этой стороне, кроме перстнещитовидной.",
+     "kk": "Бір жақтағы қайырылма нерв зақымданса, сол жақтағы көмейдің жүзік-қалқанша бұлшықетінен басқа барлық ішкі бұлшықеттері сал болады.",
+     "src": {
+      "title": "O'Rahilly R, Müller F, Carpenter S, Swenson R (2004). Basic Human Anatomy: A Regional Study of Human Structure, Chapter 53: The Pharynx and Larynx. Dartmouth Medical School (online edition)",
+      "url": "https://humananatomy.host.dartmouth.edu/BHA/public_html/part_8/chapter_53.html"
+     }
+    }
+   ]
+  }
+ ]
+}

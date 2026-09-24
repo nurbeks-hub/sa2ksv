@@ -1,0 +1,331 @@
+{
+  "id": "skull",
+  "title": {
+    "kk": "Бассүйек және мойын омыртқалары",
+    "ru": "Череп и шейные позвонки",
+    "en": "Skull and cervical spine"
+  },
+  "subtitle": {
+    "kk": "22 сүйек, төрт негізгі жік, нервтер мен тамырларға арналған тесіктер, жақ пен басты қозғайтын буындар",
+    "ru": "22 кости, четыре главных шва, отверстия для нервов и сосудов, суставы, которые двигают челюсть и голову",
+    "en": "22 bones, four major sutures, openings for nerves and vessels, and the joints that move the jaw and head"
+  },
+  "trigger": [
+    "frontal-bone", "parietal-bone", "temporal-bone", "occipital-bone", "sphenoid-bone", "ethmoid-bone",
+    "maxilla", "zygomatic-bone", "lacrimal-bone", "palatine-bone", "mandible",
+    "atlas-c1", "axis-c2", "vertebra-c3", "vertebra-c4", "vertebra-c5", "vertebra-c6", "vertebra-c7",
+    "intervertebral-disc-c2-c3", "intervertebral-disc-c3-c4", "intervertebral-disc-c4-c5", "intervertebral-disc-c5-c6", "intervertebral-disc-c6-c7",
+    "nucleus-pulposus-c2-c3", "nucleus-pulposus-c3-c4", "nucleus-pulposus-c4-c5", "nucleus-pulposus-c5-c6", "nucleus-pulposus-c6-c7",
+    "articular-capsule-of-temporomandibular-joint", "articular-disc-of-temporomandibular-joint", "lateral-temporomandibular-ligament",
+    "sphenomandibular-ligament", "stylomandibular-ligament", "nuchal-ligament"
+  ],
+  "parts": [
+    "frontal-bone", "parietal-bone", "temporal-bone", "occipital-bone", "sphenoid-bone", "ethmoid-bone",
+    "maxilla", "zygomatic-bone", "nasal-bone", "lacrimal-bone", "palatine-bone", "inferior-nasal-concha-bone", "vomer", "mandible",
+    "sinus-of-frontal-bone", "sinus-of-sphenoid-bone", "anterior-cells-of-ethmoid-bone", "middle-cells-of-ethmoid-bone", "posterior-cells-of-ethmoid-bone",
+    "articular-capsule-of-temporomandibular-joint", "articular-disc-of-temporomandibular-joint", "lateral-temporomandibular-ligament",
+    "sphenomandibular-ligament", "stylomandibular-ligament",
+    "atlas-c1", "axis-c2", "vertebra-c3", "vertebra-c4", "vertebra-c5", "vertebra-c6", "vertebra-c7",
+    "intervertebral-disc-c2-c3", "intervertebral-disc-c3-c4", "intervertebral-disc-c4-c5", "intervertebral-disc-c5-c6", "intervertebral-disc-c6-c7",
+    "nucleus-pulposus-c2-c3", "nucleus-pulposus-c3-c4", "nucleus-pulposus-c4-c5", "nucleus-pulposus-c5-c6", "nucleus-pulposus-c6-c7",
+    "nuchal-ligament",
+    "optic-nerve-ii", "oculomotor-nerve-iii", "trochlear-nerve-iv", "abducens-nerve-vi", "ophthalmic-nerve", "trigeminal-nerve-v",
+    "anterior-division-of-mandibular-nerve", "posterior-division-of-mandibular-nerve",
+    "middle-meningeal-artery", "internal-carotid-artery", "internal-jugular-vein",
+    "glossopharyngeal-nerve-ix", "vagus-nerve-x", "accessory-nerve-xi", "hypoglossal-nerve-xii",
+    "medulla-oblongata", "vertebral-artery"
+  ],
+  "explode": {
+    "frontal-bone": [0, 0.02, 0.022],
+    "parietal-bone": [0, 0.032, -0.006],
+    "occipital-bone": [0, 0.004, -0.032],
+    "temporal-bone": [0, -0.004, -0.01],
+    "sphenoid-bone": [0, 0.004, 0],
+    "ethmoid-bone": [0, 0.008, 0.014],
+    "maxilla": [0, -0.008, 0.026],
+    "zygomatic-bone": [0, 0.002, 0.024],
+    "nasal-bone": [0, 0.012, 0.038],
+    "lacrimal-bone": [0, 0.01, 0.024],
+    "palatine-bone": [0, -0.014, 0.01],
+    "inferior-nasal-concha-bone": [0, -0.004, 0.032],
+    "vomer": [0, -0.01, 0.022],
+    "mandible": [0, -0.03, 0.016]
+  },
+  "chapters": [
+    {
+      "title": {
+        "kk": "Бассүйектің екі бөлімі",
+        "ru": "Два отдела черепа",
+        "en": "Two skulls in one"
+      },
+      "text": {
+        "kk": [
+          "Ересек адамның бассүйегі 22 сүйектен тұрады. Олардың 21-і бір-бірімен қозғалмайтындай бітісіп, біртұтас құрылым түзеді, ал 22-сі — төменгі жақ сүйегі — бассүйектің жалғыз қозғалмалы сүйегі. Анатомияда бассүйек екі бөлімге бөлінеді: миды қорғайтын ми бөлімі (нейрокраниум) және бетті құрайтын бет бөлімі (висцерокраниум).",
+          "Ми бөлімінде сегіз сүйек бар: жұп төбе және самай сүйектері, сондай-ақ дара маңдай, шүйде, сынатәрізді және торлы сүйектер. Бет бөлімі 14 сүйектен тұрады: жұп жоғарғы жақ, таңдай, бет, мұрын, көзжас сүйектері мен мұрынның төменгі кеуілжірлері, сондай-ақ дара өресүйек пен төменгі жақ сүйегі. Сынатәрізді сүйекті «тірек тас» деп атайды, өйткені ол бассүйектің басқа сүйектерінің барлығына дерлік жалғасады."
+        ],
+        "ru": [
+          "Череп взрослого человека состоит из 22 костей. Двадцать одна из них неподвижно соединена в единое целое, а 22-я — нижняя челюсть — единственная подвижная кость черепа. Анатомы делят череп на два отдела: мозговой (нейрокраниум), который защищает головной мозг, и лицевой (висцерокраниум), который образует лицо.",
+          "Мозговой череп образуют восемь костей: парные теменные и височные, а также непарные лобная, затылочная, клиновидная и решётчатая. В лицевом черепе 14 костей: парные верхнечелюстные, нёбные, скуловые, носовые, слёзные кости и нижние носовые раковины, а также непарные сошник и нижняя челюсть. Клиновидную кость называют «замковым камнем», потому что она соединяется почти со всеми остальными костями черепа."
+        ],
+        "en": [
+          "An adult skull is made of 22 bones. Twenty-one of them are locked together into a single unit; the 22nd, the mandible (lower jaw), is the only movable bone of the skull. Anatomists divide the skull into two regions: the neurocranium, which protects the brain, and the viscerocranium, which forms the face.",
+          "The brain case has eight bones: the paired parietal and temporal bones and the unpaired frontal, occipital, sphenoid and ethmoid bones. The facial skeleton has 14: the paired maxillae, palatine, zygomatic, nasal and lacrimal bones and inferior nasal conchae, plus the unpaired vomer and mandible. The sphenoid is called a 'keystone' bone because it joins with almost every other bone of the skull."
+        ]
+      },
+      "highlight": [
+        "frontal-bone", "parietal-bone", "temporal-bone", "occipital-bone", "sphenoid-bone", "ethmoid-bone",
+        "maxilla", "zygomatic-bone", "nasal-bone", "lacrimal-bone", "palatine-bone", "inferior-nasal-concha-bone", "vomer", "mandible"
+      ],
+      "explode": 1,
+      "camera": {"yaw": 0.65, "pitch": 0.18, "zoom": 1.0},
+      "section": null,
+      "anim": null,
+      "facts": [
+        {
+          "kk": "Төменгі жақ — адам бассүйегіндегі ең үлкен сүйек.",
+          "ru": "Нижняя челюсть — самая крупная кость черепа человека.",
+          "en": "The mandible is the largest bone in the human skull.",
+          "src": {"title": "Breeland G, Aktar A, Patel BC (2023). Anatomy, Head and Neck, Mandible. StatPearls Publishing (PMID 30335325; text checked via Europe PMC abstract record)", "url": "https://europepmc.org/article/MED/30335325"}
+        },
+        {
+          "kk": "Сынатәрізді сүйектегі «түрік ертоқымы» осман түріктерінің ат ертоқымына ұқсағаны үшін осылай аталған; оның ойысында бұршақтай гипофиз безі жатады.",
+          "ru": "«Турецкое седло» клиновидной кости названо так за сходство с конским седлом турок-османов; в его углублении лежит гипофиз размером с горошину.",
+          "en": "The sphenoid's sella turcica ('Turkish saddle') is named for its resemblance to Ottoman Turkish horse saddles; its hollow houses the pea-sized pituitary gland.",
+          "src": {"title": "Betts JG, Young KA, Wise JA, et al. (OpenStax) (2022). Anatomy and Physiology 2e, 7.2 The Skull. OpenStax textbook (Rice University)", "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-2-the-skull"}
+        }
+      ]
+    },
+    {
+      "title": {
+        "kk": "Жіктер: сүйектердің түйіскен сызықтары",
+        "ru": "Швы: линии соединения костей",
+        "en": "Sutures: where the bones interlock"
+      },
+      "text": {
+        "kk": [
+          "Жік — бассүйек сүйектерінің арасындағы қозғалмайтын байланыс: сүйектер арасындағы тар саңылау тығыз талшықты дәнекер тінмен толған. Ми бөліміндегі ұзын жіктер түзу емес — олар ирелеңдеп, көрші сүйектерді бір-біріне берік құлыптайды, бұл бассүйекті мықты етеді. Негізгі жіктер төртеу. Тәждік жік бассүйекті көлденең кесіп өтіп, маңдай сүйекті екі төбе сүйекпен біріктіреді; сагиттальды жік бастың төбесімен орта сызық бойынша өтіп, оң және сол төбе сүйектерді жалғайды.",
+          "Артқы жағында гректің бас әрпі лямбдаға (Λ) ұқсас ламбда тәрізді жік шүйде сүйекті төбе және самай сүйектерімен біріктіреді. Бүйірінде қабыршақты жік самай сүйектің қабыршақ бөлігін төбе сүйекпен жалғайды. Маңдай, төбе, самай және сынатәрізді сүйектер түйіскен жерде H әрпі тәрізді птерион аймағы жатыр — бұл бассүйектің ең осал жері.",
+          "Жіктер қашан бітеді? Көбіне ойлағандай нақты емес. 2025 жылғы бір шолу жіктердің бітелу мерзімі адамнан адамға өзгеретінін және жасты дәл көрсетпейтінін қорытындылады, ал сот-медициналық бір зерттеу жіктер бойынша жас анықтауды жас анықтау әдістерінің ішіндегі ең даулысы деп атайды. Ерте зерттеулер қабыршақты жіктің белсенді бітелуі 63 жасқа дейін басталмайтынын көрсеткен."
+        ],
+        "ru": [
+          "Шов — неподвижное соединение костей черепа: узкий промежуток между ними заполнен плотной волокнистой соединительной тканью. Длинные швы мозгового черепа не прямые: они извиваются и прочно сцепляют соседние кости, делая череп крепче. Главных швов четыре. Венечный шов проходит поперёк черепа и соединяет лобную кость с обеими теменными; сагиттальный шов идёт по средней линии свода и соединяет правую и левую теменные кости.",
+          "Сзади ламбдовидный шов, похожий на заглавную греческую букву лямбда (Λ), соединяет затылочную кость с теменными и височными. Сбоку чешуйчатый шов соединяет чешую височной кости с теменной костью. Там, где встречаются лобная, теменная, височная и клиновидная кости, лежит Н-образный птерион — самое слабое место черепа.",
+          "Когда зарастают швы? Менее предсказуемо, чем принято думать. Обзор 2025 года пришёл к выводу, что сроки закрытия швов различаются у разных людей и неточно отражают возраст, а одно судебно-медицинское исследование называет определение возраста по швам самым спорным из методов оценки возраста. Ранние исследования показали, что активное зарастание чешуйчатого шва начинается не раньше 63 лет."
+        ],
+        "en": [
+          "A suture is an immobile joint between skull bones: the narrow gap between them is filled with dense fibrous connective tissue. The long sutures of the brain case are not straight — they twist and tightly interlock neighbouring bones, adding strength to the skull. There are four major sutures. The coronal suture runs from side to side and joins the frontal bone to both parietal bones; the sagittal suture runs along the midline of the skull top, uniting the right and left parietal bones.",
+          "At the back, the lambdoid suture, shaped like the Greek capital lambda (Λ), joins the occipital bone to the parietal and temporal bones. On the side, the squamous suture unites the squamous part of the temporal bone with the parietal bone. Where the frontal, parietal, temporal and sphenoid bones meet lies the H-shaped pterion — the weakest part of the skull.",
+          "When do sutures close? Less predictably than often assumed. A 2025 review concluded that the timing of suture closure varies between people and is not accurately reflected by age, and a forensic study calls suture-based age estimation the most controversial of the age-estimation methods. Early studies found that active closure of the squamous suture does not begin until age 63."
+        ]
+      },
+      "highlight": ["frontal-bone", "parietal-bone", "occipital-bone", "temporal-bone", "sphenoid-bone"],
+      "explode": 0.3,
+      "camera": {"yaw": 2.3, "pitch": 0.85, "zoom": 1.1},
+      "section": null,
+      "anim": null,
+      "facts": [
+        {
+          "kk": "Ортаңғы менингеалды артерия көбіне птерион тұсында жарылады, бұл әдетте «линза тәрізді» эпидуралды гематомаға әкеледі.",
+          "ru": "Средняя менингеальная артерия чаще всего разрывается в области птериона, что обычно приводит к «линзообразной» эпидуральной гематоме.",
+          "en": "The middle meningeal artery ruptures most commonly at the pterion, typically leading to a 'lens-shaped' epidural haematoma.",
+          "src": {"title": "Natali AL, Reddy V, Leo JT (2024). Neuroanatomy, Middle Meningeal Arteries. StatPearls Publishing (PMID 30137830; text checked via Europe PMC abstract record)", "url": "https://europepmc.org/article/MED/30137830"}
+        },
+        {
+          "kk": "Ерте зерттеулер бойынша қабыршақты жіктің артқы бөлігі 80 жасқа дейін бітпейді, ал алдыңғы бөлігі мүлде бітпейді.",
+          "ru": "По данным ранних исследований, задняя часть чешуйчатого шва не зарастает до 80 лет, а передняя не зарастает никогда.",
+          "en": "According to early studies, the back part of the squamous suture does not close until age 80, and its front part never closes.",
+          "src": {"title": "Carroll A, Rae CD, Martin D, Dokos S, Loo C (2025). The Effect of Cranial Sutures Should Be Considered in Transcranial Electrical Stimulation. J ECT (full text checked via Europe PMC)", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12105966/"}
+        }
+      ]
+    },
+    {
+      "title": {
+        "kk": "Нервтер мен тамырларға арналған тесіктер",
+        "ru": "Отверстия для нервов и сосудов",
+        "en": "Openings for nerves and vessels"
+      },
+      "text": {
+        "kk": [
+          "Бассүйек негізі нервтер мен тамырлар өтетін тесіктерге толы. Көзұяның артқы ұшындағы көру өзегі арқылы көру нерві өтеді, ал оның жанындағы көзұяның жоғарғы саңылауы арқылы көзді қозғайтын нервтер — көз қозғалтқыш (III), шығыршық (IV) және әкететін (VI) нервтер — және көз нервінің (V1) тармақтары өтеді.",
+          "Бассүйектің ортаңғы шұңқырының түбінде сынатәрізді сүйектің тағы үш тесігі бар: дөңгелек тесік арқылы жоғарғы жақ нерві (V2), сопақ тесік арқылы үшкіл нервтің тағы бір тармағы — төменгі жақ нерві, ал кішкентай қылқанды тесік арқылы ми қатты қабығын қанмен қамтамасыз ететін ортаңғы менингеалды артерия өтеді. Самай сүйектегі ирелең ұйқы артериясы өзегі ішкі ұйқы артериясын бассүйек ішіне өткізеді.",
+          "Артқы шұңқырдағы мойындырық тесігі арқылы ішкі мойындырық венасы шығады — мидан кететін веналық қанның бәрі осы жолмен ағады, — онымен бірге IX, X және XI бассүйек нервтері өтеді. Тіласты өзегі тіласты нервін (XII) өткізеді. Ең үлкен тесік — үлкен шүйде тесігі арқылы сопақша ми, омыртқа артериялары және қосымша нервтің жұлындық түбірі өтеді."
+        ],
+        "ru": [
+          "Основание черепа пронизано отверстиями, через которые проходят нервы и сосуды. На вершине глазницы зрительный канал пропускает зрительный нерв, а рядом через верхнюю глазничную щель проходят нервы, которые двигают глаз, — глазодвигательный (III), блоковый (IV) и отводящий (VI), — а также ветви глазного нерва (V1).",
+          "В дне средней черепной ямки у клиновидной кости есть ещё три отверстия: круглое пропускает верхнечелюстной нерв (V2), овальное — ещё одну ветвь тройничного нерва, нижнечелюстной нерв, а маленькое остистое — среднюю менингеальную артерию, которая снабжает кровью твёрдую мозговую оболочку. Извилистый сонный канал височной кости проводит в череп внутреннюю сонную артерию.",
+          "В задней черепной ямке через яремное отверстие выходит внутренняя яремная вена — путь для всей венозной крови, оттекающей от мозга, — а вместе с ней проходят IX, X и XI черепные нервы. Подъязычный канал пропускает подъязычный нерв (XII). Через самое большое отверстие — большое затылочное — проходят продолговатый мозг, позвоночные артерии и спинномозговой корешок добавочного нерва."
+        ],
+        "en": [
+          "The skull base is pierced by openings for nerves and vessels. At the apex of the orbit, the optic canal carries the optic nerve; beside it, the superior orbital fissure admits the nerves that move the eye — the oculomotor (III), trochlear (IV) and abducens (VI) — together with branches of the ophthalmic nerve (V1).",
+          "In the floor of the middle cranial fossa, the sphenoid has three more openings: the foramen rotundum transmits the maxillary nerve (V2), the foramen ovale another trigeminal branch, the mandibular nerve, and the small foramen spinosum the middle meningeal artery, which supplies the dura mater. The zigzag carotid canal of the temporal bone brings the internal carotid artery into the skull.",
+          "In the posterior fossa, the jugular foramen lets out the internal jugular vein — the exit for all venous blood leaving the brain — together with cranial nerves IX, X and XI. The hypoglossal canal carries the hypoglossal nerve (XII). The largest opening, the foramen magnum, is traversed by the medulla oblongata, the vertebral arteries and the spinal root of the accessory nerve."
+        ]
+      },
+      "highlight": [
+        "optic-nerve-ii", "oculomotor-nerve-iii", "trochlear-nerve-iv", "abducens-nerve-vi", "ophthalmic-nerve", "trigeminal-nerve-v",
+        "anterior-division-of-mandibular-nerve", "posterior-division-of-mandibular-nerve",
+        "middle-meningeal-artery", "internal-carotid-artery", "internal-jugular-vein",
+        "glossopharyngeal-nerve-ix", "vagus-nerve-x", "accessory-nerve-xi", "hypoglossal-nerve-xii",
+        "medulla-oblongata", "vertebral-artery"
+      ],
+      "explode": 0,
+      "camera": {"yaw": 0.0, "pitch": 1.15, "zoom": 1.2},
+      "section": "axial",
+      "anim": null,
+      "facts": [
+        {
+          "kk": "Жыртық тесік (foramen lacerum) — құрғақ бассүйекте ғана көрінетін құбылыс: тірі адамда ол шеміршекпен толық толған, сондықтан ол арқылы ештеңе өтпейді.",
+          "ru": "Рваное отверстие — артефакт сухого черепа: при жизни оно целиком заполнено хрящом, и через него ничего не проходит.",
+          "en": "The foramen lacerum ('torn opening') is an artefact of the dry skull: in life it is completely filled with cartilage, and nothing passes through it.",
+          "src": {"title": "Betts JG, Young KA, Wise JA, et al. (OpenStax) (2022). Anatomy and Physiology 2e, 7.2 The Skull. OpenStax textbook (Rice University)", "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-2-the-skull"}
+        },
+        {
+          "kk": "Үлкен шүйде тесігі — бассүйектегі ең үлкен тесік.",
+          "ru": "Большое затылочное отверстие — самое крупное отверстие черепа.",
+          "en": "The foramen magnum is the largest opening in the skull.",
+          "src": {"title": "Ficke J, Jozsa F (2026). Anatomy, Head and Neck: Foramen Magnum. StatPearls Publishing (PMID 30252297; text checked via Europe PMC abstract record)", "url": "https://europepmc.org/article/MED/30252297"}
+        }
+      ]
+    },
+    {
+      "title": {
+        "kk": "Қуыс сүйектер: мұрынның қосалқы қойнаулары",
+        "ru": "Полые кости: околоносовые пазухи",
+        "en": "Hollow bones: the paranasal sinuses"
+      },
+      "text": {
+        "kk": [
+          "Бассүйектің бірнеше сүйегінің іші қуыс. Мұрынның қосалқы қойнаулары — ішін мұрынның шырышты қабығы астарлаған, ауаға толы қуыстар; олардың бәрі мұрын қуысымен жалғасады және өздері орналасқан сүйектің атымен аталады. Қастың үстіндегі маңдай қойнауы — ең алдыңғысы; көзұялардың астындағы жұп жоғарғы жақсүйек қойнаулары — ең үлкені; сынатәрізді сүйек қойнауы түрік ертоқымының астында жатыр; ал торлы ұяшықтар — көзұя мен мұрын қуысының арасындағы көптеген ұсақ қуыстар.",
+          "Олар не үшін керек? Оқулықтар екі рөлін атайды: қойнаулар сүйек массасын азайтып, бассүйекті жеңілдетеді және дауысқа резонанс береді — сондықтан мұрын бітелгенде дауыс өзгеріп естіледі. Алайда олардың нақты қызметі туралы пікірталас екі мың жылға жуық уақыттан бері жүріп келеді. Бір шолуда қойнаулар азот оксидінің түзілуіне және мұрынның иммундық қорғанысына көмектесуі мүмкін екені, ал олардың эволюциялық шығу тегі әлі де ашық сұрақ екені айтылады."
+        ],
+        "ru": [
+          "Несколько костей черепа полые внутри. Околоносовые пазухи — заполненные воздухом полости, выстланные слизистой оболочкой носа; все они сообщаются с полостью носа и названы по кости, в которой находятся. Лобная пазуха над бровями — самая передняя; парные верхнечелюстные пазухи под глазницами — самые большие; клиновидная пазуха лежит в теле клиновидной кости под турецким седлом; а решётчатые ячейки — множество мелких полостей между глазницей и полостью носа.",
+          "Зачем они нужны? Учебники называют две роли: пазухи уменьшают массу кости, облегчая череп, и придают голосу резонанс — поэтому при заложенном носе голос звучит иначе. Однако об их истинной функции спорят почти два тысячелетия. В одном обзоре отмечается, что пазухи могут участвовать в выработке оксида азота и в иммунной защите носа, а их эволюционное происхождение остаётся открытым вопросом."
+        ],
+        "en": [
+          "Several skull bones are hollow. The paranasal sinuses are air-filled spaces lined with nasal mucosa; all of them communicate with the nasal cavity and are named after the bone they occupy. The frontal sinus above the eyebrows is the most anterior; the paired maxillary sinuses below the orbits are the largest; the sphenoid sinus lies in the body of the sphenoid beneath the sella turcica; and the ethmoid air cells are many small spaces between the orbit and the nasal cavity.",
+          "Why have them? Textbooks name two roles: sinuses reduce bone mass, lightening the skull, and add resonance to the voice — which is why a blocked nose changes how you sound. Yet their true function has been debated for nearly two millennia. One review notes that they may aid nitric oxide production and the nose's immune defences, while their evolutionary origin remains an open question."
+        ]
+      },
+      "highlight": [
+        "sinus-of-frontal-bone", "sinus-of-sphenoid-bone", "anterior-cells-of-ethmoid-bone", "middle-cells-of-ethmoid-bone", "posterior-cells-of-ethmoid-bone", "maxilla"
+      ],
+      "explode": 0,
+      "camera": {"yaw": 1.3, "pitch": 0.1, "zoom": 1.5},
+      "section": "sagittal",
+      "anim": null,
+      "facts": [
+        {
+          "kk": "Маңдай қойнауының пішіні соншалықты жеке, оның бірегейлігі саусақ іздерімен салыстырылады; сондықтан оның КТ-кескіндері адамды сәйкестендіру үшін зерттеледі.",
+          "ru": "Форма лобной пазухи настолько индивидуальна, что её уникальность сравнивают с отпечатками пальцев; поэтому её КТ-изображения изучают для идентификации человека.",
+          "en": "The frontal sinus is so individual that its uniqueness has been likened to fingerprints, which is why its CT images are studied for human identification.",
+          "src": {"title": "Wickramasinghe C, Vadysinghe AN, Kodikara S, Udupihilla J (2022). Frontal sinus pattern analysis for human identification using non-contrast computed tomography images: A Sri Lankan experience. SAGE Open Med (full text checked via Europe PMC)", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9772968/"}
+        },
+        {
+          "kk": "Қойнау қабынғанда көбіне жоғарғы жақсүйек қойнаулары зақымданады.",
+          "ru": "При синуситах чаще всего поражаются верхнечелюстные пазухи.",
+          "en": "The maxillary sinuses are the ones most commonly involved in sinus infections.",
+          "src": {"title": "Betts JG, Young KA, Wise JA, et al. (OpenStax) (2022). Anatomy and Physiology 2e, 7.2 The Skull. OpenStax textbook (Rice University)", "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-2-the-skull"}
+        }
+      ]
+    },
+    {
+      "title": {
+        "kk": "Төменгі жақ және шықшыт буыны",
+        "ru": "Нижняя челюсть и височно-нижнечелюстной сустав",
+        "en": "The mandible and the jaw joint"
+      },
+      "text": {
+        "kk": [
+          "Төменгі жақ сүйегі — бассүйектің ең үлкен сүйегі. Оның артқы бөлігінде әр жақтағы айдаршық өсіндісі сопақ айдаршықпен аяқталады; ол самай сүйектің төменгі жақсүйек шұңқырымен және буындық төмпешігімен жанасып, шықшыт буынын түзеді. Бұл буын ауызды ашып-жабады, сондай-ақ жақты екі жаққа жылжытуға, алға шығарып, кейін тартуға мүмкіндік береді.",
+          "Сүйектердің арасында иілгіш буын дискісі орналасқан — қозғалысты жұмсартып, буынды зақымданудан қорғайтын, екі беті ойыс талшықты шеміршек төсеме. Ол буын қапшығының ішкі бетіне бекіп, буын қуысын жоғарғы және төменгі қуысқа бөледі. Дискі, қапшық, шықшыт буынының байламы және бұлшықеттер бірлесіп буынның тұрақтылығын сақтайды.",
+          "Ауызды ашу екі қозғалыстан тұрады: төменгі жақ топса сияқты төмен бұрылады, ал айдаршық пен дискі бір мезгілде шұңқырдан алға, буындық төмпешікке қарай сырғиды. Ауызды тым кең ашқанда — мысалы, үлкен кесіп тістегенде — айдаршық төмпешіктің алдына шығып кетуі мүмкін: бұл шықшыт шығуы, мұндайда адам аузын жаба алмайды."
+        ],
+        "ru": [
+          "Нижняя челюсть — самая крупная кость черепа. Сзади с каждой стороны её мыщелковый отросток заканчивается овальным мыщелком, который сочленяется с нижнечелюстной ямкой и суставным бугорком височной кости, образуя височно-нижнечелюстной сустав. Этот сустав открывает и закрывает рот, а также позволяет двигать челюсть из стороны в сторону, выдвигать её вперёд и отводить назад.",
+          "Между костями лежит гибкий суставной диск — двояковогнутая волокнисто-хрящевая прокладка, которая сглаживает движения и защищает сустав от повреждения. Он прикреплён к внутренней поверхности суставной капсулы и делит полость сустава на верхнюю и нижнюю. Диск, капсула, височно-нижнечелюстная связка и мышцы вместе обеспечивают устойчивость сустава.",
+          "Открывание рта сочетает два движения: нижняя челюсть поворачивается вниз, как на шарнире, и одновременно мыщелок вместе с диском скользит вперёд из ямки на суставной бугорок. Если открыть рот слишком широко — например, откусывая большой кусок, — мыщелок может сместиться впереди бугорка: это вывих, при котором человек не может закрыть рот."
+        ],
+        "en": [
+          "The mandible is the largest bone of the skull. At the back of each side, its condylar process ends in an oval condyle that meets the mandibular fossa and articular tubercle of the temporal bone, forming the temporomandibular joint. This joint opens and closes the mouth and also allows side-to-side movements and pushing the jaw forward and pulling it back.",
+          "Between the bones sits a flexible articular disc — a biconcave pad of fibrocartilage that smooths movement and protects the joint from damage. It is attached to the inner surface of the joint capsule, dividing the joint into an upper and a lower cavity. The disc, the capsule, the temporomandibular ligament and the muscles together keep the joint stable.",
+          "Opening the mouth combines two motions: the mandible hinges downward while the condyle and disc glide forward out of the fossa onto the articular tubercle. Open too wide — taking a large bite, for example — and the condyle can move in front of the tubercle: a dislocation that leaves a person unable to close the mouth."
+        ]
+      },
+      "highlight": [
+        "mandible", "temporal-bone", "articular-disc-of-temporomandibular-joint", "articular-capsule-of-temporomandibular-joint", "lateral-temporomandibular-ligament"
+      ],
+      "explode": 0,
+      "camera": {"yaw": -1.3, "pitch": 0.05, "zoom": 1.6},
+      "section": null,
+      "anim": {"type": "oscillate", "ids": ["mandible"], "axis": [0, -0.89, 0.45], "amp": 0.004},
+      "facts": [
+        {
+          "kk": "Оң және сол шықшыт буындары бір-бірімен үйлесіп жұмыс істейді, сондықтан олардың қозғалысы үндес болады.",
+          "ru": "Правый и левый височно-нижнечелюстные суставы работают согласованно, поэтому их движения синхронны.",
+          "en": "The left and right jaw joints work in coordination, which keeps their movement synchronized.",
+          "src": {"title": "Bordoni B, Brizuela M (2025). Anatomy, Head and Neck, Temporomandibular Joint. StatPearls Publishing (PMID 30860721; text checked via Europe PMC abstract record)", "url": "https://europepmc.org/article/MED/30860721"}
+        },
+        {
+          "kk": "Төменгі тістерді ауыртпау үшін тіс дәрігері анестетикті сезімтал нерв төменгі жақ сүйегінің ішкі бетіндегі төменгі жақсүйек тесігіне кірмей тұрып егеді.",
+          "ru": "Чтобы обезболить нижние зубы, стоматолог вводит анестетик до того места, где чувствительный нерв входит в нижнечелюстное отверстие на внутренней стороне челюсти.",
+          "en": "To numb the lower teeth, a dentist injects anaesthetic at a point before the sensory nerve enters the mandibular foramen on the inner side of the jaw.",
+          "src": {"title": "Betts JG, Young KA, Wise JA, et al. (OpenStax) (2022). Anatomy and Physiology 2e, 7.2 The Skull. OpenStax textbook (Rice University)", "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-2-the-skull"}
+        }
+      ]
+    },
+    {
+      "title": {
+        "kk": "Ауыз омыртқа мен біліктік омыртқа: бастың айналу осі",
+        "ru": "Атлант и осевой позвонок: шарнир головы",
+        "en": "Atlas and axis: the head's pivot"
+      },
+      "text": {
+        "kk": [
+          "Бассүйек жеті мойын омыртқасына тіреледі. Біріншісі — C1 — аспанды иығында ұстап тұрған грек құдайының атымен атлант (ауыз омыртқа) деп аталады. Оның денесі де, қылқанды өсіндісі де жоқ — тек алдыңғы және артқы доғасы бар, ал жоғарғы буын беттері бассүйектің шүйде айдаршықтарын қабылдайды. Осы ауыз омыртқа-шүйде буынындағы тербеліс басты жоғары-төмен қозғайды — «иә» деп бас изегендегідей.",
+          "Екінші омыртқа — біліктік омыртқа (C2) — жоғары қарай шығып тұрған сүйек өсіндісі, тісті алып жүреді; оны ауыз омыртқаның алдыңғы доғасына көлденең байлам қысып ұстайды. Осы айналмалы буында ауыз омыртқа біліктік омыртқаның үстінде бұрылып, басты оңға не солға бұрады — «жоқ» деп бас шайқағандағыдай. Бір шолуда ауыз омыртқа мен біліктік омыртқа арасындағы буынға мойынның бүйірлік айналуының 50–60%-ы тиесілі екені айтылады.",
+          "Төменіректегі C3–C7 омыртқаларының денесі шағын, өйткені олар дене салмағының ең азын көтереді; C7-нің ұзын қылқанды өсіндісін мойынның түбінен қолмен сипап табуға болады. Омыртқа денелерінің арасында омыртқааралық дискілер жатыр: сыртында берік фиброзды сақина, ішінде іркілдек жұмсақ ядро. Мойын аймағында дискілер жұқа, ал жас ұлғайған сайын ядро суын жоғалтып, дискілер жұқара түседі."
+        ],
+        "ru": [
+          "Череп опирается на семь шейных позвонков. Первый, C1, назван атлантом — в честь греческого бога, державшего на плечах небесный свод. У него нет ни тела, ни остистого отростка — только передняя и задняя дуги, а его верхние суставные поверхности принимают мыщелки затылочной кости. Покачивание в этом атлантозатылочном суставе двигает голову вверх и вниз, как при кивке «да».",
+          "Второй позвонок, осевой (C2), несёт зуб — костный выступ, направленный вверх и прижатый к передней дуге атланта поперечной связкой. В этом вращательном суставе атлант поворачивается на осевом позвонке, поворачивая голову вправо и влево, как при жесте «нет». В одном обзоре указано, что на атлантоосевой сустав приходится 50–60% бокового вращения шеи.",
+          "Ниже позвонки C3–C7 имеют небольшие тела, поскольку несут наименьшую часть веса тела; длинный остистый отросток C7 можно нащупать у основания шеи. Между телами позвонков лежат межпозвоночные диски: прочное фиброзное кольцо снаружи и студенистое ядро внутри. В шейном отделе диски тонкие, а с возрастом ядро теряет воду, и диски становятся тоньше."
+        ],
+        "en": [
+          "The skull rests on seven cervical vertebrae. The first, C1, is called the atlas, after the Greek god who held up the heavens. It has no body or spinous process — just an anterior and a posterior arch — and its upper facets cradle the occipital condyles of the skull. Rocking at this atlanto-occipital joint moves the head up and down, as when nodding 'yes'.",
+          "The second vertebra, the axis (C2), carries the dens — a bony peg that projects upward and is held against the anterior arch of the atlas by the transverse ligament. At this pivot joint the atlas rotates on top of the axis, turning the head to the right or left, as when shaking it 'no'. A review credits the atlantoaxial joint with 50–60% of the neck's lateral rotation.",
+          "Below, vertebrae C3–C7 have small bodies because they carry the least body weight; the long spinous process of C7 can be felt at the base of the neck. Between the vertebral bodies lie intervertebral discs: a tough fibrous ring, the anulus fibrosus, around a gel-like nucleus pulposus. The discs are thin in the neck, and with age the nucleus loses water, so the discs become thinner."
+        ]
+      },
+      "highlight": [
+        "atlas-c1", "axis-c2", "occipital-bone", "vertebra-c3", "vertebra-c4", "vertebra-c5", "vertebra-c6", "vertebra-c7",
+        "intervertebral-disc-c2-c3", "intervertebral-disc-c3-c4", "intervertebral-disc-c4-c5", "intervertebral-disc-c5-c6", "intervertebral-disc-c6-c7",
+        "nucleus-pulposus-c2-c3", "nucleus-pulposus-c3-c4", "nucleus-pulposus-c4-c5", "nucleus-pulposus-c5-c6", "nucleus-pulposus-c6-c7"
+      ],
+      "explode": 0,
+      "camera": {"yaw": 2.4, "pitch": 0.3, "zoom": 1.8},
+      "section": null,
+      "anim": {"type": "rotate", "ids": ["atlas-c1"], "axis": [0, 1, 0], "amp": 0.35},
+      "facts": [
+        {
+          "kk": "Дене мөлшеріне қарамастан, сүтқоректілердің барлығына дерлік жеті мойын омыртқасы тән — жертесерден бастап керікке дейін.",
+          "ru": "Почти у всех млекопитающих, независимо от размеров тела, семь шейных позвонков — от землеройки до жирафа.",
+          "en": "Almost all mammals have seven cervical vertebrae regardless of body size — from a shrew to a giraffe.",
+          "src": {"title": "Betts JG, Young KA, Wise JA, et al. (OpenStax) (2022). Anatomy and Physiology 2e, 7.3 The Vertebral Column. OpenStax textbook (Rice University)", "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-3-the-vertebral-column"}
+        },
+        {
+          "kk": "Жамбас сүйегінің жоғарғы шеті мен бассүйек негізінің арасындағы дене биіктігінің шамамен 25%-ын омыртқааралық дискілер құрайды.",
+          "ru": "Межпозвоночные диски составляют примерно 25% роста тела между верхним краем таза и основанием черепа.",
+          "en": "Intervertebral discs account for approximately 25% of body height between the top of the pelvis and the base of the skull.",
+          "src": {"title": "Betts JG, Young KA, Wise JA, et al. (OpenStax) (2022). Anatomy and Physiology 2e, 7.3 The Vertebral Column. OpenStax textbook (Rice University)", "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-3-the-vertebral-column"}
+        },
+        {
+          "kk": "Мойын омыртқалары 90 градусқа дейін айнала алады.",
+          "ru": "Шейный отдел позвоночника может поворачиваться до 90 градусов.",
+          "en": "The cervical spine can rotate up to 90 degrees.",
+          "src": {"title": "González DCN, Ardura Aragón F, Sanjuan JC, et al. (2022). C1-C2 Rotatory Subluxation in Adults \"A Narrative Review\". Diagnostics (Basel) (full text checked via Europe PMC)", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9316247/"}
+        }
+      ]
+    }
+  ]
+}

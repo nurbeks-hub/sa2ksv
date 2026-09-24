@@ -116,7 +116,7 @@ export function buildModel(gltfs) {
   if (scl.length) {
     const eye = scl[0].center.clone(); eye.x = Math.abs(eye.x);
     const eyeR = scl[0].box.getSize(new THREE.Vector3()).y / 2;
-    for (const s of standalone) if (s.rec.cls === 'skin') { geo_smoothCreases(s.geo, eye); weldSkinNormals(s.geo); chinNormals(s.geo); skinAttributes(s.geo, eye, eyeR); }
+    for (const s of standalone) if (s.rec.cls === 'skin') { geo_smoothCreases(s.geo, eye); weldSkinNormals(s.geo); skinAttributes(s.geo, eye, eyeR); }
   }
 
   // ---- merge buckets
@@ -162,8 +162,13 @@ export function buildModel(gltfs) {
   const staticTex = new THREE.DataTexture(staticArr, TEXW, rows * 2, THREE.RGBAFormat, THREE.FloatType);
   for (const t of [stateTex, staticTex]) { t.magFilter = t.minFilter = THREE.NearestFilter; t.generateMipmaps = false; t.needsUpdate = true; }
   U.uState.value = stateTex; U.uStatic.value = staticTex;
+  const offsetArr = new Float32Array(TEXW * rows * 3 * 4);
+  for (let i = 0; i < nodes.length; i++) { const x = i % TEXW, y = Math.floor(i / TEXW); offsetArr[((y * 3 + 1) * TEXW + x) * 4 + 3] = 1; }   // identity quaternions
+  const offsetTex = new THREE.DataTexture(offsetArr, TEXW, rows * 3, THREE.RGBAFormat, THREE.FloatType);
+  offsetTex.magFilter = offsetTex.minFilter = THREE.NearestFilter; offsetTex.generateMipmaps = false; offsetTex.needsUpdate = true;
+  U.uOffset.value = offsetTex;
 
-  return { nodes, merged, standalone, stateArr, stateTex, flipped };
+  return { nodes, merged, standalone, stateArr, stateTex, offsetArr, offsetTex, flipped };
 }
 
 // Mirrored (.l) source meshes come out inside-out (both winding and normals reversed). Detect with the signed
@@ -279,10 +284,6 @@ function skinAttributes(geo, eye, eyeR) {
 // places where sharp features are real (eyes/lids, lips, nostrils, ears), and relax them (3 × Laplacian, λ 0.5).
 function geo_smoothCreases(geo, eye) {
   const P = geo.attributes.position.array, I = geo.index.array, n = P.length / 3;
-  // the male fit leaves a narrow open slit on the chin midline: close it (snap its lips onto the midline)
-  let snapped = 0;
-  for (let i = 0; i < n; i++) { const x = P[i*3], y = P[i*3+1], z = P[i*3+2]; if (Math.abs(x) < 0.0016 && y > 1.43 && y < 1.513 && z > 0.02) { P[i*3] = 0; snapped++; } }
-  geo.userData.chinSnapped = snapped;
   const key = new Map(), wid = new Int32Array(n);
   for (let i = 0; i < n; i++) { const k = Math.round(P[i*3]*1e5) + ',' + Math.round(P[i*3+1]*1e5) + ',' + Math.round(P[i*3+2]*1e5); let w = key.get(k); if (w === undefined) { w = key.size; key.set(k, w); } wid[i] = w; }
   const W = key.size, pos = new Float32Array(W * 3), nb = Array.from({ length: W }, () => new Set());
@@ -310,7 +311,6 @@ function geo_smoothCreases(geo, eye) {
     let mx = 0, my = 0, mz = 0; for (const v of nb[w]) { mx += N[v*3]; my += N[v*3+1]; mz += N[v*3+2]; }
     const l = Math.hypot(mx, my, mz) || 1;
     if ((N[w*3]*mx + N[w*3+1]*my + N[w*3+2]*mz) / l < 0.87) { mark[w] = 1; found++; }
-    else if (ax < 0.005 && y > 1.47 && y < 1.512 && z > 0.06) { mark[w] = 1; found++; }   // midline chin seam of the fit
   }
   const zone = new Uint8Array(W);
   for (let w = 0; w < W; w++) if (mark[w]) { zone[w] = 1; for (const v of nb[w]) zone[v] = 1; }

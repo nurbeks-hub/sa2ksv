@@ -1,0 +1,501 @@
+{
+ "id": "tongue",
+ "title": {
+  "kk": "Тіл",
+  "ru": "Язык",
+  "en": "The tongue"
+ },
+ "subtitle": {
+  "kk": "Бұлшықеттер, дәм, сөйлеу және жұтыну",
+  "ru": "Мышцы, вкус, речь и глотание",
+  "en": "Muscles, taste, speech and swallowing"
+ },
+ "trigger": [
+  "tongue",
+  "genioglossus-muscle",
+  "hyoglossus-muscle",
+  "hypoglossal-nerve-xii",
+  "lingual-nerve"
+ ],
+ "parts": [
+  "tongue",
+  "genioglossus-muscle",
+  "hyoglossus-muscle",
+  "mylohyoid-muscle",
+  "geniohyoid-muscle",
+  "hyoid-bone",
+  "soft-palate",
+  "uvula-of-palate",
+  "nasopharynx",
+  "oropharynx",
+  "laryngopharynx",
+  "epiglottis",
+  "superior-pharyngeal-constrictor",
+  "middle-pharyngeal-constrictor",
+  "inferior-pharyngeal-constrictor",
+  "medulla-oblongata",
+  "nucleus-of-hypoglossal-nerve",
+  "hypoglossal-nerve-xii",
+  "vagus-nerve-x",
+  "lingual-nerve",
+  "posterior-division-of-mandibular-nerve",
+  "trigeminal-nerve-v",
+  "chorda-tympani",
+  "facial-nerve-vii",
+  "glossopharyngeal-nerve-ix"
+ ],
+ "explode": {
+  "tongue": [
+   0,
+   0.012,
+   0.006
+  ],
+  "genioglossus-muscle": [
+   0,
+   0.002,
+   0.01
+  ],
+  "hyoglossus-muscle": [
+   0,
+   -0.002,
+   -0.006
+  ],
+  "mylohyoid-muscle": [
+   0,
+   -0.012,
+   0.003
+  ],
+  "geniohyoid-muscle": [
+   0,
+   -0.018,
+   0.005
+  ],
+  "hyoid-bone": [
+   0,
+   -0.022,
+   -0.004
+  ],
+  "soft-palate": [
+   0,
+   0.012,
+   -0.004
+  ],
+  "uvula-of-palate": [
+   0,
+   0.01,
+   -0.006
+  ]
+ },
+ "chapters": [
+  {
+   "title": {
+    "kk": "Сүйегі жоқ бұлшықетті мүше",
+    "ru": "Мышечный орган без костей",
+    "en": "A muscular organ without bone"
+   },
+   "text": {
+    "en": [
+     "The tongue is a muscular organ resting on the floor of the mouth, anchored to the mandible, the styloid processes of the temporal bones and the hyoid bone. A V-shaped groove, the sulcus terminalis, divides it into a front two-thirds and a back third that differ in structure and development. There is no bone inside: the tongue is regarded as a muscular hydrostat, whose contracting fibres both move it and act as its skeleton, changing its shape while its volume stays the same.",
+     "Both halves of the tongue have the same set of muscles. The intrinsic muscles lie wholly inside it: the superior and inferior longitudinal, the transverse and the vertical muscles. They do not shift the tongue as a whole; they change its size and shape, curling or flattening it, and help to stick it out.",
+     "The extrinsic muscles start outside the tongue and move it as a whole. The genioglossus, from the mandible, protrudes it; the hyoglossus, from the hyoid bone, pulls it down; the styloglossus pulls it up and back; the palatoglossus, from the soft palate, raises its back part. Beneath them, the mylohyoid lifts the hyoid and helps press the tongue to the roof of the mouth, and the hyoid serves as a solid foundation on which the tongue moves."
+    ],
+    "ru": [
+     "Язык — мышечный орган, лежащий на дне полости рта. Он закреплён на нижней челюсти, шиловидных отростках височных костей и подъязычной кости. V-образная пограничная борозда делит его на переднюю две трети и заднюю треть, которые различаются по строению и развитию. Костей внутри нет: язык считают мышечным гидростатом — его сокращающиеся волокна и двигают его, и служат ему скелетом, меняя форму при неизменном объёме.",
+     "Обе половины языка имеют одинаковый набор мышц. Собственные (внутренние) мышцы целиком лежат внутри языка: верхняя и нижняя продольные, поперечная и вертикальная. Они не перемещают язык целиком, а меняют его размер и форму — сворачивают или уплощают — и помогают высунуть его.",
+     "Наружные мышцы начинаются вне языка и перемещают его целиком. Подбородочно-язычная мышца, идущая от нижней челюсти, выдвигает язык вперёд; подъязычно-язычная, от подъязычной кости, тянет его вниз; шилоязычная — вверх и назад; нёбно-язычная, от мягкого нёба, поднимает его заднюю часть. Под ними челюстно-подъязычная мышца поднимает подъязычную кость и помогает прижать язык к нёбу, а подъязычная кость служит прочной опорой, на которой движется язык."
+    ],
+    "kk": [
+     "Тіл — ауыз қуысының түбінде жатқан бұлшықетті мүше. Ол төменгі жақ сүйегіне, самай сүйектерінің біз тәрізді өсінділеріне және тіласты сүйегіне бекиді. V пішінді шекаралық жүлге оны алдыңғы үштен екі бөлікке және артқы үштен бір бөлікке бөледі; бұл екі бөліктің құрылысы мен дамуы әртүрлі. Ішінде сүйек жоқ: тілді бұлшықетті гидростат деп есептейді — оның жиырылатын талшықтары әрі қозғайды, әрі қаңқа қызметін атқарып, көлемін өзгертпей пішінін өзгертеді.",
+     "Тілдің екі жартысындағы бұлшықеттер жиынтығы бірдей. Ішкі (меншікті) бұлшықеттер толығымен тілдің ішінде жатады: жоғарғы және төменгі бойлық, көлденең және тік бұлшықеттер. Олар тілді тұтас жылжытпайды, бірақ оның көлемі мен пішінін өзгертеді — бүктейді немесе жалпайтады — әрі тілді сыртқа шығаруға көмектеседі.",
+     "Сыртқы бұлшықеттер тілден тыс басталып, оны тұтастай қозғайды. Төменгі жақ сүйегінен басталатын иек-тіл бұлшықеті тілді алға шығарады; тіласты сүйегінен басталатын тіласты-тіл бұлшықеті оны төмен тартады; біз-тіл бұлшықеті жоғары және артқа тартады; жұмсақ таңдайдан басталатын таңдай-тіл бұлшықеті тілдің артқы бөлігін көтереді. Олардың астында жақ-тіласты бұлшықеті тіласты сүйегін көтеріп, тілді таңдайға басуға көмектеседі, ал тіласты сүйегі тіл қозғалатын берік тірек қызметін атқарады."
+    ]
+   },
+   "highlight": [
+    "tongue",
+    "genioglossus-muscle",
+    "hyoglossus-muscle",
+    "mylohyoid-muscle",
+    "geniohyoid-muscle",
+    "hyoid-bone"
+   ],
+   "explode": 0.6,
+   "camera": {
+    "yaw": 1.0,
+    "pitch": 0.2,
+    "zoom": 1.2
+   },
+   "section": null,
+   "anim": {
+    "type": "oscillate",
+    "ids": [
+     "tongue"
+    ],
+    "axis": [
+     0,
+     0,
+     1
+    ],
+    "amp": 0.003
+   },
+   "facts": [
+    {
+     "kk": "Тілді жиі денедегі ең күшті бұлшықет деп атайды, бірақ әртүрлі бұлшықеттердің салыстырмалы күшін өлшеу қиын. Даусыз нәрсе — оның жұмысының көптігі: тамақ қабылдау, шайнау, дәм сезу, жұтыну және дауыс шығару.",
+     "ru": "Язык часто называют самой сильной мышцей тела, но относительную силу разных мышц трудно измерить. Бесспорно другое — объём его работы: приём пищи, жевание, вкус, глотание и голос.",
+     "en": "The tongue is often called the body's strongest muscle, but the relative strength of different muscles is hard to quantify. What is beyond dispute is its workload: eating, chewing, taste, swallowing and voice.",
+     "src": {
+      "title": "Betts JG, Young KA, Wise JA, et al. (2022). Anatomy and Physiology 2e, 23.3 The Mouth, Pharynx, and Esophagus. OpenStax (Rice University)",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-3-the-mouth-pharynx-and-esophagus"
+     }
+    },
+    {
+     "kk": "Тілдің бұл бұлшықеті жұтқыншақты ашық ұстауға көмектеседі. Ояу кезде обструктивті ұйқы апноэсі бар адамдарда ол ең жоғары белсенділігінің шамамен 41%-ымен, сау адамдарда 13%-ымен жұмыс істеген; ұйқыда бұл өтем әлсіреуі мүмкін.",
+     "ru": "Эта мышца языка помогает держать глотку открытой. Во время бодрствования у людей с обструктивным апноэ сна она работала примерно на 41% от максимума против 13% у здоровых; во сне этот резерв может теряться.",
+     "en": "This tongue muscle helps keep the throat open. Awake, people with obstructive sleep apnoea used about 41% of its maximum activity versus 13% in controls; this compensation may fade in sleep.",
+     "src": {
+      "title": "Mezzanotte WS, Tangel DJ, White DP (1992). Waking genioglossal electromyogram in sleep apnea patients versus normal controls (a neuromuscular compensatory mechanism). J Clin Invest",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/1569196/"
+     }
+    },
+    {
+     "kk": "Жалпы наркоз кезінде тіл босаңсып, тыныс жолдарын ішінара немесе толық бітеп тастауы мүмкін, сондықтан кеңірдекке тыныс түтігі енгізіледі.",
+     "ru": "Под общим наркозом язык может расслабиться и частично или полностью перекрыть дыхательные пути, поэтому в трахею вводят дыхательную трубку.",
+     "en": "Under general anaesthesia the tongue can relax and partly or fully block the airway, which is why a breathing tube is placed in the trachea.",
+     "src": {
+      "title": "Betts JG, Young KA, Wise JA, et al. (2022). Anatomy and Physiology 2e, 11.3 Axial Muscles of the Head, Neck, and Back. OpenStax (Rice University)",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/11-3-axial-muscles-of-the-head-neck-and-back"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Бүртіктер және «дәм картасы» туралы аңыз",
+    "ru": "Сосочки и миф о «карте вкусов»",
+    "en": "Papillae and the taste-map myth"
+   },
+   "text": {
+    "en": [
+     "The top and sides of the tongue are studded with papillae, small raised bumps of the mucous membrane, and there are four types of them. The slender filiform papillae carry touch receptors and make the surface rough, which helps move food around the mouth. Taste buds lie in the other three types, including the mushroom-shaped fungiform papillae, but not in the filiform ones.",
+     "Taste cells respond to five basic tastes: sweet, salty, sour, bitter and umami (Japanese for 'delicious taste'), which is triggered by the amino acid L-glutamate. For decades textbooks showed a 'tongue map' with sweet at the tip and bitter at the back. It has long been discredited: it grew out of Edwin Boring's 1942 replotting of David Hänig's 1901 threshold data, and other authors took the low points of Boring's curves to mean no sensation at all.",
+     "In fact, taste buds from all regions of the mouth contain cells that respond to all five basic tastes, and the receptors for the different qualities are distributed similarly across the tongue. Sensitivity does vary from place to place, but the differences are small."
+    ],
+    "ru": [
+     "Верх и бока языка усеяны сосочками — небольшими возвышениями слизистой оболочки; всего их четыре типа. Тонкие нитевидные сосочки несут осязательные рецепторы и делают поверхность шероховатой, что помогает перемещать пищу во рту. Вкусовые почки находятся в трёх других типах, в том числе в грибовидных сосочках, но не в нитевидных.",
+     "Вкусовые клетки различают пять основных вкусов: сладкий, солёный, кислый, горький и умами (по-японски «вкусный вкус»), который вызывает аминокислота L-глутамат. Десятилетиями учебники рисовали «карту языка»: сладкое — кончиком, горькое — корнем. Она давно опровергнута: карта выросла из графика, который Эдвин Боринг в 1942 году перерисовал по данным Давида Хэнига 1901 года, а другие авторы приняли низшие точки кривых Боринга за полное отсутствие ощущения.",
+     "На самом деле вкусовые почки из всех участков полости рта содержат клетки, реагирующие на все пять основных вкусов, а рецепторы разных вкусов распределены по языку сходным образом. Чувствительность от места к месту действительно различается, но незначительно."
+    ],
+    "kk": [
+     "Тілдің үсті мен бүйірлері бүртіктермен — шырышты қабықтың кішкентай төмпешіктерімен жабылған; олардың төрт түрі бар. Жіңішке жіп тәрізді бүртіктерде сипап сезу рецепторлары орналасқан, олар тіл бетін кедір-бұдыр етіп, ауыздағы асты жылжытуға көмектеседі. Дәм бүршіктері қалған үш түрде, соның ішінде саңырауқұлақ тәрізді бүртіктерде болады, ал жіп тәрізді бүртіктерде болмайды.",
+     "Дәм жасушалары бес негізгі дәмді ажыратады: тәтті, тұзды, қышқыл, ащы және умами (жапонша «дәмді дәм»); умамиді L-глутамат амин қышқылы тудырады. Ондаған жыл бойы оқулықтар «тіл картасын» салып келді: тәттіні ұшымен, ащыны түбімен сезеді деп. Бұл карта әлдеқашан теріске шығарылған: ол Эдвин Борингтің 1942 жылы Давид Хэнигтің 1901 жылғы деректері бойынша қайта салған графигінен шыққан, ал басқа авторлар Боринг қисықтарының ең төменгі нүктелерін сезімнің мүлдем жоқтығы деп түсінген.",
+     "Шын мәнінде ауыз қуысының барлық аймағындағы дәм бүршіктерінде бес негізгі дәмнің бәріне жауап беретін жасушалар бар, ал әр дәмнің рецепторлары тіл бетінде ұқсас таралған. Сезімталдық әр жерде әртүрлі болғанымен, айырмашылық аз."
+    ]
+   },
+   "highlight": [
+    "tongue"
+   ],
+   "explode": 0,
+   "camera": {
+    "yaw": 0.0,
+    "pitch": 0.9,
+    "zoom": 1.6
+   },
+   "section": null,
+   "anim": null,
+   "facts": [
+    {
+     "kk": "Ұзақ уақыт тек төрт дәм мойындалып келді; умами бесінші дәм ретінде 1980 жылдардың ортасында мойындалды, ал соңғы зерттеулер алтыншы дәм — майдың дәмі де болуы мүмкін екенін көрсетеді.",
+     "ru": "Долгое время признавали только четыре вкуса; умами признали пятым в середине 1980-х годов, а новейшие исследования допускают и шестой вкус — вкус жиров.",
+     "en": "For a long time only four tastes were recognised; umami was accepted as the fifth in the mid-1980s, and recent research suggests there may also be a sixth taste, for fats.",
+     "src": {
+      "title": "Betts JG, Young KA, Wise JA, et al. (2022). Anatomy and Physiology 2e, 14.1 Sensory Perception. OpenStax (Rice University)",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-1-sensory-perception"
+     }
+    },
+    {
+     "kk": "Хэниг өз графигінде тұзды дәмді тіпті көрсетпеген: ол тілдің өзі тексерген барлық нүктесінде шамамен бірдей сезілген.",
+     "ru": "Солёный вкус Хэниг на своём графике даже не показал: он ощущался примерно одинаково во всех проверенных точках языка.",
+     "en": "Hänig did not even plot saltiness on his chart: it was perceived about equally at every tongue site he tested.",
+     "src": {
+      "title": "Spence C (2022). The tongue map and the spatial modulation of taste perception. Current Research in Food Science",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8956797/"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Тіл және сөйлеу",
+    "ru": "Язык и речь",
+    "en": "Shaping speech"
+   },
+   "text": {
+    "en": [
+     "The tongue is one of the organs most central to human speech. Because it is so movable, it makes complex speech sounds possible. As a muscular hydrostat it keeps a constant volume, so squeezing it in one direction makes it expand in another, and it can take precise shapes inside the mouth.",
+     "For the vowels [i] and [u] the tongue rises close to the hard palate: at the front of the mouth for [i], at the back for [u]. The same flexibility makes possible consonants such as [k] and [g]. For [t] the tip of the tongue touches the front teeth while its sides press against the alveolar ridge.",
+     "Speech also demands speed. Moving the tongue body and root from one full vowel to the next is thought to be limited to roughly 100 milliseconds in humans, and reduced vowels in running speech may be produced faster still."
+    ],
+    "ru": [
+     "Язык — один из главных органов человеческой речи. Благодаря своей подвижности он делает возможными сложные звуки речи. Как мышечный гидростат он сохраняет постоянный объём, поэтому сжатие в одном направлении вызывает расширение в другом, и язык может принимать во рту точные формы.",
+     "Для гласных [i] и [u] язык поднимается близко к твёрдому нёбу: в передней части рта для [i], в задней — для [u]. Та же гибкость делает возможными согласные [k] и [g]. При [t] кончик языка касается передних зубов, а его боковые края прижимаются к альвеолам.",
+     "Речь требует и скорости. Перестройка тела и корня языка от одного полного гласного к другому у человека, по оценкам, ограничена примерно 100 миллисекундами, а редуцированные гласные в беглой речи могут произноситься ещё быстрее."
+    ],
+    "kk": [
+     "Тіл — адам сөйлеуіндегі ең басты мүшелердің бірі. Қозғалғыштығының арқасында ол күрделі сөйлеу дыбыстарын жасауға мүмкіндік береді. Бұлшықетті гидростат ретінде оның көлемі тұрақты, сондықтан бір бағытта қысылса, басқа бағытта кеңейеді де, ауыз ішінде нақты пішінге келе алады.",
+     "[i] және [u] дауысты дыбыстарын айтқанда тіл қатты таңдайға жақын көтеріледі: [i] үшін ауыздың алдыңғы бөлігінде, [u] үшін артқы бөлігінде. Дәл осы иілгіштік [k] және [g] сияқты дауыссыз дыбыстарды да мүмкін етеді. [t] дыбысында тілдің ұшы алдыңғы тістерге тиеді, ал бүйір жиектері альвеолаларға тіреледі.",
+     "Сөйлеу жылдамдықты да талап етеді. Тіл денесі мен түбінің бір толық дауыстыдан екіншісіне ауысуы адамда шамамен 100 миллисекундпен шектеледі деп есептеледі, ал еркін сөйлеудегі редукцияланған дауыстылар одан да жылдам айтылуы мүмкін."
+    ]
+   },
+   "highlight": [
+    "tongue",
+    "soft-palate"
+   ],
+   "explode": 0,
+   "camera": {
+    "yaw": 1.57,
+    "pitch": 0.05,
+    "zoom": 1.3
+   },
+   "section": "sagittal",
+   "anim": {
+    "type": "oscillate",
+    "ids": [
+     "tongue"
+    ],
+    "axis": [
+     0,
+     1,
+     0
+    ],
+    "amp": 0.002
+   },
+   "facts": [
+    {
+     "kk": "Шимпанзенің тілі негізінен алға шығып, кейін тартылады, ал көптеген сөйлеу дыбыстарына қажет ауыз ішіндегі пішін өзгерістері оған тән емес сияқты.",
+     "ru": "Язык шимпанзе, по-видимому, двигается в основном вперёд и назад — высовывается и втягивается, — а не меняет форму внутри рта, как того требуют многие звуки речи.",
+     "en": "The chimpanzee tongue appears to move mainly by sticking out and pulling back, rather than by the shape changes inside the mouth that many speech sounds require.",
+     "src": {
+      "title": "Ekström AG, Edlund J (2023). Evolution of the human tongue and emergence of speech biomechanics. Frontiers in Psychology",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10266234/"
+     }
+    },
+    {
+     "kk": "Сөйлеуді зерттеуде адам сөйлеп тұрғанда тілдің қозғалысын көру үшін ультрадыбыстық бейнелеу кеңінен қолданылады.",
+     "ru": "В исследованиях речи широко применяют ультразвук, чтобы видеть движения языка во время говорения.",
+     "en": "Ultrasound imaging is widely used in speech research to watch the tongue move while a person speaks.",
+     "src": {
+      "title": "Yang Y, Su R, Zhao S, et al. (2025). An Audio-Ultrasound Synchronized Database of Tongue Movement for Mandarin speech. Scientific Data",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11992241/"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Жұтынудың үш кезеңі",
+    "ru": "Глотание в три фазы",
+    "en": "Swallowing in three phases"
+   },
+   "text": {
+    "en": [
+     "Swallowing, or deglutition, has three phases. The first, oral phase is voluntary: once chewing is done, the tongue moves upward and backward against the palate and pushes the bolus, the rounded mass of food it has gathered, into the oropharynx.",
+     "Then reflexes take over. Receptors in the oropharynx signal the swallowing centre in the medulla oblongata. The soft palate and uvula rise to close off the nasopharynx, the larynx is pulled up and the epiglottis folds down over its entrance, and breathing stops for a moment. The pharyngeal constrictors drive the bolus down, and the upper oesophageal sphincter relaxes to let it in.",
+     "In the third, oesophageal phase, waves of peristalsis carry the bolus to the stomach. Both involuntary phases are controlled from the medulla oblongata. The whole journey from mouth to stomach takes about 4–8 seconds for solid food and about 1 second for very soft food and liquids."
+    ],
+    "ru": [
+     "Глотание состоит из трёх фаз. Первая, ротовая, произвольна: когда жевание закончено, язык движется вверх и назад, прижимаясь к нёбу, и проталкивает собранный им пищевой комок в ротовую часть глотки.",
+     "Дальше управление берут рефлексы. Рецепторы ротовой части глотки посылают сигнал в центр глотания в продолговатом мозге. Мягкое нёбо и язычок поднимаются и закрывают носовую часть глотки, гортань подтягивается вверх, надгортанник опускается и прикрывает вход в неё, а дыхание на мгновение останавливается. Констрикторы глотки проталкивают комок вниз, и верхний пищеводный сфинктер расслабляется, впуская его.",
+     "В третьей, пищеводной фазе волны перистальтики несут комок к желудку. Обеими непроизвольными фазами управляет продолговатый мозг. Весь путь от рта до желудка занимает около 4–8 секунд для твёрдой пищи и около 1 секунды для очень мягкой пищи и жидкостей."
+    ],
+    "kk": [
+     "Жұтыну үш кезеңнен тұрады. Бірінші, ауыздық кезең еркімізге бағынады: шайнау аяқталған соң тіл таңдайға қарай жоғары және артқа қозғалып, өзі жинаған ас кесегін ауызжұтқыншаққа итереді.",
+     "Одан әрі рефлекстер іске қосылады. Ауызжұтқыншақтағы рецепторлар сопақша мидағы жұтыну орталығына белгі жібереді. Жұмсақ таңдай мен таңдай тілшігі көтеріліп, мұрынжұтқыншақты жабады, көмей жоғары тартылып, көмей қақпашығы төмен түседі де, оның кіреберісін жабады, ал тыныс бір сәтке тоқтайды. Жұтқыншақ қысқыштары ас кесегін төмен итереді, өңештің жоғарғы қысқышы босаңсып, оны ішке өткізеді.",
+     "Үшінші, өңештік кезеңде перистальтика толқындары ас кесегін асқазанға жеткізеді. Еріксіз екі кезеңді де сопақша ми басқарады. Ауыздан асқазанға дейінгі бүкіл жол қатты ас үшін шамамен 4–8 секунд, өте жұмсақ ас пен сұйықтық үшін шамамен 1 секунд алады."
+    ]
+   },
+   "highlight": [
+    "tongue",
+    "soft-palate",
+    "uvula-of-palate",
+    "oropharynx",
+    "nasopharynx",
+    "epiglottis",
+    "laryngopharynx",
+    "superior-pharyngeal-constrictor",
+    "middle-pharyngeal-constrictor",
+    "inferior-pharyngeal-constrictor",
+    "medulla-oblongata"
+   ],
+   "explode": 0,
+   "camera": {
+    "yaw": 1.57,
+    "pitch": 0.05,
+    "zoom": 0.9
+   },
+   "section": "sagittal",
+   "anim": {
+    "type": "pulse-path",
+    "ids": [
+     "tongue",
+     "oropharynx",
+     "laryngopharynx"
+    ]
+   },
+   "facts": [
+    {
+     "kk": "Таңдай тілшігін кейде рудимент мүше деп атайды, бірақ оның өз қызметі бар: жұтынғанда ол жұмсақ таңдаймен бірге көтеріліп, ас пен сұйықтықтың мұрын қуысына түспеуіне көмектеседі.",
+     "ru": "Нёбный язычок иногда называют рудиментарным органом, но у него есть работа: при глотании он поднимается вместе с мягким нёбом и помогает не пустить пищу и жидкость в полость носа.",
+     "en": "The uvula is sometimes called a vestigial organ, but it has a job: during swallowing it rises with the soft palate to help keep food and liquid out of the nasal cavity.",
+     "src": {
+      "title": "Betts JG, Young KA, Wise JA, et al. (2022). Anatomy and Physiology 2e, 23.3 The Mouth, Pharynx, and Esophagus. OpenStax (Rice University)",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-3-the-mouth-pharynx-and-esophagus"
+     }
+    },
+    {
+     "kk": "Ас «басқа жолға», яғни кеңірдекке түскенде жөтел пайда болады, ол әдетте асты қайтадан жұтқыншаққа итеріп шығарады.",
+     "ru": "Когда пища «попадает не в то горло», то есть в трахею, срабатывает кашель, который обычно выталкивает её обратно в глотку.",
+     "en": "When food 'goes down the wrong way' into the trachea, the reflex response is to cough, which usually forces it back up into the pharynx.",
+     "src": {
+      "title": "Betts JG, Young KA, Wise JA, et al. (2022). Anatomy and Physiology 2e, 23.3 The Mouth, Pharynx, and Esophagus. OpenStax (Rice University)",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-3-the-mouth-pharynx-and-esophagus"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Қозғалыс бұйрығы: тіласты нерві",
+    "ru": "Двигательный приказ: подъязычный нерв",
+    "en": "Motor command: the hypoglossal nerve"
+   },
+   "text": {
+    "en": [
+     "The tongue's motor nerve starts in the medulla oblongata. The hypoglossal nerve (XII) arises from the hypoglossal nucleus there and is a purely motor nerve. It supplies all the intrinsic and extrinsic muscles of the tongue except one, the palatoglossus, which is supplied by the pharyngeal plexus of the vagus nerve (X).",
+     "To push the tongue straight out, the genioglossus muscles of both sides must work in balance, because each one protrudes the tongue and deviates it to the opposite side. When one hypoglossal nerve or its nucleus is damaged, the protruded tongue deviates toward the injured side."
+    ],
+    "ru": [
+     "Двигательный нерв языка берёт начало в продолговатом мозге. Подъязычный нерв (XII пара) выходит из расположенного там ядра подъязычного нерва и является чисто двигательным. Он иннервирует все собственные и наружные мышцы языка, кроме одной — нёбно-язычной, которую иннервирует глоточное сплетение блуждающего нерва (X пара).",
+     "Чтобы высунуть язык прямо, подбородочно-язычные мышцы обеих сторон должны работать согласованно, ведь каждая выдвигает язык и отклоняет его в противоположную сторону. Если повреждён один подъязычный нерв или его ядро, высунутый язык отклоняется в сторону поражения."
+    ],
+    "kk": [
+     "Тілдің қозғалтқыш нерві сопақша мидан басталады. Тіласты нерві (XII жұп) сонда орналасқан тіласты нервінің ядросынан шығады және тек қозғалтқыш нерв болып табылады. Ол тілдің барлық ішкі және сыртқы бұлшықеттерін нервтендіреді, біреуінен басқа: таңдай-тіл бұлшықетін кезбе нервтің (X жұп) жұтқыншақ өрімі нервтендіреді.",
+     "Тілді тура шығару үшін екі жақтың иек-тіл бұлшықеттері теңдей жұмыс істеуі керек, өйткені әрқайсысы тілді алға шығарып, қарсы жаққа қарай ауытқытады. Бір жақтың тіласты нерві немесе оның ядросы зақымданса, шығарылған тіл зақымдалған жаққа қарай ауады."
+    ]
+   },
+   "highlight": [
+    "nucleus-of-hypoglossal-nerve",
+    "medulla-oblongata",
+    "hypoglossal-nerve-xii",
+    "genioglossus-muscle",
+    "hyoglossus-muscle",
+    "tongue",
+    "vagus-nerve-x"
+   ],
+   "explode": 0,
+   "camera": {
+    "yaw": 1.2,
+    "pitch": 0.15,
+    "zoom": 0.9
+   },
+   "section": null,
+   "anim": {
+    "type": "pulse-path",
+    "ids": [
+     "nucleus-of-hypoglossal-nerve",
+     "hypoglossal-nerve-xii",
+     "genioglossus-muscle",
+     "tongue"
+    ]
+   },
+   "facts": [
+    {
+     "kk": "Бассүйек нервтерінің он екі жұбының тек бесеуі ғана таза қозғалтқыш нерв, тіласты нерві — солардың бірі.",
+     "ru": "Из двенадцати пар черепных нервов только пять чисто двигательные, и подъязычный — один из них.",
+     "en": "Of the twelve pairs of cranial nerves, only five are purely motor, and the hypoglossal is one of them.",
+     "src": {
+      "title": "Betts JG, Young KA, Wise JA, et al. (2022). Anatomy and Physiology 2e, 13.4 The Peripheral Nervous System. OpenStax (Rice University)",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/13-4-the-peripheral-nervous-system"
+     }
+    },
+    {
+     "kk": "Тіласты нервіне жалғанған стимулятор — обструктивті ұйқы апноэсін емдеудің хирургиялық тәсілі: ол иек-тіл бұлшықетін жиырылтып, жоғарғы тыныс жолдарының жабысып қалуына жол бермейді.",
+     "ru": "Стимулятор, подключённый к подъязычному нерву, — хирургический способ лечения обструктивного апноэ сна: он заставляет подбородочно-язычную мышцу сокращаться и не даёт верхним дыхательным путям спадаться.",
+     "en": "A stimulator attached to the hypoglossal nerve is a surgical option for obstructive sleep apnoea: it makes the genioglossus contract and keeps the upper airway from collapsing.",
+     "src": {
+      "title": "Sufyan AS, Aboubakr S (2023). Hypoglossal Stimulation Device. StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing (abstract)",
+      "url": "https://europepmc.org/article/MED/37603655"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Сезім мен дәмді кім жеткізеді",
+    "ru": "Кто передаёт ощущения и вкус",
+    "en": "Who carries sensation and taste"
+   },
+   "text": {
+    "en": [
+     "General sensation and taste travel in different nerves. From the front two-thirds of the tongue, general sensation is carried by the lingual nerve, which branches from the mandibular division of the trigeminal nerve (V). It serves mainly the sides of the tongue; the central region receives few lingual nerve branches.",
+     "Taste from the same front two-thirds is carried by the chorda tympani, a branch of the facial nerve (VII) that joins the lingual nerve. That is why an injured lingual nerve can disturb both sensation and taste in the front of the tongue.",
+     "The back third of the tongue is served by the glossopharyngeal nerve (IX), which carries taste as well as touch and temperature from there. Taste buds at the very back, bordering the pharynx, connect to the vagus nerve (X), which is involved in the gag reflex."
+    ],
+    "ru": [
+     "Общая чувствительность и вкус идут по разным нервам. От передних двух третей языка общую чувствительность проводит язычный нерв — ветвь нижнечелюстного отдела тройничного нерва (V пара). Он обслуживает главным образом боковые участки языка, а в центральную зону отходит мало его ветвей.",
+     "Вкус от тех же передних двух третей несёт барабанная струна — ветвь лицевого нерва (VII пара), которая присоединяется к язычному нерву. Поэтому повреждение язычного нерва может нарушить в передней части языка и чувствительность, и вкус.",
+     "Задняя треть языка принадлежит языкоглоточному нерву (IX пара), который несёт оттуда и вкус, и осязание, и температуру. Вкусовые почки в самой глубине, на границе с глоткой, связаны с блуждающим нервом (X пара), участвующим в рвотном рефлексе."
+    ],
+    "kk": [
+     "Жалпы сезім мен дәм әртүрлі нервтер арқылы өтеді. Тілдің алдыңғы үштен екі бөлігінен жалпы сезімді тіл нерві өткізеді; ол үшкіл нервтің (V жұп) төменгі жақ тармағынан таралады. Бұл нерв негізінен тілдің бүйір бөліктерін қамтиды, ал орталық аймаққа оның тармақтары аз барады.",
+     "Сол алдыңғы үштен екі бөліктен дәм сезімін дабыл ішегі өткізеді; бұл — бет нервінің (VII жұп) тіл нервіне қосылатын тармағы. Сондықтан тіл нерві зақымданса, тілдің алдыңғы бөлігінде жалпы сезім де, дәм де бұзылуы мүмкін.",
+     "Тілдің артқы үштен бір бөлігін тіл-жұтқыншақ нерві (IX жұп) қамтиды: ол сол жерден дәмді де, сипап сезу мен температура сезімін де өткізеді. Ең түпкі, жұтқыншаққа шектесетін дәм бүршіктері кезбе нервпен (X жұп) байланысқан, ол құсу рефлексіне қатысады."
+    ]
+   },
+   "highlight": [
+    "tongue",
+    "lingual-nerve",
+    "posterior-division-of-mandibular-nerve",
+    "trigeminal-nerve-v",
+    "chorda-tympani",
+    "facial-nerve-vii",
+    "glossopharyngeal-nerve-ix",
+    "vagus-nerve-x"
+   ],
+   "explode": 0,
+   "camera": {
+    "yaw": 1.3,
+    "pitch": 0.15,
+    "zoom": 0.85
+   },
+   "section": null,
+   "anim": {
+    "type": "pulse-path",
+    "ids": [
+     "tongue",
+     "lingual-nerve",
+     "chorda-tympani",
+     "facial-nerve-vii"
+    ]
+   },
+   "facts": [
+    {
+     "kk": "Дабыл ішегін уақытша сезімсіздендіргенде еріктілердің шамамен 40%-ы ауызда ештеңе болмаса да «елес» дәмді сезген.",
+     "ru": "При обезболивании барабанной струны около 40% добровольцев ощущали «фантомный» вкус, хотя во рту ничего не было.",
+     "en": "When the chorda tympani was anaesthetised, about 40% of volunteers sensed 'phantom' tastes with nothing in the mouth.",
+     "src": {
+      "title": "Yanagisawa K, Bartoshuk LM, Catalanotto FA, Karrer TA, Kveton JF (1998). Anesthesia of the chorda tympani nerve and taste phantoms. Physiol Behav",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9469723/"
+     }
+    },
+    {
+     "kk": "Дабыл ішегі ортаңғы құлақ арқылы өтетіндіктен, құлаққа жасалатын отада зақымдалуы мүмкін; содан кейін науқастардың кемінде 15–22%-ы дәм сезудің өзгергенін не ауыздың құрғағанын байқайды.",
+     "ru": "Барабанная струна проходит через среднее ухо, поэтому может пострадать при операциях на ухе; не менее 15–22% пациентов затем замечают изменение вкуса или сухость во рту.",
+     "en": "Because the chorda tympani crosses the middle ear, ear surgery can injure it; at least 15–22% of patients then notice altered taste or a dry mouth.",
+     "src": {
+      "title": "McManus LJ, Stringer MD, Dawes PJ (2012). Iatrogenic injury of the chorda tympani: a systematic review. J Laryngol Otol",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21867582/"
+     }
+    }
+   ]
+  }
+ ]
+}

@@ -12,6 +12,7 @@ import { loadSexField } from './core/sexfield.js';
 import { loadContent } from './data/content.js';
 import { UI, LANGS, initialLang, storeLang } from './ui/i18n.js';
 import { Sound } from './audio/sound.js';
+import { createDive } from './core/dive.js';
 
 const Q = new URLSearchParams(location.search);
 const $ = (s) => document.querySelector(s);
@@ -68,6 +69,7 @@ pivot.position.copy(NECK); rig.position.copy(NECK).multiplyScalar(-1);
 pivot.add(rig); world.add(pivot); scene.add(world);
 const section = createSection({ rig, scene });
 
+let dive = null;             // organ deep-dive controller (core/dive.js)
 let hairMod = null;          // optional strand hair (see __head.attachHair)
 let M = null;                // model {nodes, merged, standalone, stateArr, stateTex}
 let content = null;
@@ -92,7 +94,8 @@ function setupScene() {
     ghost.visible = false; ghost.renderOrder = 40;
     parent.add(ghost);
     // brainstem and the optic/olfactory tracts are revealed with the nerve layer (the skull turns to glass there)
-    const reveal = (group === G.brain && (cls === 'brainstem' || cls === 'nerve')) ? 2.5 : GROUP_REVEAL_AT[group];
+    // brainstem and optic tracts appear with the nerve layer; the tympanic membrane (sense-organ group) is under opaque skin
+    const reveal = (group === G.brain && (cls === 'brainstem' || cls === 'nerve')) ? 2.5 : cls === 'ear' ? 0.002 : GROUP_REVEAL_AT[group];
     const r = { mesh, ghost, group, cls, sids, eye, allHidden: false, reveal };
     renderables.push(r);
     return r;
@@ -161,6 +164,7 @@ const sph = (yaw, pitch) => new THREE.Vector3(Math.sin(yaw) * Math.cos(pitch), M
 function layoutShift() {
   const a = innerWidth / innerHeight;
   if (a < 0.9) return [0, 0.12];                       // portrait phone: centred, lifted above the rail
+  if (dive && dive.active && !dive.frame) { if (a < 0.9) return [0, 0.64]; return [document.body.classList.contains('dive-card') ? 0.02 : 0.22, 0.02]; }
   const panel = document.body.classList.contains('inspecting') && !tour.on ? 0.04 : 0;
   return [-(0.2 + panel) * Math.min(1, a / 1.6), -0.01];
 }
@@ -176,6 +180,7 @@ function desiredCamera() {
   if (tour.on && tour.cam) Object.assign(want, { yaw: tour.cam.yaw, pitch: tour.cam.pitch, dist: tour.cam.dist }), want.target.copy(tour.cam.target || HOME.target);
   if (S.section && sectionPose) { want.yaw = sectionPose.yaw; want.pitch = sectionPose.pitch; want.dist = sectionPose.dist; }
   if (S.inspect && inspectPose) { want.target.copy(inspectPose.target); want.yaw = inspectPose.yaw; want.pitch = inspectPose.pitch; want.dist = inspectPose.dist; }
+  if (dive) dive.cameraPose(want, camera.fov, frameDt, S.dragging);
   const a = innerWidth / innerHeight;
   if (a < 0.9) want.dist *= 1.0 + (0.9 - a) * 1.25;
   if (S.intro < 1) {
@@ -187,7 +192,9 @@ function desiredCamera() {
   want.dist *= S.zoom;
   return want;
 }
+let frameDt = 0.016;
 function updateCamera(dt) {
+  frameDt = dt;
   const w = desiredCamera();
   const k = S.intro < 1 ? 1 : 1 - Math.exp(-dt * (S.dragging ? 16 : 3.2));
   cam.target.lerp(w.target, k);
@@ -252,8 +259,10 @@ function computeTargets() {
       else if (ctx.has(rec.group) && own < 1) ghost = 1;
       else own = 1;
     }
+    const dv = dive ? dive.targetFor(rec, st) : null;
+    if (dv) { own = rec.hidden && !dv.force ? 1 : dv.own; force = dv.force; ghost = dv.ghost; }
     tGhost[i] = ghost; tOwn[i] = own; tForce[i] = force;
-    let hl = 0;
+    let hl = dv ? dv.hl : 0;
     if (hov && st === hov && !(insp && st === insp)) hl = 1;
     if (S.tourHl && S.tourHl.has(st?.id)) hl = Math.max(hl, 0.55);
     tHl[i] = hl;
@@ -290,7 +299,7 @@ function stepState(dt) {
   const insp = S.inspect ? structs.get(S.inspect) : null;
   const ctx = insp ? contextGroups() : null;
   for (const r of renderables) {
-    const forced = insp && r.sids.some(s => cur[s * 4 + 3] > 0.001);
+    const forced = (insp || (dive && dive.active)) && r.sids.some(s => cur[s * 4 + 3] > 0.001);
     let vis;
     if (forced) vis = true;
     else if (layerDis[r.group] >= 0.999 || r.allHidden) vis = false;
@@ -369,6 +378,7 @@ function sysKey(st) {
 function inspect(id, sid = -1, { fromTour = false } = {}) {
   const st = structs.get(id);
   if (!st) return false;
+  if (dive && dive.active) dive.close();
   if (!fromTour) stopTour();
   if (sid < 0 && st.sids.length > 1) {
     // bilateral structure opened from search / API: frame the side that faces the camera
@@ -573,6 +583,8 @@ function fillPanel(id) {
     ul.append(li);
   }
   if (!ul.children.length) { const li = document.createElement('li'); li.className = 'empty'; li.textContent = T.panel.noFacts; ul.append(li); }
+  const dvb = $('#btn-dive'), entry = dive && !dive.active ? dive.entryFor(id) : null;
+  dvb.hidden = !entry; if (entry) dvb.textContent = (T.dive && T.dive.explore) || 'Explore';
 }
 function localNum(str) {
   if (S.lang === 'en' || !str) return str;
@@ -697,6 +709,7 @@ function applyLang() {
   qEl.placeholder = T.search.placeholder;
   updateRail(); updateTourBtn(); fillAbout();
   if (S.inspect) fillPanel(S.inspect);
+  if (dive) dive.applyLang();
   if (S.hoverStruct) updateTip();
   if (tour.on && tour.stop >= 0) showTourCaption(tour.stop);
 }
@@ -783,6 +796,7 @@ const endPointer = (e) => {
     let sid = gpuPick(e.clientX, e.clientY);
     if (sid < 0 && downAt.hoverSid >= 0) sid = downAt.hoverSid;   // thin structures: trust what was highlighted under the finger
     const st = sid >= 0 ? sidToStruct[sid] : null;
+    if (dive && dive.active) { dive.selectPart(st ? st.id : null); downAt = null; pickDirty = true; return; }
     if (st && st.id !== S.inspect) inspect(st.id, sid);
     else if (!st && S.inspect) exitInspect();
   }
@@ -794,6 +808,7 @@ canvas.addEventListener('dblclick', () => { exitInspect(); resetView(); });
 canvas.addEventListener('wheel', (e) => {
   e.preventDefault(); stopTour();
   const d = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY;
+  if (dive && dive.active && !e.ctrlKey) { dive.setExplode(dive.explodeTarget + d * 0.0012); return; }
   if (S.section && e.shiftKey) { section.setOffset(section.state.offset - d * 0.00012 * section.state.sign); return; }
   S.zoom = clamp(S.zoom * Math.exp(d * 0.0011), 0.3, 2.2);
   if (S.intro < 1) S.intro = 1;
@@ -807,6 +822,9 @@ window.addEventListener('keydown', (e) => {
   if (tour.on && k !== 't' && k !== 'T' && k !== 'е' && k !== 'Е') stopTour();
   sound.start(); syncSoundBtn();
   if (e.target.closest && e.target.closest('button') && (k === ' ' || k === 'Enter')) return;
+  if (dive && dive.active && k === 'Escape' && $('#aboutbox').hidden && searchEl.hidden) { if (dive.sel) dive.selectPart(null); else dive.close(); return; }
+  if (dive && dive.active && !dive.frame && (k === 'ArrowRight' || k === 'ArrowLeft')) { const n = dive.D.chapter + (k === 'ArrowRight' ? 1 : -1); dive.setChapter(n); return; }
+  if (dive && dive.active && (k === 'ArrowDown' || k === 'ArrowUp' || (k >= '1' && k <= '6') || k === 's' || k === 'S' || k === 't' || k === 'T')) return;
   if (k === 'Escape') {
     if (!$('#aboutbox').hidden) $('#aboutbox').hidden = true;
     else if (!searchEl.hidden) closeSearch();
@@ -835,9 +853,11 @@ document.querySelectorAll('.lang').forEach(b => b.addEventListener('click', () =
   S.lang = next; storeLang(S.lang); applyLang(); buildSearch();
 }));
 $('#btn-search').addEventListener('click', openSearch);
-$('#panel-close').addEventListener('click', exitInspect);
-$('#prev').addEventListener('click', () => stepInspect(-1));
-$('#next').addEventListener('click', () => stepInspect(1));
+$('#panel-close').addEventListener('click', () => { if (dive && dive.sel) dive.selectPart(null); else exitInspect(); });
+$('#prev').addEventListener('click', () => { if (dive && dive.active) dive.stepPart(-1); else stepInspect(-1); });
+$('#next').addEventListener('click', () => { if (dive && dive.active) dive.stepPart(1); else stepInspect(1); });
+$('#btn-dive').addEventListener('click', () => { const e = dive && S.inspect ? dive.entryFor(S.inspect) : null; if (e) openDive(e.id); });
+async function openDive(id, chapter = 0) { if (!dive) return false; stopTour(); closeSearch(); return dive.open(id, chapter); }
 function syncSoundBtn() { const b = $('#sound'); if (sound.started) b.classList.remove('pulse'); b.classList.toggle('on', sound.started && sound.enabled); }
 $('#sound').addEventListener('click', () => { const was = sound.started; sound.start(); sound.setEnabled(was ? !sound.enabled : true); syncSoundBtn(); });
 $('#about').addEventListener('click', () => { stopTour(); fillAbout(); $('#aboutbox').hidden = false; });
@@ -933,7 +953,7 @@ function tick() {
   U.uLidShade.value = 1 - layerDis[G.skin];
   // optional strand hair module (src/fx/hair.js, attached via __head.attachHair): fades with the skin layer and sex
   if (hairMod) {
-    const vis = (1 - layerDis[G.skin]) * (S.inspect ? 0.2 : 1) * (S.off.has('skin') ? 0 : 1);   // sections clip the hair like any tissue
+    const vis = (1 - layerDis[G.skin]) * (S.inspect ? 0.2 : 1) * (S.off.has('skin') ? 0 : 1) * (dive && dive.active ? 0 : 1);   // sections clip the hair like any tissue
     hairMod.object.visible = vis > 0.01;
     try { hairMod.update?.({ skin: vis, sex: sexE, time: t, dt, camera }); } catch (e) { if (!hairMod._warned) { hairMod._warned = true; console.warn('[head] hair update', e); } }
   }
@@ -945,6 +965,7 @@ function tick() {
   U.uCordY.value = S.depth > 4.5 && !S.section ? 1.505 : -10;
 
   tickTour(dt);
+  if (dive && dive.active) { dive.step(dt, t); targetsDirty = true; }
   updateLife(dt, t);
   section.update(dt);
   stepState(dt);
@@ -984,6 +1005,7 @@ window.__head = {
       tour: tour.on, tourT: +tour.t.toFixed(1), tourStop: tour.stop, off: [...S.off], dpr: stage.dpr, fps: Math.round(perf.fps),
       panelName: S.inspect ? $('#panel .name').textContent : null,
       structures: structs.size, nodes: M ? M.nodes.length : 0,
+      dive: dive ? dive.state() : null,
       camYaw: +cam.yaw.toFixed(3), camPitch: +cam.pitch.toFixed(3), camDist: +cam.dist.toFixed(3), zoom: +S.zoom.toFixed(3), yawOff: +S.yawOff.toFixed(3),
       search: !searchEl.hidden, about: !$('#aboutbox').hidden, panelOpen: document.body.classList.contains('inspecting'),
     };
@@ -1001,6 +1023,8 @@ window.__head = {
   },
   // hair integration point: attachHair({ object: THREE.Object3D (rest/glTF coordinates), update?({skin, sex, time, dt, camera}) })
   attachHair(mod) { if (!mod || !mod.object) return false; hairMod = mod; if (mod.object.parent !== rig) rig.add(mod.object); return true; },
+  dive(id, chapter = 0) { if (!id) { dive?.close(); return Promise.resolve(true); } return openDive(id, chapter); },
+  diveIndex() { return dive ? dive.D.index : []; },
   pick(x, y) { const sid = gpuPick(x, y); return sid >= 0 ? { sid, id: sidToStruct[sid].id, node: M.nodes[sid].node } : null; },
   // a screen point where the structure is actually visible (verified by the GPU pick), or null
   projectPart(id) {
@@ -1009,13 +1033,14 @@ window.__head = {
     const cands = [];
     for (const sid of st.sids) {
       const smp = M.nodes[sid].samples;
+      const off = dive ? dive.offsetOf(sid) : null;
       for (let i = 0; i < smp.length; i += 3) {
-        v.set(smp[i], smp[i + 1], smp[i + 2]).applyMatrix4(rig.matrixWorld).project(camera);
+        v.set(smp[i], smp[i + 1], smp[i + 2]); if (off) v.add(off); v.applyMatrix4(rig.matrixWorld).project(camera);
         if (Math.abs(v.x) > 0.98 || Math.abs(v.y) > 0.98 || v.z > 1) continue;
         cands.push([(v.x * 0.5 + 0.5) * innerWidth, (-v.y * 0.5 + 0.5) * innerHeight]);
       }
       // centre of the node, nudged toward the samples
-      const c = M.nodes[sid].center.clone().applyMatrix4(rig.matrixWorld).project(camera);
+      const c = M.nodes[sid].center.clone().add(off || new THREE.Vector3()).applyMatrix4(rig.matrixWorld).project(camera);
       cands.unshift([(c.x * 0.5 + 0.5) * innerWidth, (-c.y * 0.5 + 0.5) * innerHeight]);
     }
     for (const [x, y] of cands) {
@@ -1063,6 +1088,16 @@ async function boot() {
   setupScene();
   initState();
   buildSearch();
+  dive = createDive({
+    structs, M, rig, camera, U, CENTER, section, sound,
+    lang: () => S.lang, ui: () => UI[S.lang], source: (r) => content.source(r), name: (id) => nameOf(id), fillPanel,
+    dirty: () => { targetsDirty = true; },
+    resetView,
+    setSection: (axis) => { if ((axis || null) !== S.section) setSection(axis || null); },
+    beforeEnter: () => { exitInspect(); setHover(-1); tip.classList.remove('show'); },
+    afterExit: () => { resetView(); document.body.classList.remove('dive-card'); },
+  });
+  await dive.loadIndex();
   const sf = await sexP; window.__head.timing.sexfield = sf;
   // strand hair (separate module): scalp hair ♂/♀ + eyebrows; the procedural brows switch off when strands exist
   if (Q.get('hair') !== '0') {
@@ -1102,6 +1137,7 @@ async function boot() {
   S.ready = true;
   if (Q.get('section')) setSection(Q.get('section'));
   if (Q.get('inspect')) { S.intro = 1; inspect(Q.get('inspect')); }
+  if (Q.get('dive')) { S.intro = 1; openDive(Q.get('dive'), +(Q.get('chapter') || 0)); }
   if (Q.has('tour')) setTimeout(startTour, NO_INTRO ? 300 : 5600);
   applyLang();
   clock.getDelta();

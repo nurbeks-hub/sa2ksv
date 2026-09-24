@@ -1,0 +1,467 @@
+{
+  "id": "ear",
+  "title": {
+    "kk": "Құлақ",
+    "ru": "Ухо",
+    "en": "The ear"
+  },
+  "subtitle": {
+    "kk": "Дыбыс жарғақтан сүйекшелер арқылы нервке қалай жетеді",
+    "ru": "Как звук проходит от перепонки через косточки к нерву",
+    "en": "How sound travels from the eardrum through the ossicles to the nerve"
+  },
+  "trigger": [
+    "tympanic-membrane",
+    "malleus",
+    "incus",
+    "stapes",
+    "auditory-tube",
+    "vestibulocochlear-nerve-viii",
+    "cochlear-nerve",
+    "vestibular-nerve"
+  ],
+  "parts": [
+    "temporal-bone",
+    "tympanic-membrane",
+    "malleus",
+    "incus",
+    "stapes",
+    "auditory-tube",
+    "chorda-tympani",
+    "facial-nerve-vii",
+    "internal-carotid-artery",
+    "vestibulocochlear-nerve-viii",
+    "cochlear-nerve",
+    "vestibular-nerve",
+    "anterior-cochlear-nucleus",
+    "posterior-cochlear-nucleus"
+  ],
+  "explode": {
+    "tympanic-membrane": [
+      0,
+      -0.004,
+      0.008
+    ],
+    "malleus": [
+      0,
+      0.005,
+      0.006
+    ],
+    "incus": [
+      0,
+      0.009,
+      -0.003
+    ],
+    "stapes": [
+      0,
+      -0.005,
+      -0.006
+    ],
+    "auditory-tube": [
+      0,
+      -0.01,
+      0.014
+    ],
+    "chorda-tympani": [
+      0,
+      0.012,
+      0.006
+    ],
+    "internal-carotid-artery": [
+      0,
+      -0.008,
+      0.01
+    ],
+    "vestibulocochlear-nerve-viii": [
+      0,
+      0.004,
+      -0.014
+    ],
+    "cochlear-nerve": [
+      0,
+      -0.002,
+      -0.012
+    ],
+    "vestibular-nerve": [
+      0,
+      0.007,
+      -0.012
+    ],
+    "anterior-cochlear-nucleus": [
+      0,
+      0.002,
+      -0.018
+    ],
+    "posterior-cochlear-nucleus": [
+      0,
+      0.002,
+      -0.02
+    ]
+  },
+  "chapters": [
+    {
+      "title": {
+        "kk": "Сыртқы құлақ және есту жолы",
+        "ru": "Наружное ухо и слуховой проход",
+        "en": "Outer ear and ear canal"
+      },
+      "text": {
+        "kk": [
+          "Құлақ бассүйектің сыртынан басталады. Құлақ қалқаны — бастың бүйіріндегі етті құрылым; оның С тәрізді иірімдері дыбыс толқындарын есту жолына бағыттайды. Кейбір дереккөздер оны «pinna» деп те атайды, бірақ бұл атау мысықтың құлағы секілді қозғала алатын құлаққа көбірек жарасады. Бұл модельде құлақ қалқанының жеке геометриясы жоқ, сондықтан ол тек мәтінмен сипатталады.",
+          "Сыртқы есту жолы құлақ қалқанының ойығынан дабыл жарғағына дейін шамамен 25 мм созылады. Оның сыртқы бөлігі шеміршекті әрі құлақ қалқанымен жалғасады, ал ұзынырақ ішкі бөлігі сүйекті болып, самай сүйек арқылы бассүйекке енеді. Жолды түктері, май бездері және құлақтың құлық бездері бар тері астарлайды."
+        ],
+        "ru": [
+          "Ухо начинается снаружи черепа. Ушная раковина — мясистая структура на боковой поверхности головы; её С-образные изгибы направляют звуковые волны в слуховой проход. Некоторые источники называют её также «pinna», но этот термин больше подходит подвижному уху, например кошачьему. В этой модели у ушной раковины нет отдельной геометрии, поэтому она описана только словами.",
+          "Наружный слуховой проход тянется примерно на 25 мм от полости раковины до барабанной перепонки. Его наружная часть хрящевая и продолжается в ушную раковину, а более длинная внутренняя часть костная и входит в череп через височную кость. Проход выстлан кожей с волосками, сальными и серными железами."
+        ],
+        "en": [
+          "The ear begins outside the skull. The auricle, the fleshy structure on the side of the head, uses its C-shaped curves to direct sound waves into the ear canal. Some sources also call it the pinna, though that term better suits an ear that can move, such as a cat's. The auricle has no separate geometry in this model, so it is described here in words only.",
+          "The external acoustic meatus runs about 25 mm from the concha to the eardrum. Its outer part is cartilaginous and continuous with the auricle; the longer inner part is bony and enters the skull through the temporal bone. The canal is lined with skin bearing hairs, sebaceous glands and ceruminous (wax) glands."
+        ]
+      },
+      "highlight": [
+        "temporal-bone",
+        "tympanic-membrane"
+      ],
+      "explode": 0,
+      "camera": {
+        "yaw": 1.57,
+        "pitch": 0.1,
+        "zoom": 1.0
+      },
+      "section": null,
+      "anim": null,
+      "facts": [
+        {
+          "en": "When a doctor examines the ear canal, a speculum goes in more easily if the auricle is pulled backward and upward.",
+          "ru": "При осмотре слухового прохода ушное зеркало вводится легче, если оттянуть ушную раковину назад и вверх.",
+          "kk": "Дәрігер есту жолын қарағанда құлақ қалқанын артқа және жоғары тартса, құлақ айнасы оңай енеді.",
+          "src": {
+            "title": "Basic Human Anatomy: A Regional Study of Human Structure, Chapter 44: The Ear (Dartmouth)",
+            "url": "https://humananatomy.host.dartmouth.edu/BHA/public_html/part_8/chapter_44.html"
+          }
+        }
+      ]
+    },
+    {
+      "title": {
+        "kk": "Дабыл жарғағы",
+        "ru": "Барабанная перепонка",
+        "en": "The eardrum"
+      },
+      "text": {
+        "kk": [
+          "Есту жолының соңында дабыл жарғағы орналасқан; оның диаметрі шамамен 1 см. Ол үш қабатты: сыртында эпидермис, ортасында фиброзды негіз, ортаңғы құлақ жағында шырышты қабық. Жарғақ өте қиғаш орналасқан, сыртқы беті ойыс, ең терең нүктесі кіндікше (umbo) деп аталады. Оның ішкі бетіне балғашықтың сабы мен бүйір өсіндісі бекиді.",
+          "Жарғақтың басым бөлігі — керілген бөлік, ал алдыңғы-жоғарғы бұрышы босаңқы бөлік деп аталады. Дабыл жарғағы өте сезімтал: оны V, X және IX жұп бассүйек нервтері нервтендіреді. Ортаңғы құлақтан сұйықтықты не іріңді шығару қажет болса, есту сүйекшелері мен дабыл ішегін зақымдамау үшін жарғақты артқы-төменгі ширегінен тіледі."
+        ],
+        "ru": [
+          "В конце слухового прохода находится барабанная перепонка диаметром около 1 см. Она трёхслойная: снаружи эпидермис, в середине фиброзная основа, со стороны среднего уха слизистая оболочка. Перепонка расположена очень косо, её наружная поверхность вогнута, а самая глубокая точка называется пупком (umbo). К её внутренней поверхности прикреплены рукоятка и латеральный отросток молоточка.",
+          "Большая часть перепонки — натянутая часть, а передневерхний угол называют ненатянутой частью. Барабанная перепонка очень чувствительна: её иннервируют V, X и IX пары черепных нервов. Когда из среднего уха нужно выпустить жидкость или гной, перепонку рассекают в задненижнем квадранте, чтобы не задеть слуховые косточки и барабанную струну."
+        ],
+        "en": [
+          "At the end of the canal lies the tympanic membrane, or eardrum, about 1 cm across. It has three layers: epidermis outside, a fibrous core in the middle and mucous membrane facing the middle ear. It is set very obliquely, its outer surface is concave, and its deepest point is called the umbo. The handle and lateral process of the malleus are attached to its inner surface.",
+          "Most of the membrane is the tense part, while its upper front corner is called the flaccid part. The eardrum is highly sensitive, supplied by cranial nerves V, X and IX. When fluid or pus must be drained from the middle ear, the membrane is cut in its lower back quadrant to avoid the ossicles and the chorda tympani."
+        ]
+      },
+      "highlight": [
+        "tympanic-membrane",
+        "malleus"
+      ],
+      "explode": 0.3,
+      "camera": {
+        "yaw": 1.25,
+        "pitch": 0.1,
+        "zoom": 1.8
+      },
+      "section": null,
+      "anim": null,
+      "facts": [
+        {
+          "kk": "Адамның алты дабыл жарғағын зерттеуде орташа қалыңдық 79–97 микрометр болды — миллиметрдің оннан бірінен де аз, ал орталық бөлігінде небәрі 50–70 микрометр.",
+          "ru": "В исследовании шести барабанных перепонок человека средняя толщина составила 79–97 микрометров — меньше десятой доли миллиметра, а в центральной зоне — всего 50–70 микрометров.",
+          "en": "In a study of six human eardrums, average thickness was 79–97 micrometres — less than a tenth of a millimetre — and just 50–70 micrometres in the central region.",
+          "src": {
+            "title": "Van der Jeught S, Dirckx JJ, Aerts JR, Bradu A, Podoleanu AG, Buytaert JA (2013). Full-field thickness distribution of human tympanic membrane obtained with optical coherence tomography. J Assoc Res Otolaryngol",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/23673509/"
+          }
+        },
+        {
+          "en": "The head of the malleus and the body of the incus sit in an 'attic', the epitympanic recess, above the level of the eardrum.",
+          "ru": "Головка молоточка и тело наковальни находятся в «чердаке» — надбарабанном углублении выше уровня барабанной перепонки.",
+          "kk": "Балғашықтың басы мен төсшенің денесі дабыл жарғағы деңгейінен жоғары орналасқан «шатырда» — дабылүсті қойнауында жатады.",
+          "src": {
+            "title": "Basic Human Anatomy: A Regional Study of Human Structure, Chapter 44: The Ear (Dartmouth)",
+            "url": "https://humananatomy.host.dartmouth.edu/BHA/public_html/part_8/chapter_44.html"
+          }
+        }
+      ]
+    },
+    {
+      "title": {
+        "kk": "Балғашық, төсше, үзеңгі: сүйекшелер иінтірегі",
+        "ru": "Молоточек, наковальня, стремя: рычаг косточек",
+        "en": "Hammer, anvil, stirrup: the ossicular lever"
+      },
+      "text": {
+        "kk": [
+          "Дабыл жарғағының артында ауаға толы дабыл қуысы бар, оны үш есту сүйекшесі кесіп өтеді: балғашық, төсше және үзеңгі (латын атаулары шамамен «балға», «төс» және «үзеңгі» деп аударылады). Балғашық дабыл жарғағына бекіп, төсшемен буындасады, ал төсше үзеңгімен буындасады. Үзеңгінің табанын сақиналы байлам сопақша терезеге — ішкі құлаққа апаратын есікке бекітіп тұрады. Үзеңгі — адам денесіндегі ең кішкентай сүйек.",
+          "Бұл тізбек не үшін керек? Ауа мен ішкі құлақ сұйықтығы қатты ерекшеленетіндіктен, олардың тікелей шекарасында дыбыс энергиясының 99,9%-дан астамы шағылысар еді. Дабыл жарғағы сопақша терезеден әлдеқайда үлкен, ал сүйекшелер иінтірек секілді әрекет етеді. Екі қатынасты көбейткенде теориялық қысым күшеюі шығады: бір зерттеуде адам үшін аудан қатынасы 23,9, иінтірек қатынасы 1,25, ал күтілетін күшею шамамен 30 есе деп бағаланды.",
+          "Бұл — жеңілдетілген көрініс. 2022 жылғы шолу авторлары тәжірибе деректерін таза күшейту емес, шағылысуды азайтатын импеданс сәйкестендіру жақсырақ түсіндіреді деп қорытады және ортаңғы құлақ шығынды сыртқы құлақтың резонансынсыз өтей алмайды деген бұрынғы тұжырымды келтіреді. Ортаңғы құлақ энергияны 1–4 кГц шамасында ең тиімді өткізеді — адамның есту қабілеті дәл осы жиіліктерге ең сезімтал."
+        ],
+        "ru": [
+          "За барабанной перепонкой находится заполненная воздухом барабанная полость, которую пересекают три слуховые косточки: молоточек, наковальня и стремя (латинские названия примерно переводятся как «молот», «наковальня» и «стремя»). Молоточек прикреплён к перепонке и сочленяется с наковальней, а наковальня — со стременем. Основание стремени удерживается кольцевой связкой в овальном окне — входе во внутреннее ухо. Стремя — самая маленькая кость в теле человека.",
+          "Зачем нужна эта цепь? Воздух и жидкость внутреннего уха так различаются, что на прямой границе между ними отражалось бы более 99,9% звуковой энергии. Барабанная перепонка намного больше овального окна, а косточки работают как рычаг. Произведение двух отношений даёт теоретическое усиление давления: в одном исследовании для человека отношение площадей оценили в 23,9, рычажное отношение — в 1,25, а ожидаемое усиление — примерно в 30 раз.",
+          "Это упрощённая картина. Авторы обзора 2022 года заключают, что экспериментальные данные лучше объясняет не чистое усиление, а согласование импедансов, уменьшающее отражение, и приводят более ранний вывод о том, что среднее ухо не может компенсировать потери без резонанса наружного уха. Эффективнее всего среднее ухо передаёт энергию в области 1–4 кГц — именно там слух человека наиболее чувствителен."
+        ],
+        "en": [
+          "Behind the eardrum is the air-filled tympanic cavity, spanned by three ossicles: the malleus, incus and stapes, Latin names that roughly translate as 'hammer', 'anvil' and 'stirrup'. The malleus is attached to the eardrum and articulates with the incus, which in turn articulates with the stapes. An annular ligament holds the stapes footplate in the oval window, the doorway to the inner ear. The stapes is the smallest bone in the human body.",
+          "Why a chain? Air and inner-ear fluid differ so much that over 99.9% of sound energy would be reflected at a direct air–fluid boundary. The eardrum is much larger than the oval window, and the ossicles act as a lever. Multiplying the two ratios gives a theoretical pressure gain: one study estimated an area ratio of 23.9 and a lever ratio of 1.25 for humans, an expected gain of about 30-fold.",
+          "This is a simplified picture. A 2022 review concludes that experimental findings are better explained by impedance matching, which reduces reflection, than by pure gain, and cites earlier work finding that the middle ear cannot make up the losses without the resonance of the outer ear. The middle ear transmits energy most efficiently around 1–4 kHz, where human hearing is most sensitive."
+        ]
+      },
+      "highlight": [
+        "malleus",
+        "incus",
+        "stapes"
+      ],
+      "explode": 0.6,
+      "camera": {
+        "yaw": 0.45,
+        "pitch": 0.15,
+        "zoom": 1.6
+      },
+      "section": null,
+      "anim": {
+        "type": "oscillate",
+        "ids": [
+          "malleus",
+          "incus",
+          "stapes"
+        ],
+        "axis": [
+          1,
+          0,
+          0
+        ],
+        "amp": 0.0008
+      },
+      "facts": [
+        {
+          "en": "In human reference data the stapes weighs about 3.2 mg, and its footplate measures about 2.8 × 1.3 mm.",
+          "ru": "По справочным данным для человека стремя весит около 3,2 мг, а его основание имеет размер около 2,8 × 1,3 мм.",
+          "kk": "Адамға арналған анықтамалық деректер бойынша үзеңгінің салмағы шамамен 3,2 мг, ал табанының өлшемі шамамен 2,8 × 1,3 мм.",
+          "src": {
+            "title": "Péus D, Dobrev I, Pfiffner F, Sim JH (2020). Comparison of sheep and human middle-ear ossicles: anatomy and inertial properties. Journal of Comparative Physiology A",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7392934/"
+          }
+        },
+        {
+          "kk": "Анықтамалық деректер бойынша төсшенің салмағы шамамен 32 мг — балғашықтан (шамамен 30 мг) сәл ауыр.",
+          "ru": "По справочным данным наковальня весит около 32 мг — чуть больше молоточка (около 30 мг).",
+          "en": "In human reference data the incus weighs about 32 mg, slightly more than the malleus (about 30 mg).",
+          "src": {
+            "title": "Péus D, Dobrev I, Pfiffner F, Sim JH (2020). Comparison of sheep and human middle-ear ossicles: anatomy and inertial properties. Journal of Comparative Physiology A",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7392934/"
+          }
+        }
+      ]
+    },
+    {
+      "title": {
+        "kk": "Екі кішкентай бұлшықет және дәм нерві",
+        "ru": "Две маленькие мышцы и нерв вкуса",
+        "en": "Two small muscles and a taste nerve"
+      },
+      "text": {
+        "kk": [
+          "Сүйекшелер тізбегіне екі кішкентай бұлшықет әсер етеді. Дабыл жарғағын керетін бұлшықет есту түтігінің шеміршекті бөлігінен басталып, балғашықтың сабына бекиді; оны төменгі жақ нерві мен дабыл өрімі нервтендіреді, ол жарғақты керіп тұрады. Үзеңгі бұлшықеті пирамида тәрізді төмпешіктің ішінен басталып, үзеңгінің мойнына бекиді және бет нервінен нервтенеді. Екеуі де ортаңғы құлақ арқылы дыбыстың өтуін әлсіретеді.",
+          "2022 жылғы шолуға сәйкес, үзеңгі бұлшықеті қатты дыбысқа жауап ретінде жиырылады және ұлуға өтетін дыбысты 15 дБ-ге дейін әлсіретуі ықтимал. Кейбір зерттеулер оның дауыс шығарғанда және жұтынғанда да жиырылып, ішкі шуды басатынын көрсетеді. Алайда қарсы құлақта бұл жауап шамамен 15 мс-тан кейін ғана басталады, сондықтан рефлекс мылтық атысы сияқты кенет соққы дыбыстан қорғамайды.",
+          "Бет нервінің тармағы — дабыл ішегі ортаңғы құлақты кесіп өтеді: ол дабыл жарғағы мен балғашық сабының ішкі жағымен өтеді, бассүйектен шығып, тіл нервіне қосылады. Ол тілдің алдыңғы үштен екі бөлігінен дәм талшықтарын және жақасты мен тіласты бездеріне баратын секрециялық талшықтарды өткізеді."
+        ],
+        "ru": [
+          "На цепь косточек действуют две маленькие мышцы. Мышца, напрягающая барабанную перепонку, начинается от хрящевой части слуховой трубы и прикрепляется к рукоятке молоточка; её иннервируют нижнечелюстной нерв и барабанное сплетение, и она натягивает перепонку. Стременная мышца начинается внутри пирамидального возвышения и прикрепляется к шейке стремени; её иннервирует лицевой нерв. Обе ослабляют проведение звука через среднее ухо.",
+          "Согласно обзору 2022 года, стременная мышца сокращается в ответ на громкие звуки и, вероятно, ослабляет передачу звука к улитке до 15 дБ. Некоторые исследования показывают, что она сокращается и при вокализации и глотании, приглушая внутренние шумы. Но в противоположном ухе ответ начинается лишь примерно через 15 мс, поэтому рефлекс не защищает от резких импульсных звуков вроде выстрела.",
+          "Ветвь лицевого нерва — барабанная струна — пересекает среднее ухо: она проходит медиальнее барабанной перепонки и рукоятки молоточка, покидает череп и присоединяется к язычному нерву. Она несёт вкусовые волокна от передних двух третей языка и секреторные волокна для поднижнечелюстной и подъязычной желёз."
+        ],
+        "en": [
+          "Two small muscles act on the chain. The tensor tympani arises from the cartilaginous part of the auditory tube and inserts on the handle of the malleus; supplied by the mandibular nerve and the tympanic plexus, it tenses the eardrum. The stapedius arises within a small bony projection, the pyramidal eminence, and inserts on the neck of the stapes; it is supplied by the facial nerve. Both attenuate sound transmission through the middle ear.",
+          "According to a 2022 review, the stapedius contracts in response to loud sounds and likely reduces transmission to the cochlea by up to 15 dB. Some studies show it also contracts during vocalisation and swallowing, damping internal noises. But in the opposite ear the response begins only about 15 ms after onset, so the reflex does not protect against sudden impulse noises such as gunshots.",
+          "A branch of the facial nerve, the chorda tympani, crosses the middle ear: it passes on the inner side of the eardrum and the malleus handle, leaves the skull and joins the lingual nerve. It carries taste fibres from the front two-thirds of the tongue and secretory fibres for the submandibular and sublingual glands."
+        ]
+      },
+      "highlight": [
+        "malleus",
+        "stapes",
+        "chorda-tympani",
+        "facial-nerve-vii"
+      ],
+      "explode": 0.4,
+      "camera": {
+        "yaw": 1.3,
+        "pitch": 0.2,
+        "zoom": 1.4
+      },
+      "section": null,
+      "anim": null,
+      "facts": [
+        {
+          "kk": "Дабыл ішегі ортаңғы құлақ арқылы өтетіндіктен, құлаққа жасалатын отада зақымдалуы мүмкін; содан кейін науқастардың кемінде 15–22%-ы дәм сезудің өзгергенін не ауыздың құрғағанын байқайды.",
+          "ru": "Барабанная струна проходит через среднее ухо, поэтому может пострадать при операциях на ухе; не менее 15–22% пациентов затем замечают изменение вкуса или сухость во рту.",
+          "en": "Because the chorda tympani crosses the middle ear, ear surgery can injure it; at least 15–22% of patients then notice altered taste or a dry mouth.",
+          "src": {
+            "title": "McManus LJ, Stringer MD, Dawes PJ (2012). Iatrogenic injury of the chorda tympani: a systematic review. J Laryngol Otol",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/21867582/"
+          }
+        },
+        {
+          "en": "Damage to the nerve supply of the stapedius may cause excessive sensitivity to sounds.",
+          "ru": "Повреждение иннервации стременной мышцы может вызывать чрезмерную чувствительность к звукам.",
+          "kk": "Үзеңгі бұлшықетінің нервтенуі зақымдалса, дыбыстарға шамадан тыс сезімталдық пайда болуы мүмкін.",
+          "src": {
+            "title": "Basic Human Anatomy: A Regional Study of Human Structure, Chapter 44: The Ear (Dartmouth)",
+            "url": "https://humananatomy.host.dartmouth.edu/BHA/public_html/part_8/chapter_44.html"
+          }
+        },
+        {
+          "en": "In 1561 the anatomist Falloppio did not recognise the chorda tympani as a nerve.",
+          "ru": "В 1561 году анатом Фаллопий не признал барабанную струну нервом.",
+          "kk": "1561 жылы анатом Фаллопий дабыл ішегін нерв деп танымаған.",
+          "src": {
+            "title": "Basic Human Anatomy: A Regional Study of Human Structure, Chapter 44: The Ear (Dartmouth)",
+            "url": "https://humananatomy.host.dartmouth.edu/BHA/public_html/part_8/chapter_44.html"
+          }
+        }
+      ]
+    },
+    {
+      "title": {
+        "kk": "Есту түтігі: қысымды теңестіретін жол",
+        "ru": "Слуховая труба: клапан давления",
+        "en": "Auditory tube: the pressure valve"
+      },
+      "text": {
+        "kk": [
+          "Ортаңғы құлақ тұйық емес. Есту (Евстахий) түтігі оны мұрынжұтқыншақпен жалғап, дабыл жарғағының екі жағындағы ауа қысымын теңестіруге көмектеседі. Түтік әдетте жабық тұрады, бірақ жұтынғанда немесе есінегенде жұтқыншақ бұлшықеттері жиырылған сәтте ашылып кетеді.",
+          "Дабыл қуысы мен есту түтігі ұрықтағы жұтқыншақтың қалтасынан дамиды. Түтік тесігі орналасқан ортаңғы құлақтың алдыңғы қабырғасында ұйқы артериясының өзегі де бар, онда ішкі ұйқы артериясы жатады. Түтікке жақын шырышты қабықтағы кірпікшелер ортаңғы құлақты тазартады; олардың қызметі бұзылса, сұйықтық жиналып, есту төмендеуі мүмкін."
+        ],
+        "ru": [
+          "Среднее ухо не замкнуто. Слуховая (евстахиева) труба соединяет его с носоглоткой и помогает выравнивать давление воздуха по обе стороны барабанной перепонки. Обычно труба закрыта, но открывается, когда при глотании или зевании сокращаются мышцы глотки.",
+          "Барабанная полость и слуховая труба развиваются из кармана эмбриональной глотки. На той же передней стенке среднего уха, где открывается труба, находится сонный канал, в котором лежит внутренняя сонная артерия. Реснички слизистой оболочки у трубы очищают среднее ухо; при нарушении их работы может скапливаться жидкость и снижаться слух."
+        ],
+        "en": [
+          "The middle ear is not sealed. The auditory (Eustachian) tube connects it with the nasopharynx and helps equalise air pressure on both sides of the eardrum. The tube is normally closed but pops open when the muscles of the pharynx contract during swallowing or yawning.",
+          "The tympanic cavity and the auditory tube develop from a recess of the embryonic pharynx. The same front wall of the middle ear that holds the tube's opening also contains the carotid canal, which lodges the internal carotid artery. Cilia in the lining near the tube help clear the middle ear; if they fail, fluid can build up and hearing can suffer."
+        ]
+      },
+      "highlight": [
+        "auditory-tube",
+        "internal-carotid-artery"
+      ],
+      "explode": 0.3,
+      "camera": {
+        "yaw": 0.9,
+        "pitch": -0.1,
+        "zoom": 1.2
+      },
+      "section": null,
+      "anim": null,
+      "facts": [
+        {
+          "kk": "Есту түтігі 3 айлық нәрестедегі шамамен 21 мм-ден ересек адамда орта есеппен 37 мм-ге дейін ұзарады.",
+          "ru": "Слуховая труба удлиняется примерно с 21 мм у трёхмесячного младенца до 37 мм в среднем у взрослого.",
+          "en": "The auditory tube grows from about 21 mm in a 3-month-old infant to an average adult length of about 37 mm.",
+          "src": {
+            "title": "Ishijima K, Sando I, Balaban C, Suzuki C, Takasaki K (2000). Length of the eustachian tube and its postnatal development: computer-aided three-dimensional reconstruction and measurement study. Ann Otol Rhinol Laryngol",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/10855564/"
+          }
+        },
+        {
+          "en": "The cartilaginous part of the tube (with its junctional portion) is about 8 times longer than the bony part in a 3-month-old infant, but only about 4 times longer in adults.",
+          "ru": "Хрящевая часть трубы (вместе с переходной) у трёхмесячного младенца примерно в 8 раз длиннее костной, а у взрослых — лишь примерно в 4 раза.",
+          "kk": "Түтіктің шеміршекті бөлігі (өтпелі бөлігімен бірге) 3 айлық нәрестеде сүйекті бөлігінен шамамен 8 есе ұзын, ал ересектерде небәрі 4 есеге жуық ұзын.",
+          "src": {
+            "title": "Ishijima K, Sando I, Balaban C, Suzuki C, Takasaki K (2000). Length of the eustachian tube and its postnatal development: computer-aided three-dimensional reconstruction and measurement study. Ann Otol Rhinol Laryngol",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/10855564/"
+          }
+        }
+      ]
+    },
+    {
+      "title": {
+        "kk": "Ішкі құлақ және VIII жұп нерв: дірілден сигналға",
+        "ru": "Внутреннее ухо и VIII нерв: от колебания к сигналу",
+        "en": "Inner ear and nerve VIII: from vibration to signal"
+      },
+      "text": {
+        "kk": [
+          "Самай сүйектің тереңінде ішкі құлақ — сүйекті лабиринт жатыр. Оның екі бөлігі бар: есту қызметін атқаратын ұлу және тепе-теңдікке жауап беретін кіреберіс (бұл модельде олар көрсетілмеген). Ұлу — атауы ұлудың қабығына ұқсастығынан шыққан, шамамен 2,5 орам жасайтын ширатылған түтік. Үзеңгі сопақша терезені қозғағанда ұлу сұйықтығында толқындар пайда болады: жоғары жиіліктер базилярлық жарғақты ұлудың негізінде, төмен жиіліктер оның ұшында тербетеді.",
+          "Тепе-теңдікті де осындай түкшелі жасушалар сезеді. Жатырша мен қапшық бастың қалпын сезеді, ал сақина тәрізді үш жартыиірімді өзек — біреуі көлденең, екеуі тік — бастың айналуын, мысалы «жоқ» деп басты шайқағанды сезеді.",
+          "Екі бөліктен шыққан сигналдар бөлек шоқтармен жүріп, бірге кіреберіс-ұлу нервін (VIII жұп) құрайды; бұл — таза сезімтал нерв. Ол бет нервімен бірге ішкі есту жолына енеді және ми бағанына ми көпірінің төменгі жиегінде қосылады. Есту талшықтары сопақша мидың жоғарғы бөлігіндегі ұлу ядроларында синапс түзеді; тепе-теңдік талшықтарының көбі кіреберіс ядроларында аяқталады, ал кейбірі тікелей мишыққа барады."
+        ],
+        "ru": [
+          "В глубине височной кости лежит внутреннее ухо — костный лабиринт. В нём две области: улитка, отвечающая за слух, и преддверие, отвечающее за равновесие (в этой модели они не показаны). Улитка, названная по сходству с раковиной улитки, — спиральная трубка примерно в 2,5 оборота. Когда стремя приводит в движение овальное окно, в жидкости улитки возникают волны: высокие частоты колеблют базилярную мембрану у основания улитки, низкие — у её верхушки.",
+          "Равновесие воспринимают похожие волосковые клетки. Маточка и мешочек ощущают положение головы, а три кольцевидных полукружных канала — один горизонтальный и два вертикальных — вращение головы, например когда мы качаем головой, говоря «нет».",
+          "Сигналы из обеих областей идут отдельными пучками, которые вместе образуют преддверно-улитковый нерв (VIII пара) — чисто чувствительный нерв. Вместе с лицевым нервом он входит во внутренний слуховой проход и вступает в ствол мозга у нижнего края моста. Слуховые волокна образуют синапсы в улитковых ядрах верхней части продолговатого мозга; большинство вестибулярных волокон заканчивается в вестибулярных ядрах, а часть идёт прямо в мозжечок."
+        ],
+        "en": [
+          "Deep in the temporal bone lies the inner ear, a bony labyrinth with two regions: the cochlea for hearing and the vestibule for balance (neither is shown in this model). The cochlea, named for its resemblance to a snail shell, is a helical tube of about 2.5 turns. As the stapes moves the oval window, waves run through the cochlear fluid: high frequencies move the basilar membrane near the base, low frequencies near the tip.",
+          "Balance relies on similar hair cells. The utricle and saccule sense head position, while three ring-like semicircular canals, one horizontal and two vertical, detect head rotation, such as turning the head to say 'no'.",
+          "Signals from the two regions travel in separate bundles that run together as the vestibulocochlear nerve (VIII), a purely sensory nerve. It enters the internal acoustic meatus with the facial nerve and joins the brainstem at the lower border of the pons. Hearing fibres synapse in the cochlear nuclei of the upper medulla; most balance fibres end in the vestibular nuclei, and some go straight to the cerebellum."
+        ]
+      },
+      "highlight": [
+        "vestibulocochlear-nerve-viii",
+        "cochlear-nerve",
+        "vestibular-nerve",
+        "anterior-cochlear-nucleus",
+        "posterior-cochlear-nucleus"
+      ],
+      "explode": 0.2,
+      "camera": {
+        "yaw": 0.6,
+        "pitch": 0.35,
+        "zoom": 1.3
+      },
+      "section": null,
+      "anim": {
+        "type": "pulse-path",
+        "ids": [
+          "tympanic-membrane",
+          "malleus",
+          "incus",
+          "stapes",
+          "vestibulocochlear-nerve-viii"
+        ]
+      },
+      "facts": [
+        {
+          "kk": "Есту қабілеті қалыпты адамдарда ұлу нервінде небәрі 31–32 мыңдай миелинді талшық болады.",
+          "ru": "У людей с нормальным слухом улитковый нерв содержит всего около 31–32 тысяч миелинизированных волокон.",
+          "en": "In people with normal hearing, the cochlear nerve contains only about 31,000–32,000 myelinated nerve fibres.",
+          "src": {
+            "title": "Spoendlin H, Schrott A (1989). Analysis of the human auditory nerve. Hearing Research",
+            "url": "https://pubmed.ncbi.nlm.nih.gov/2613564/"
+          }
+        },
+        {
+          "en": "The cochlea encodes frequencies from 20 to 20,000 Hz, the range of sound that human ears can detect.",
+          "ru": "Улитка кодирует частоты от 20 до 20 000 Гц — это диапазон звуков, который способно уловить человеческое ухо.",
+          "kk": "Ұлу 20-дан 20 000 Гц-ке дейінгі жиіліктерді кодтайды — адам құлағы қабылдай алатын дыбыс диапазоны осы.",
+          "src": {
+            "title": "Betts JG, Young KA, Wise JA, et al. Anatomy and Physiology 2e, 14.1 Sensory Perception. OpenStax, Rice University",
+            "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-1-sensory-perception"
+          }
+        },
+        {
+          "en": "Deafness can come from damage to the cochlea or cochlear nerve fibres (neural deafness) or from disease or blockage of the middle or outer ear (conductive deafness).",
+          "ru": "Глухота может быть вызвана поражением улитки или волокон улиткового нерва (невральная глухота) либо болезнью или закупоркой среднего или наружного уха (кондуктивная глухота).",
+          "kk": "Кереңдік ұлудың не ұлу нерві талшықтарының зақымдануынан (нервтік кереңдік) немесе ортаңғы не сыртқы құлақтың ауруынан не бітелуінен (өткізгіштік кереңдік) болуы мүмкін.",
+          "src": {
+            "title": "Basic Human Anatomy: A Regional Study of Human Structure, Chapter 44: The Ear (Dartmouth)",
+            "url": "https://humananatomy.host.dartmouth.edu/BHA/public_html/part_8/chapter_44.html"
+          }
+        }
+      ]
+    }
+  ]
+}

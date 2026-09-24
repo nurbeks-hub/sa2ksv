@@ -121,5 +121,5 @@ export function createSection({ rig, scene }) {
     outline.material.opacity = 0.22 * state.on;
   }
 
-  return { plane, clip, state, caps, stencils, addStencil, setAxis, setOffset, update, gripInfo, AX };
+  return { plane, clip, state, caps, stencils, addStencil, setAxis, setOffset, update, gripInfo, AX, outline };
 }

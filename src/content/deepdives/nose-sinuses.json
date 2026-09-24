@@ -1,0 +1,608 @@
+{
+ "id": "nose-sinuses",
+ "title": {
+  "kk": "Мұрын және қойнаулар",
+  "ru": "Нос и пазухи",
+  "en": "Nose and sinuses"
+ },
+ "subtitle": {
+  "kk": "Ауаны жылытатын, иісті сезетін және көзжасты жұтатын мүше",
+  "ru": "Орган, который греет воздух, чувствует запахи и принимает слёзы",
+  "en": "The organ that warms the air, senses smells and drains our tears"
+ },
+ "trigger": [
+  "nasal-bone",
+  "nasal-septal-cartilage",
+  "lateral-process-of-nasal-septal-cartilage",
+  "major-alar-cartilage",
+  "vomer",
+  "inferior-nasal-concha-bone",
+  "mucosa-of-nasal-cavity",
+  "olfactory-nerve-i",
+  "sinus-of-frontal-bone",
+  "sinus-of-sphenoid-bone",
+  "anterior-cells-of-ethmoid-bone",
+  "middle-cells-of-ethmoid-bone",
+  "posterior-cells-of-ethmoid-bone",
+  "lacrimal-sac",
+  "nasolacrimal-duct",
+  "lacrimal-canaliculus"
+ ],
+ "parts": [
+  "nasal-bone",
+  "nasal-septal-cartilage",
+  "lateral-process-of-nasal-septal-cartilage",
+  "major-alar-cartilage",
+  "vomer",
+  "ethmoid-bone",
+  "inferior-nasal-concha-bone",
+  "mucosa-of-nasal-cavity",
+  "nasopharynx",
+  "maxilla",
+  "anterior-ethmoidal-artery",
+  "anterior-septal-branches-of-anterior-ethmoidal-artery",
+  "posterior-ethmoidal-artery",
+  "septal-branches-of-posterior-ethmoidal-artery",
+  "posterior-septal-branches-of-sphenopalatine-artery",
+  "posterior-lateral-nasal-branches-of-sphenopalatine-artery",
+  "greater-palatine-artery",
+  "superior-labial-artery",
+  "olfactory-nerve-i",
+  "olfactory-sulcus",
+  "sinus-of-frontal-bone",
+  "sinus-of-sphenoid-bone",
+  "anterior-cells-of-ethmoid-bone",
+  "middle-cells-of-ethmoid-bone",
+  "posterior-cells-of-ethmoid-bone",
+  "lacrimal-gland",
+  "lacrimal-canaliculus",
+  "lacrimal-sac",
+  "nasolacrimal-duct"
+ ],
+ "explode": {
+  "nasal-bone": [
+   0,
+   0.01,
+   0.014
+  ],
+  "nasal-septal-cartilage": [
+   0,
+   0.0,
+   0.02
+  ],
+  "lateral-process-of-nasal-septal-cartilage": [
+   0,
+   0.004,
+   0.024
+  ],
+  "major-alar-cartilage": [
+   0,
+   -0.008,
+   0.03
+  ],
+  "vomer": [
+   0,
+   -0.012,
+   -0.002
+  ],
+  "ethmoid-bone": [
+   0,
+   0.008,
+   0.0
+  ],
+  "inferior-nasal-concha-bone": [
+   0,
+   -0.016,
+   0.006
+  ],
+  "mucosa-of-nasal-cavity": [
+   0,
+   0.0,
+   0.006
+  ],
+  "nasopharynx": [
+   0,
+   -0.006,
+   -0.016
+  ],
+  "maxilla": [
+   0,
+   -0.022,
+   0.004
+  ],
+  "anterior-ethmoidal-artery": [
+   0,
+   0.012,
+   0.004
+  ],
+  "anterior-septal-branches-of-anterior-ethmoidal-artery": [
+   0,
+   0.002,
+   0.016
+  ],
+  "posterior-ethmoidal-artery": [
+   0,
+   0.012,
+   -0.004
+  ],
+  "septal-branches-of-posterior-ethmoidal-artery": [
+   0,
+   0.004,
+   0.01
+  ],
+  "posterior-septal-branches-of-sphenopalatine-artery": [
+   0,
+   -0.006,
+   0.014
+  ],
+  "posterior-lateral-nasal-branches-of-sphenopalatine-artery": [
+   0,
+   -0.006,
+   0.008
+  ],
+  "greater-palatine-artery": [
+   0,
+   -0.018,
+   0.006
+  ],
+  "superior-labial-artery": [
+   0,
+   -0.012,
+   0.022
+  ],
+  "olfactory-nerve-i": [
+   0,
+   0.024,
+   0.0
+  ],
+  "olfactory-sulcus": [
+   0,
+   0.034,
+   0.0
+  ],
+  "sinus-of-frontal-bone": [
+   0,
+   0.022,
+   0.014
+  ],
+  "sinus-of-sphenoid-bone": [
+   0,
+   0.006,
+   -0.02
+  ],
+  "anterior-cells-of-ethmoid-bone": [
+   0,
+   0.014,
+   0.008
+  ],
+  "middle-cells-of-ethmoid-bone": [
+   0,
+   0.014,
+   0.0
+  ],
+  "posterior-cells-of-ethmoid-bone": [
+   0,
+   0.014,
+   -0.008
+  ],
+  "lacrimal-gland": [
+   0,
+   0.012,
+   0.006
+  ],
+  "lacrimal-canaliculus": [
+   0,
+   0.004,
+   0.014
+  ],
+  "lacrimal-sac": [
+   0,
+   0.002,
+   0.016
+  ],
+  "nasolacrimal-duct": [
+   0,
+   -0.004,
+   0.016
+  ]
+ },
+ "chapters": [
+  {
+   "title": {
+    "kk": "Жоғарыда сүйек, төменде шеміршек",
+    "ru": "Сверху кость, снизу хрящ",
+    "en": "Bone above, cartilage below"
+   },
+   "text": {
+    "en": [
+     "Only the root and bridge of the nose are bone: the paired nasal bones, which meet the frontal bone above and the maxillae at the sides. The part that sticks out is cartilage. Flexible hyaline septal cartilage, joined to the nasal bones, forms the length of the nose, and the alar cartilages make its tip and wrap around each nostril. That is why a bare skull has no nose.",
+     "Inside, a midline wall, the nasal septum, splits the nasal cavity into left and right halves. Its front is the septal cartilage, the flexible part you can feel with your fingers. Behind it the septum is bone: the perpendicular plate of the ethmoid bone above and the thin, plough-shaped vomer below and behind. Seen from behind, the vomer forms the full height of the septum."
+    ],
+    "ru": [
+     "Костные у носа только корень и спинка у переносицы: парные носовые кости, которые соединяются вверху с лобной костью, а по бокам с верхними челюстями. Выступающая часть носа хрящевая. Гибкий гиалиновый хрящ перегородки, прикреплённый к носовым костям, образует спинку носа, а хрящи крыльев формируют его кончик и окружают каждую ноздрю. Поэтому у черепа носа нет.",
+     "Внутри срединная стенка, перегородка носа, делит носовую полость на правую и левую половины. Спереди это хрящ перегородки, та гибкая часть, которую можно нащупать пальцами. Глубже перегородка костная: вверху перпендикулярная пластинка решётчатой кости, внизу и сзади тонкий сошник, названный так за сходство с плугом. Если смотреть сзади, сошник занимает всю высоту перегородки."
+    ],
+    "kk": [
+     "Мұрынның тек түбірі мен көпірі ғана сүйектен тұрады: жоғарыда маңдай сүйекпен, бүйірінде жоғарғы жақ сүйектерімен байланысатын қос мұрын сүйегі. Ал алға шығып тұрған бөлігі шеміршектен жасалған. Мұрын сүйектеріне бекитін иілгіш гиалинді қалқа шеміршегі мұрын қырын түзеді, ал мұрын қанатының шеміршектері ұшын құрап, әр танауды айнала қоршайды. Сондықтан бас сүйекте мұрын болмайды.",
+     "Ішкі жағында ортадағы қабырға, мұрын қалқасы, мұрын қуысын оң және сол жартыға бөледі. Оның алдыңғы бөлігі қалқа шеміршегі, яғни саусақпен сипап сезуге болатын иілгіш бөлік. Одан тереңде қалқа сүйекке айналады: жоғарыда торлы сүйектің перпендикуляр табақшасы, төменде және артта соқаға ұқсайтын жұқа өресүйек. Артынан қарағанда өресүйек қалқаның бүкіл биіктігін алып жатады."
+    ]
+   },
+   "highlight": [
+    "nasal-bone",
+    "nasal-septal-cartilage",
+    "lateral-process-of-nasal-septal-cartilage",
+    "major-alar-cartilage",
+    "vomer",
+    "ethmoid-bone"
+   ],
+   "explode": 0.35,
+   "camera": {
+    "yaw": 0.75,
+    "pitch": 0.1,
+    "zoom": 1.4
+   },
+   "section": null,
+   "anim": null,
+   "facts": [
+    {
+     "kk": "Мұрын сүйектерінің орташа ұзындығы небәрі 2,5 см, алайда мұрын сынуы ересектерде бет сүйектері сынуының ең жиі түрі.",
+     "ru": "Средняя длина носовых костей всего 2,5 см, но перелом носа — самый частый перелом лицевых костей у взрослых.",
+     "en": "The nasal bones average only 2.5 cm long, yet nasal fractures are the most common facial fracture in adults.",
+     "src": {
+      "title": "AlJulaih GH, Sharma P, Lasrado S (2023). Anatomy, Head and Neck, Nose Bones. StatPearls Publishing (NCBI Bookshelf)",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK541117/"
+     }
+    },
+    {
+     "kk": "Бет қаңқасының 14 сүйегінің тек екеуі ғана жұпсыз: өресүйек пен төменгі жақ сүйегі.",
+     "ru": "Из 14 костей лицевого черепа непарных только две: сошник и нижняя челюсть.",
+     "en": "Of the 14 facial bones, only two are unpaired: the vomer and the mandible.",
+     "src": {
+      "title": "Betts JG, Young KA, Wise JA, et al. (OpenStax) (2022). Anatomy and Physiology 2e, 7.2 The Skull. OpenStax textbook (Rice University)",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/7-2-the-skull"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Бас сүйектің ішіндегі кондиционер",
+    "ru": "Кондиционер внутри черепа",
+    "en": "An air conditioner inside the skull"
+   },
+   "text": {
+    "en": [
+     "Each side wall of the nasal cavity carries three curled bony shelves: the superior, middle and inferior nasal conchae. Only the inferior concha, the largest, is a separate bone; the middle and superior conchae are parts of the ethmoid. The conchae enlarge the surface of the cavity and disrupt the incoming stream, so the air bounces along the moist lining, where it is cleaned and warmed.",
+     "The conchae, the nasal passages (meatuses) and the sinuses are lined by ciliated epithelium with goblet cells that make mucus. Dust, pollen, bacteria and viruses stick to it, and the beating cilia sweep the mucus toward the throat to be swallowed. Capillaries under the surface warm the air, the secretions contain antibacterial lysozyme and defensins, and on the way out the conchae trap water so the lining does not dry out."
+    ],
+    "ru": [
+     "На каждой боковой стенке носовой полости выступают три изогнутые костные пластинки: верхняя, средняя и нижняя носовые раковины. Отдельной костью является только нижняя, самая крупная; средняя и верхняя раковины — части решётчатой кости. Раковины увеличивают поверхность полости и разбивают входящий поток, и воздух отражается вдоль влажной оболочки, где он очищается и согревается.",
+     "Раковины, носовые ходы и пазухи выстланы мерцательным эпителием с бокаловидными клетками, вырабатывающими слизь. К ней прилипают пыль, пыльца, бактерии и вирусы, а биение ресничек сметает слизь к глотке, где её проглатывают. Капилляры под поверхностью согревают воздух, секрет содержит антибактериальные лизоцим и дефенсины, а на выдохе раковины задерживают воду, чтобы оболочка не пересыхала."
+    ],
+    "kk": [
+     "Мұрын қуысының әр бүйір қабырғасынан үш иілген сүйек табақша шығып тұрады: жоғарғы, ортаңғы және төменгі мұрын кеуілжірлері. Олардың ішінде ең үлкені, төменгі кеуілжір ғана жеке сүйек; ортаңғы және жоғарғы кеуілжірлер торлы сүйектің бөліктері. Кеуілжірлер қуыстың бетін ұлғайтып, кірген ауа ағынын бұзады, сөйтіп ауа ылғалды қабықты бойлай соғылып, тазарып, жылынады.",
+     "Кеуілжірлерді, мұрын жолдарын және қойнауларды шырыш бөлетін құтыша пішінді жасушалары бар кірпікшелі эпителий астарлайды. Шырышқа шаң, тозаң, бактериялар мен вирустар жабысады, ал соғып тұрған кірпікшелер шырышты жұтқыншаққа қарай ысырады, сонда ол жұтылады. Беткі қабаттың астындағы капиллярлар ауаны жылытады, бөлінді бактерияларға қарсы лизоцим мен дефенсиндерден тұрады, ал дем шығарғанда кеуілжірлер суды ұстап қалып, қабықтың кебуіне жол бермейді."
+    ]
+   },
+   "highlight": [
+    "inferior-nasal-concha-bone",
+    "ethmoid-bone",
+    "mucosa-of-nasal-cavity"
+   ],
+   "explode": 0.15,
+   "camera": {
+    "yaw": 1.57,
+    "pitch": 0.05,
+    "zoom": 1.5
+   },
+   "section": "sagittal",
+   "anim": {
+    "type": "pulse-path",
+    "ids": [
+     "major-alar-cartilage",
+     "mucosa-of-nasal-cavity",
+     "inferior-nasal-concha-bone",
+     "nasopharynx"
+    ]
+   },
+   "facts": [
+    {
+     "kk": "Бөлме ауасы (25 °C, салыстырмалы ылғалдылық 35%) 50 еріктіде жүргізілген өлшеулерде мұрынжұтқыншаққа жеткенде шамамен 32,6 °C-қа дейін жылынып, ылғалдылығы 90%-ға жуықтаған.",
+     "ru": "В измерениях у 50 добровольцев комнатный воздух (25 °C, относительная влажность 35%) к носоглотке нагревался примерно до 32,6 °C при влажности около 90%.",
+     "en": "In measurements on 50 volunteers, room air (25 °C, 35% relative humidity) reached about 32.6 °C and 90% humidity by the nasopharynx.",
+     "src": {
+      "title": "Xiao Q, Bates AJ, Doorly DJ (2024). Effects of decongestion on nasal cavity air conditioning efficiency: a CFD cohort study. Scientific Reports",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11375134/"
+     }
+    },
+    {
+     "kk": "Суық ауа кірпікшелердің қозғалысын баяулатады; шырыш жиналып қалады, сондықтан суықта мұрыннан су ағуы мүмкін.",
+     "ru": "Холодный воздух замедляет движение ресничек; слизь накапливается, и поэтому на морозе может течь из носа.",
+     "en": "Cold air slows the cilia, so mucus builds up, which may lead to a runny nose in cold weather.",
+     "src": {
+      "title": "Betts JG, Young KA, Wise JA, et al. (OpenStax) (2022). Anatomy and Physiology 2e, 22.1 Organs and Structures of the Respiratory System. OpenStax textbook (Rice University)",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/22-1-organs-and-structures-of-the-respiratory-system"
+     }
+    },
+    {
+     "kk": "Кеуілжірлер «мұрын цикліне» қатысады: бітелу бір танаудан екіншісіне ауысып отырады, әр кезең жарты сағаттан 6 сағатқа дейін созылады.",
+     "ru": "Раковины участвуют в «носовом цикле»: заложенность попеременно переходит с одной стороны на другую, и каждая фаза длится от получаса до 6 часов.",
+     "en": "The conchae take part in the 'nasal cycle': congestion alternates between the two sides, each phase lasting from half an hour to 6 hours.",
+     "src": {
+      "title": "Fakoya AO, Hohman MH, Georgakopoulos B, Le PH (2024). Anatomy, Head and Neck, Nasal Concha. StatPearls Publishing (NCBI Bookshelf)",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK546636/"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Мұрын неге алдынан қанайды",
+    "ru": "Почему нос кровит спереди",
+    "en": "Why nosebleeds start at the front"
+   },
+   "text": {
+    "en": [
+     "The lining of the nose has a rich blood supply. Five named arteries send their terminal branches into the nasal cavity: the anterior and posterior ethmoidal arteries, the sphenopalatine artery, the greater palatine artery and the superior labial artery.",
+     "The territories of all five vessels meet at the front of the septum, forming Kiesselbach's plexus, also called Little's area. It sits at the entrance of the nose, exposed to heat, cold, dry and moist air, and the mucosa over it is fragile, so it is easily injured. That is why most nosebleeds start here; rarer 'posterior' bleeds come from vessels deeper in the cavity."
+    ],
+    "ru": [
+     "Слизистая оболочка носа обильно снабжается кровью. Концевые ветви в носовую полость посылают пять именованных артерий: передняя и задняя решётчатые, клиновидно-нёбная, большая нёбная и верхняя губная.",
+     "Бассейны всех пяти сосудов сходятся в передней части перегородки, образуя сплетение Киссельбаха, или зону Литтла. Оно находится у самого входа в нос, где на него действуют жара, холод, сухой и влажный воздух, а слизистая над ним хрупкая и легко травмируется. Поэтому большинство носовых кровотечений начинается именно здесь; более редкие «задние» кровотечения идут из сосудов в глубине полости."
+    ],
+    "kk": [
+     "Мұрынның шырышты қабығы қанмен мол қамтамасыз етіледі. Мұрын қуысына бес атаулы артерия соңғы тармақтарын жібереді: алдыңғы және артқы торлы сүйек артериялары, сына-таңдай артериясы, үлкен таңдай артериясы және жоғарғы ерін артериясы.",
+     "Осы бес тамырдың қанмен қамтитын аймақтары қалқаның алдыңғы бөлігінде түйісіп, Кисельбах өрімін (Литтл аймағын) түзеді. Ол мұрынның дәл кіреберісінде орналасқан, оған ыстық пен суық, құрғақ және ылғалды ауа әсер етеді, ал үстіндегі шырышты қабық нәзік болғандықтан оңай жарақаттанады. Сондықтан мұрынның қанауы көбіне осы жерден басталады; сирек кездесетін «артқы» қан кету қуыстың тереңіндегі тамырлардан болады."
+    ]
+   },
+   "highlight": [
+    "anterior-ethmoidal-artery",
+    "anterior-septal-branches-of-anterior-ethmoidal-artery",
+    "posterior-ethmoidal-artery",
+    "septal-branches-of-posterior-ethmoidal-artery",
+    "posterior-septal-branches-of-sphenopalatine-artery",
+    "posterior-lateral-nasal-branches-of-sphenopalatine-artery",
+    "greater-palatine-artery",
+    "superior-labial-artery",
+    "nasal-septal-cartilage"
+   ],
+   "explode": 0.2,
+   "camera": {
+    "yaw": 1.57,
+    "pitch": 0.1,
+    "zoom": 1.6
+   },
+   "section": "sagittal",
+   "anim": null,
+   "facts": [
+    {
+     "kk": "Алдыңғы мұрын қанауы артқыға қарағанда жиі кездеседі, және оның 90%-ының көзі — қалқаның алдындағы Кисельбах өрімі.",
+     "ru": "Передние носовые кровотечения встречаются чаще задних, и источник 90% из них — сплетение Киссельбаха на передней части перегородки.",
+     "en": "Anterior nosebleeds are the more common kind, and 90% of them come from Kiesselbach's plexus on the front of the septum.",
+     "src": {
+      "title": "Tabassom A, Dahlstrom JJ. Epistaxis. StatPearls [Internet]. StatPearls Publishing (abstract read via Europe PMC)",
+      "url": "https://europepmc.org/article/MED/28613768"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Иіс: електен өтетін нерв",
+    "ru": "Обоняние: нерв сквозь решето",
+    "en": "Smell: a nerve through a sieve"
+   },
+   "text": {
+    "en": [
+     "In the roof of the nasal cavity lies the olfactory epithelium, a patch of almost 5 cm² over the cribriform plate of the ethmoid, the adjoining septum and the superior and middle conchae. Its receptor neurons push dendrites into the mucus. Inhaled odour molecules dissolve there, are carried by binding proteins and attach to receptor proteins on the dendrites, which start an electrical signal.",
+     "Each neuron's axon passes up through a tiny olfactory foramen in the sieve-like cribriform plate; these fine fibres make up the olfactory nerve. They end in the olfactory bulb on the underside of the frontal lobe; the bulb and the olfactory tract lie close to the olfactory sulcus. From there signals travel to the olfactory cortex in the temporal lobe and to the limbic system and hypothalamus, where smells become linked with memory and emotion.",
+     "Airborne toxic chemicals can damage the olfactory cells, so the neurons are regularly replaced, and new axons grow along those already in place. A blow to the face can shear these fibres when the frontal lobe shifts relative to the ethmoid, and smell can be lost, a condition called anosmia. The ability of olfactory neurons to replace themselves declines with age."
+    ],
+    "ru": [
+     "В своде носовой полости лежит обонятельный эпителий — участок площадью почти 5 см² над решётчатой пластинкой решётчатой кости, на прилегающей части перегородки и на верхней и средней раковинах. Его рецепторные нейроны погружают дендриты в слизь. Вдыхаемые пахучие молекулы растворяются в ней, переносятся связывающими белками и присоединяются к рецепторным белкам дендритов, запуская электрический сигнал.",
+     "Аксон каждого нейрона проходит вверх через крошечное обонятельное отверстие в решётчатой пластинке; эти тонкие волокна и составляют обонятельный нерв. Они заканчиваются в обонятельной луковице на нижней поверхности лобной доли; луковица и обонятельный тракт лежат рядом с обонятельной бороздой. Оттуда сигналы идут в обонятельную кору височной доли, а также в лимбическую систему и гипоталамус, где запахи связываются с памятью и эмоциями.",
+     "Токсичные вещества из воздуха могут повреждать обонятельные клетки, поэтому нейроны регулярно обновляются, а новые аксоны растут вдоль уже существующих. Удар по лицу может оборвать эти волокна, когда лобная доля смещается относительно решётчатой кости, и обоняние может пропасть — это называют аносмией. С возрастом способность обонятельных нейронов к обновлению снижается."
+    ],
+    "kk": [
+     "Мұрын қуысының күмбезінде иіс сезу эпителийі жатыр: ол торлы сүйектің торлы табақшасының, қалқаның іргелес бөлігінің және жоғарғы мен ортаңғы кеуілжірлердің үстіндегі аумағы 5 см²-ге жуық алаң. Оның рецепторлық нейрондары дендриттерін шырышқа батырып тұрады. Ауамен кірген иіс молекулалары шырышта еріп, байланыстырушы ақуыздар арқылы тасымалданады да, дендриттердегі рецепторлық ақуыздарға қосылып, электр сигналын тудырады.",
+     "Әр нейронның аксоны торлы табақшадағы кішкентай иіс сезу тесігі арқылы жоғары өтеді; осы жіңішке талшықтар иіс сезу нервін құрайды. Олар маңдай үлесінің астыңғы бетіндегі иіс сезу баданасында аяқталады; бадана мен иіс сезу жолы иіс сезу жүлгесінің жанында жатады. Сол жерден сигналдар самай үлесіндегі иіс сезу қыртысына, сондай-ақ лимбикалық жүйе мен гипоталамусқа барады, сонда иіс естелікпен және эмоциямен байланысады.",
+     "Ауадағы улы заттар иіс сезу жасушаларын зақымдауы мүмкін, сондықтан нейрондар үнемі жаңарып отырады, ал жаңа аксондар бұрыннан бар аксондарды бойлай өседі. Бетке тиген соққы кезінде маңдай үлесі торлы сүйекке қатысты ығысып, осы талшықтарды үзіп жіберуі мүмкін, сонда иіс сезу жоғалуы ықтимал; мұны аносмия деп атайды. Жас ұлғайған сайын иіс сезу нейрондарының жаңару қабілеті төмендейді."
+    ]
+   },
+   "highlight": [
+    "olfactory-nerve-i",
+    "ethmoid-bone",
+    "olfactory-sulcus",
+    "mucosa-of-nasal-cavity"
+   ],
+   "explode": 0.3,
+   "camera": {
+    "yaw": 1.57,
+    "pitch": 0.2,
+    "zoom": 1.6
+   },
+   "section": "sagittal",
+   "anim": {
+    "type": "pulse-path",
+    "ids": [
+     "mucosa-of-nasal-cavity",
+     "ethmoid-bone",
+     "olfactory-nerve-i",
+     "olfactory-sulcus"
+    ]
+   },
+   "facts": [
+    {
+     "kk": "Мұрынның әр жартысында 6–10 миллион иіс сезу нейроны бар; олар бағаналы жасушалардан үздіксіз жаңарады, жартылай ыдырау мерзімі шамамен 30–40 күн.",
+     "ru": "В каждой половине носа 6–10 миллионов обонятельных нейронов; они непрерывно обновляются из стволовых клеток с периодом полужизни около 30–40 дней.",
+     "en": "Each side of the nose holds 6–10 million olfactory neurons, continually replaced from stem cells, with a half-life of about 30–40 days.",
+     "src": {
+      "title": "Helwany M, Bordoni B (2023). Neuroanatomy, Cranial Nerve 1 (Olfactory). StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK556051/"
+     }
+    },
+    {
+     "kk": "Иіс сезу нейрондарының бетінде иіс рецепторларының шамамен 350 түрі бар.",
+     "ru": "На обонятельных нейронах различают примерно 350 типов обонятельных рецепторов.",
+     "en": "Olfactory neurons carry roughly 350 different types of odorant receptors.",
+     "src": {
+      "title": "Červený K, Janoušková K, Vaněčková K, et al. (2022). Olfactory Evaluation in Clinical Medical Practice. J Clin Med",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9698169/"
+     }
+    },
+    {
+     "kk": "Иіс — ми қыртысына жетер алдында таламуста синапс түзбейтін жалғыз сезім түрі.",
+     "ru": "Обоняние — единственное чувство, сигналы которого не переключаются в таламусе, прежде чем достичь коры.",
+     "en": "Smell is the one sense that does not synapse in the thalamus before reaching the cerebral cortex.",
+     "src": {
+      "title": "Betts JG, Young KA, Wise JA, et al. (OpenStax) (2022). Anatomy and Physiology 2e, 14.1 Sensory Perception. OpenStax textbook (Rice University)",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/14-1-sensory-perception"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Қуыс сүйектер: мұрын жанындағы қойнаулар",
+    "ru": "Полые кости: околоносовые пазухи",
+    "en": "Hollow bones: the paranasal sinuses"
+   },
+   "text": {
+    "en": [
+     "Several skull bones around the nose contain hollow, air-filled spaces lined with nasal mucosa, each connected to the nasal cavity and named after its bone. The frontal sinus, above the eyebrows, is the most anterior. The sphenoid sinus, in the body of the sphenoid just in front of and below the sella turcica, is the most posterior. Between them the ethmoid holds many small air cells with very thin walls, in anterior, middle and posterior groups.",
+     "The largest, the maxillary sinus, lies in each maxilla just below the orbit; it has no separate model here, so the maxilla is highlighted. Its opening into the nose sits high on its inner wall, which makes it hard to drain. The maxillary sinuses are the ones most often involved in sinus infections.",
+     "What the sinuses are for is still debated; the question has been argued since Galen in the 2nd century. Proposed roles include lightening the skull, adding resonance to the voice, warming and humidifying air, and acting as a 'crumple zone' against blows. A 1991 review concluded that none of the classic hypotheses had a scientific basis. The sinuses are, however, the major source of nitric oxide in the nose."
+    ],
+    "ru": [
+     "Несколько костей черепа вокруг носа содержат полые воздухоносные пространства, выстланные слизистой носа; каждое сообщается с носовой полостью и названо по своей кости. Лобная пазуха над бровями — самая передняя. Клиновидная пазуха в теле клиновидной кости, чуть впереди и ниже турецкого седла, — самая задняя. Между ними решётчатая кость содержит множество мелких воздухоносных ячеек с очень тонкими стенками — передние, средние и задние.",
+     "Самая большая, верхнечелюстная пазуха, лежит в каждой верхней челюсти прямо под глазницей; отдельной модели здесь нет, поэтому подсвечена верхняя челюсть. Её отверстие в нос расположено высоко на внутренней стенке, и поэтому она плохо дренируется. Именно верхнечелюстные пазухи чаще всего поражаются при синусите.",
+     "Зачем нужны пазухи, до сих пор спорят; спор идёт со времён Галена, со II века. Им приписывают облегчение черепа, резонанс голоса, согревание и увлажнение воздуха, роль «зоны смятия» при ударах. Обзор 1991 года заключил, что ни одна из классических гипотез не имеет научного обоснования. При этом пазухи — главный источник оксида азота в носу."
+    ],
+    "kk": [
+     "Мұрынды қоршаған бірнеше бас сүйектің ішінде мұрынның шырышты қабығымен астарланған ауалы қуыстар бар; әрқайсысы мұрын қуысымен жалғасады және өзі орналасқан сүйектің атымен аталады. Қастың үстіндегі маңдай қойнауы ең алдыңғысы. Сынатәрізді сүйектің денесіндегі, түрік ертоқымының сәл алдында және төменінде жатқан қойнау ең артқысы. Олардың аралығында торлы сүйекте қабырғалары өте жұқа көптеген ұсақ ауалы ұяшықтар бар: алдыңғы, ортаңғы және артқы топтар.",
+     "Ең үлкені, жоғарғы жақсүйек (гаймор) қойнауы, әр жоғарғы жақ сүйегінде көзұяның дәл астында орналасқан; мұнда оның жеке моделі жоқ, сондықтан жоғарғы жақ сүйегі белгіленген. Оның мұрынға ашылатын тесігі ішкі қабырғасының жоғарғы жағында болғандықтан, қойнау нашар тазарады. Қойнау қабынғанда көбіне дәл осы гаймор қойнаулары зақымданады.",
+     "Қойнаулардың не үшін қажет екені әлі де талас тудырады; бұл дау Гален заманынан, II ғасырдан бері жалғасып келеді. Оларға бас сүйекті жеңілдету, дауысқа резонанс беру, ауаны жылыту мен ылғалдандыру, соққы кезінде «жаншылу аймағы» болу сияқты рөлдер телінеді. 1991 жылғы шолу классикалық болжамдардың ешқайсысының ғылыми негізі жоқ деген қорытындыға келген. Дегенмен қойнаулар мұрындағы азот тотығының негізгі көзі болып табылады."
+    ]
+   },
+   "highlight": [
+    "sinus-of-frontal-bone",
+    "sinus-of-sphenoid-bone",
+    "anterior-cells-of-ethmoid-bone",
+    "middle-cells-of-ethmoid-bone",
+    "posterior-cells-of-ethmoid-bone",
+    "maxilla"
+   ],
+   "explode": 0.6,
+   "camera": {
+    "yaw": 0.6,
+    "pitch": 0.15,
+    "zoom": 1.3
+   },
+   "section": null,
+   "anim": null,
+   "facts": [
+    {
+     "kk": "Гаймор қойнауы — мұрын жанындағы қойнаулардың ең үлкені, ересек адамда көлемі шамамен 15 мл.",
+     "ru": "Верхнечелюстная пазуха — самая большая из околоносовых, у взрослого её объём около 15 мл.",
+     "en": "The maxillary sinus is the largest paranasal sinus, holding about 15 mL in an adult.",
+     "src": {
+      "title": "Cappello, Minutello, Dublin (2023). Anatomy, Head and Neck, Nose Paranasal Sinuses. StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing (NCBI Bookshelf)",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK499826/"
+     }
+    },
+    {
+     "kk": "Жаңа туған нәрестеде маңдай қойнауы болмайды: ол 2 жастан кейін дами бастайды.",
+     "ru": "У новорождённых лобной пазухи нет: она начинает развиваться после 2 лет.",
+     "en": "Newborns have no frontal sinus: it starts to develop after age 2.",
+     "src": {
+      "title": "Khanduri S, Singh N, Bhadury S, Ansari AA, Chaudhary M (2015). Combined Aplasia of Frontal and Sphenoid Sinuses with Hypoplasia of Ethmoid and Maxillary Sinuses. Indian J Otolaryngol Head Neck Surg",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4678278/"
+     }
+    },
+    {
+     "kk": "«Жаншылу аймағы» болжамын тексерген бір КТ зерттеуінде маңдай қойнауы сынған науқастардың ішінде ми соғылғандарда қойнау көлемі соғылмағандарға қарағанда 33% кіші болған.",
+     "ru": "В одном КТ-исследовании, проверявшем гипотезу «зоны смятия», у пациентов с переломом лобной пазухи и ушибом мозга объём пазухи был на 33% меньше, чем у тех, у кого ушиба не было.",
+     "en": "Testing the 'crumple zone' idea, one CT study found that among patients with a frontal sinus fracture, those with brain contusion had 33% smaller frontal sinuses than those without.",
+     "src": {
+      "title": "Yu JL, Branstetter BF, Snyderman CH (2014). Frontal sinus volume predicts incidence of brain contusion in patients with head trauma. J Trauma Acute Care Surg (abstract via Europe PMC)",
+      "url": "https://europepmc.org/article/MED/24458055"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Жылағанда мұрыннан неге су ағады",
+    "ru": "Почему при слезах течёт из носа",
+    "en": "Why crying makes your nose run"
+   },
+   "text": {
+    "en": [
+     "Tears are made by the lacrimal gland, just inside the orbit above and to the outer side of the eye. They wash across the eye to its inner corner, where they enter two tiny openings, the upper and lower lacrimal puncta, only 0.2–0.3 mm across. From there they pass through the lacrimal canaliculi into the lacrimal sac and down the nasolacrimal duct.",
+     "The duct opens into the inferior meatus of the nose, behind the front edge of the inferior nasal concha. Normally the tear fluid then drains backward, toward the throat. But when crying or eye irritation increases the flow, some of it also drains forward, and the nose runs. At the lower end of the duct, the valve of Hasner is the functional barrier that keeps nasal contents from flowing back up."
+    ],
+    "ru": [
+     "Слёзы вырабатывает слёзная железа, лежащая внутри глазницы над глазом и кнаружи от него. Они омывают глаз и стекают к его внутреннему углу, где попадают в два крошечных отверстия — верхнюю и нижнюю слёзные точки диаметром всего 0,2–0,3 мм. Оттуда по слёзным канальцам они поступают в слёзный мешок и дальше вниз по носослёзному протоку.",
+     "Проток открывается в нижний носовой ход позади переднего края нижней носовой раковины. Обычно слёзная жидкость затем стекает назад, к глотке. Но когда из-за плача или раздражения глаз слёз становится больше, часть их стекает и вперёд — и из носа течёт. На нижнем конце протока клапан Хаснера служит функциональным барьером, не дающим содержимому носа затекать обратно."
+    ],
+    "kk": [
+     "Көзжасты көзұяның ішінде, көздің жоғарғы және сыртқы жағында жатқан көзжас безі бөледі. Көзжас көзді жуып, оның ішкі бұрышына қарай ағады да, диаметрі небәрі 0,2–0,3 мм болатын екі кішкентай тесікке, жоғарғы және төменгі көзжас нүктелеріне кіреді. Сол жерден көзжас өзекшелері арқылы көзжас қапшығына өтіп, мұрын-көзжас түтігімен төмен түседі.",
+     "Түтік мұрынның төменгі жолына, төменгі кеуілжірдің алдыңғы жиегінің артына ашылады. Әдетте көзжас сұйықтығы одан әрі артқа, жұтқыншаққа қарай ағады. Ал жылағанда немесе көз тітіркенгенде көзжас көбейіп, оның бір бөлігі алға да ағады, сөйтіп мұрыннан су ағады. Түтіктің төменгі ұшындағы Хаснер қақпақшасы мұрын ішіндегі заттың кері ағуына жол бермейтін функциялық тосқауыл болып табылады."
+    ]
+   },
+   "highlight": [
+    "lacrimal-gland",
+    "lacrimal-canaliculus",
+    "lacrimal-sac",
+    "nasolacrimal-duct",
+    "inferior-nasal-concha-bone"
+   ],
+   "explode": 0.25,
+   "camera": {
+    "yaw": 0.55,
+    "pitch": 0.1,
+    "zoom": 1.7
+   },
+   "section": null,
+   "anim": {
+    "type": "pulse-path",
+    "ids": [
+     "lacrimal-gland",
+     "lacrimal-canaliculus",
+     "lacrimal-sac",
+     "nasolacrimal-duct",
+     "inferior-nasal-concha-bone"
+    ]
+   },
+   "facts": [
+    {
+     "kk": "Көзжастың 80–90%-ы төменгі көзжас өзекшесі арқылы ағып кетеді.",
+     "ru": "80–90% всей слёзной жидкости оттекает через нижний слёзный каналец.",
+     "en": "80–90% of all tear fluid drains through the lower lacrimal canaliculus.",
+     "src": {
+      "title": "Maliborski A, Różycki R (2014). Diagnostic imaging of the nasolacrimal drainage system. Part I. Med Sci Monit (full text checked via Europe PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3999077/"
+     }
+    },
+    {
+     "kk": "Көзді жұмғанда көзжас өзекшелері қысылады, ал көзжас қапшығы керісінше кеңейіп, сұйықты сорып алады: бұл «көзжас сорғысы».",
+     "ru": "При смыкании век слёзные канальцы сжимаются, а слёзный мешок, наоборот, расширяется и создаёт присасывающую силу — это «слёзный насос».",
+     "en": "When the eyelids close, the canaliculi constrict while the lacrimal sac widens and creates suction: the 'lacrimal pump'.",
+     "src": {
+      "title": "Maliborski A, Różycki R (2014). Diagnostic imaging of the nasolacrimal drainage system. Part I. Med Sci Monit (full text checked via Europe PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3999077/"
+     }
+    },
+    {
+     "kk": "Жаңа туған нәрестелердің 6–20%-ында Хаснер қақпақшасы деңгейінде туа біткен бітелу кездеседі.",
+     "ru": "У 6–20% новорождённых встречается врождённая непроходимость на уровне клапана Хаснера.",
+     "en": "Congenital blockage at the valve of Hasner occurs in 6–20% of newborns.",
+     "src": {
+      "title": "Maliborski A, Różycki R (2014). Diagnostic imaging of the nasolacrimal drainage system. Part I. Med Sci Monit (full text checked via Europe PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3999077/"
+     }
+    }
+   ]
+  }
+ ]
+}

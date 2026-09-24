@@ -1,0 +1,625 @@
+{
+ "id": "face-muscles",
+ "title": {
+  "kk": "Бет бұлшықеттері",
+  "ru": "Мимические мышцы",
+  "en": "Muscles of facial expression"
+ },
+ "subtitle": {
+  "kk": "Теріге бекитін бұлшықеттер, бір нерв және сезімнің тілі",
+  "ru": "Мышцы, прикреплённые к коже, один нерв и язык эмоций",
+  "en": "Muscles tied to skin, a single nerve and the language of emotion"
+ },
+ "trigger": [
+  "frontalis-muscle",
+  "occipitalis-muscle",
+  "epicranial-aponeurosis",
+  "corrugator-supercilii",
+  "procerus-muscle",
+  "orbital-part-of-orbicularis-oculi",
+  "palpebral-part-of-orbicularis-oculi",
+  "nasalis-muscle",
+  "depressor-septi-nasi",
+  "levator-nasolabialis",
+  "levator-labii-superioris",
+  "zygomaticus-minor-muscle",
+  "zygomaticus-major-muscle",
+  "levator-anguli-oris",
+  "risorius-muscle",
+  "orbicularis-oris-muscle",
+  "depressor-anguli-oris",
+  "depressor-labii-inferioris",
+  "mentalis-muscle",
+  "bucinator",
+  "platysma",
+  "facial-nerve-vii"
+ ],
+ "parts": [
+  "frontalis-muscle",
+  "occipitalis-muscle",
+  "epicranial-aponeurosis",
+  "corrugator-supercilii",
+  "procerus-muscle",
+  "orbital-part-of-orbicularis-oculi",
+  "palpebral-part-of-orbicularis-oculi",
+  "nasalis-muscle",
+  "depressor-septi-nasi",
+  "levator-nasolabialis",
+  "levator-labii-superioris",
+  "zygomaticus-minor-muscle",
+  "zygomaticus-major-muscle",
+  "levator-anguli-oris",
+  "risorius-muscle",
+  "orbicularis-oris-muscle",
+  "depressor-anguli-oris",
+  "depressor-labii-inferioris",
+  "mentalis-muscle",
+  "bucinator",
+  "platysma",
+  "facial-nerve-vii",
+  "motor-nucleus-of-facial-nerve",
+  "parotid-gland",
+  "parotid-duct",
+  "superficial-part-of-masseter",
+  "deep-part-of-masseter",
+  "temporalis-muscle",
+  "anterior-division-of-mandibular-nerve",
+  "trigeminal-nerve-v"
+ ],
+ "explode": {
+  "frontalis-muscle": [
+   0,
+   0.012,
+   0.02
+  ],
+  "occipitalis-muscle": [
+   0,
+   0.008,
+   -0.02
+  ],
+  "epicranial-aponeurosis": [
+   0,
+   0.022,
+   0
+  ],
+  "corrugator-supercilii": [
+   0,
+   0.006,
+   0.022
+  ],
+  "procerus-muscle": [
+   0,
+   0.004,
+   0.026
+  ],
+  "orbital-part-of-orbicularis-oculi": [
+   0,
+   0.0,
+   0.022
+  ],
+  "palpebral-part-of-orbicularis-oculi": [
+   0,
+   0.0,
+   0.03
+  ],
+  "nasalis-muscle": [
+   0,
+   0.0,
+   0.028
+  ],
+  "depressor-septi-nasi": [
+   0,
+   -0.002,
+   0.03
+  ],
+  "levator-nasolabialis": [
+   0,
+   0.002,
+   0.026
+  ],
+  "levator-labii-superioris": [
+   0,
+   0.0,
+   0.024
+  ],
+  "zygomaticus-minor-muscle": [
+   0,
+   0.0,
+   0.021
+  ],
+  "zygomaticus-major-muscle": [
+   0,
+   0.0,
+   0.018
+  ],
+  "levator-anguli-oris": [
+   0,
+   0.0,
+   0.02
+  ],
+  "risorius-muscle": [
+   0,
+   -0.002,
+   0.016
+  ],
+  "orbicularis-oris-muscle": [
+   0,
+   -0.002,
+   0.032
+  ],
+  "depressor-anguli-oris": [
+   0,
+   -0.006,
+   0.022
+  ],
+  "depressor-labii-inferioris": [
+   0,
+   -0.006,
+   0.027
+  ],
+  "mentalis-muscle": [
+   0,
+   -0.01,
+   0.028
+  ],
+  "bucinator": [
+   0,
+   0.0,
+   0.01
+  ],
+  "platysma": [
+   0,
+   -0.016,
+   0.02
+  ],
+  "superficial-part-of-masseter": [
+   0,
+   0,
+   0.004
+  ],
+  "temporalis-muscle": [
+   0,
+   0.004,
+   0
+  ]
+ },
+ "chapters": [
+  {
+   "title": {
+    "kk": "Теріні қозғайтын бұлшықеттер",
+    "ru": "Мышцы, которые двигают кожу",
+    "en": "Muscles that move skin"
+   },
+   "text": {
+    "en": [
+     "Most skeletal muscles pull on bones. The muscles of facial expression are different: they arise from the surface of the skull, but their fibres end woven into the connective tissue and dermis of the skin. When they contract, they move the skin itself, and that moving skin is what we read as a facial expression.",
+     "Many of these muscles gather around the eyelids, nose and mouth. Depending on how they are counted, the face has around 30 muscles on each side. They develop from the second pharyngeal arch of the embryo, and all of them are supplied by a single nerve: the facial nerve, cranial nerve VII."
+    ],
+    "ru": [
+     "Большинство скелетных мышц тянут за кости. Мимические мышцы устроены иначе: они начинаются на поверхности черепа, а их волокна заканчиваются, переплетаясь с соединительной тканью и дермой кожи. Сокращаясь, они сдвигают саму кожу, и именно это движение кожи мы воспринимаем как выражение лица.",
+     "Многие из этих мышц собраны вокруг век, носа и рта. В зависимости от способа подсчёта на каждой стороне лица около 30 мышц. Они развиваются из второй глоточной дуги зародыша, и все они получают иннервацию от одного нерва — лицевого, VII пары черепных нервов."
+    ],
+    "kk": [
+     "Қаңқа бұлшықеттерінің көбі сүйекті тартады. Мимикалық бұлшықеттердің құрылысы өзгеше: олар бассүйектің бетінен басталады, ал талшықтары терінің дәнекер тінімен және дермасымен астасып бітеді. Жиырылғанда олар терінің өзін қозғайды, біз бет әлпеті деп қабылдайтынымыз да — осы терінің қимылы.",
+     "Бұл бұлшықеттердің көбі қабақ, мұрын және ауыз айналасына шоғырланған. Қалай санағанға байланысты беттің әр жағында 30-ға жуық бұлшықет бар. Олар ұрықтың екінші жұтқыншақ доғасынан дамиды және бәрі бір ғана нервтен — бассүйек нервтерінің VII жұбы, бет нервінен — нерв алады."
+    ]
+   },
+   "highlight": [
+    "frontalis-muscle",
+    "occipitalis-muscle",
+    "corrugator-supercilii",
+    "procerus-muscle",
+    "orbital-part-of-orbicularis-oculi",
+    "palpebral-part-of-orbicularis-oculi",
+    "nasalis-muscle",
+    "depressor-septi-nasi",
+    "levator-nasolabialis",
+    "levator-labii-superioris",
+    "zygomaticus-minor-muscle",
+    "zygomaticus-major-muscle",
+    "levator-anguli-oris",
+    "risorius-muscle",
+    "orbicularis-oris-muscle",
+    "depressor-anguli-oris",
+    "depressor-labii-inferioris",
+    "mentalis-muscle",
+    "bucinator",
+    "platysma"
+   ],
+   "explode": 0.3,
+   "camera": {
+    "yaw": 0.5,
+    "pitch": 0.1,
+    "zoom": 1.0
+   },
+   "section": null,
+   "anim": null,
+   "facts": [
+    {
+     "en": "Not everyone has the same set of face muscles: the risorius, often called the smiling muscle, is not present in all people.",
+     "ru": "Набор мимических мышц у всех разный: мышца смеха, которую часто называют «мышцей улыбки», есть не у каждого человека.",
+     "kk": "Мимикалық бұлшықеттердің жиынтығы бәрінде бірдей емес: жиі «күлкі бұлшықеті» деп аталатын бұлшықет әр адамда бола бермейді.",
+     "src": {
+      "title": "Germann AM, Al Khalili Y (2023). Anatomy, Head and Neck, Risorius Muscle. StatPearls (abstract via Europe PMC)",
+      "url": "https://europepmc.org/article/MED/31082043"
+     }
+    },
+    {
+     "en": "A 2026 comparison of 10 primate species found a distinct depressor anguli oris, the muscle that pulls the mouth corners down, only in humans.",
+     "ru": "Сравнение 10 видов приматов (2026) показало, что отдельная мышца, опускающая угол рта, есть только у человека.",
+     "kk": "Приматтардың 10 түрін салыстырған 2026 жылғы зерттеу ауыз бұрышын төмен тартатын жеке бұлшықеттің тек адамда болатынын көрсетті.",
+     "src": {
+      "title": "Rotenstreich L, Vituri A, Shahar M, et al. (2026). Anatomical Evidence for a Uniquely Human Depressor Anguli Oris and a Novel Helplessness Signaling Hypothesis. Ann N Y Acad Sci",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13170994/"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Көз, қас және бастың «дулығасы»",
+    "ru": "Глаза, брови и «шлем» головы",
+    "en": "Eyes, brows and the scalp's helmet"
+   },
+   "text": {
+    "en": [
+     "The orbicularis oculi is a sphincter-like ring around the upper and lower eyelids, made of an orbital part and a palpebral (eyelid) part. Its main job is to close the eyelids, and it also helps tears drain. The outer portion of the ring shapes the familiar \"crow's feet\" at the corners of the eyes.",
+     "Between the brows sit the corrugator supercilii and the pyramid-shaped procerus. Together they pull the inner ends of the brows down and inward, and frequent frowning makes the lines between them more prominent. The corrugator is the prime mover of the eyebrows: put a fingertip at the bridge of the nose and frown to feel it work.",
+     "Raising the brows is the task of the frontalis, the only muscle that does it. It is the front belly of the occipitofrontalis; the rear belly, the occipitalis, lies at the back of the head. No muscle crosses the top of the skull: the two bellies are joined by a broad tendon, the epicranial aponeurosis, or galea, from the Latin for \"helmet\"."
+    ],
+    "ru": [
+     "Круговая мышца глаза — похожее на сфинктер кольцо вокруг верхнего и нижнего век; в ней различают глазничную и вековую части. Главная её задача — смыкать веки; кроме того, она помогает оттоку слезы. Наружная часть кольца формирует знакомые «гусиные лапки» в уголках глаз.",
+     "Между бровями лежат мышца, сморщивающая бровь, и пирамидальная мышца гордецов. Вместе они тянут внутренние концы бровей вниз и к середине, а частое хмурение делает морщины между бровями заметнее. Мышца, сморщивающая бровь, — главный двигатель бровей: приложите палец к переносице и нахмурьтесь, чтобы почувствовать её работу.",
+     "Поднимает брови лобное брюшко затылочно-лобной мышцы — единственная мышца, которая это делает. Заднее, затылочное брюшко лежит на затылке. Через темя мышца не проходит: оба брюшка соединены широким сухожилием — надчерепным апоневрозом, или сухожильным шлемом (galea по-латыни «шлем»)."
+    ],
+    "kk": [
+     "Көздің айналмалы бұлшықеті — жоғарғы және төменгі қабақты айнала қоршаған, қысқышқа ұқсас сақина; онда көзұялық және қабақ бөліктері ажыратылады. Оның басты міндеті — қабақты жұму, сонымен қатар көз жасының ағып кетуіне көмектеседі. Сақинаның сыртқы бөлігі көз шетіндегі таныс «қарға табанын» қалыптастырады.",
+     "Екі қастың арасында қасты түйетін бұлшықет пен пирамида пішінді тәкаппарлар бұлшықеті жатыр. Олар бірге қастың ішкі ұштарын төмен және ортаға қарай тартады, ал жиі қабақ шыту қас арасындағы әжімдерді айқындай түседі. Қасты түйетін бұлшықет — қасты қозғайтын басты бұлшықет: саусағыңызды мұрын қырының басына қойып, қабағыңызды шытсаңыз, оның жұмысын сезесіз.",
+     "Қасты көтеретін — шүйде-маңдай бұлшықетінің маңдай бөлігі, мұны істейтін жалғыз бұлшықет осы. Артқы, шүйде бөлігі бастың артында жатыр. Төбе арқылы бұлшықет өтпейді: екі бөлікті кең сіңір — бассүйек үстіндегі апоневроз, яғни сіңірлі дулыға жалғайды (латынша galea — «дулыға»)."
+    ]
+   },
+   "highlight": [
+    "orbital-part-of-orbicularis-oculi",
+    "palpebral-part-of-orbicularis-oculi",
+    "corrugator-supercilii",
+    "procerus-muscle",
+    "frontalis-muscle",
+    "occipitalis-muscle",
+    "epicranial-aponeurosis"
+   ],
+   "explode": 0.5,
+   "camera": {
+    "yaw": 0.35,
+    "pitch": 0.3,
+    "zoom": 1.3
+   },
+   "section": null,
+   "anim": {
+    "type": "oscillate",
+    "ids": [
+     "frontalis-muscle"
+    ],
+    "axis": [
+     0,
+     1,
+     0
+    ],
+    "amp": 0.001
+   },
+   "facts": [
+    {
+     "en": "How often we blink depends on what we do. In 150 healthy volunteers the average was 17 blinks a minute at rest, 26 during conversation and only 4.5 while reading.",
+     "ru": "Частота моргания зависит от занятия. У 150 здоровых добровольцев в покое было в среднем 17 морганий в минуту, при разговоре — 26, а при чтении — всего 4,5.",
+     "kk": "Көзді жыпылықтату жиілігі не істеп отырғанымызға байланысты. 150 сау еріктіде тыныштықта минутына орта есеппен 17 рет, сөйлескенде 26 рет, ал оқығанда небәрі 4,5 рет болған.",
+     "src": {
+      "title": "Bentivoglio AR, Bressman SB, Cassetta E, Carretta D, Tonali P, Albanese A (1997). Analysis of blink rate patterns in normal subjects. Mov Disord",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9399231/"
+     }
+    },
+    {
+     "en": "The frontalis, corrugator, procerus and orbicularis oculi all insert into the skin and meet at the glabella and the orbital rim; the balance between them sets the position and shape of the eyebrows.",
+     "ru": "Лобная мышца, мышца, сморщивающая бровь, мышца гордецов и круговая мышца глаза вплетаются в кожу и сходятся у переносья и края глазницы; баланс между ними определяет положение и форму бровей.",
+     "kk": "Маңдай бұлшықеті, қасты түйетін бұлшықет, тәкаппарлар бұлшықеті және көздің айналмалы бұлшықеті теріге бекиді де, қас аралығы мен көзұя жиегінде тоғысады; қастың орны мен пішінін осылардың арасындағы тепе-теңдік анықтайды.",
+     "src": {
+      "title": "Pessino K, Patel J, Patel BC (2023). Anatomy, Head and Neck; Frontalis Muscle. StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK557752/"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Мұрын, ерін, иек және мойын",
+    "ru": "Нос, губы, подбородок и шея",
+    "en": "Nose, lips, chin and neck"
+   },
+   "text": {
+    "en": [
+     "Small muscles move the nose. The nasalis has a transverse part that narrows the nostrils and an alar part that widens them. The depressor septi nasi pulls the tip of the nose down, noticeably during smiling, while the levator labii superioris alaeque nasi pulls the nostril wing upward and outward.",
+     "The orbicularis oris, a circular muscle, moves the lips. Around it radiate muscles that raise the corner of the mouth and the upper lip, such as the two zygomaticus muscles and the levators, and muscles that pull downward, such as the depressor anguli oris. Many of them converge at the modiolus, a dense muscular knot at the corner of the mouth.",
+     "The buccinator forms much of the cheek: it compresses the cheek and lets us whistle, blow and suck, and while we chew it works with the orbicularis oris to keep food inside the mouth. The mentalis lifts the chin and lower lip. Below the jaw, the platysma on the neck is an often-overlooked member of the same family."
+    ],
+    "ru": [
+     "Нос приводят в движение небольшие мышцы. У носовой мышцы есть поперечная часть, сужающая ноздри, и крыльная, расширяющая их. Мышца, опускающая перегородку носа, тянет кончик носа вниз, что заметно при улыбке, а мышца, поднимающая верхнюю губу и крыло носа, тянет крыло носа вверх и в сторону.",
+     "Губы движет круговая мышца рта. От неё расходятся мышцы, поднимающие угол рта и верхнюю губу, — обе скуловые и мышцы-подниматели, и мышцы, тянущие вниз, например мышца, опускающая угол рта. Многие из них сходятся в модиолусе — плотном мышечном узле у угла рта.",
+     "Щёчная мышца составляет большую часть щеки: она сжимает щёку, позволяет свистеть, дуть и сосать, а при жевании вместе с круговой мышцей рта удерживает пищу во рту. Подбородочная мышца поднимает подбородок и нижнюю губу. Ниже челюсти, на шее, лежит подкожная мышца шеи — нередко забываемый член той же семьи."
+    ],
+    "kk": [
+     "Мұрынды шағын бұлшықеттер қозғайды. Мұрын бұлшықетінің танауды тарылтатын көлденең бөлігі және оны кеңейтетін қанат бөлігі бар. Мұрын пердесін түсіретін бұлшықет мұрынның ұшын төмен тартады, бұл әсіресе күлгенде байқалады, ал жоғарғы ерін мен мұрын қанатын көтеретін бұлшықет мұрын қанатын жоғары және сыртқа тартады.",
+     "Ерінді ауыздың айналмалы бұлшықеті қозғайды. Одан ауыз бұрышы мен жоғарғы ерінді көтеретін бұлшықеттер — екі бет сүйектік бұлшықет пен көтергіштер және төмен тартатын бұлшықеттер, мысалы, ауыз бұрышын түсіретін бұлшықет тарайды. Олардың көбі ауыз бұрышындағы тығыз бұлшықет түйіні — модиолуста тоғысады.",
+     "Ұрт бұлшықеті ұрттың едәуір бөлігін құрайды: ол ұртты қысады, ысқыруға, үрлеуге және сорып емуге мүмкіндік береді, ал шайнағанда ауыздың айналмалы бұлшықетімен бірге тамақты ауыз ішінде ұстап тұрады. Иек бұлшықеті иек пен төменгі ерінді көтереді. Жақтан төменде, мойында осы топтың жиі ескерусіз қалатын мүшесі — мойынның теріасты бұлшықеті жатыр."
+    ]
+   },
+   "highlight": [
+    "nasalis-muscle",
+    "depressor-septi-nasi",
+    "levator-nasolabialis",
+    "levator-labii-superioris",
+    "zygomaticus-minor-muscle",
+    "zygomaticus-major-muscle",
+    "levator-anguli-oris",
+    "risorius-muscle",
+    "orbicularis-oris-muscle",
+    "depressor-anguli-oris",
+    "depressor-labii-inferioris",
+    "mentalis-muscle",
+    "bucinator",
+    "platysma"
+   ],
+   "explode": 0.5,
+   "camera": {
+    "yaw": 0.45,
+    "pitch": 0.0,
+    "zoom": 1.4
+   },
+   "section": null,
+   "anim": null,
+   "facts": [
+    {
+     "en": "The buccinator's name, coined in 1694, refers to blowing a trumpet, hence the nickname \"trumpeter's muscle\". It is also one of the first muscles to work in infancy, during sucking.",
+     "ru": "Название щёчной мышцы, введённое в 1694 году, связано с игрой на трубе, отсюда прозвище «мышца трубача». Она же одной из первых начинает работать у младенца, при сосании.",
+     "kk": "Ұрт бұлшықетінің 1694 жылы енгізілген атауы кернейде ойнаумен байланысты, сондықтан оны «кернейшінің бұлшықеті» деп те атайды. Нәресте емгенде ол алғашқылардың бірі болып жұмыс істей бастайды.",
+     "src": {
+      "title": "Rathee M, Jain P (2024). Anatomy, Head and Neck: Buccinator Muscle. StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK546678/"
+     }
+    },
+    {
+     "en": "The two platysma sheets usually cross under the chin, but not in everyone. In 70 Korean cadavers they crossed in 85.7%; in 45% one side overlapped the other.",
+     "ru": "Два листка подкожной мышцы шеи обычно перекрещиваются под подбородком, но не у всех. У 70 корейских трупов перекрёст был в 85,7% случаев, а в 45% одна сторона накрывала другую.",
+     "kk": "Мойынның теріасты бұлшықетінің екі жапырағы әдетте иек астында айқасады, бірақ бәрінде емес. 70 кореялық мәйітте айқасу 85,7% жағдайда болған, ал 45% жағдайда бір жағы екіншісін жауып жатқан.",
+     "src": {
+      "title": "Kim HJ, Hu KS, Kang MK, Hwang K, Chung IH (2001). Decussation patterns of the platysma in Koreans. Br J Plast Surg",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/11428770/"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Күлкінің анатомиясы",
+    "ru": "Анатомия улыбки",
+    "en": "Anatomy of a smile"
+   },
+   "text": {
+    "en": [
+     "The core of a smile is the zygomaticus major. It runs from the outer surface of the cheekbone to the modiolus and pulls the corner of the mouth upward and outward. Its smaller neighbour, the zygomaticus minor, starts slightly higher and closer to the nose and lifts the upper lip.",
+     "The eyes matter too. In his book on the mechanism of facial expression, published in 1862, G.-B. Duchenne showed smiles that also involve the orbicularis oculi, which raises the cheeks and wrinkles the outer corners of the eyes. Such a \"Duchenne smile\" is widely linked to genuine enjoyment, while a mouth-only smile is often read as polite or posed.",
+     "Later research added nuance. People can produce a Duchenne smile on purpose even when they are not happy, and such smiles often appear when someone signals friendliness or submission. So the eyes make a smile look warmer, but they are not a foolproof sign of real joy."
+    ],
+    "ru": [
+     "Основа улыбки — большая скуловая мышца. Она идёт от наружной поверхности скуловой кости к модиолусу и тянет угол рта вверх и в сторону. Её меньшая соседка, малая скуловая мышца, начинается чуть выше и ближе к носу и поднимает верхнюю губу.",
+     "Важны и глаза. В книге о механизме мимики, изданной в 1862 году, Г.-Б. Дюшенн показал улыбки, в которых участвует и круговая мышца глаза: она приподнимает щёки и собирает морщинки в наружных уголках глаз. Такую «улыбку Дюшенна» широко связывают с искренней радостью, а улыбку одними губами часто воспринимают как вежливую или наигранную.",
+     "Поздние исследования уточнили картину. Улыбку Дюшенна можно изобразить намеренно, даже не испытывая радости, и она часто появляется, когда человек выражает дружелюбие или подчинение. Глаза делают улыбку теплее, но не служат безошибочным признаком настоящей радости."
+    ],
+    "kk": [
+     "Күлкінің негізі — бет сүйектік үлкен бұлшықет. Ол бет сүйегінің сыртқы бетінен модиолусқа дейін созылып, ауыз бұрышын жоғары және сыртқа тартады. Оның кішірек көршісі — бет сүйектік кіші бұлшықет сәл жоғарырақ, мұрынға жақынырақ басталып, жоғарғы ерінді көтереді.",
+     "Көздің де маңызы бар. Г.-Б. Дюшен 1862 жылы жарық көрген бет әлпетінің механизмі туралы кітабында көздің айналмалы бұлшықеті де қатысатын күлкілерді көрсетті: бұл бұлшықет ұртты көтеріп, көздің сыртқы бұрыштарына әжім түсіреді. Мұндай «Дюшен күлкісін» көбіне шынайы қуанышпен байланыстырады, ал тек ерінмен күлуді жиі сыпайылық не жасанды күлкі деп қабылдайды.",
+     "Кейінгі зерттеулер бұл көріністі нақтылады. Дюшен күлкісін қуанбай тұрып та әдейі жасауға болады, әрі ол адам достық пейіл не бағыныштылық білдіргенде жиі пайда болады. Көз күлкіні жылырақ етеді, бірақ шынайы қуаныштың мүлтіксіз белгісі емес."
+    ]
+   },
+   "highlight": [
+    "zygomaticus-major-muscle",
+    "zygomaticus-minor-muscle",
+    "orbital-part-of-orbicularis-oculi",
+    "palpebral-part-of-orbicularis-oculi"
+   ],
+   "explode": 0.3,
+   "camera": {
+    "yaw": 0.6,
+    "pitch": 0.05,
+    "zoom": 1.5
+   },
+   "section": null,
+   "anim": {
+    "type": "oscillate",
+    "ids": [
+     "zygomaticus-major-muscle"
+    ],
+    "axis": [
+     0,
+     0.8,
+     -0.6
+    ],
+    "amp": 0.0012
+   },
+   "facts": [
+    {
+     "en": "In two field studies of winning judo fighters, \"Duchenne\" smiles tracked interaction with the audience better than reported happiness: in the first study only 8 of 55 winners produced one, all during a social interaction.",
+     "ru": "В двух полевых исследованиях победителей соревнований по дзюдо «улыбки Дюшенна» лучше объяснялись общением со зрителями, чем самооценкой радости: в первом исследовании такую улыбку показали лишь 8 из 55 победителей, и все — во время общения.",
+     "kk": "Дзюдо жарыстарының жеңімпаздарына жүргізілген екі далалық зерттеуде «Дюшен күлкісі» айтылған қуаныш деңгейінен гөрі көрермендермен қарым-қатынасқа көбірек байланысты болды: бірінші зерттеуде мұндай күлкі 55 жеңімпаздың тек 8-інде байқалған, әрі бәрі қарым-қатынас кезінде.",
+     "src": {
+      "title": "Barrett LF, Adolphs R, Marsella S, Martinez AM, Pollak SD (2019). Emotional Expressions Reconsidered: Challenges to Inferring Emotion From Human Facial Movements. Psychol Sci Public Interest",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6640856/"
+     }
+    },
+    {
+     "en": "Botulinum toxin in the outer orbicularis oculi changes smiles: in one study the share of smiles with the eye component fell from 97% before treatment to 19% after.",
+     "ru": "Ботулотоксин в наружной части круговой мышцы глаза меняет улыбку: в одном исследовании доля улыбок с участием глаз снизилась с 97% до лечения до 19% после него.",
+     "kk": "Көздің айналмалы бұлшықетінің сыртқы бөлігіне салынған ботулотоксин күлкіні өзгертеді: бір зерттеуде көз қатысатын күлкілердің үлесі емге дейінгі 97%-дан емнен кейін 19%-ға түскен.",
+     "src": {
+      "title": "Hopf AGM, Buchheim A, Hopf M, Cajkovský M, Eilert DW (2025). A Psychological Guide to Upper Face Botulinum Toxin Injections: Baseline Emotional Functions of Facial Expressions. J Cosmet Dermatol",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12539761/"
+     }
+    },
+    {
+     "en": "The main smile muscle is split in two in about one person in five. A meta-analysis of 7 studies put this bifid variant, which can show as a cheek dimple, at 22.7%.",
+     "ru": "Главная мышца улыбки примерно у каждого пятого раздвоена. По метаанализу 7 исследований такой вариант, который может проявляться ямочкой на щеке, встречается у 22,7% людей.",
+     "kk": "Күлкінің басты бұлшықеті шамамен әр бесінші адамда екіге бөлінген. 7 зерттеудің метаталдауы бойынша ұртта шұқыр болып көрінуі мүмкін бұл нұсқа адамдардың 22,7%-ында кездеседі.",
+     "src": {
+      "title": "Phan K, Onggo J (2019). Prevalence of Bifid Zygomaticus Major Muscle. J Craniofac Surg",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30807476/"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Бір нерв, бес тармақ",
+    "ru": "Один нерв, пять ветвей",
+    "en": "One nerve, five branches"
+   },
+   "text": {
+    "en": [
+     "Every muscle of expression answers to the facial nerve. It leaves the brainstem, runs through a canal in the temporal bone and exits the skull at the stylomastoid foramen, just below and behind the ear. It then enters the parotid gland, the largest of the paired major salivary glands, and runs right through it.",
+     "Inside the gland the nerve splits into an upper and a lower division, which then fan out into five branches: temporal, zygomatic, buccal, mandibular (the marginal mandibular branch reaches the lower lip) and cervical. The same nerve also carries taste from the front two-thirds of the tongue and drives the tear gland and glands of the mouth.",
+     "Chewing runs on different wiring. The masseter and temporalis are muscles of mastication: they attach to the mandible, and the masseter lifts it to close the mouth while the temporalis assists and pulls it back. They are supplied by the mandibular division of the trigeminal nerve (V3). A smile and a bite use neighbouring muscles, but separate nerves."
+    ],
+    "ru": [
+     "Каждая мимическая мышца подчиняется лицевому нерву. Он выходит из ствола мозга, проходит по каналу в височной кости и покидает череп через шилососцевидное отверстие — чуть ниже и позади уха. Затем он входит в околоушную железу, крупнейшую из парных больших слюнных желёз, и проходит прямо сквозь неё.",
+     "Внутри железы нерв делится на верхний и нижний стволы, которые затем веером расходятся на пять ветвей: височные, скуловые, щёчные, нижнечелюстную (краевая ветвь нижней челюсти достигает нижней губы) и шейную. Этот же нерв несёт вкус от передних двух третей языка и управляет слёзной железой и железами рта.",
+     "Жевание устроено по другой схеме. Жевательная и височная мышцы относятся к жевательным: они прикрепляются к нижней челюсти, жевательная поднимает её, закрывая рот, а височная помогает и тянет челюсть назад. Их иннервирует нижнечелюстной нерв — третья ветвь тройничного нерва (V3). Улыбка и укус используют соседние мышцы, но разные нервы."
+    ],
+    "kk": [
+     "Әрбір мимикалық бұлшықет бет нервіне бағынады. Ол ми бағанынан шығып, самай сүйегінің ішіндегі өзекпен өтеді де, бассүйектен құлақтың сәл төменгі-артқы жағындағы біз-емізікше тесігі арқылы шығады. Содан кейін жұп ірі сілекей бездерінің ең үлкені — шықшыт безіне еніп, оны тесіп өтеді.",
+     "Без ішінде нерв жоғарғы және төменгі бөлікке бөлініп, кейін бес тармаққа желпуіштей тарайды: самай, бет сүйек, ұрт, төменгі жақ (төменгі жақтың жиектік тармағы төменгі ерінге жетеді) және мойын тармақтары. Осы нерв тілдің алдыңғы үштен екі бөлігінен дәм сезімін өткізеді, көзжас безі мен ауыз бездерін де басқарады.",
+     "Шайнау басқа жүйемен жұмыс істейді. Шайнау бұлшықеті мен самай бұлшықеті шайнау бұлшықеттеріне жатады: олар төменгі жаққа бекиді, шайнау бұлшықеті жақты көтеріп ауызды жабады, ал самай бұлшықеті оған көмектесіп, жақты артқа тартады. Оларды үшкіл нервтің үшінші тармағы — төменгі жақ нерві (V3) нервтендіреді. Күлкі мен тістеу көрші бұлшықеттерді пайдаланғанымен, нервтері бөлек."
+    ]
+   },
+   "highlight": [
+    "motor-nucleus-of-facial-nerve",
+    "facial-nerve-vii",
+    "parotid-gland",
+    "superficial-part-of-masseter",
+    "deep-part-of-masseter",
+    "temporalis-muscle",
+    "anterior-division-of-mandibular-nerve",
+    "trigeminal-nerve-v"
+   ],
+   "explode": 0.0,
+   "camera": {
+    "yaw": 1.2,
+    "pitch": 0.1,
+    "zoom": 1.1
+   },
+   "section": null,
+   "anim": {
+    "type": "pulse-path",
+    "ids": [
+     "motor-nucleus-of-facial-nerve",
+     "facial-nerve-vii",
+     "parotid-gland",
+     "frontalis-muscle",
+     "orbital-part-of-orbicularis-oculi",
+     "zygomaticus-major-muscle",
+     "bucinator",
+     "orbicularis-oris-muscle",
+     "depressor-anguli-oris",
+     "platysma"
+    ]
+   },
+   "facts": [
+    {
+     "en": "When the facial nerve fails, as in Bell palsy, one side of the face, including the forehead, suddenly weakens. The outlook is usually good: more than two-thirds of patients with typical Bell palsy recover completely on their own.",
+     "ru": "Когда лицевой нерв отказывает, как при параличе Белла, одна половина лица, включая лоб, внезапно слабеет. Прогноз обычно хороший: более двух третей пациентов с типичным параличом Белла полностью выздоравливают сами.",
+     "kk": "Бет нерві істен шыққанда, мысалы, Белл салдануында, беттің бір жартысы маңдайымен қоса кенет әлсірейді. Болжамы әдетте жақсы: әдеттегі Белл салдануымен ауыратындардың үштен екісінен астамы өздігінен толық жазылады.",
+     "src": {
+      "title": "Dalrymple SN, Row JH, Gazewood J (2023). Bell Palsy: Rapid Evidence Review. Am Fam Physician",
+      "url": "https://europepmc.org/article/MED/37054419"
+     }
+    },
+    {
+     "en": "The nerve and the gland share more than space: the parotid duct, about 6–8 cm long in adults, crosses the masseter and pierces the buccinator to open into the mouth.",
+     "ru": "Околоушную железу с мимическими мышцами связывает не только нерв: её проток длиной около 6–8 см у взрослых пересекает жевательную мышцу и прободает щёчную, открываясь в рот.",
+     "kk": "Шықшыт безін мимикалық бұлшықеттермен тек нерв қана байланыстырмайды: ересектерде ұзындығы шамамен 6–8 см болатын оның өзегі шайнау бұлшықетін кесіп өтіп, ұрт бұлшықетін тесіп, ауызға ашылады.",
+     "src": {
+      "title": "Amano K, Moriyama H, Shimada K, Matsumura G (2009). Morphological study of the parotid duct in human fetuses with special emphasis on the relationship between the buccinator muscle and the parotid duct. J Med Invest",
+      "url": "https://europepmc.org/article/MED/20224193"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Бет тілі бәріне ортақ па?",
+    "ru": "Един ли язык лица для всех?",
+    "en": "Is the language of the face universal?"
+   },
+   "text": {
+    "en": [
+     "In 1872 Charles Darwin suggested that the facial muscle patterns of emotion are shared by all humans. A century later Paul Ekman studied a man from an isolated New Guinea community who had never met outsiders. An open psychology textbook reports substantial evidence for seven universal expressions: happiness, surprise, sadness, fear, disgust, contempt and anger, and notes that even people blind from birth produce them.",
+     "Culture still shapes when we show feelings, through \"display rules\". Some researchers go further and question universality itself. A 2012 study reconstructed how 15 Western and 15 East Asian observers mentally picture six basic expressions: the Western models formed six distinct sets of facial movements, the East Asian ones overlapped more and used eye movements to signal intensity.",
+     "A major 2019 review concluded that people do smile when happy or scowl when angry more often than chance, yet with substantial variation across cultures and situations, and the same movement can mean different things. The debate continues; the careful answer today is that faces carry emotional signals, but reading them depends on context."
+    ],
+    "ru": [
+     "В 1872 году Чарлз Дарвин предположил, что мимические паттерны эмоций общие для всех людей. Столетие спустя Пол Экман изучал человека из изолированной общины Новой Гвинеи, никогда не встречавшего чужаков. Открытый учебник психологии сообщает о значительных данных в пользу семи универсальных выражений — радости, удивления, грусти, страха, отвращения, презрения и гнева — и отмечает, что их воспроизводят даже слепые от рождения.",
+     "Культура всё же определяет, когда чувства принято показывать, — через «правила проявления». Некоторые исследователи идут дальше и сомневаются в самой универсальности. Исследование 2012 года реконструировало, как 15 западных и 15 восточноазиатских наблюдателей мысленно представляют шесть базовых выражений: западные модели образовали шесть чётких наборов движений, восточноазиатские сильнее перекрывались и передавали силу эмоции движениями глаз.",
+     "Крупный обзор 2019 года заключил, что люди действительно улыбаются от радости или хмурятся от гнева чаще, чем по случайности, но с большими различиями между культурами и ситуациями, а одно и то же движение может значить разное. Спор продолжается; осторожный ответ сегодня таков: лицо несёт эмоциональные сигналы, но их прочтение зависит от контекста."
+    ],
+    "kk": [
+     "1872 жылы Чарлз Дарвин сезімдердің бет бұлшықеттеріндегі көрінісі барлық адамға ортақ деген болжам жасады. Бір ғасырдан кейін Пол Экман Жаңа Гвинеядағы оқшау қауымның бөгде адамды бұрын көрмеген бір тұрғынын зерттеді. Ашық психология оқулығы жеті әмбебап бет көрінісін — қуаныш, таңдану, мұң, қорқыныш, жиіркену, менсінбеу және ашу — растайтын деректердің едәуір екенін айтады және оларды тумысынан соқыр жандардың да жасайтынын атап өтеді.",
+     "Дегенмен сезімді қашан көрсетуге болатынын мәдениет — «көрсету ережелері» арқылы анықтайды. Кейбір зерттеушілер одан әрі барып, әмбебаптықтың өзіне күмән келтіреді. 2012 жылғы зерттеу 15 батыстық және 15 шығысазиялық бақылаушының алты негізгі бет көрінісін ойша қалай елестететінін қайта құрды: батыстық үлгілер қимылдардың алты айқын жиынтығын құрады, ал шығысазиялық үлгілер бір-біріне көбірек ұқсап, сезімнің күшін көз қимылымен білдірді.",
+     "2019 жылғы ауқымды шолу адамдар шынымен де қуанғанда күлетінін не ашуланғанда қабақ түйетінін кездейсоқтықтан жиірек байқалатынын, бірақ мәдениет пен жағдайға қарай айырмашылық үлкен екенін, ал бір қимылдың әртүрлі мағына беретінін қорытындылады. Пікірталас жалғасуда; бүгінгі сақ жауап мынадай: бет сезім белгілерін береді, бірақ оларды оқу мән-жайға байланысты."
+    ]
+   },
+   "highlight": [
+    "frontalis-muscle",
+    "corrugator-supercilii",
+    "procerus-muscle",
+    "orbital-part-of-orbicularis-oculi",
+    "zygomaticus-major-muscle",
+    "depressor-anguli-oris",
+    "levator-nasolabialis",
+    "orbicularis-oris-muscle",
+    "mentalis-muscle"
+   ],
+   "explode": 0.0,
+   "camera": {
+    "yaw": 0.0,
+    "pitch": 0.05,
+    "zoom": 1.0
+   },
+   "section": null,
+   "anim": null,
+   "facts": [
+    {
+     "en": "Even emoticons differ: Americans tend to read emotion at the mouth, seeing ☺ as happy and ☹ as sad, while Japanese look to the eyes, reading ^_^ as joyful.",
+     "ru": "Различаются даже смайлики: американцы читают эмоцию по рту — ☺ радостный, ☹ грустный, а японцы по глазам, считая ^_^ радостным.",
+     "kk": "Тіпті смайликтер де әртүрлі оқылады: америкалықтар сезімді ауызға қарап таниды — ☺ қуанышты, ☹ мұңды, ал жапондар көзге қарап, ^_^ белгісін қуаныш деп оқиды.",
+     "src": {
+      "title": "Tsallas S, Rodriguez-Lorenzo A, Tzou CJ (2026). Smiling in the East and the West: Anatomical, cultural and sociological considerations in facial reanimation surgery. JPRAS Open",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12702387/"
+     }
+    },
+    {
+     "en": "In the 2012 cross-cultural study, each of the 30 observers classified 4,800 computer-animated facial movements.",
+     "ru": "В кросс-культурном исследовании 2012 года каждый из 30 наблюдателей классифицировал 4800 компьютерных анимаций движений лица.",
+     "kk": "2012 жылғы мәдениетаралық зерттеуде 30 бақылаушының әрқайсысы бет қимылдарының компьютерлік 4800 анимациясын топтастырды.",
+     "src": {
+      "title": "Jack RE, Garrod OG, Yu H, Caldara R, Schyns PG (2012). Facial expressions of emotion are not culturally universal. Proc Natl Acad Sci U S A",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3358835/"
+     }
+    },
+    {
+     "en": "Display rules differ between cultures: one study found that Americans showed fear, anger and disgust both alone and with others, whereas Japanese participants did so only when alone.",
+     "ru": "Правила проявления эмоций различаются между культурами: в одном исследовании американцы выражали страх, гнев и отвращение и наедине, и при других, а японцы — только наедине.",
+     "kk": "Сезімді көрсету ережелері мәдениетке қарай өзгереді: бір зерттеуде америкалықтар қорқынышты, ашуды және жиіркенуді жалғыз кезде де, басқалардың көзінше де білдірген, ал жапондар тек жалғыз қалғанда ғана білдірген.",
+     "src": {
+      "title": "Spielman RM, Jenkins WJ, Lovett MD (2020). Psychology 2e, 10.4 Emotion. OpenStax, Rice University",
+      "url": "https://openstax.org/books/psychology-2e/pages/10-4-emotion"
+     }
+    }
+   ]
+  }
+ ]
+}

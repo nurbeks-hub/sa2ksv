@@ -100,7 +100,7 @@ const STRAND_VS = /* glsl */`
   uniform sampler2D uPts; uniform int uTexW; uniform int uR;
   uniform sampler3D uField; uniform sampler3D uNorm; uniform vec3 uGLo; uniform vec3 uGHi; uniform vec3 uGDim;
   vec3 guv(vec3 p) { return ((p - uGLo) / (uGHi - uGLo) * (uGDim - 1.0) + 0.5) / uGDim; }
-  uniform float uMorph, uWidth, uTip, uTaper0, uPx, uMinPx, uFrac, uOpacity, uFemKeep, uDist, uSkinOffset, uShrink;
+  uniform float uMorph, uWidth, uTip, uTaper0, uPx, uMinPx, uFrac, uOpacity, uFemKeep, uDist, uSkinOffset, uShrink, uBlend;
   float hashI(int i) { uint x = uint(i) * 747796405u + 2891336453u; x = ((x >> ((x >> 28u) + 4u)) ^ x) * 277803737u; x = (x >> 22u) ^ x; return float(x) / 4294967295.0; }
   attribute vec2 aT;            // x: render point index, y: side (−1 / +1)
   attribute vec3 aD;            // root delta − field(root)
@@ -114,7 +114,7 @@ const STRAND_VS = /* glsl */`
     // overlapping strands accumulate through MSAA geometric coverage (alpha-to-coverage masks would not).
     float w0 = uWidth * (0.55 + 0.9 * aS.y);
     float minPx = uMinPx * clamp(0.55 / uDist, 1.0, 1.7);   // close-ups: fewer, slightly wider strands (fill-rate bound)
-    float keepP = clamp(w0 / (uDist * uPx * minPx), 0.0, 1.0);
+    float keepP = uBlend > 0.5 ? 1.0 : clamp(w0 / (uDist * uPx * minPx), 0.0, 1.0);   // blended sets (brows) use true coverage
     // crossfade / quality (uFrac) and dissolve (uOpacity) also thin per strand, so every drawn strand stays opaque:
     // no blending, no alpha-to-coverage, no discard → hidden-surface removal / early-z absorb the heavy overdraw
     bool femDrop = uFemKeep > 0.5 && aS.w < 0.5;
@@ -150,7 +150,7 @@ const STRAND_FS = /* glsl */`
   #include <common>
   #include <clipping_planes_pars_fragment>
   ${COMMON}
-  uniform vec3 uAlbedo; uniform vec3 uAlbedo2; uniform int uDebug; uniform vec3 uTRT; uniform float uSpec1, uExp1, uExp2, uShift1, uShift2, uTT, uRootDark, uAmb;
+  uniform vec3 uAlbedo; uniform vec3 uAlbedo2; uniform int uDebug; uniform vec3 uTRT; uniform float uBlend, uBlendA, uOpacityB, uSpec1, uExp1, uExp2, uShift1, uShift2, uTT, uRootDark, uAmb;
   varying vec3 vT; varying vec3 vN; varying vec3 vW; varying float vAO; varying float vCov; varying float vT01; varying vec4 vS;
   float hsh(vec2 p) { vec3 q = fract(vec3(p.xyx) * 0.1031); q += dot(q, q.yzx + 33.33); return fract((q.x + q.y) * q.z); }
   float kk(vec3 T, vec3 H, float e) { float d = dot(T, H); return smoothstep(-1.0, 0.0, d) * pow(sqrt(max(1.0 - d * d, 0.0)), e); }
@@ -182,7 +182,7 @@ const STRAND_FS = /* glsl */`
       col += Lc * c;
     }
     if (uDebug == 1) col = (N * 0.5 + 0.5) * 0.3; else if (uDebug == 2) col = vec3(vAO * 0.3); else if (uDebug == 3) col = (T * 0.5 + 0.5) * 0.3;
-    gl_FragColor = vec4(col, 1.0);
+    gl_FragColor = vec4(col, uBlend > 0.5 ? pow(clamp(vCov, 0.0, 1.0), 0.5) * uBlendA * uOpacityB : 1.0);
   }
 `;
 
@@ -223,7 +223,7 @@ const CAP_FS = /* glsl */`
 // look presets per set kind (linear albedo; black Central-Asian hair)
 const LOOK = {
   hair: { width: 0.00009, tip: 0.45, taper0: 0.7, albedo: [0.010, 0.0085, 0.0075], albedo2: [0.030, 0.019, 0.012], spec1: 0.22, trt: [0.020, 0.013, 0.009], exp1: 170, exp2: 40, shift1: -0.07, shift2: 0.12, tt: 5.0, rootDark: 0.5, amb: 1.0, cap: [0.012, 0.010, 0.009], capA: 0.92 },
-  brows: { width: 0.0001, tip: 0.2, taper0: 0.4, albedo: [0.009, 0.007, 0.006], albedo2: [0.02, 0.013, 0.009], spec1: 0.035, trt: [0.008, 0.005, 0.004], exp1: 120, exp2: 30, shift1: -0.06, shift2: 0.1, tt: 1.0, rootDark: 0.2, amb: 1.0, cap: [0.03, 0.02, 0.016], capA: 0.0 },
+  brows: { blend: true, blendA: 0.95, width: 0.00011, tip: 0.1, taper0: 0.15, albedo: [0.020, 0.013, 0.009], albedo2: [0.035, 0.022, 0.014], spec1: 0.03, trt: [0.010, 0.006, 0.004], exp1: 120, exp2: 30, shift1: -0.06, shift2: 0.1, tt: 1.0, rootDark: 0.15, amb: 1.0, cap: [0.03, 0.02, 0.016], capA: 0.0 },
 };
 
 export async function createHair(renderer, scene, opts = {}) {
@@ -283,12 +283,12 @@ export async function createHair(renderer, scene, opts = {}) {
       uField: { value: field.tex }, uNorm: { value: norm.tex },
       uGLo: { value: new THREE.Vector3(...H.grid.lo) }, uGHi: { value: new THREE.Vector3(...H.grid.hi) }, uGDim: { value: new THREE.Vector3(...H.grid.dims) },
       uMorph: { value: 0 }, uWidth: { value: look.width }, uTip: { value: look.tip }, uTaper0: { value: look.taper0 },
-      uDebug: { value: opts.debug | 0 }, uMinPx: { value: opts.minPx ?? 0.9 }, uDist: { value: 1 }, uFrac: { value: 1 }, uFemKeep: { value: 0 }, uShrink: { value: 0 },
+      uDebug: { value: opts.debug | 0 }, uMinPx: { value: opts.minPx ?? 0.9 }, uDist: { value: 1 }, uFrac: { value: 1 }, uFemKeep: { value: 0 }, uShrink: { value: 0 }, uBlend: { value: look.blend ? 1 : 0 }, uBlendA: { value: look.blendA ?? 1 }, uOpacityB: { value: 1 },
       uAlbedo: { value: new THREE.Vector3(...look.albedo) }, uAlbedo2: { value: new THREE.Vector3(...look.albedo2) },
       uSpec1: { value: look.spec1 }, uTRT: { value: new THREE.Vector3(...look.trt) }, uExp1: { value: look.exp1 }, uExp2: { value: look.exp2 },
       uShift1: { value: look.shift1 }, uShift2: { value: look.shift2 }, uTT: { value: look.tt }, uRootDark: { value: look.rootDark }, uAmb: { value: look.amb },
     };
-    const mat = new THREE.ShaderMaterial({ uniforms, vertexShader: STRAND_VS, fragmentShader: STRAND_FS, side: THREE.DoubleSide, clipping: true });
+    const mat = new THREE.ShaderMaterial({ uniforms, vertexShader: STRAND_VS, fragmentShader: STRAND_FS, side: THREE.DoubleSide, clipping: true, transparent: !!look.blend, depthWrite: !look.blend });
     if (clip) mat.clippingPlanes = clip;
     const mesh = new THREE.Mesh(geo, mat); mesh.name = 'hair-' + name; mesh.frustumCulled = false; mesh.renderOrder = 5;
     root.add(mesh);

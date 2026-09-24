@@ -111,6 +111,7 @@ export const UI = {
       ],
       credit: 'Жасаған: Claude (Opus 5.5)',
     },
+    dive: { explore: 'Толығырақ', back: 'Бас моделіне оралу', explode: 'Ажырату', parts: 'бөлік', open: 'Ашылуда…', more: 'Толығырақ оқу', less: 'Жасыру' },
     cap: {
       sectionOn: 'Жазықтықты сүйреңіз',
       tourStep: 'аялдама',
@@ -204,6 +205,7 @@ export const UI = {
       ],
       credit: 'Сделано Claude (Opus 5.5)',
     },
+    dive: { explore: 'Подробнее', back: 'К голове', explode: 'Разобрать', parts: 'частей', open: 'Открываем…', more: 'Читать дальше', less: 'Свернуть' },
     cap: {
       sectionOn: 'Перетащите плоскость',
       tourStep: 'остановка',
@@ -297,6 +299,7 @@ export const UI = {
       ],
       credit: 'Built by Claude (Opus 5.5)',
     },
+    dive: { explore: 'Explore', back: 'Back to the head', explode: 'Take apart', parts: 'parts', open: 'Opening…', more: 'Read more', less: 'Show less' },
     cap: {
       sectionOn: 'Drag the plane',
       tourStep: 'stop',

@@ -1,0 +1,603 @@
+{
+ "id": "teeth",
+ "title": {
+  "kk": "Тістер және шайнау",
+  "ru": "Зубы и жевание",
+  "en": "Teeth and chewing"
+ },
+ "subtitle": {
+  "kk": "Тіс түрлері, тіс тіндері, тістем, тістеу күші, шайнау бұлшықеттері және шықшыт буыны",
+  "ru": "Типы зубов, ткани зуба, прикус, сила укуса, жевательные мышцы и височно-нижнечелюстной сустав",
+  "en": "Tooth types, dental tissues, the bite, bite force, the chewing muscles and the jaw joint"
+ },
+ "trigger": [
+  "upper-medial-incisor",
+  "upper-lateral-incisor",
+  "upper-canine",
+  "upper-first-premolar",
+  "upper-second-premolar",
+  "upper-first-molar-tooth",
+  "upper-second-molar-tooth",
+  "lower-medial-incisor",
+  "lower-lateral-incisor",
+  "lower-canine",
+  "lower-first-premolar",
+  "lower-second-premolar",
+  "lower-first-molar-tooth",
+  "lower-second-molar-tooth",
+  "gingiva",
+  "superficial-part-of-masseter",
+  "deep-part-of-masseter",
+  "temporalis-muscle",
+  "medial-pterygoid-muscle",
+  "superior-head-of-lateral-pterygoid-muscle",
+  "inferior-head-of-lateral-pterygoid-muscle"
+ ],
+ "parts": [
+  "upper-medial-incisor",
+  "upper-lateral-incisor",
+  "upper-canine",
+  "upper-first-premolar",
+  "upper-second-premolar",
+  "upper-first-molar-tooth",
+  "upper-second-molar-tooth",
+  "lower-medial-incisor",
+  "lower-lateral-incisor",
+  "lower-canine",
+  "lower-first-premolar",
+  "lower-second-premolar",
+  "lower-first-molar-tooth",
+  "lower-second-molar-tooth",
+  "gingiva",
+  "maxilla",
+  "mandible",
+  "superficial-part-of-masseter",
+  "deep-part-of-masseter",
+  "temporalis-muscle",
+  "medial-pterygoid-muscle",
+  "superior-head-of-lateral-pterygoid-muscle",
+  "inferior-head-of-lateral-pterygoid-muscle",
+  "articular-disc-of-temporomandibular-joint",
+  "articular-capsule-of-temporomandibular-joint",
+  "lateral-temporomandibular-ligament",
+  "trigeminal-nerve-v",
+  "posterior-division-of-mandibular-nerve",
+  "inferior-alveolar-nerve",
+  "mental-nerve"
+ ],
+ "explode": {
+  "upper-medial-incisor": [
+   0,
+   0.012,
+   0
+  ],
+  "upper-lateral-incisor": [
+   0,
+   0.012,
+   0
+  ],
+  "upper-canine": [
+   0,
+   0.012,
+   0
+  ],
+  "upper-first-premolar": [
+   0,
+   0.012,
+   0
+  ],
+  "upper-second-premolar": [
+   0,
+   0.012,
+   0
+  ],
+  "upper-first-molar-tooth": [
+   0,
+   0.012,
+   0
+  ],
+  "upper-second-molar-tooth": [
+   0,
+   0.012,
+   0
+  ],
+  "lower-medial-incisor": [
+   0,
+   -0.014,
+   0
+  ],
+  "lower-lateral-incisor": [
+   0,
+   -0.014,
+   0
+  ],
+  "lower-canine": [
+   0,
+   -0.014,
+   0
+  ],
+  "lower-first-premolar": [
+   0,
+   -0.014,
+   0
+  ],
+  "lower-second-premolar": [
+   0,
+   -0.014,
+   0
+  ],
+  "lower-first-molar-tooth": [
+   0,
+   -0.014,
+   0
+  ],
+  "lower-second-molar-tooth": [
+   0,
+   -0.014,
+   0
+  ],
+  "maxilla": [
+   0,
+   0.006,
+   0
+  ],
+  "mandible": [
+   0,
+   -0.01,
+   0
+  ],
+  "inferior-alveolar-nerve": [
+   0,
+   -0.01,
+   0
+  ],
+  "mental-nerve": [
+   0,
+   -0.01,
+   0
+  ],
+  "temporalis-muscle": [
+   0,
+   0.014,
+   0
+  ],
+  "superficial-part-of-masseter": [
+   0,
+   0,
+   0.012
+  ],
+  "deep-part-of-masseter": [
+   0,
+   0,
+   0.006
+  ],
+  "articular-disc-of-temporomandibular-joint": [
+   0,
+   0.006,
+   0
+  ],
+  "articular-capsule-of-temporomandibular-joint": [
+   0,
+   0.01,
+   0
+  ]
+ },
+ "chapters": [
+  {
+   "title": {
+    "kk": "Отыз екі тіс, төрт пішін",
+    "ru": "Тридцать два зуба, четыре формы",
+    "en": "Thirty-two teeth, four shapes"
+   },
+   "text": {
+    "en": [
+     "An adult has 32 permanent teeth, set in the alveolar processes of the maxilla above and the mandible below. Counting from the midline outwards, each quarter of the mouth holds two incisors, one canine, two premolars and three molars — in short, 2-1-2-3.",
+     "Each shape has a job. Incisors are sharp front teeth for biting into food; the pointed canines tear and pierce; premolars, flatter with two rounded cusps, mash; the largest teeth, the molars, crush food so it is ready for swallowing. In this model the third molars (wisdom teeth) are not shown, so each quarter has seven teeth — 28 in all."
+    ],
+    "ru": [
+     "У взрослого 32 постоянных зуба; они сидят в альвеолярных отростках верхней и нижней челюстей. Если считать от средней линии наружу, в каждой четверти рта два резца, один клык, два премоляра и три моляра — кратко это можно записать как 2-1-2-3.",
+     "У каждой формы своя работа. Резцы — острые передние зубы, ими откусывают пищу; заострённые клыки рвут и прокалывают; более плоские премоляры с двумя округлыми бугорками разминают; самые крупные зубы, моляры, раздавливают пищу, готовя её к глотанию. В этой модели третьи моляры (зубы мудрости) не показаны, поэтому в каждой четверти семь зубов — всего 28."
+    ],
+    "kk": [
+     "Ересек адамның 32 тұрақты тісі бар: олар жоғарғы жақ сүйегі мен төменгі жақ сүйегінің альвеолярлы өсінділеріне орныққан. Ортаңғы сызықтан сыртқа қарай санасақ, ауыздың әр ширегінде екі күрек тіс, бір ит тіс, екі кіші азу тіс және үш үлкен азу тіс орналасады — қысқаша айтқанда, 2-1-2-3.",
+     "Әр пішіннің өз қызметі бар. Күрек тістер — тағамды тістеп алуға арналған өткір алдыңғы тістер; үшкір ит тістер жыртып, тесіп өтеді; екі дөңгелек төмпешігі бар, жалпақтау кіші азу тістер езеді; ең ірі тістер — үлкен азу тістер тағамды жұтуға дайындап ұсақтайды. Бұл модельде үшінші үлкен азу тістер (ақыл тістер) көрсетілмеген, сондықтан әр ширекте жеті тіс бар — барлығы 28."
+    ]
+   },
+   "highlight": [
+    "upper-medial-incisor",
+    "upper-lateral-incisor",
+    "upper-canine",
+    "upper-first-premolar",
+    "upper-second-premolar",
+    "upper-first-molar-tooth",
+    "upper-second-molar-tooth",
+    "lower-medial-incisor",
+    "lower-lateral-incisor",
+    "lower-canine",
+    "lower-first-premolar",
+    "lower-second-premolar",
+    "lower-first-molar-tooth",
+    "lower-second-molar-tooth"
+   ],
+   "explode": 0.7,
+   "camera": {
+    "yaw": 0.35,
+    "pitch": 0.2,
+    "zoom": 1.7
+   },
+   "section": null,
+   "anim": null,
+   "facts": [
+    {
+     "en": "We grow two sets of teeth: 20 baby teeth, which begin to appear at about 6 months of age, are replaced between about ages 6 and 12 by 32 permanent teeth.",
+     "ru": "У человека две смены зубов: 20 молочных зубов, которые начинают появляться примерно в 6 месяцев, примерно с 6 до 12 лет сменяются 32 постоянными.",
+     "kk": "Адамның тісі екі рет шығады: шамамен 6 айлықта шыға бастайтын 20 сүт тісі шамамен 6 мен 12 жас аралығында 32 тұрақты тіспен алмасады.",
+     "src": {
+      "title": "Betts JG, Young KA, Wise JA, et al. (OpenStax) (2022). Anatomy and Physiology 2e, 23.3 The Mouth, Pharynx, and Esophagus. OpenStax textbook (Rice University)",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-3-the-mouth-pharynx-and-esophagus"
+     }
+    },
+    {
+     "en": "Wisdom teeth are the third molars. They usually erupt late, in early adulthood, and it is not uncommon for them to stay impacted and never erupt.",
+     "ru": "Зубы мудрости — это третьи моляры. Обычно они прорезываются поздно, в ранней взрослости, и нередко остаются ретинированными, так и не прорезавшись.",
+     "kk": "Ақыл тістер — үшінші үлкен азу тістер. Олар әдетте кеш, ересектіктің басында шығады, ал кейде мүлде жарып шықпай, сүйек ішінде қалып қоюы сирек емес.",
+     "src": {
+      "title": "Betts JG, Young KA, Wise JA, et al. (OpenStax) (2022). Anatomy and Physiology 2e, 23.3 The Mouth, Pharynx, and Esophagus. OpenStax textbook (Rice University)",
+      "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/23-3-the-mouth-pharynx-and-esophagus"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Тістің ішінде",
+    "ru": "Внутри зуба",
+    "en": "Inside a tooth"
+   },
+   "text": {
+    "en": [
+     "A tooth has a crown, the part above the gum line, and a root embedded in the jaw. At its core is the pulp cavity, loose connective tissue carrying nerves and blood vessels; the part running through the root is the root canal. Around it lies dentine, a bone-like tissue. In the crown the dentine is capped by enamel, the hardest substance in the body; in the root it is covered by cementum, a layer of modified bone.",
+     "The gingiva (gums) lines the sockets and wraps the neck of each tooth, while a connective tissue called the periodontal ligament holds the tooth in its socket. Enamel has a limit: once a tooth has erupted it cannot undergo cellular repair, although saliva can help remineralise it."
+    ],
+    "ru": [
+     "У зуба есть коронка — часть над линией десны — и корень, погружённый в челюсть. В центре находится полость зуба с пульпой — рыхлой соединительной тканью, в которой проходят нервы и сосуды; часть полости в корне называется корневым каналом. Вокруг лежит дентин — ткань, похожая на кость. В коронке дентин покрыт эмалью, самым твёрдым веществом в организме, а в корне — цементом, слоем видоизменённой кости.",
+     "Десна выстилает зубные лунки и охватывает шейку каждого зуба, а соединительная ткань — периодонт (периодонтальная связка) — удерживает зуб в лунке. У эмали есть предел: после прорезывания зуба она не способна к клеточному восстановлению, хотя слюна помогает её реминерализации."
+    ],
+    "kk": [
+     "Тістің қызыл иек сызығынан жоғары шығып тұратын бөлігі — тіссауыты, ал жақ сүйегіне батып тұрғаны — тіс түбірі. Ортасында тіс қуысы бар: ондағы тіс ұлпасы — ішінен нервтер мен қан тамырлары өтетін борпылдақ дәнекер тін; қуыстың түбір арқылы өтетін бөлігі түбір өзегі деп аталады. Оны сүйекке ұқсас тін — дентин қоршайды. Тіссауытта дентинді ағзадағы ең қатты зат — тіс кіреукесі жабады, ал түбірде ол өзгерген сүйек қабаты — тіс цементімен қапталған.",
+     "Қызыл иек тістік ұяшықтарды астарлап, әр тістің мойнын орап тұрады, ал периодонт деп аталатын дәнекер тін тісті ұяшығында ұстап тұрады. Кіреукенің де шегі бар: тіс жарып шыққаннан кейін ол жасушалық жолмен қалпына келе алмайды, дегенмен сілекей оның қайта минералдануына көмектеседі."
+    ]
+   },
+   "highlight": [
+    "upper-first-molar-tooth",
+    "lower-first-molar-tooth",
+    "gingiva",
+    "maxilla",
+    "mandible"
+   ],
+   "explode": 0.5,
+   "camera": {
+    "yaw": 0.7,
+    "pitch": 0.15,
+    "zoom": 2.2
+   },
+   "section": null,
+   "anim": null,
+   "facts": [
+    {
+     "en": "Enamel is the hardest and most highly mineralised tissue in the human body: when fully formed it is about 96% mineral, ~3% water and ~1% organic material.",
+     "ru": "Эмаль — самая твёрдая и самая минерализованная ткань человеческого тела: сформированная эмаль примерно на 96% состоит из минералов, около 3% — вода и около 1% — органические вещества.",
+     "kk": "Тіс кіреукесі — адам ағзасындағы ең қатты әрі ең көп минералданған тін: толық қалыптасқан кіреукенің шамамен 96%-ы минерал, 3%-ға жуығы су және 1%-ға жуығы органикалық зат.",
+     "src": {
+      "title": "Unterbrink P, Ganss B, Limeback H, et al. (2026). Human Enamel Formation: A Scoping Review for Oral Health Professionals. Dent J (Basel) (full text checked via Europe PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13408100/"
+     }
+    },
+    {
+     "en": "A 2026 review of enamel formation notes that its hardness has been described as lying between that of iron and carbon steel.",
+     "ru": "В обзоре 2026 года о формировании эмали отмечено, что её твёрдость описывают как промежуточную между твёрдостью железа и углеродистой стали.",
+     "kk": "Кіреукенің түзілуі туралы 2026 жылғы шолуда оның қаттылығы темір мен көміртекті болаттың қаттылығының аралығында деп сипатталғаны айтылады.",
+     "src": {
+      "title": "Unterbrink P, Ganss B, Limeback H, et al. (2026). Human Enamel Formation: A Scoping Review for Oral Health Professionals. Dent J (Basel) (full text checked via Europe PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13408100/"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Тіс доғалары қалай түйіседі",
+    "ru": "Как смыкаются зубные дуги",
+    "en": "How the arches meet"
+   },
+   "text": {
+    "en": [
+     "When the jaw closes, the upper and lower dental arches come together. Dentists call the biological and functional coordination of how teeth come together occlusion — the bite. Appropriate size and positioning of the jaws are critical for a proper bite and, with it, effective chewing; certain teeth have specialised roles, but the whole set works as one dynamic unit.",
+     "The classic reference point is the first molar. In what Edward Angle called Class I, the front outer (mesiobuccal) cusp of the upper first molar sits in the buccal groove of the lower first molar. Such an ideal bite is actually uncommon in people who have never had orthodontic treatment."
+    ],
+    "ru": [
+     "Когда челюсть закрывается, верхняя и нижняя зубные дуги смыкаются. Биологическую и функциональную согласованность смыкания зубов стоматологи называют окклюзией, в быту — прикусом. Правильные размеры и положение челюстей критически важны для нормального прикуса, а значит, и для жевания; у отдельных зубов своя специальная роль, но весь зубной ряд работает как единое динамическое целое.",
+     "Классический ориентир — первый моляр. В I классе по Эдварду Энглю передний щёчный (мезиощёчный) бугорок верхнего первого моляра ложится в щёчную борозду нижнего первого моляра. Такой идеальный прикус на самом деле редко встречается у людей, не проходивших ортодонтического лечения."
+    ],
+    "kk": [
+     "Жақ жабылғанда жоғарғы және төменгі тіс доғалары бір-бірімен түйіседі. Тістердің түйісуіндегі биологиялық және қызметтік үйлесімді дәрігерлер окклюзия, яғни тістем деп атайды. Жақтардың лайықты мөлшері мен орны дұрыс тістем үшін, демек, шайнау үшін де аса маңызды; кейбір тістердің арнайы рөлі бар, бірақ барлық тіс бір тұтас қозғалмалы жүйе ретінде жұмыс істейді.",
+     "Классикалық бағдар — бірінші үлкен азу тіс. Эдвард Энгл I класс деп атаған тістемде жоғарғы бірінші үлкен азу тістің алдыңғы ұрт жақ төмпешігі төменгі бірінші үлкен азу тістің ұрт жақ жүлгесіне дәл түседі. Мұндай мінсіз тістем ортодонтиялық ем алмаған адамдарда шын мәнінде сирек кездеседі."
+    ]
+   },
+   "highlight": [
+    "upper-first-molar-tooth",
+    "lower-first-molar-tooth",
+    "upper-canine",
+    "lower-canine",
+    "upper-medial-incisor",
+    "lower-medial-incisor"
+   ],
+   "explode": 0.0,
+   "camera": {
+    "yaw": 1.45,
+    "pitch": 0.05,
+    "zoom": 2.0
+   },
+   "section": null,
+   "anim": {
+    "type": "oscillate",
+    "ids": [
+     "mandible",
+     "lower-medial-incisor",
+     "lower-lateral-incisor",
+     "lower-canine",
+     "lower-first-premolar",
+     "lower-second-premolar",
+     "lower-first-molar-tooth",
+     "lower-second-molar-tooth",
+     "inferior-alveolar-nerve",
+     "mental-nerve"
+    ],
+    "axis": [
+     0,
+     1,
+     0
+    ],
+    "amp": 0.003
+   },
+   "facts": [
+    {
+     "en": "Only about 8% of malocclusions have a known cause; the other 92% are of unknown origin, likely a mix of environmental and genetic factors.",
+     "ru": "Лишь примерно у 8% случаев аномалий прикуса известна причина; остальные 92% имеют неизвестное происхождение и, вероятно, связаны с сочетанием средовых и генетических факторов.",
+     "kk": "Тістем ауытқуларының шамамен 8%-ының ғана себебі белгілі; қалған 92%-ының себебі белгісіз, ол қоршаған орта мен тұқым қуалау факторларының үйлесімінен болуы ықтимал.",
+     "src": {
+      "title": "Ghodasra R, Brizuela M (2026). Orthodontics, Malocclusion. StatPearls [Internet], StatPearls Publishing (PMID 37276298; text checked via Europe PMC abstract record)",
+      "url": "https://europepmc.org/article/MED/37276298"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Тістеу күші",
+    "ru": "Сила укуса",
+    "en": "The force of a bite"
+   },
+   "text": {
+    "en": [
+     "Bite force is the force the chewing muscles exert on the biting surfaces of the teeth. A review of measuring devices puts the maximum bite force of natural teeth in healthy adults, in the molar area, at between 300 and 600 newtons. The jaw muscles arise from processes of the skull, which gives them the large leverage chewing needs.",
+     "Force is not spread evenly along the arch. A 2026 systematic review of 30 studies found that posterior teeth reach higher forces than front ones, and a study of 101 healthy young Asian adults recorded the highest values at the first molars and the lowest at the lateral incisors. The same review stresses that the numbers depend heavily on the measuring device and protocol."
+    ],
+    "ru": [
+     "Сила укуса — это сила, с которой жевательные мышцы давят на жевательные поверхности зубов. По данным обзора измерительных устройств, максимальная сила укуса естественных зубов у здоровых взрослых в области моляров составляет от 300 до 600 ньютонов. Жевательные мышцы начинаются от отростков черепа, и это даёт им большой рычаг, необходимый для жевания.",
+     "Сила распределена по дуге неравномерно. Систематический обзор 2026 года (30 исследований) показал, что задние зубы развивают бо́льшую силу, чем передние, а в исследовании 101 здорового молодого взрослого из Азии наибольшие значения зафиксированы на первых молярах, наименьшие — на латеральных резцах. Тот же обзор подчёркивает, что цифры сильно зависят от прибора и протокола измерения."
+    ],
+    "kk": [
+     "Тістеу күші — шайнау бұлшықеттерінің тістердің шайнау беттеріне түсіретін күші. Өлшеу құралдары туралы шолуға сәйкес, дені сау ересектердің табиғи тістерінде үлкен азу тістер аймағындағы ең жоғары тістеу күші 300-ден 600 ньютонға дейін жетеді. Шайнау бұлшықеттері бас сүйектің өсінділерінен басталады, бұл оларға шайнауға қажетті үлкен иінтірек береді.",
+     "Күш тіс доғасы бойымен біркелкі бөлінбейді. 30 зерттеуді біріктірген 2026 жылғы жүйелі шолу артқы тістердің алдыңғы тістерге қарағанда күштірек басатынын көрсетті, ал Азиядан шыққан 101 дені сау жас ересек қатысқан зерттеуде ең жоғары мән бірінші үлкен азу тістерде, ең төменгісі латералды күрек тістерде тіркелді. Сол шолу бұл сандардың өлшеу құралы мен тәсіліне қатты тәуелді екенін атап өтеді."
+    ]
+   },
+   "highlight": [
+    "upper-first-molar-tooth",
+    "lower-first-molar-tooth",
+    "upper-lateral-incisor",
+    "lower-lateral-incisor",
+    "superficial-part-of-masseter",
+    "deep-part-of-masseter"
+   ],
+   "explode": 0.0,
+   "camera": {
+    "yaw": 0.95,
+    "pitch": 0.1,
+    "zoom": 1.4
+   },
+   "section": null,
+   "anim": {
+    "type": "oscillate",
+    "ids": [
+     "mandible",
+     "lower-medial-incisor",
+     "lower-lateral-incisor",
+     "lower-canine",
+     "lower-first-premolar",
+     "lower-second-premolar",
+     "lower-first-molar-tooth",
+     "lower-second-molar-tooth",
+     "inferior-alveolar-nerve",
+     "mental-nerve"
+    ],
+    "axis": [
+     0,
+     1,
+     0
+    ],
+    "amp": 0.002
+   },
+   "facts": [
+    {
+     "en": "Pooling 30 studies of healthy adults, a 2026 systematic review estimated average maximal bite forces in the molar region of about 592 N in men (95% CI 523–661) and 449 N in women (95% CI 382–516).",
+     "ru": "Объединив 30 исследований здоровых взрослых, систематический обзор 2026 года оценил среднюю максимальную силу укуса в области моляров примерно в 592 Н у мужчин (95% ДИ 523–661) и 449 Н у женщин (95% ДИ 382–516).",
+     "kk": "Дені сау ересектер туралы 30 зерттеуді біріктірген 2026 жылғы жүйелі шолу үлкен азу тістер аймағындағы орташа ең жоғары тістеу күшін ерлерде шамамен 592 Н (95% СА 523–661), әйелдерде 449 Н (95% СА 382–516) деп бағалады.",
+     "src": {
+      "title": "Anitua E, Ochoa L, Larrazabal N, Eguía A (2026). Maximum bite forces in healthy adults with complete natural dentition: A systematic review. J Prosthodont",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/42117372/"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Жақты қозғайтын бұлшықеттер",
+    "ru": "Мышцы, которые двигают челюсть",
+    "en": "The muscles that move the jaw"
+   },
+   "text": {
+    "en": [
+     "Four muscles of mastication — masseter, temporalis, medial and lateral pterygoid — attach to the rami of the mandible and move it up and down, forward and back, and from side to side; the side-to-side motion helps grind food. The masseter, running from the zygomatic arch to the angle and outer surface of the ramus, is the main chewing muscle: it lifts the jaw to close the mouth.",
+     "The temporalis also closes the mouth and pulls the jaw back — you can feel it at your temple as you chew. The medial pterygoid helps close the mouth, push the jaw forward and move it sideways. The lateral pterygoid, with two heads, opens the mouth, pushes the lower jaw forward and moves it side to side. Anatomical studies describe the masseter in layers; this model shows it as a superficial and a deep part."
+    ],
+    "ru": [
+     "Четыре жевательные мышцы — жевательная, височная, медиальная и латеральная крыловидные — прикрепляются к ветвям нижней челюсти и двигают её вверх и вниз, вперёд и назад, а также из стороны в сторону; боковые движения помогают перетирать пищу. Жевательная мышца, идущая от скуловой дуги к углу и наружной поверхности ветви, — главная мышца жевания: она поднимает челюсть и закрывает рот.",
+     "Височная мышца тоже закрывает рот и оттягивает челюсть назад — её можно почувствовать на виске во время жевания. Медиальная крыловидная мышца помогает закрывать рот, выдвигать челюсть вперёд и смещать её в стороны. Латеральная крыловидная мышца с двумя головками открывает рот, выдвигает нижнюю челюсть вперёд и двигает её из стороны в сторону. Анатомические исследования описывают жевательную мышцу как многослойную; в этой модели она показана поверхностной и глубокой частями."
+    ],
+    "kk": [
+     "Төрт шайнау бұлшықеті — шайнау бұлшықеті, самай бұлшықеті, медиалды және латералды қанат тәрізді бұлшықеттер — төменгі жақ сүйегінің тармақтарына бекіп, оны жоғары-төмен, алға-артқа және екі жаққа қозғайды; екі жаққа қозғалыс тағамды үгітуге көмектеседі. Бет доғасынан төменгі жақ бұрышы мен тармағының сыртқы бетіне дейін созылатын шайнау бұлшықеті — шайнаудың негізгі бұлшықеті: ол жақты көтеріп, ауызды жабады.",
+     "Самай бұлшықеті де ауызды жабады және жақты артқа тартады — шайнағанда оны самайдан сезуге болады. Медиалды қанат тәрізді бұлшықет ауызды жабуға, жақты алға шығаруға және екі жаққа жылжытуға көмектеседі. Екі басы бар латералды қанат тәрізді бұлшықет ауызды ашады, төменгі жақты алға шығарады және оны екі жаққа қозғайды. Анатомиялық зерттеулер шайнау бұлшықетін қабатты құрылым ретінде сипаттайды; бұл модельде ол беткей және терең бөліктер түрінде көрсетілген."
+    ]
+   },
+   "highlight": [
+    "superficial-part-of-masseter",
+    "deep-part-of-masseter",
+    "temporalis-muscle",
+    "medial-pterygoid-muscle",
+    "superior-head-of-lateral-pterygoid-muscle",
+    "inferior-head-of-lateral-pterygoid-muscle"
+   ],
+   "explode": 0.3,
+   "camera": {
+    "yaw": 1.3,
+    "pitch": 0.1,
+    "zoom": 1.1
+   },
+   "section": null,
+   "anim": {
+    "type": "oscillate",
+    "ids": [
+     "mandible",
+     "lower-medial-incisor",
+     "lower-lateral-incisor",
+     "lower-canine",
+     "lower-first-premolar",
+     "lower-second-premolar",
+     "lower-first-molar-tooth",
+     "lower-second-molar-tooth",
+     "inferior-alveolar-nerve",
+     "mental-nerve"
+    ],
+    "axis": [
+     0,
+     1,
+     0
+    ],
+    "amp": 0.004
+   },
+   "facts": [
+    {
+     "en": "The lower ends of the medial pterygoid and the masseter join in a common tendinous sling around the jaw angle, which makes the pair powerful elevators of the jaw.",
+     "ru": "Нижние концы медиальной крыловидной и жевательной мышц соединяются в общую сухожильную петлю у угла челюсти, благодаря чему эта пара — мощные подниматели челюсти.",
+     "kk": "Медиалды қанат тәрізді бұлшықет пен шайнау бұлшықетінің төменгі ұштары жақ бұрышында ортақ сіңірлі ілмекке бірігеді, сондықтан бұл жұп жақты қуатты көтереді.",
+     "src": {
+      "title": "Chen CM, Ting CC, Cheng JH, Hsu KJ, Tseng YC (2017). The Effect of Pterygomasseteric Sling's Area in the Postoperative Stability after Mandibular Setback Surgery. Biomed Res Int",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5654338/"
+     }
+    },
+    {
+     "en": "The lateral pterygoid is the only chewing muscle with horizontally arranged fibres, and its lower head is three times larger than its upper head.",
+     "ru": "Латеральная крыловидная мышца — единственная жевательная мышца с горизонтально идущими волокнами, а её нижняя головка втрое больше верхней.",
+     "kk": "Латералды қанат тәрізді бұлшықет — талшықтары көлденең орналасқан жалғыз шайнау бұлшықеті, ал оның төменгі басы жоғарғы басынан үш есе үлкен.",
+     "src": {
+      "title": "Rathee M, Jain P (2024). Anatomy, Head and Neck, Lateral Pterygoid Muscle. StatPearls [Internet], StatPearls Publishing (PMID 31747206; text checked via Europe PMC abstract record)",
+      "url": "https://europepmc.org/article/MED/31747206"
+     }
+    },
+    {
+     "en": "Anatomical studies describe the masseter as three layers — superficial, intermediate and deep — each with its own contraction pattern.",
+     "ru": "Анатомические исследования описывают в жевательной мышце три слоя — поверхностный, промежуточный и глубокий, — и у каждого свой характер сокращения.",
+     "kk": "Анатомиялық зерттеулер шайнау бұлшықетінде үш қабатты — беткей, аралық және терең қабаттарды сипаттайды, әрқайсысының жиырылу сипаты өзгеше.",
+     "src": {
+      "title": "Shi J, Li C, Zhou J, Guo X, Li G, You M (2024). An Ultrasonographic Analysis of the Deep Inferior Tendon in the Masseter Muscle: Implications for Botulinum Toxin Injections. Toxins (full text checked via Europe PMC)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11436078/"
+     }
+    }
+   ]
+  },
+  {
+   "title": {
+    "kk": "Шықшыт буыны және тіс нерві",
+    "ru": "Височно-нижнечелюстной сустав и нерв зубов",
+    "en": "The jaw joint and the nerve of the teeth"
+   },
+   "text": {
+    "en": [
+     "The temporomandibular joint links the head (condyle) of the mandible with the mandibular fossa and articular tubercle of the temporal bone. Between them sits a flexible articular disc — biconcave fibrocartilage that smooths movement. Opening the mouth combines two motions: the jaw hinges downward while the condyle and disc glide forward onto the tubercle. The left and right joints work in coordination, so their movements stay synchronised.",
+     "The chewing muscles are supplied by the mandibular nerve (V3), a branch of the trigeminal nerve, the largest cranial nerve. Its sensory branch, the inferior alveolar nerve, runs inside the mandible and supplies sensation to the lower teeth, the chin and the lower lip."
+    ],
+    "ru": [
+     "Височно-нижнечелюстной сустав соединяет головку (мыщелок) нижней челюсти с нижнечелюстной ямкой и суставным бугорком височной кости. Между ними лежит подвижный суставной диск — двояковогнутый волокнистый хрящ, сглаживающий движения. Открывание рта сочетает два движения: челюсть поворачивается вниз, как на шарнире, а мыщелок вместе с диском скользит вперёд на бугорок. Левый и правый суставы работают согласованно, поэтому их движения синхронны.",
+     "Жевательные мышцы иннервирует нижнечелюстной нерв (V3) — ветвь тройничного нерва, самого крупного черепного нерва. Его чувствительная ветвь, нижний альвеолярный нерв, проходит внутри нижней челюсти и обеспечивает чувствительность нижних зубов, подбородка и нижней губы."
+    ],
+    "kk": [
+     "Шықшыт буыны төменгі жақ сүйегінің басын (айдаршығын) самай сүйегінің төменгі жақ шұңқыры және буын бұдырмағымен байланыстырады. Олардың арасында қозғалмалы буын дискісі — қозғалысты жұмсартатын екі жағы ойыс талшықты шеміршек орналасқан. Ауыз ашылғанда екі қозғалыс қатар жүреді: жақ топса секілді төмен бұрылады, ал айдаршық дискімен бірге алға, бұдырмаққа қарай сырғиды. Сол және оң жақ буындар үйлесімді жұмыс істейді, сондықтан олардың қозғалысы үндес.",
+     "Шайнау бұлшықеттерін ең ірі бассүйек нерві — үшкіл нервтің тармағы төменгі жақ нерві (V3) нервтендіреді. Оның сезімтал тармағы — төменгі альвеолалық нерв төменгі жақ сүйегінің ішімен өтіп, төменгі тістерді, иекті және төменгі ерінді сезімталдықпен қамтамасыз етеді."
+    ]
+   },
+   "highlight": [
+    "articular-disc-of-temporomandibular-joint",
+    "articular-capsule-of-temporomandibular-joint",
+    "lateral-temporomandibular-ligament",
+    "mandible",
+    "trigeminal-nerve-v",
+    "posterior-division-of-mandibular-nerve",
+    "inferior-alveolar-nerve",
+    "mental-nerve"
+   ],
+   "explode": 0.4,
+   "camera": {
+    "yaw": -1.35,
+    "pitch": 0.1,
+    "zoom": 1.4
+   },
+   "section": null,
+   "anim": {
+    "type": "pulse-path",
+    "ids": [
+     "trigeminal-nerve-v",
+     "posterior-division-of-mandibular-nerve",
+     "inferior-alveolar-nerve",
+     "mental-nerve"
+    ],
+    "axis": [
+     0,
+     1,
+     0
+    ],
+    "amp": 0
+   },
+   "facts": [
+    {
+     "en": "The standard lower-jaw dental injection, the inferior alveolar nerve block, succeeds only about 80–85% of the time; anatomical variation, anxiety and technique errors are among the causes.",
+     "ru": "Стандартная анестезия нижней челюсти — блокада нижнего альвеолярного нерва — удаётся лишь примерно в 80–85% случаев; среди причин неудач — анатомические вариации, сильная тревожность и технические ошибки.",
+     "kk": "Төменгі жаққа жасалатын стандартты жансыздандыру — төменгі альвеолалық нерв блокадасы — шамамен 80–85% жағдайда ғана сәтті болады; сәтсіздік себептерінің қатарында анатомиялық ерекшеліктер, қатты үрей және техникалық қателер бар.",
+     "src": {
+      "title": "Lee CR, Yang HJ (2019). Alternative techniques for failure of conventional inferior alveolar nerve block. J Dent Anesth Pain Med",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31338418/"
+     }
+    },
+    {
+     "en": "Where the upper head of the lateral pterygoid attaches varies: in 36 jaw joints it reached both the condyle and the disc–capsule complex in 55.5%, only the condyle in 27.8% and only the disc–capsule complex in 16.7%.",
+     "ru": "Место прикрепления верхней головки латеральной крыловидной мышцы различается: в 36 суставах она крепилась и к мыщелку, и к комплексу диск–капсула в 55,5% случаев, только к мыщелку — в 27,8%, только к комплексу диск–капсула — в 16,7%.",
+     "kk": "Латералды қанат тәрізді бұлшықеттің жоғарғы басының бекитін орны әртүрлі: 36 буынның 55,5%-ында ол айдаршыққа да, диск пен қапшық кешеніне де, 27,8%-ында тек айдаршыққа, 16,7%-ында тек диск пен қапшық кешеніне бекіген.",
+     "src": {
+      "title": "Antonopoulou M, Iatrou I, Paraschos A, Anagnostopoulou S (2013). Variations of the attachment of the superior head of human lateral pterygoid muscle. J Craniomaxillofac Surg",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23265808/"
+     }
+    }
+   ]
+  }
+ ]
+}

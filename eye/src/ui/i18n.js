@@ -1,0 +1,114 @@
+// UI strings (Kazakh primary, Russian and English optional; the head atlas embeds this page with ?embed=1&lang=…). Part names/descriptions live in content/parts.js.
+export const UI = {
+  kk: {
+      "sub": "Адам · оң көз · 24 мм",
+      "back": "Бас моделіне оралу",
+      "backAria": "Бас моделіне оралу (Esc)",
+      "langAria": "Тіл",
+      "capIntro1": "24 миллиметр.",
+      "capIntro2": "Әр бөлігі — бөлек‑бөлек.",
+      "capApart": "29 құрылым.",
+      "capApartSub": "кез келгенін басыңыз",
+      "capVessels": "Әр тамыр. Қан ағысымен.",
+      "capVesselsSub": "артериялар — жүректен · веналар — жүрекке",
+      "hint": "Бөлшектеу үшін төмен айналдырыңыз",
+      "hintTouch": "Сүйреп бұрыңыз · «Бөлшектеу» түймесін түртіңіз",
+      "hintExploded": "Кез келген бөлікті басыңыз · V — тамырлар",
+      "hintVessels": "Барлық тамыр — қан ағысымен",
+      "tour": "▶ Шолу",
+      "tourStop": "■ Тоқтату",
+      "takeApart": "Бөлшектеу",
+      "assemble": "Құрастыру",
+      "vessels": "Тамырлар",
+      "keys": "сүйреу — бұру · айналдыру — масштабтау · esc",
+      "loading": "Көз құрастырылуда",
+      "aboutTitle": "Модель туралы",
+      "sources": "Дереккөздер",
+      "sound": "Дыбыс",
+      "about": "Модель туралы мәлімет және дереккөздер",
+      "of": "/",
+      "source": "дереккөз",
+      "groups": {
+          "optics": "Оптика",
+          "coat": "Сыртқы қабық",
+          "uvea": "Тамырлы қабық",
+          "neural": "Жүйке ұлпасы",
+          "chamber": "Көз камерасы",
+          "muscle": "Бұлшықет",
+          "vessel": "Қан тамыры"
+      },
+      "aboutBody": [
+          "Ересек адамның оң көзінің процедуралық 3D моделі. Ол жарияланған анатомиялық өлшемдер бойынша тікелей браузерде құрылады — сканерленген деректерсіз және дайын модельдерсіз. Әр құрылым — жеке нысан: көзді бөлшектеуге, кез келген бөлігін бөлек алып шығуға және оны қолыңызға алғандай айналдыра қарауға болады.",
+          "Модельдің пропорциялары ересек адамға тән типтік мәндерге сәйкес келеді. Шынайы бейнелегенде бұл масштабта көрінбей қалатын жерлерде модель әдейі асыра көрсетеді: қан тамырлары көрінуі үшін олардың калибрі үлкейтілген, шынытәрізді дене мен конъюнктива тірі көздегіден айқынырақ бейнеленген, ал түстер белгілі бір адамдікі емес, жалпыланған. Тамырлар режиміндегі ағып өтетін импульстер қан ағысының бағытын көрсетеді; олар оның симуляциясы емес.",
+          "Бұл — оқып-үйренуге және таңырқауға арналған иллюстрация; медициналық немесе диагностикалық құрал емес."
+      ],
+      "credit": "Claude (Opus 5.5) жасаған"
+  },
+  en: {
+    sub: 'Human · right eye · 24 mm',
+    back: 'Back to the head', backAria: 'Back to the head model (Esc)', langAria: 'Language',
+    capIntro1: '24 millimetres.', capIntro2: 'Every part of it, taken apart.', capApart: '29 structures.', capApartSub: 'click any of them', capVessels: 'Every vessel. Flowing.', capVesselsSub: 'arteries away from the heart · veins back to it',
+    hint: 'Scroll to take it apart',
+    hintTouch: 'Drag to turn · tap Take apart',
+    hintExploded: 'Click any part · V for vessels',
+    hintVessels: 'Every vessel, flowing',
+    tour: '▶ Tour', tourStop: '■ Stop',
+    takeApart: 'Take apart',
+    assemble: 'Assemble',
+    vessels: 'Vessels',
+    keys: 'drag to turn · scroll to zoom · esc',
+    loading: 'Building the eye',
+    aboutTitle: 'About this model',
+    sources: 'Sources',
+    sound: 'Sound',
+    about: 'About and sources',
+    of: 'of',
+    source: 'source',
+    groups: { optics: 'Optics', coat: 'Outer coat', uvea: 'Uvea', neural: 'Neural tissue', chamber: 'Chamber', muscle: 'Muscle', vessel: 'Blood vessel' },
+    aboutBody: [
+      'A procedural 3D model of an adult right human eye, generated in the browser from published anatomical dimensions — no scans and no stock models. Every structure is its own object: you can take the eye apart, isolate any part and turn it in your hands.',
+      'Proportions follow typical adult values. Where the truth would be invisible at this scale, the model exaggerates on purpose: blood-vessel calibres are enlarged so they can be seen, the vitreous and conjunctiva are shown more visibly than in life, and colours are representative rather than of one person. The flowing pulses in vessel mode indicate the direction of blood flow; they are not a simulation of it.',
+      'An illustration for learning and wonder, not a medical or diagnostic tool.',
+    ],
+    credit: 'Built by Claude (Opus 5.5)',
+  },
+  ru: {
+    sub: 'Человек · правый глаз · 24 мм',
+    back: 'Назад к голове', backAria: 'Назад к модели головы (Esc)', langAria: 'Язык',
+    capIntro1: '24 миллиметра.', capIntro2: 'Каждая часть — отдельно.', capApart: '29 структур.', capApartSub: 'нажми на любую', capVessels: 'Каждый сосуд. С током крови.', capVesselsSub: 'артерии — от сердца · вены — к сердцу',
+    hint: 'Скролл — разобрать на части',
+    hintTouch: 'Тяни, чтобы вращать · нажми «Разобрать»',
+    hintExploded: 'Нажми на любую часть · V — сосуды',
+    hintVessels: 'Все сосуды, с током крови',
+    tour: '▶ Тур', tourStop: '■ Стоп',
+    takeApart: 'Разобрать',
+    assemble: 'Собрать',
+    vessels: 'Сосуды',
+    keys: 'тяни — вращать · скролл — зум · esc',
+    loading: 'Собираем глаз',
+    aboutTitle: 'О модели',
+    sources: 'Источники',
+    sound: 'Звук',
+    about: 'О модели и источники',
+    of: 'из',
+    source: 'источник',
+    groups: { optics: 'Оптика', coat: 'Наружная оболочка', uvea: 'Сосудистый тракт', neural: 'Нервная ткань', chamber: 'Камера глаза', muscle: 'Мышца', vessel: 'Кровеносный сосуд' },
+    aboutBody: [
+      'Процедурная 3D-модель правого глаза взрослого человека, которая строится прямо в браузере по опубликованным анатомическим размерам — без сканов и готовых моделей. Каждая структура — отдельный объект: глаз можно разобрать, выделить любую часть и повертеть её в руках.',
+      'Пропорции соответствуют типичным значениям для взрослого. Там, где правда в таком масштабе была бы невидима, модель сознательно преувеличивает: калибр сосудов увеличен, чтобы их было видно, стекловидное тело и конъюнктива показаны заметнее, чем в жизни, цвета обобщённые, а не конкретного человека. Бегущие импульсы в режиме сосудов показывают направление тока крови, а не его симуляцию.',
+      'Это иллюстрация для обучения и удивления, а не медицинский или диагностический инструмент.',
+    ],
+    credit: 'Сделано Claude (Opus 5.5)',
+  },
+};
+
+// ?lang= wins; otherwise the language chosen in the head atlas (same origin, key 'head.lang'), then the eye's own, then Kazakh.
+const LANG_OK = l => l === 'kk' || l === 'en' || l === 'ru';
+export function initialLang() {
+  const q = new URLSearchParams(location.search).get('lang');
+  if (LANG_OK(q)) return q;
+  try { for (const k of ['head.lang', 'eye.lang.v2']) { const s = localStorage.getItem(k); if (LANG_OK(s)) return s; } } catch {}
+  return 'kk';
+}
+export function storeLang(l) { if (!LANG_OK(l)) return; try { localStorage.setItem('eye.lang.v2', l); localStorage.setItem('head.lang', l); } catch {} }
+export { LANG_OK };
