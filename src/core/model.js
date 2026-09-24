@@ -96,6 +96,7 @@ export function buildModel(gltfs) {
       }
       nodes.push(rec);
 
+      if (c.cls === 'skin' && geo.index) { stripInteriorSkin(geo); weldSkinNormals(geo); }
       const hasMorph = geo.morphAttributes && Object.keys(geo.morphAttributes).length > 0;
       if (c.rotate || hasMorph) {
         const sidAttr = new THREE.Float32BufferAttribute(new Float32Array(pos.count).fill(sid), 1);
@@ -108,6 +109,14 @@ export function buildModel(gltfs) {
       if (!b) { b = { key, group: c.group, cls: c.cls, cap: c.cap, side, parts: [], verts: 0, idx: 0 }; buckets.set(key, b); }
       b.parts.push({ geo, sid }); b.verts += pos.count; b.idx += geo.index ? geo.index.count : pos.count;
     });
+  }
+
+  // ---- skin realism: per-vertex region weights derived from facial landmarks (no UVs in the fitted skin)
+  const scl = nodes.filter(r => r.cls === 'sclera');
+  if (scl.length) {
+    const eye = scl[0].center.clone(); eye.x = Math.abs(eye.x);
+    const eyeR = scl[0].box.getSize(new THREE.Vector3()).y / 2;
+    for (const s of standalone) if (s.rec.cls === 'skin') { geo_smoothCreases(s.geo, eye); weldSkinNormals(s.geo); chinNormals(s.geo); skinAttributes(s.geo, eye, eyeR); }
   }
 
   // ---- merge buckets
@@ -185,6 +194,226 @@ function fixOrientation(geo, radial) {
   const n = geo.attributes.normal.array; for (let i = 0; i < n.length; i++) n[i] = -n[i];
   geo.attributes.normal.needsUpdate = true;
   return true;
+}
+
+// Region weights for the skin shader, from landmarks found on the mesh itself (midline profile → nose tip,
+// subnasale, lips, stomion; eyes from the sclera; ears by position) plus a curvature-based cavity term.
+//   aSkinA = (redness, lips, thinness/translucency, beard)   aSkinB = (pore size, oiliness, cavity, periorbital)
+//   aSkinC = lid margin / caruncle (wet, darker, pinker)
+function skinAttributes(geo, eye, eyeR) {
+  const P = geo.attributes.position.array, N = geo.attributes.normal.array, n = P.length / 3;
+  // --- midline profile
+  const bins = new Map(), bw = 0.0006;
+  let tip = { y: 1.56, z: -1 };
+  for (let i = 0; i < n; i++) {
+    const x = P[i * 3], y = P[i * 3 + 1], z = P[i * 3 + 2];
+    if (Math.abs(x) > 0.004 || y < 1.44 || y > 1.66) continue;
+    const b = Math.round(y / bw); if (!(bins.get(b) > z)) bins.set(b, z);
+    if (y > 1.5 && y < 1.62 && z > tip.z) tip = { y, z };
+  }
+  const zAt = (y) => bins.get(Math.round(y / bw)) ?? -1;
+  const extreme = (y0, y1, wantMax) => { let best = null; for (let y = y0; y <= y1; y += bw) { const z = zAt(y); if (z < -0.5) continue; if (!best || (wantMax ? z > best.z : z < best.z)) best = { y, z }; } return best || { y: (y0 + y1) / 2, z: tip.z - 0.02 }; };
+  const sn = extreme(tip.y - 0.03, tip.y - 0.008, false);
+  const ls = extreme(sn.y - 0.022, sn.y - 0.004, true);
+  const st = extreme(ls.y - 0.016, ls.y - 0.003, false);
+  const li = extreme(st.y - 0.02, st.y - 0.003, true);
+  geo.userData.landmarks = { tip, sn, ls, st, li };
+  // --- curvature cavity on the (indexed) mesh
+  // (on welded positions: the mesh is split at UV seams and a one-sided neighbourhood would draw a line)
+  const I = geo.index.array, wkey = new Map(), wid = new Int32Array(n);
+  for (let i = 0; i < n; i++) { const k = Math.round(P[i*3]*1e5) + ',' + Math.round(P[i*3+1]*1e5) + ',' + Math.round(P[i*3+2]*1e5); let w = wkey.get(k); if (w === undefined) { w = wkey.size; wkey.set(k, w); } wid[i] = w; }
+  const W = wkey.size, wacc = new Float32Array(W * 3), wcnt = new Float32Array(W), wel = new Float32Array(W), wpos = new Float32Array(W * 3);
+  for (let i = 0; i < n; i++) { const w = wid[i] * 3; wpos[w] = P[i*3]; wpos[w+1] = P[i*3+1]; wpos[w+2] = P[i*3+2]; }
+  const seen = new Set();
+  for (let t = 0; t < I.length; t += 3) for (let k = 0; k < 3; k++) {
+    const a = wid[I[t + k]], b = wid[I[t + (k + 1) % 3]];
+    const ek = a < b ? a * W + b : b * W + a; if (seen.has(ek)) continue; seen.add(ek);
+    for (const [u, v] of [[a, b], [b, a]]) { wacc[u*3] += wpos[v*3]; wacc[u*3+1] += wpos[v*3+1]; wacc[u*3+2] += wpos[v*3+2]; wcnt[u]++; wel[u] += Math.hypot(wpos[u*3]-wpos[v*3], wpos[u*3+1]-wpos[v*3+1], wpos[u*3+2]-wpos[v*3+2]); }
+  }
+  const acc = new Float32Array(n * 3), cnt = new Float32Array(n), el = new Float32Array(n);
+  for (let i = 0; i < n; i++) { const w = wid[i]; acc[i*3] = wacc[w*3]; acc[i*3+1] = wacc[w*3+1]; acc[i*3+2] = wacc[w*3+2]; cnt[i] = wcnt[w]; el[i] = wel[w]; }
+  const A = new Float32Array(n * 4), B = new Float32Array(n * 4), C = new Float32Array(n);
+  const g = (dx, dy, dz, r) => Math.exp(-(dx * dx + dy * dy + dz * dz) / (r * r));
+  const sst = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+  for (let i = 0; i < n; i++) {
+    const x = P[i * 3], y = P[i * 3 + 1], z = P[i * 3 + 2], ax = Math.abs(x);
+    const front = sst(-0.01, 0.03, z);
+    // cavity: neighbours above the tangent plane → concave crease
+    let cav = 0;
+    if (cnt[i]) { const mx = acc[i * 3] / cnt[i] - x, my = acc[i * 3 + 1] / cnt[i] - y, mz = acc[i * 3 + 2] / cnt[i] - z; cav = (mx * N[i * 3] + my * N[i * 3 + 1] + mz * N[i * 3 + 2]) / Math.max(el[i] / cnt[i], 1e-5); }
+    const cavity = Math.min(1, Math.max(0, cav * 1.3));
+    // ears
+    const ear = sst(0.058, 0.07, ax) * sst(eye.y - 0.075, eye.y - 0.05, y) * (1 - sst(eye.y + 0.02, eye.y + 0.04, y)) * (1 - sst(0.0, 0.025, z)) * sst(-0.07, -0.045, z);
+    // lips (ellipse around the stomion, split upper / lower)
+    const ry = y > st.y ? Math.max(0.004, ls.y - st.y + 0.0025) : Math.max(0.004, st.y - li.y + 0.0035);
+    const le = Math.hypot(x / 0.0235, (y - st.y) / ry);
+    const lips = (1 - sst(0.82, 1.0, le)) * sst(st.z - 0.016, st.z - 0.008, z);
+    // redness: nose tip + alae, cheeks, ears, a little on the chin
+    const red = Math.min(1, 0.7 * g(x, y - tip.y, z - tip.z, 0.011) + 0.45 * g(ax - 0.014, y - (tip.y - 0.008), 0, 0.008) * front
+      + 0.45 * g(ax - 0.043, y - (eye.y - 0.033), 0, 0.017) * front + 0.6 * ear + 0.2 * g(x, y - (li.y - 0.02), 0, 0.012) * front);
+    // eye region
+    const de = Math.hypot(ax - eye.x, y - eye.y, z - eye.z) - eyeR;
+    const nearEye = Math.hypot(ax - eye.x, y - eye.y) < 0.022 ? 1 : 0;
+    const margin = nearEye * (1 - sst(0.0004, 0.0025, de));
+    const lid = nearEye * (1 - sst(0.002, 0.009, de));
+    const peri = Math.exp(-(((ax - eye.x) / 0.02) ** 2) - (((y - eye.y + 0.006) / 0.014) ** 2)) * (1 - lid) * front;
+    // translucency: ear rims, eyelids, nostril alae
+    const thin = Math.min(1, ear * 0.9 + lid * 0.6 + 0.5 * g(ax - 0.013, y - (tip.y - 0.006), z - (tip.z - 0.01), 0.006));
+    // beard shadow: upper lip, chin, jaw, submental — never on the lips
+    const beardZone = (1 - sst(sn.y - 0.002, sn.y + 0.004, y)) * sst(1.455, 1.475, y) * (1 - sst(0.05, 0.068, ax)) * sst(-0.04, -0.015, z);
+    const beard = beardZone * (1 - lips) * (1 - 0.6 * g(ax - 0.035, y - (st.y + 0.002), 0, 0.006));
+    // pores: large on nose and cheeks, fine on forehead and lids; oil: T-zone
+    const pore = Math.min(1, 0.45 + 0.55 * g(x, y - tip.y, 0, 0.02) + 0.35 * g(ax - 0.035, y - (eye.y - 0.03), 0, 0.02)) * (1 - 0.6 * lid) * (1 - 0.5 * lips);
+    const oil = Math.min(1, 0.8 * g(x, y - tip.y, 0, 0.018) + 0.7 * g(x * 0.6, y - (eye.y + 0.035), 0, 0.02) * front + 0.3 * lips);
+    A.set([red, lips, thin, beard], i * 4);
+    B.set([pore, oil, cavity, peri], i * 4);
+    C[i] = margin;
+  }
+  geo.setAttribute('aSkinA', new THREE.BufferAttribute(A, 4));
+  geo.setAttribute('aSkinB', new THREE.BufferAttribute(B, 4));
+  geo.setAttribute('aSkinC', new THREE.BufferAttribute(C, 1));
+}
+
+// The fitted skin has a few sharp fitting creases (chin midline, side of the nose) that catch the rim light
+// as bright lines. Find welded vertices whose normal deviates > ~30° from their neighbours' mean, outside the
+// places where sharp features are real (eyes/lids, lips, nostrils, ears), and relax them (3 × Laplacian, λ 0.5).
+function geo_smoothCreases(geo, eye) {
+  const P = geo.attributes.position.array, I = geo.index.array, n = P.length / 3;
+  // the male fit leaves a narrow open slit on the chin midline: close it (snap its lips onto the midline)
+  let snapped = 0;
+  for (let i = 0; i < n; i++) { const x = P[i*3], y = P[i*3+1], z = P[i*3+2]; if (Math.abs(x) < 0.0016 && y > 1.43 && y < 1.513 && z > 0.02) { P[i*3] = 0; snapped++; } }
+  geo.userData.chinSnapped = snapped;
+  const key = new Map(), wid = new Int32Array(n);
+  for (let i = 0; i < n; i++) { const k = Math.round(P[i*3]*1e5) + ',' + Math.round(P[i*3+1]*1e5) + ',' + Math.round(P[i*3+2]*1e5); let w = key.get(k); if (w === undefined) { w = key.size; key.set(k, w); } wid[i] = w; }
+  const W = key.size, pos = new Float32Array(W * 3), nb = Array.from({ length: W }, () => new Set());
+  for (let i = 0; i < n; i++) pos.set([P[i*3], P[i*3+1], P[i*3+2]], wid[i] * 3);
+  for (let t = 0; t < I.length; t += 3) for (let k = 0; k < 3; k++) { const a = wid[I[t+k]], b = wid[I[t+(k+1)%3]]; if (a !== b) { nb[a].add(b); nb[b].add(a); } }
+  const normals = () => {
+    const acc = new Float32Array(W * 3);
+    for (let t = 0; t < I.length; t += 3) {
+      const a = wid[I[t]]*3, b = wid[I[t+1]]*3, c = wid[I[t+2]]*3;
+      const ux = pos[b]-pos[a], uy = pos[b+1]-pos[a+1], uz = pos[b+2]-pos[a+2], vx = pos[c]-pos[a], vy = pos[c+1]-pos[a+1], vz = pos[c+2]-pos[a+2];
+      const nx = uy*vz-uz*vy, ny = uz*vx-ux*vz, nz = ux*vy-uy*vx;
+      for (const w of [a, b, c]) { acc[w] += nx; acc[w+1] += ny; acc[w+2] += nz; }
+    }
+    for (let w = 0; w < W; w++) { const l = Math.hypot(acc[w*3], acc[w*3+1], acc[w*3+2]) || 1; acc[w*3] /= l; acc[w*3+1] /= l; acc[w*3+2] /= l; }
+    return acc;
+  };
+  const N = normals(), mark = new Uint8Array(W);
+  let found = 0;
+  for (let w = 0; w < W; w++) {
+    const x = pos[w*3], y = pos[w*3+1], z = pos[w*3+2], ax = Math.abs(x);
+    if (z < 0.02 || ax > 0.052 || y < 1.44) continue;                                           // face only; not ears / neck
+    if (Math.hypot(ax - eye.x, y - eye.y) < 0.021) continue;                                    // eyes + lids
+    if (ax < 0.03 && y > 1.505 && y < 1.548 && z > 0.07) continue;                               // lips
+    if (ax < 0.02 && y > 1.543 && y < 1.568 && z > 0.07 && Math.abs(N[w*3+1]) > 0.5) continue;  // nostril rims
+    let mx = 0, my = 0, mz = 0; for (const v of nb[w]) { mx += N[v*3]; my += N[v*3+1]; mz += N[v*3+2]; }
+    const l = Math.hypot(mx, my, mz) || 1;
+    if ((N[w*3]*mx + N[w*3+1]*my + N[w*3+2]*mz) / l < 0.87) { mark[w] = 1; found++; }
+    else if (ax < 0.005 && y > 1.47 && y < 1.512 && z > 0.06) { mark[w] = 1; found++; }   // midline chin seam of the fit
+  }
+  const zone = new Uint8Array(W);
+  for (let w = 0; w < W; w++) if (mark[w]) { zone[w] = 1; for (const v of nb[w]) zone[v] = 1; }
+  for (let it = 0; it < 6; it++) {
+    const np = pos.slice();
+    for (let w = 0; w < W; w++) {
+      if (!zone[w] || !nb[w].size) continue;
+      let mx = 0, my = 0, mz = 0; for (const v of nb[w]) { mx += pos[v*3]; my += pos[v*3+1]; mz += pos[v*3+2]; }
+      const k = nb[w].size;
+      np[w*3] += 0.5 * (mx / k - pos[w*3]); np[w*3+1] += 0.5 * (my / k - pos[w*3+1]); np[w*3+2] += 0.5 * (mz / k - pos[w*3+2]);
+    }
+    pos.set(np);
+  }
+  for (let i = 0; i < n; i++) { const w = wid[i] * 3; P[i*3] = pos[w]; P[i*3+1] = pos[w+1]; P[i*3+2] = pos[w+2]; }
+  geo.attributes.position.needsUpdate = true;
+  geo.userData.creaseVerts = found;
+}
+
+// The chin midline slit is a topological fold (two flaps) that Laplacian smoothing cannot close; its ~0.7 mm
+// groove only matters through shading, so replace normals there by a spatial 4 mm average (base and ♀ morph).
+function chinNormals(geo) {
+  const P = geo.attributes.position.array, N = geo.attributes.normal.array, n = P.length / 3;
+  const inBand = (i, pad) => Math.abs(P[i*3]) < 0.012 + pad && P[i*3+1] > 1.425 - pad && P[i*3+1] < 1.516 + pad && P[i*3+2] > 0.02;
+  const cand = [], band = [];
+  for (let i = 0; i < n; i++) { if (inBand(i, 0.004)) cand.push(i); if (inBand(i, 0)) band.push(i); }
+  const R2 = 0.005 * 0.005, out = new Float32Array(band.length * 3);
+  const mn = geo.morphAttributes.normal?.[0]?.array, outM = mn ? new Float32Array(band.length * 3) : null;
+  band.forEach((i, k) => {
+    let x = 0, y = 0, z = 0, mx = 0, my = 0, mz = 0;
+    for (const j of cand) {
+      const dx = P[j*3]-P[i*3], dy = P[j*3+1]-P[i*3+1], dz = P[j*3+2]-P[i*3+2], d2 = dx*dx+dy*dy+dz*dz;
+      if (d2 > R2) continue; const w = 1 - d2 / R2;
+      x += N[j*3]*w; y += N[j*3+1]*w; z += N[j*3+2]*w;
+      if (mn) { mx += (N[j*3]+mn[j*3])*w; my += (N[j*3+1]+mn[j*3+1])*w; mz += (N[j*3+2]+mn[j*3+2])*w; }
+    }
+    // fade toward the band edge so the smoothed patch blends in
+    const f = Math.min(1, (0.012 - Math.abs(P[i*3])) / 0.004);
+    const l = Math.hypot(x, y, z) || 1; out.set([N[i*3]*(1-f) + x/l*f, N[i*3+1]*(1-f) + y/l*f, N[i*3+2]*(1-f) + z/l*f], k*3);
+    if (mn) { const lm = Math.hypot(mx, my, mz) || 1; outM.set([mx/lm, my/lm, mz/lm], k*3); }
+  });
+  band.forEach((i, k) => {
+    const f = Math.min(1, (0.012 - Math.abs(P[i*3])) / 0.004);
+    if (mn) { const fx = (N[i*3]+mn[i*3])*(1-f) + outM[k*3]*f, fy = (N[i*3+1]+mn[i*3+1])*(1-f) + outM[k*3+1]*f, fz = (N[i*3+2]+mn[i*3+2])*(1-f) + outM[k*3+2]*f; mn[i*3] = fx; mn[i*3+1] = fy; mn[i*3+2] = fz; }
+    const l = Math.hypot(out[k*3], out[k*3+1], out[k*3+2]) || 1;
+    N[i*3] = out[k*3]/l; N[i*3+1] = out[k*3+1]/l; N[i*3+2] = out[k*3+2]/l;
+    if (mn) { mn[i*3] -= N[i*3]; mn[i*3+1] -= N[i*3+1]; mn[i*3+2] -= N[i*3+2]; }
+  });
+  geo.attributes.normal.needsUpdate = true;
+  if (mn) geo.morphAttributes.normal[0].needsUpdate = true;
+}
+
+// ICT skin is split at UV seams: coincident vertices get different normals → visible lines (chin, scalp).
+// Recompute area-weighted normals on welded positions for the base AND for the 'female' morph target
+// (morph normal delta = welded female normal − welded base normal).
+function weldSkinNormals(geo) {
+  const P = geo.attributes.position.array, I = geo.index.array, n = P.length / 3;
+  const q = 1e5, key = new Map(), wid = new Int32Array(n);
+  for (let i = 0; i < n; i++) { const k = Math.round(P[i*3]*q) + ',' + Math.round(P[i*3+1]*q) + ',' + Math.round(P[i*3+2]*q); let w = key.get(k); if (w === undefined) { w = key.size; key.set(k, w); } wid[i] = w; }
+  const normalsFor = (pos) => {
+    const acc = new Float32Array(key.size * 3);
+    for (let t = 0; t < I.length; t += 3) {
+      const a = I[t]*3, b = I[t+1]*3, c = I[t+2]*3;
+      const ux = pos[b]-pos[a], uy = pos[b+1]-pos[a+1], uz = pos[b+2]-pos[a+2], vx = pos[c]-pos[a], vy = pos[c+1]-pos[a+1], vz = pos[c+2]-pos[a+2];
+      const nx = uy*vz-uz*vy, ny = uz*vx-ux*vz, nz = ux*vy-uy*vx;
+      for (const v of [I[t], I[t+1], I[t+2]]) { const w = wid[v]*3; acc[w] += nx; acc[w+1] += ny; acc[w+2] += nz; }
+    }
+    const out = new Float32Array(n * 3);
+    for (let i = 0; i < n; i++) { const w = wid[i]*3, l = Math.hypot(acc[w], acc[w+1], acc[w+2]) || 1; out[i*3] = acc[w]/l; out[i*3+1] = acc[w+1]/l; out[i*3+2] = acc[w+2]/l; }
+    return out;
+  };
+  const nb = normalsFor(P);
+  // keep the source orientation (outward) — flip if the recomputed field disagrees on average
+  const src = geo.attributes.normal.array; let d = 0; for (let i = 0; i < n; i += 7) d += nb[i*3]*src[i*3] + nb[i*3+1]*src[i*3+1] + nb[i*3+2]*src[i*3+2];
+  const sgn = d < 0 ? -1 : 1; if (sgn < 0) for (let i = 0; i < nb.length; i++) nb[i] = -nb[i];
+  geo.attributes.normal.array.set(nb); geo.attributes.normal.needsUpdate = true;
+  const mp = geo.morphAttributes.position, mn = geo.morphAttributes.normal;
+  if (mp && mn) for (let k = 0; k < mp.length; k++) {
+    const rel = geo.morphTargetsRelative !== false;
+    const dp = mp[k].array, fp = new Float32Array(P.length);
+    for (let i = 0; i < P.length; i++) fp[i] = rel ? P[i] + dp[i] : dp[i];
+    const nf = normalsFor(fp); if (sgn < 0) for (let i = 0; i < nf.length; i++) nf[i] = -nf[i];
+    const dn = mn[k].array; for (let i = 0; i < dn.length; i++) dn[i] = rel ? nf[i] - nb[i] : nf[i];
+    mn[k].needsUpdate = true;
+  }
+}
+
+// The fitted skin carries a few hundred long stitching triangles deep inside the head (hidden when opaque,
+// but they draw a streak through the glass/ghost head). Drop long triangles whose centroid lies well inside.
+function stripInteriorSkin(geo) {
+  const p = geo.attributes.position.array, I = geo.index.array, keep = [];
+  let dropped = 0;
+  for (let t = 0; t < I.length; t += 3) {
+    const a = I[t] * 3, b = I[t + 1] * 3, c = I[t + 2] * 3;
+    const e = Math.max(Math.hypot(p[a] - p[b], p[a + 1] - p[b + 1], p[a + 2] - p[b + 2]), Math.hypot(p[b] - p[c], p[b + 1] - p[c + 1], p[b + 2] - p[c + 2]), Math.hypot(p[c] - p[a], p[c + 1] - p[a + 1], p[c + 2] - p[a + 2]));
+    const cx = (p[a] + p[b] + p[c]) / 3, cy = (p[a + 1] + p[b + 1] + p[c + 1]) / 3, cz = (p[a + 2] + p[b + 2] + p[c + 2]) / 3;
+    // interior of the head (ellipsoid) or of the neck (cylinder below the chin)
+    const inHead = (cx / 0.06) ** 2 + ((cy - 1.58) / 0.085) ** 2 + ((cz + 0.005) / 0.075) ** 2 < 1;
+    const inNeck = cy < 1.52 && (cx / 0.028) ** 2 + ((cz + 0.015) / 0.028) ** 2 < 1;
+    if (e > 0.018 && (inHead || inNeck)) { dropped++; continue; }
+    keep.push(I[t], I[t + 1], I[t + 2]);
+  }
+  if (dropped) geo.setIndex(new THREE.BufferAttribute(new Uint32Array(keep), 1));
+  geo.userData.droppedInterior = dropped;
 }
 
 // Smooth normals across separate patches (Z-Anatomy skin is split into ~100 regions): accumulate area-weighted

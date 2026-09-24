@@ -68,6 +68,7 @@ pivot.position.copy(NECK); rig.position.copy(NECK).multiplyScalar(-1);
 pivot.add(rig); world.add(pivot); scene.add(world);
 const section = createSection({ rig, scene });
 
+let hairMod = null;          // optional strand hair (see __head.attachHair)
 let M = null;                // model {nodes, merged, standalone, stateArr, stateTex}
 let content = null;
 const renderables = [];      // {mesh, ghost, group, cls, sids, eye}
@@ -754,7 +755,7 @@ canvas.addEventListener('pointerdown', (e) => {
   stopTour(); sound.start(); syncSoundBtn();
   canvas.setPointerCapture(e.pointerId);
   if (e.pointerType === 'touch') touches.set(e.pointerId, [e.clientX, e.clientY]);
-  downAt = { x: e.clientX, y: e.clientY, t: performance.now() };
+  downAt = { x: e.clientX, y: e.clientY, t: performance.now(), hoverSid: S.hoverSid };
   S.dragging = true; S.dragDist = 0; canvas.classList.add('dragging'); tip.classList.remove('show');
   if (S.intro < 1) S.intro = Math.max(S.intro, 0.999);
 });
@@ -779,7 +780,8 @@ const endPointer = (e) => {
   canvas.classList.remove('dragging');
   const wasDrag = S.dragging; S.dragging = false;
   if (wasDrag && downAt && S.dragDist < 6 && performance.now() - downAt.t < 650 && e.type === 'pointerup') {
-    const sid = gpuPick(e.clientX, e.clientY);
+    let sid = gpuPick(e.clientX, e.clientY);
+    if (sid < 0 && downAt.hoverSid >= 0) sid = downAt.hoverSid;   // thin structures: trust what was highlighted under the finger
     const st = sid >= 0 ? sidToStruct[sid] : null;
     if (st && st.id !== S.inspect) inspect(st.id, sid);
     else if (!st && S.inspect) exitInspect();
@@ -852,7 +854,7 @@ function updateLife(dt, t) {
   // head micro-turn toward the cursor (±6° yaw, ±3° pitch)
   const ty = !calm && S.pointerIn ? clamp(S.pointer.x + 0.35, -1, 1) * 0.1 : 0;
   const tp = !calm && S.pointerIn ? clamp(-S.pointer.y * 0.7, -1, 1) * 0.05 : 0;
-  if (!S.hoverStruct || calm) { turn.yaw = damp(turn.yaw, ty, 0.7, dt); turn.pitch = damp(turn.pitch, tp, 0.7, dt); }   // hold still under the cursor
+  if ((!S.hoverStruct && !S.dragging) || calm) { turn.yaw = damp(turn.yaw, ty, 0.7, dt); turn.pitch = damp(turn.pitch, tp, 0.7, dt); }   // hold still under the cursor
   const breath = Math.sin(t * Math.PI * 2 / 4.6);
   pivot.rotation.set(turn.pitch + breath * 0.0025, turn.yaw, 0, 'YXZ');
   pivot.position.set(NECK.x, NECK.y + breath * 0.0007, NECK.z);
@@ -927,7 +929,15 @@ function tick() {
   S.sex = S.sex < S.sexTarget ? Math.min(S.sexTarget, S.sex + dt / 1.2) : Math.max(S.sexTarget, S.sex - dt / 1.2);
   const sexE = S.sex * S.sex * (3 - 2 * S.sex);
   U.uSex.value = sexE; U.uSexF.value = sexE;
-  if (S.sex !== prevSex) for (const r of renderables) if (r.morphIndex != null) r.mesh.morphTargetInfluences[r.morphIndex] = sexE;
+  U.uRigInv.value.copy(rig.matrixWorld).invert();
+  U.uLidShade.value = 1 - layerDis[G.skin];
+  // optional strand hair module (src/fx/hair.js, attached via __head.attachHair): fades with the skin layer and sex
+  if (hairMod) {
+    const vis = (1 - layerDis[G.skin]) * (S.inspect ? 0.2 : 1) * (S.off.has('skin') ? 0 : 1);   // sections clip the hair like any tissue
+    hairMod.object.visible = vis > 0.01;
+    try { hairMod.update?.({ skin: vis, sex: sexE, time: t, dt, camera }); } catch (e) { if (!hairMod._warned) { hairMod._warned = true; console.warn('[head] hair update', e); } }
+  }
+  for (const r of renderables) if (r.morphIndex != null) r.mesh.morphTargetInfluences[r.morphIndex] = sexE;   // every frame (URL ?sex=f starts at 1)
   // eye interior darkness (living pupils are black) — lifted when the eye is cut or examined
   const insp = S.inspect ? structs.get(S.inspect) : null;
   const eyeOpen = (section.state.on > 0.5) || (insp && insp.group === G.eye);
@@ -989,6 +999,8 @@ window.__head = {
     const ms = (performance.now() - t0) / n;
     return { msPerFrame: +ms.toFixed(2), fpsEquivalent: Math.round(1000 / ms), dpr: stage.dpr, px: stage.size.px.toArray() };
   },
+  // hair integration point: attachHair({ object: THREE.Object3D (rest/glTF coordinates), update?({skin, sex, time, dt, camera}) })
+  attachHair(mod) { if (!mod || !mod.object) return false; hairMod = mod; if (mod.object.parent !== rig) rig.add(mod.object); return true; },
   pick(x, y) { const sid = gpuPick(x, y); return sid >= 0 ? { sid, id: sidToStruct[sid].id, node: M.nodes[sid].node } : null; },
   // a screen point where the structure is actually visible (verified by the GPU pick), or null
   projectPart(id) {
@@ -1052,6 +1064,21 @@ async function boot() {
   initState();
   buildSearch();
   const sf = await sexP; window.__head.timing.sexfield = sf;
+  // strand hair (separate module): scalp hair ♂/♀ + eyebrows; the procedural brows switch off when strands exist
+  if (Q.get('hair') !== '0') {
+    try {
+      const { createHair } = await import('./fx/hair.js');
+      const hair = await Promise.race([createHair(renderer, scene, { parent: rig, base: 'assets/', skinOffset: 0.0012 /* = skin shader's outward push */, clippingPlanes: section.clip }), new Promise(r => setTimeout(() => r(null), 15000))]);
+      if (hair) {
+        window.__head.attachHair({
+          object: hair.object3d,
+          update({ skin, sex, dt, camera }) { hair.setSex(sex); hair.setOpacity(skin); hair.update(dt, camera); },
+        });
+        if (hair.sets && hair.sets.brows) U.uBrows.value = 0;
+        window.__head.timing.hair = hair.stats ? hair.stats() : true;
+      }
+    } catch (e) { console.warn('[head] hair module not loaded', e); }
+  }
   window.__head.timing.built = Math.round(performance.now() - t0);
   window.__head.timing.flippedNormals = M.flipped;
   setProgress(0.9);

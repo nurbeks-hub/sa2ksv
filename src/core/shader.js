@@ -32,6 +32,9 @@ export const U = {
   uEye: { value: new THREE.Vector3(0.0318, 1.5922, 0.0605) },
   uIris: { value: new THREE.Vector3(0.0318, 1.5925, 0.0064) },
   uSexF: { value: 0 },
+  uRigInv: { value: new THREE.Matrix4() },
+  uLidShade: { value: 1 },
+  uBrows: { value: 1 },
 };
 
 // ------------------------------------------------------------------ GLSL
@@ -69,6 +72,14 @@ varying vec3 vRest;
   varying vec3 vFibO;
   varying vec3 vFibV;
 #endif
+#ifdef H_SKIN
+  attribute vec4 aSkinA; attribute vec4 aSkinB; attribute float aSkinC;
+  varying vec4 vSkA; varying vec4 vSkB; varying float vSkC;
+#endif
+#ifdef H_EYEBALL
+  uniform mat4 uRigInv;
+  varying vec3 vHead;
+#endif
 void hField(vec3 p, out vec3 d, out mat3 J) {
   d = uSFA * p + uSFT; J = uSFA;
   for (int i = 0; i < ${MAX_SF}; i++) {
@@ -93,6 +104,9 @@ const VERT_PROLOGUE = /* glsl */`
   vRest = position;
   vec3 hD = vec3(0.0); mat3 hJ = mat3(0.0); bool hHasField = uSex > 0.0001 && hT1.w > -0.5 && (uSFCount > 0 || uSFA[0][0] != 0.0 || uSFA[1][1] != 0.0 || uSFA[2][2] != 0.0 || dot(uSFT, uSFT) > 0.0);
   if (hHasField) hField(position, hD, hJ);
+  #ifdef H_SKIN
+    vSkA = aSkinA; vSkB = aSkinB; vSkC = aSkinC;
+  #endif
   #ifdef H_FIBRE
     vec3 hA = hT1.xyz;
     if (hT1.w > 0.5 && hT1.w < 1.5) hA = normalize(position - hT1.xyz);                       // radial fan (e.g. temporalis)
@@ -112,10 +126,16 @@ const VERT_NORMAL = /* glsl */`
 const VERT_DISPLACE = /* glsl */`
   if (hHasField) transformed += uSex * hD;
   #ifdef H_SKIN
+    vRest = transformed;   // skin: bust cut + noise follow the female morph (clean neck edge for both sexes)
+  #endif
+  #ifdef H_SKIN
     transformed += normalize(normal) * 0.0012;   // skin floats 1.2 mm off the fitted anatomy: no tissue poking through
   #endif
 `;
 const VERT_CULL = /* glsl */`
+  #ifdef H_EYEBALL
+    vHead = (uRigInv * modelMatrix * vec4(transformed, 1.0)).xyz;   // head space: the lids do not rotate with the eye
+  #endif
   if (vState.z > 0.999) gl_Position = vec4(0.0, 0.0, -2.0, 1.0);  // fully dissolved: clip the triangle away
   #ifdef H_GHOSTPASS
     if (vState.x < 0.004) gl_Position = vec4(0.0, 0.0, -2.0, 1.0);  // solid (not ghosted) structures skip the glass pass
@@ -132,6 +152,7 @@ uniform float uCordY;
 uniform vec3 uEye;      // |x|, y, z of the eyeball centres (rest space)
 uniform vec3 uIris;     // |x|, y of the iris centre, iris radius
 uniform float uSexF;    // eased sex blend (fragment side)
+uniform float uBrows;   // 1 = paint procedural brows (off when strand brows are loaded)
 flat varying vec4 vState;
 flat varying vec4 vTint;
 flat varying float vSid;
@@ -184,11 +205,33 @@ function litLightsChunk() {
   let c = THREE.ShaderChunk.lights_physical_pars_fragment;
   const line = 'reflectedLight.directDiffuse += irradiance * BRDF_Lambert( material.diffuseContribution ) * ( 1.0 - F );';
   if (!c.includes(line)) { console.warn('[head] wrap-lighting hook not found; using stock diffuse'); return c; }
+  // skin: a light from behind the head (rim) only lights the silhouette, never backward-facing walls of creases
+  const irr = 'vec3 irradiance = dotNL * directLight.color;';
+  if (c.includes(irr)) c = c.replace(irr, `vec3 irradiance = dotNL * directLight.color;
+    #ifdef H_SKIN
+      float hBehind = smoothstep(0.0, -0.35, dot(directLight.direction, geometryViewDir));
+      float hSil = 1.0 - smoothstep(0.12, 0.4, dot(geometryNormal, geometryViewDir));
+      float hRimK = mix(1.0, hSil, hBehind);
+      irradiance *= hRimK;
+    #endif`);
   c = c.replace(line, `
+    #ifdef H_SKIN
+    {
+      // skin: red light scatters further (per-channel wrap, stronger in thin tissue) + back-lit transmission
+      float hNL = dot( geometryNormal, directLight.direction );
+      vec3 hWc = vec3(0.34, 0.19, 0.13) * (1.0 + 1.2 * vSkA.z);
+      vec3 hWr = clamp((vec3(hNL) + hWc) / (1.0 + hWc), 0.0, 1.0);
+      hWr = mix(hWr, hWr * hWr * (3.0 - 2.0 * hWr), 0.35);
+      float hBack = pow(clamp(dot(geometryViewDir, -directLight.direction), 0.0, 1.0), 3.0);
+      vec3 hTr = vec3(1.0, 0.3, 0.16) * (hBack * 1.4 + max(0.0, -hNL) * 0.25) * vSkA.z;
+      reflectedLight.directDiffuse += directLight.color * (hWr * ( 1.0 - F ) * hRimK + hTr) * BRDF_Lambert( material.diffuseContribution ) * (1.0 - vSkB.z * 0.3);
+    }
+    #else
     float hNLraw = dot( geometryNormal, directLight.direction );
     float hWrap = saturate( ( hNLraw + H_WRAP ) / ( 1.0 + H_WRAP ) );
     vec3 hSss = H_SSS * saturate( hWrap - saturate( hNLraw ) ) * 2.0;
     reflectedLight.directDiffuse += directLight.color * ( hWrap * ( 1.0 - F ) + hSss ) * BRDF_Lambert( material.diffuseContribution );
+    #endif
   `);
   return c;
 }
@@ -197,14 +240,28 @@ const LIT_COLOR = /* glsl */`
   #include <color_fragment>
   diffuseColor.rgb *= vTint.rgb;
   #ifdef H_SKIN
-    diffuseColor.rgb *= mix(vec3(1.0), vec3(1.05, 0.93, 0.92), hNoise(vRest * 22.0));
-    diffuseColor.rgb *= 0.955 + 0.09 * hNoise(vRest * 950.0);
+    {
+      // living skin albedo: melanin / haemoglobin mottling, redness (nose, cheeks, ears), darker periorbital
+      // skin, lips with a vermilion border, wet lid margins, faint male beard shadow, creases (cavity)
+      float hMot = hNoise(vRest * 36.0) * 0.6 + hNoise(vRest * 115.0) * 0.4;
+      vec3 hC = diffuseColor.rgb * mix(vec3(0.965, 0.985, 1.0), vec3(1.035, 1.0, 0.965), hMot);
+      hC = mix(hC, hC * vec3(1.1, 0.86, 0.84), vSkA.x * 0.42);
+      hC *= mix(vec3(1.0), vec3(0.84, 0.8, 0.85), vSkB.w * 0.55);
+      float hBeard = vSkA.w * (1.0 - uSexF) * (0.75 + 0.25 * hNoise(vRest * 2400.0));
+      hC = mix(hC, hC * vec3(0.74, 0.76, 0.82), hBeard * 0.42);
+      vec3 hLip = mix(vec3(0.33, 0.15, 0.13), vec3(0.3, 0.16, 0.14), uSexF) * (0.92 + 0.16 * hNoise(vec3(vRest.x * 900.0, vRest.y * 3000.0, vRest.z * 900.0)));
+      hC = mix(hC, hLip, smoothstep(0.0, 1.0, vSkA.y) * mix(0.72, 0.55, uSexF));
+      hC = mix(hC, hC * vec3(0.62, 0.5, 0.5), vSkC * 0.6);
+      hC *= 1.0 - vSkB.z * 0.22;
+      hC *= 0.98 + 0.04 * hNoise(vRest * 1300.0);
+      diffuseColor.rgb = hC;
+    }
     {
       // eyebrows painted procedurally on the skin (the fitted skin has no brow mesh): a soft arch of short hairs
       // above each orbit, denser and wider medially; a little finer and higher in the female morph
       float hSx = sign(vRest.x); float ax = abs(vRest.x);
       float hU = (ax - (uEye.x - 0.019)) / 0.045;
-      if (hU > -0.1 && hU < 1.1 && vRest.z > uEye.z + 0.004) {
+      if (uBrows > 0.5 && hU > -0.1 && hU < 1.1 && vRest.z > uEye.z + 0.004) {
         float hArch = sin(3.14159 * clamp(hU * 0.92 + 0.05, 0.0, 1.0));
         float hYc = uEye.y + 0.0168 + 0.0036 * hArch + 0.0012 * uSexF - 0.0022 * max(hU - 0.75, 0.0) * 4.0;
         float hTh = mix(0.0085, 0.0042, clamp(hU, 0.0, 1.0)) * mix(1.0, 0.8, uSexF);
@@ -217,13 +274,14 @@ const LIT_COLOR = /* glsl */`
         diffuseColor.rgb = mix(diffuseColor.rgb, vec3(0.07, 0.05, 0.04), hB);
       }
     }
-    if (!gl_FrontFacing) diffuseColor.rgb = vec3(0.42, 0.16, 0.12);
+    // inner surface (dermis tone) only in sections; elsewhere a back face seen through a fold of the fit keeps skin tone
+    if (!gl_FrontFacing) diffuseColor.rgb = mix(diffuseColor.rgb * 0.85, vec3(0.42, 0.16, 0.12), uSecOn);
   #endif
   #ifdef H_LASH
   {
     // lash cards without a texture: fine dark strands; the lower lashes sparser
-    float hS = hNoise(vec3(vRest.x * 3400.0, vRest.y * 70.0, vRest.z * 70.0));
-    float hA = smoothstep(0.6, 0.84, hS) * (vRest.y > uEye.y ? 0.6 : 0.1) * mix(1.0, 0.7, uSexF);
+    float hS = hNoise(vec3(vRest.x * 6500.0, vRest.y * 70.0, vRest.z * 70.0));
+    float hA = smoothstep(0.66, 0.86, hS) * (vRest.y > uEye.y ? 0.6 : 0.1) * mix(1.0, 0.7, uSexF);
     diffuseColor.rgb = vec3(0.03, 0.024, 0.02);
     diffuseColor.a *= hA;
   }
@@ -253,6 +311,19 @@ const LIT_COLOR = /* glsl */`
   #ifdef H_VESSEL
     if (!gl_FrontFacing) diffuseColor.rgb *= 0.28;
   #endif
+  #ifdef H_SCLERA
+  {
+    // sclera: warmer toward the canthi, faint vessels toward the periphery
+    vec3 hEc = vec3(sign(vRest.x) * uEye.x, uEye.y, uEye.z);
+    vec3 hDr = normalize(vRest - hEc);
+    float hCorner = smoothstep(0.35, 0.9, abs(hDr.x)) * (1.0 - smoothstep(0.25, 0.65, abs(hDr.y)));
+    vec3 hSc = diffuseColor.rgb * mix(vec3(1.0), vec3(1.05, 0.92, 0.84), hCorner * 0.7 + (1.0 - hDr.z) * 0.15);
+    float hV1 = abs(hNoise(vRest * 780.0) - 0.5), hV2 = abs(hNoise(vRest * 1700.0 + 3.1) - 0.5);
+    float hVes = ((1.0 - smoothstep(0.0, 0.03, hV1)) + 0.6 * (1.0 - smoothstep(0.0, 0.025, hV2))) * smoothstep(0.75, 0.3, hDr.z) * (0.35 + 0.65 * hCorner);
+    hSc = mix(hSc, vec3(0.5, 0.1, 0.08), clamp(hVes, 0.0, 1.0) * 0.38);
+    diffuseColor.rgb = hSc;
+  }
+  #endif
   #ifdef H_IRIS
   {
     // procedural iris (dark brown): radial stromal fibres, amber collarette, dark limbal ring
@@ -264,9 +335,61 @@ const LIT_COLOR = /* glsl */`
     hCol += vec3(0.05, 0.026, 0.008) * (1.0 - smoothstep(0.0, 0.09, abs(hR - 0.47))) * (0.6 + 0.6 * hF);
     hCol = mix(hCol, vec3(0.018, 0.012, 0.01), smoothstep(0.84, 1.0, hR));
     hCol *= 0.75 + 0.25 * smoothstep(0.2, 0.34, hR);   // pupillary ruff (the pupil itself is the real aperture)
+    float hCr = smoothstep(0.68, 0.86, hNoise(vec3(hAng * 11.0, hR * 7.0, 4.0))) * smoothstep(0.36, 0.5, hR) * (1.0 - smoothstep(0.72, 0.85, hR));
+    hCol *= 1.0 - 0.55 * hCr;                            // Fuchs crypts
     diffuseColor.rgb = hCol;
   }
   #endif
+  #ifdef H_EYEBALL
+  {
+    // soft shadow of the upper lid and lid occlusion at the canthi (head space: the lids stay put)
+    vec3 hEc2 = vec3(sign(vHead.x) * uEye.x, uEye.y, uEye.z);
+    vec3 hDh = normalize(vHead - hEc2);
+    float hSh = 1.0 - 0.55 * smoothstep(0.05, 0.42, hDh.y) - 0.25 * smoothstep(0.55, 0.95, abs(hDh.x)) - 0.15 * smoothstep(-0.2, -0.5, hDh.y);
+    diffuseColor.rgb *= mix(1.0, hSh, uLidShade);
+  }
+  #endif
+`;
+
+// skin micro-relief: pores (larger on nose/cheeks) and fine skin grain as a screen-space bump
+const SKIN_BUMP = /* glsl */`
+  #include <normal_fragment_maps>
+  #ifdef H_SKIN
+  {
+    // folded fitting creases leave front faces whose normals point away from the viewer; they would catch the
+    // back light as bright slivers. Bend such normals back to the silhouette plane.
+    { vec3 hVv = normalize(vViewPosition); float hNv = dot(normal, hVv); if (hNv < 0.05) normal = normalize(normal + hVv * (0.05 - hNv)); }
+    float hPs = mix(2700.0, 1500.0, vSkB.x);
+    float hPn = hNoise(vRest * hPs);
+    float hH = -smoothstep(0.72, 0.93, hPn) * 0.5 + (hNoise(vRest * 1900.0 + 7.7) - 0.5) * 0.12;
+    float hFw = length(fwidth(vRest)) * hPs;
+    hH *= 0.00003 * (0.35 + 1.0 * vSkB.x) * (1.0 - vSkA.y * 0.6) * clamp(1.6 - hFw, 0.0, 1.0);
+    vec3 hPos = -vViewPosition;
+    vec3 hDpx = dFdx(hPos), hDpy = dFdy(hPos);
+    float hDhx = dFdx(hH), hDhy = dFdy(hH);
+    vec3 hR1 = cross(hDpy, normal), hR2 = cross(normal, hDpx);
+    float hDet = dot(hDpx, hR1);
+    vec3 hGrad = sign(hDet) * (hDhx * hR1 + hDhy * hR2);
+    normal = normalize(abs(hDet) * normal - hGrad);
+  }
+  #endif
+`;
+const SKIN_ROUGH = /* glsl */`
+  #include <roughnessmap_fragment>
+  #ifdef H_SKIN
+    roughnessFactor = mix(roughnessFactor, 0.4, vSkB.y * 0.55);                 // oilier T-zone
+    roughnessFactor = mix(roughnessFactor, 0.3, clamp(vSkA.y * 0.6 + vSkC, 0.0, 1.0));   // lips, wet lid margin
+    roughnessFactor += (hNoise(vRest * 240.0) - 0.5) * 0.08;
+  #endif
+`;
+const EARLY_DECL = /* glsl */`
+#ifdef H_SKIN
+  varying vec4 vSkA; varying vec4 vSkB; varying float vSkC;
+#endif
+#ifdef H_EYEBALL
+  varying vec3 vHead;
+  uniform float uLidShade;
+#endif
 `;
 
 const LIT_EMISSIVE = /* glsl */`
@@ -299,13 +422,24 @@ const LIT_AFTER_LIGHTS = /* glsl */`
     #endif
   #endif
   #ifdef H_SKIN
-    { float hFr = pow(1.0 - saturate(dot(normal, geometryViewDir)), 4.0); reflectedLight.indirectSpecular += hFr * 0.022 * vec3(1.0, 0.84, 0.76); }
+    { float hFr = pow(1.0 - saturate(dot(normal, geometryViewDir)), 4.0); reflectedLight.indirectSpecular += hFr * 0.022 * vec3(1.0, 0.84, 0.76) * (1.0 - vSkB.z); }
+    #if NUM_DIR_LIGHTS > 0
+    {
+      // second, sharper specular lobe (dual-lobe skin: ~0.3 + the base ~0.55), weighted by oiliness
+      vec3 hL = directionalLights[0].direction; vec3 hH = normalize(hL + geometryViewDir);
+      float hNh = saturate(dot(normal, hH)), hNl = saturate(dot(normal, hL)), hVh = saturate(dot(geometryViewDir, hH));
+      float hA2 = 0.09 * 0.09; float hDd = hNh * hNh * (hA2 - 1.0) + 1.0;
+      float hD = hA2 / (3.14159 * hDd * hDd);
+      float hF = 0.028 + 0.972 * pow(1.0 - hVh, 5.0);
+      reflectedLight.directSpecular += directionalLights[0].color * hD * hF * 0.25 * hNl * (0.12 + 0.88 * vSkB.y) * (1.0 - vSkB.z * 0.7) * 0.4;
+    }
+    #endif
   #endif
 `;
 
 // ---------------------------------------------------------------- material factory
 const CLASS_DEFINES = {
-  skin: { H_SKIN: 1, H_WRAP: 0.42, H_SSS: 'vec3(0.13, 0.035, 0.018)' },
+  skin: { H_SKIN: 1, H_WRAP: 0.42, H_SSS: 'vec3(0.1, 0.035, 0.02)' },
   hair: { H_WRAP: 0.2, H_SSS: 'vec3(0.0)' },
   hairFine: { H_LASH: 1, H_WRAP: 0.2, H_SSS: 'vec3(0.0)' },
   muscle: { H_FIBRE: 1, H_WRAP: 0.35, H_SSS: 'vec3(0.22, 0.02, 0.01)' },
@@ -338,9 +472,9 @@ const CLASS_DEFINES = {
   pituitary: { H_WRAP: 0.45, H_SSS: 'vec3(0.16, 0.06, 0.03)' },
   csf: { H_WRAP: 0.3, H_SSS: 'vec3(0.0)' },
   meninges: { H_WRAP: 0.3, H_SSS: 'vec3(0.0)' },
-  sclera: { H_WRAP: 0.4, H_SSS: 'vec3(0.12, 0.06, 0.05)' },
+  sclera: { H_SCLERA: 1, H_EYEBALL: 1, H_WRAP: 0.4, H_SSS: 'vec3(0.12, 0.06, 0.05)' },
   cornea: { H_WRAP: 0.0, H_SSS: 'vec3(0.0)' },
-  iris: { H_IRIS: 1, H_WRAP: 0.3, H_SSS: 'vec3(0.05, 0.02, 0.0)' },
+  iris: { H_IRIS: 1, H_EYEBALL: 1, H_WRAP: 0.3, H_SSS: 'vec3(0.05, 0.02, 0.0)' },
   lens: { H_EYEIN: 1, H_WRAP: 0.3, H_SSS: 'vec3(0.0)' },
   retina: { H_EYEIN: 1, H_WRAP: 0.3, H_SSS: 'vec3(0.1, 0.02, 0.01)' },
   vitreous: { H_EYEIN: 1, H_WRAP: 0.3, H_SSS: 'vec3(0.0)' },
@@ -363,6 +497,9 @@ export function patchLit(mat, cls) {
     attachUniforms(shader);
     shader.vertexShader = patchVertex(shader.vertexShader, true);
     let f = commonFragHead(shader.fragmentShader);
+    f = f.replace('#include <common>', '#include <common>\n' + EARLY_DECL);
+    f = f.replace('#include <normal_fragment_maps>', SKIN_BUMP);
+    f = f.replace('#include <roughnessmap_fragment>', SKIN_ROUGH);
     f = f.replace('#include <lights_physical_pars_fragment>', litLightsChunk());
     f = f.replace('#include <clipping_planes_fragment>', '#include <clipping_planes_fragment>\n' + FRAG_PROLOGUE + FRAG_GHOST_HANDOFF);
     f = f.replace('#include <color_fragment>', LIT_COLOR);

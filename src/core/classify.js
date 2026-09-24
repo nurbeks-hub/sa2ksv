@@ -24,7 +24,7 @@ export const CAP_COLOR = {
 
 // Base colours (sRGB hex) per class.  Illustrative, not true tissue colours (said in ⓘ).
 export const CLASS_COLOR = {
-  skin: 0xcfae98, hair: 0x14100e, hairFine: 0x1b1512,
+  skin: 0xcbb4a2,   // light olive-tan (Central Asian mean), regional redness/melanin added in the shader hair: 0x14100e, hairFine: 0x1b1512,
   muscle: 0x9a2f2a, tendon: 0xcfc3b6, fascia: 0xd5cfc6,
   artery: 0xc4222f, vein: 0x2f4f9a, nerve: 0xefd98a, lymph: 0x9db88c,
   bone: 0xe9dcc3, tooth: 0xf6f1e6, cartilage: 0xd6d6cf, ligament: 0xd8d2c2, disc: 0xcfd8d6, air: 0x9ab4c8,
