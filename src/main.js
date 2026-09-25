@@ -22,7 +22,8 @@ const canvas = $('#gl');
 const stage = createStage(canvas);
 const { scene, camera, renderer } = stage;
 const sound = new Sound();
-if (Q.get('kiosk') === '1') sound.enabled = false;   // kiosk: silent until a visitor turns sound on
+if (Q.has('clean')) document.body.classList.add('clean');   // screenshots / thumbnails: no UI
+if (Q.get('kiosk') === '1') { sound.enabled = false; stage.final.uniforms.uGrain.value = 0; }   // kiosk: silent until a visitor turns sound on; no grain
 const IS_TOUCH = matchMedia('(pointer: coarse)').matches;
 const NO_INTRO = Q.has('nointro');
 const FILES = ['skin', 'bones', 'muscles', 'vessels', 'nerves', 'organs', 'joints', 'lymph'];
@@ -164,8 +165,8 @@ const easeIO = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
 const sph = (yaw, pitch) => new THREE.Vector3(Math.sin(yaw) * Math.cos(pitch), Math.sin(pitch), Math.cos(yaw) * Math.cos(pitch));
 function layoutShift() {
   const a = innerWidth / innerHeight;
+  if (dive && dive.active && !dive.frame) { if (a < 0.9) return [0, -0.2]; return [document.body.classList.contains('dive-card') ? 0.02 : 0.22, 0.02]; }
   if (a < 0.9) return [0, 0.12];                       // portrait phone: centred, lifted above the rail
-  if (dive && dive.active && !dive.frame) { if (a < 0.9) return [0, 0.64]; return [document.body.classList.contains('dive-card') ? 0.02 : 0.22, 0.02]; }
   const panel = document.body.classList.contains('inspecting') && !tour.on ? 0.04 : 0;
   return [-(0.2 + panel) * Math.min(1, a / 1.6), -0.01];
 }
@@ -338,6 +339,11 @@ function gpuPick(px, py) {
   const id = pickBuf[0] + pickBuf[1] * 256 + pickBuf[2] * 65536 - 1;
   return id >= 0 && id < M.nodes.length && !sidToStruct[id]?.excluded ? id : -1;
 }
+// ---- onboarding hand: shown until the first real action (drag, tap, wheel, key); in kiosk again after each tour
+let handSeen = false;
+function hideHand() { handSeen = true; document.body.classList.remove('show-hand'); }
+for (const ev of ['pointerdown', 'wheel', 'keydown']) window.addEventListener(ev, () => { if (document.body.classList.contains('show-hand') && !tour.on) setTimeout(hideHand, 250); }, { capture: true, passive: true });
+
 // ---- skin regions: the auricle, nose, eyes, lips are all one Skin mesh; a ray against it (only when the GPU pick
 // says «skin») gives the rest-space point, classified against landmarks found on the mesh at load.
 const REGION_LA = { auricle: 'Auricula', nose: 'Nasus externus', eye: 'Regio orbitalis', mouth: 'Regio oralis', forehead: 'Regio frontalis', scalp: 'Regio parietalis', cheek: 'Regio buccalis', chin: 'Regio mentalis', neck: 'Regio cervicalis' };
@@ -481,6 +487,7 @@ function setSection(axis) {
   }
   document.body.classList.toggle('sectioning', !!axis);
   document.querySelectorAll('#sections button').forEach(b => b.classList.toggle('on', b.dataset.sec === axis));
+  updateCutBtn();
   targetsDirty = true;
 }
 // grip: drag the plane along its normal directly on screen
@@ -546,8 +553,10 @@ function buildRail() {
   RAIL.forEach((name, i) => {
     const li = document.createElement('li'); li.dataset.layer = name; li.dataset.i = i;
     const dot = document.createElement('span'); dot.className = 'dot';
+    const th = document.createElement('span'); th.className = 'thumb'; th.style.backgroundImage = `url(assets/ui/layer-${name}.jpg)`;
     const nm = document.createElement('span'); nm.className = 'nm';
-    li.append(dot, nm); railOl.append(li);
+    li.style.setProperty('--lc', `var(--lay-${name})`);
+    li.append(dot, th, nm); railOl.append(li);
     let press = null;
     li.addEventListener('pointerdown', (e) => { press = setTimeout(() => { press = 'long'; toggleSystem(name); }, 520); });
     const cancel = () => { if (press && press !== 'long') clearTimeout(press); };
@@ -601,11 +610,16 @@ function fillPanel(id) {
   panel.querySelector('.role').lang = S.lang;
   panel.querySelector('.alt').textContent = LANGS.filter(l => l !== S.lang).map(l => nameFor(l)).filter((v, i, a) => a.indexOf(v) === i && v !== nameFor(S.lang)).join('  ·  ');
   const ul = panel.querySelector('.facts'); ul.replaceChildren();
-  const facts = content.facts(id).slice(0, 2);
-  for (const f of facts) {
+  const facts = content.facts(id).slice(0, 3);
+  const f0 = facts[0]; const wowT = f0 ? ((typeof f0[S.lang] === 'string' && f0[S.lang]) || f0.en || '') : '';
+  panel.querySelector('.wow .wt').textContent = wowT ? localNum(wowT) : '';
+  panel.querySelector('.wow').classList.toggle('none', !wowT);
+  panel.classList.remove('open');
+  panel.querySelector('.pmore').textContent = (T.kid && T.kid.more) || 'More';
+  for (const [fi, f] of facts.entries()) {
     const txt = (typeof f[S.lang] === 'string' && f[S.lang]) || f.en || '';
     if (!txt) continue;
-    const li = document.createElement('li'); li.textContent = localNum(txt);
+    const li = document.createElement('li'); li.textContent = fi === 0 ? '' : localNum(txt);
     const src = content.source(f.src);
     if (src) {
       const s = document.createElement('span'); s.className = 'src';
@@ -616,7 +630,7 @@ function fillPanel(id) {
     }
     ul.append(li);
   }
-  if (!ul.children.length) { const li = document.createElement('li'); li.className = 'empty'; li.textContent = T.panel.noFacts; ul.append(li); }
+
   // deep-dive links: the region's organ(s) for skin, otherwise the index trigger
   const links = $('#dive-links'); links.replaceChildren();
   if (dive && !dive.active) {
@@ -624,7 +638,7 @@ function fillPanel(id) {
     ids.filter(did => dive.D.index.some(e => e.id === did)).forEach((did, k) => {
       const entry = dive.D.index.find(e => e.id === did);
       const b = document.createElement('button');
-      if (k === 0) { b.className = 'pill mono'; b.textContent = (T.dive && T.dive.explore) || 'Explore'; b.id = 'btn-dive'; }
+      if (k === 0) { b.className = 'pill'; b.textContent = (T.kid && T.kid.look) || 'Look inside'; b.id = 'btn-dive'; }
       else { b.className = 'also mono'; b.textContent = `${T.organs?.also || 'Also'}: ${entry.title?.[S.lang] || entry.title?.en || did}`; }
       b.dataset.dive = did;
       b.addEventListener('click', () => openDive(did));
@@ -754,7 +768,7 @@ function applyLang() {
   $('#brand-sub').textContent = S.sexTarget > 0.5 ? (T.subF || T.sub) : (T.subM || T.sub);
   $('#hint').textContent = IS_TOUCH ? T.hintTouch : T.hint;
   qEl.placeholder = T.search.placeholder;
-  updateRail(); updateTourBtn(); fillAbout();
+  updateRail(); updateTourBtn(); updateCutBtn(); fillAbout();
   if (S.inspect) fillPanel(S.inspect);
   if (dive) dive.applyLang();
   if (S.hoverStruct) updateTip();
@@ -801,6 +815,7 @@ function stopTour() {
   tour.on = false; tour.cam = null; S.tourHl = null; targetsDirty = true;
   document.body.classList.remove('touring'); hideCaption(); updateTourBtn();
   S.lastActivity = performance.now();
+  if (KIOSK) document.body.classList.add('show-hand');
 }
 function showTourCaption(k) {
   const st = UI[S.lang].tourStops[k]; if (!st) return;
@@ -842,7 +857,7 @@ function tickTour(dt) {
   }
   if (!(dive && dive.active)) { S.yawOff = Math.sin(tour.t * 0.21) * 0.1; S.pitchOff = Math.sin(tour.t * 0.16) * 0.03; }
 }
-function updateTourBtn() { const b = $('#btn-tour'); b.textContent = tour.on ? UI[S.lang].tour.stop : UI[S.lang].tour.start; b.classList.toggle('on', tour.on); }
+function updateTourBtn() { const b = $('#btn-tour'); const K = UI[S.lang].kid || {}; b.querySelector('.bl').textContent = tour.on ? (K.stop || 'Stop') : (K.tour || 'Tour'); b.classList.toggle('on', tour.on); }
 
 // ============================================================ input
 let downAt = null;
@@ -930,7 +945,9 @@ window.addEventListener('keydown', (e) => {
   else if (k === 'r' || k === 'R' || k === 'к' || k === 'К') resetView();
 });
 $('#btn-tour').addEventListener('click', () => { tour.on ? stopTour() : startTour(); });
-document.querySelectorAll('#sections button').forEach(b => b.addEventListener('click', () => { stopTour(); sound.start(); if (S.inspect) exitInspect(); setSection(b.dataset.sec); }));
+function updateCutBtn() { const b = $('#btn-cut'); if (!b) return; const K = UI[S.lang].kid || {}; b.classList.toggle('on', !!S.section); b.querySelector('.bl').textContent = S.section ? (K.uncut || 'Close') : (K.cut || 'Cut'); }
+$('#btn-cut').addEventListener('click', () => { stopTour(); sound.start(); if (S.inspect) exitInspect(); if (S.section) setSection(null); else setSection('sagittal'); hideHand(); });
+document.querySelectorAll('#sections button').forEach(b => b.addEventListener('click', () => { stopTour(); sound.start(); if (S.inspect) exitInspect(); if (S.section !== b.dataset.sec) setSection(b.dataset.sec); }));   // direction chips only switch; the scissors button closes
 document.querySelectorAll('#sex button').forEach(b => b.addEventListener('click', () => { stopTour(); sound.start(); setSex(b.dataset.sex === 'f'); }));
 document.querySelectorAll('.lang').forEach(b => b.addEventListener('click', () => {
   // on phones only the current language is shown: tapping it cycles to the next one
@@ -938,6 +955,7 @@ document.querySelectorAll('.lang').forEach(b => b.addEventListener('click', () =
   S.lang = next; storeLang(S.lang); applyLang(); buildSearch();
 }));
 $('#btn-search').addEventListener('click', openSearch);
+panel.querySelector('.pmore').addEventListener('click', () => panel.classList.toggle('open'));
 $('#panel-close').addEventListener('click', () => { if (dive && dive.sel) dive.selectPart(null); else exitInspect(); });
 $('#prev').addEventListener('click', () => { if (dive && dive.active) dive.stepPart(-1); else stepInspect(-1); });
 $('#next').addEventListener('click', () => { if (dive && dive.active) dive.stepPart(1); else stepInspect(1); });
@@ -990,8 +1008,9 @@ async function openOrgans() {
   const T = UI[S.lang]; const grid = organsEl.querySelector('.ogrid'); grid.replaceChildren();
   for (const e of dive.D.index) {
     const li = document.createElement('li'); li.tabIndex = 0; li.dataset.id = e.id;
+    const im = document.createElement('div'); im.className = 'oimg'; im.style.backgroundImage = `url(assets/ui/organ-${e.id}.jpg)`;
     const b = document.createElement('b'); b.textContent = e.title?.[S.lang] || e.title?.en || e.id;
-    const sp = document.createElement('span'); li.append(b, sp); grid.append(li);
+    const sp = document.createElement('span'); li.append(im, b, sp); grid.append(li);
     const open = () => { organsEl.hidden = true; openDive(e.id); };
     li.addEventListener('click', open); li.addEventListener('keydown', (k) => { if (k.key === 'Enter') open(); });
     if (e.iframe) { sp.textContent = T.tourStops?.[7]?.s || ''; continue; }
@@ -1018,18 +1037,22 @@ const _v = new THREE.Vector3(), _q = new THREE.Quaternion(), FWD = new THREE.Vec
 const ray = new THREE.Raycaster();
 let nextSaccade = 0, gazePoint = new THREE.Vector3(0, 1.6, 1.2);
 const turn = { yaw: 0, pitch: 0 };
+const STILL = Q.has('still');   // debug: freeze breathing, gaze, micro-turn, orbit drift (flicker measurement)
+window.__headStill = STILL;
 function updateLife(dt, t) {
+  if (STILL) { t = 0; S.pointerIn = false; }
   const calm = !!S.inspect || !!S.section || tour.on || S.intro < 1;
   // head micro-turn toward the cursor (±6° yaw, ±3° pitch)
   const ty = !calm && S.pointerIn ? clamp(S.pointer.x + 0.35, -1, 1) * 0.1 : 0;
   const tp = !calm && S.pointerIn ? clamp(-S.pointer.y * 0.7, -1, 1) * 0.05 : 0;
   if ((!S.hoverStruct && !S.dragging) || calm) { turn.yaw = damp(turn.yaw, ty, 0.7, dt); turn.pitch = damp(turn.pitch, tp, 0.7, dt); }   // hold still under the cursor
   const breath = Math.sin(t * Math.PI * 2 / 4.6);
-  pivot.rotation.set(turn.pitch + breath * 0.0025, turn.yaw, 0, 'YXZ');
-  pivot.position.set(NECK.x, NECK.y + breath * 0.0007, NECK.z);
+  // breathing: a slow 0.3 mm rise only (rotation made fine strands and highlights shimmer)
+  pivot.rotation.set(turn.pitch, turn.yaw, 0, 'YXZ');
+  pivot.position.set(NECK.x, NECK.y + breath * 0.0003, NECK.z);
   // eyes: both converge on the point under the cursor (or the camera), ±15°, with small saccades
   const active = !S.inspect && S.intro > 0.6;
-  if (t > nextSaccade) {
+  if (STILL) nextSaccade = 1e9; else if (t > nextSaccade) {
     if (active && S.pointerIn) {
       ray.setFromCamera(S.pointer, camera);
       gazePoint.copy(ray.ray.origin).addScaledVector(ray.ray.direction, cam.dist * 0.55);
@@ -1044,27 +1067,60 @@ function updateLife(dt, t) {
     const axis = new THREE.Vector3().crossVectors(FWD, _v);
     if (axis.lengthSq() > 1e-8) e.goal.setFromAxisAngle(axis.normalize(), ang); else e.goal.identity();
     e.q.slerp(e.goal, 1 - Math.exp(-dt * 22));
-    _q.setFromEuler(new THREE.Euler(Math.sin(t * 11.3 + (side === 'L' ? 0 : 1)) * 0.0012, Math.cos(t * 9.1) * 0.0012, 0));
+    _q.identity();   // (no fixational tremor: it made the corneal highlight twinkle)
     e.pivot.quaternion.copy(e.q).multiply(_q);
   }
+}
+
+// ---- flicker measurement: mean |ΔY| between consecutive frames of the final image (0..255), plus a heatmap
+let flick = null;
+function flickerFrame() {
+  const gl = renderer.getContext(); const w = gl.drawingBufferWidth, h = gl.drawingBufferHeight;
+  const px = new Uint8Array(w * h * 4); gl.readPixels(0, 0, w, h, gl.RGBA, gl.UNSIGNED_BYTE, px);
+  const Y = new Float32Array(w * h); for (let i = 0; i < w * h; i++) Y[i] = 0.2126 * px[i * 4] + 0.7152 * px[i * 4 + 1] + 0.0722 * px[i * 4 + 2];
+  if (!flick.acc) flick.acc = new Float32Array(w * h), flick.w = w, flick.h = h;
+  if (flick.prev && flick.prev.length === Y.length) { for (let i = 0; i < Y.length; i++) flick.acc[i] += Math.abs(Y[i] - flick.prev[i]); flick.pairs++; }
+  else if (flick.prev) flick.resized++;
+  flick.prev = Y; flick.dprs.add(stage.dpr);
+  if (++flick.frames >= flick.n) { const f = flick; flick = null; f.done(f); }
+}
+function measureFlicker(n = 120) {
+  return new Promise((done) => { flick = { n, frames: 0, pairs: 0, resized: 0, dprs: new Set(), done }; }).then((f) => {
+    const m = f.acc.map(v => v / Math.max(1, f.pairs)); let sum = 0, over1 = 0, over2 = 0; const sorted = Float32Array.from(m).sort();
+    for (const v of m) { sum += v; if (v > 1) over1++; if (v > 2) over2++; }
+    // heatmap 480 px wide (flipped: GL rows are bottom-up)
+    const W = 480, H = Math.round(480 * f.h / f.w), c = document.createElement('canvas'); c.width = W; c.height = H; const ctx2 = c.getContext('2d'); const img = ctx2.createImageData(W, H);
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) { const sx = Math.floor(x * f.w / W), sy = f.h - 1 - Math.floor(y * f.h / H); const v = Math.min(1, m[sy * f.w + sx] / 4); const o = (y * W + x) * 4; img.data[o] = 255 * Math.min(1, v * 2); img.data[o + 1] = 255 * Math.max(0, v * 2 - 1); img.data[o + 2] = 40; img.data[o + 3] = 255; }
+    ctx2.putImageData(img, 0, 0);
+    return { meanDY: +(sum / m.length).toFixed(3), p99: +sorted[Math.floor(sorted.length * 0.99)].toFixed(2), p999: +sorted[Math.floor(sorted.length * 0.999)].toFixed(2), fracOver1: +(over1 / m.length).toFixed(4), fracOver2: +(over2 / m.length).toFixed(4), pairs: f.pairs, resized: f.resized, dprs: [...f.dprs], heatmap: c.toDataURL('image/png') };
+  });
 }
 
 // ============================================================ frame loop
 const clock = { last: performance.now(), getDelta() { const n = performance.now(), d = (n - this.last) / 1000; this.last = n; return d; } };
 const perf = { acc: 0, n: 0, win: 0, fps: 60, hist: [] };
+// Adaptive resolution without a sawtooth: 2-s windows; drop by a big step after 2 slow windows; rise only after
+// 5 fast windows (10 s) and never back to a level that was just too slow (that level is barred for 60 s).
+const dprState = { slow: 0, fast: 0, lastChange: 0, ceiling: Infinity, ceilUntil: 0, history: [] };
 function adaptDPR(dt) {
   if (Q.has('dpr')) return;
   if (dt > 0.1) return;                  // ignore stalls (tab switches, test harness benches)
   perf.acc += dt; perf.n++;
-  if (perf.acc >= 1.5) {
-    const fps = perf.n / perf.acc; perf.fps = fps; perf.acc = 0; perf.n = 0;
-    if (!document.hidden && S.ready) {
-      if (fps < 50 && stage.dpr > 0.7) stage.setDPR(stage.dpr - 0.15);
-      else if (fps > 58.5 && stage.dpr < Math.min(devicePixelRatio || 1, 2) - 0.01) { perf.win++; if (perf.win >= 3) { stage.setDPR(stage.dpr + 0.1); perf.win = 0; } }
-      else perf.win = 0;
-    }
-  }
+  if (perf.acc < 2) return;
+  const fps = perf.n / perf.acc; perf.fps = fps; perf.acc = 0; perf.n = 0;
+  if (document.hidden || !S.ready) return;
+  const now = performance.now(), maxD = Math.min(devicePixelRatio || 1, 2);
+  if (now > dprState.ceilUntil) dprState.ceiling = Infinity;
+  if (fps < 48) { dprState.slow++; dprState.fast = 0; } else if (fps > 58.5) { dprState.fast++; dprState.slow = 0; } else { dprState.slow = 0; dprState.fast = 0; }
+  const change = (v) => { const o = stage.dpr; const n = stage.setDPR(v); if (Math.abs(n - o) > 0.01) { dprState.lastChange = now; dprState.history.push([Math.round(now), +n.toFixed(2)]); } dprState.slow = dprState.fast = 0; };
+  if (dprState.slow >= 2 && stage.dpr > 0.61 && now - dprState.lastChange > 4000) { dprState.bars = (dprState.bars || 0) + 1; dprState.ceiling = stage.dpr - 0.01; dprState.ceilUntil = dprState.bars > 1 ? Infinity : now + 60000; change(stage.dpr - 0.25); }
+  else if (dprState.fast >= 5 && now - dprState.lastChange > 8000) { const target = Math.min(maxD, stage.dpr + 0.25); if (target <= dprState.ceiling && target > stage.dpr + 0.01) change(target); }
 }
+// debug: emulate a GPU-bound frame whose cost grows with the pixel count (?gpuload=ms at DPR 1)
+const GPULOAD = +(Q.get('gpuload') || 0);
+function emulateLoad() { if (!GPULOAD) return; const t0 = performance.now(), ms = GPULOAD * stage.dpr * stage.dpr; while (performance.now() - t0 < ms) {} }
+let coveredFrames = 0;
+const aboutEl = document.querySelector('#aboutbox');
 function tick() {
   const dt = Math.min(clock.getDelta(), 1 / 20);
   S.time += dt; const t = S.time;
@@ -1079,6 +1135,7 @@ function tick() {
   if (!NO_INTRO && S.intro > 0.62 && S.intro < 0.64) caption(UI[S.lang].intro.l2, '', '', 2400);
   if (S.intro >= 1 && !document.body.classList.contains('ready')) {
     document.body.classList.add('ready');
+    if (!handSeen && !(KIOSK && tour.on)) { document.body.classList.add('show-hand'); setTimeout(() => document.body.classList.remove('show-hand'), 14000); }
     if (!S.touchedDepth) setTimeout(() => { if (!S.touchedDepth) document.body.classList.add('show-rail-hint'); }, NO_INTRO ? 400 : 1600);
   }
   document.body.classList.toggle('show-hint', S.intro >= 1 && !S.inspect && !tour.on && !S.section);
@@ -1124,8 +1181,16 @@ function tick() {
   if (S.section) updateGrip();
   updateRailMark();
   sound.update(dt, { explodeSpeed: S.depthVel * 0.6, vessels: 1 - Math.min(1, Math.abs(S.depth - 2)) });
-  stage.render(t);
-  adaptDPR(dt);
+  // a full-screen card (organs, about, eye page) covers the head: freeze the 3D behind it —
+  // the blur behind the card stays still and the GPU is free (the organ grid was 7 fps otherwise)
+  const covered = !organsEl.hidden || !aboutEl.hidden || document.body.classList.contains('diving-frame');
+  coveredFrames = covered ? coveredFrames + 1 : 0;
+  if (coveredFrames < 3) {
+    stage.render(t);
+    if (flick) flickerFrame();
+    emulateLoad();
+    adaptDPR(dt);
+  }
   if (!window.__head.ready && S.ready) window.__head.ready = true;
   requestAnimationFrame(tick);
 }
@@ -1155,7 +1220,7 @@ window.__head = {
       tour: tour.on, tourT: +tour.t.toFixed(1), tourStop: tour.stop, off: [...S.off], dpr: stage.dpr, fps: Math.round(perf.fps),
       panelName: S.inspect ? $('#panel .name').textContent : null,
       structures: structs.size, nodes: M ? M.nodes.length : 0,
-      dive: dive ? dive.state() : null, tourStep: tour.step, tourLoops: tour.loops, kiosk: KIOSK, inspectRegion: S.inspectRegion || null, hoverRegion: S.hoverRegion || null, organsOpen: !organsEl.hidden, idleMs: Math.round(performance.now() - S.lastActivity),
+      dive: dive ? dive.state() : null, dprHistory: dprState.history, tourStep: tour.step, tourLoops: tour.loops, kiosk: KIOSK, inspectRegion: S.inspectRegion || null, hoverRegion: S.hoverRegion || null, organsOpen: !organsEl.hidden, idleMs: Math.round(performance.now() - S.lastActivity),
       camYaw: +cam.yaw.toFixed(3), camPitch: +cam.pitch.toFixed(3), camDist: +cam.dist.toFixed(3), zoom: +S.zoom.toFixed(3), yawOff: +S.yawOff.toFixed(3),
       search: !searchEl.hidden, about: !$('#aboutbox').hidden, panelOpen: document.body.classList.contains('inspecting'),
     };
@@ -1188,6 +1253,7 @@ window.__head = {
     return null;
   },
   diveIndex() { return dive ? dive.D.index : []; },
+  measureFlicker,
   pick(x, y) { const sid = gpuPick(x, y); return sid >= 0 ? { sid, id: sidToStruct[sid].id, node: M.nodes[sid].node } : null; },
   // a screen point where the structure is actually visible (verified by the GPU pick), or null
   projectPart(id) {
@@ -1219,7 +1285,7 @@ window.__head = {
     return { tris: Math.round(tris), meshes, calls: renderer.info.render.calls, frameTris: renderer.info.render.triangles, programs: renderer.info.programs?.length, dpr: stage.dpr, gl: renderer.capabilities.isWebGL2 ? 'webgl2' : 'webgl1' };
   },
   timing: {},
-  _dbg: { U, stage, section, get M() { return M; }, structs, renderables, cam },
+  _dbg: { U, stage, section, get M() { return M; }, get dive() { return dive; }, structs, renderables, cam },
 };
 
 // ============================================================ boot

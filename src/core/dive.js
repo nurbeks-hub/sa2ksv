@@ -181,6 +181,7 @@ export function createDive(ctx) {
     }
     if (typeof ch.explode === 'number') D.explodeTarget = Math.max(0, Math.min(1, ch.explode));
     else if (first) D.explodeTarget = 0;
+    setTimeout(updateNav, 0);
     D.cam = { yaw: ch.camera?.yaw ?? 0, pitch: ch.camera?.pitch ?? 0.12, zoom: ch.camera?.zoom ?? 1 };
     ctx.resetView();
     // section plane through the organ centroid
@@ -204,10 +205,19 @@ export function createDive(ctx) {
     el.querySelector('.ct').textContent = ch ? L(ch.title, lang) : '';
     const cx = el.querySelector('.cx'); cx.replaceChildren();
     const paras = (ch ? arr(ch.text && typeof ch.text === 'object' && !Array.isArray(ch.text) ? (ch.text[lang] || ch.text.en || ch.text.kk) : ch.text) : []).filter(p => typeof p === 'string');
-    paras.forEach((p, i) => { const e = document.createElement('p'); e.textContent = p; if (i > 0) e.className = 'rest'; cx.append(e); });
+    // one short thought per screen: the first sentence or two, large; everything else behind «More»
+    const first = paras[0] || '';
+    const sents = first.match(/[^.!?…]+[.!?…]+[»")]*\s*/g) || [first];
+    let lead = ''; let k = 0;
+    while (k < sents.length && (lead.length < 60 || (k < 2 && (lead + sents[k]).length < 190))) lead += sents[k++];
+    const restFirst = sents.slice(k).join('').trim();
+    if (lead.trim()) { const e = document.createElement('p'); e.className = 'lead'; e.textContent = lead.trim(); cx.append(e); }
+    if (restFirst) { const e = document.createElement('p'); e.className = 'rest'; e.textContent = restFirst; cx.append(e); }
+    paras.slice(1).forEach((p) => { const e = document.createElement('p'); e.textContent = p; e.className = 'rest'; cx.append(e); });
     const more = el.querySelector('.more');
-    more.hidden = paras.length < 2; D.expanded = false; el.querySelector('.dive-col').classList.remove('open');
-    more.textContent = T.dive?.more || 'Read more';
+    more.hidden = !(restFirst || paras.length > 1 || arr(ch?.facts).length); D.expanded = false; el.querySelector('.dive-col').classList.remove('open');
+    more.textContent = T.kid?.more || T.dive?.more || 'More';
+    updateNav();
     const fl = el.querySelector('.dfacts'); fl.replaceChildren();
     for (const f of arr(ch?.facts)) {
       if (!f || typeof f !== 'object') continue;
@@ -222,7 +232,7 @@ export function createDive(ctx) {
   }
   el.querySelector('.more').addEventListener('click', () => {
     D.expanded = !D.expanded; el.querySelector('.dive-col').classList.toggle('open', D.expanded);
-    const T = ctx.ui(); el.querySelector('.more').textContent = D.expanded ? (T.dive?.less || 'Less') : (T.dive?.more || 'Read more');
+    const T = ctx.ui(); el.querySelector('.more').textContent = D.expanded ? (T.kid?.less || 'Less') : (T.kid?.more || 'More');
   });
 
   // ------------------------------------------------------------------ labels: only the chapter's focus (≤ 7, ≤ 12 when
@@ -338,7 +348,19 @@ export function createDive(ctx) {
   function organBox() {   // whole (solid) organ at the current explode, for label columns
     const b = new THREE.Box3();
     for (const st of (D.core.length ? D.core : D.parts)) for (const sid of st.sids) { if (D.oneSide && M.nodes[sid].side === 'R') continue; const nb = M.nodes[sid].box.clone(); nb.translate(currentOffset(sid)); b.union(nb); }
-    return b;
+    return clampToSolid(b);
+  }
+  // long nerves and vessels (the vagus runs down to the chest) must not shrink the organ to a dot:
+  // keep a frame within the solid organ plus a margin
+  function clampToSolid(box) {
+    const solid = new THREE.Box3();
+    for (const st of D.parts) { if (st.group === 2 || st.group === 3) continue; for (const sid of st.sids) { if (D.oneSide && M.nodes[sid].side === 'R') continue; const b = M.nodes[sid].box.clone(); b.translate(currentOffset(sid)); solid.union(b); } }
+    if (!solid.isEmpty()) {
+      const m = solid.getSize(new THREE.Vector3()).length() * 0.05; solid.expandByScalar(m);
+      const cut = box.clone().intersect(solid);
+      if (!cut.isEmpty()) box.copy(cut);
+    }
+    return box;
   }
   // parts that frame the camera: the chapter highlight (or all solid parts), at their exploded positions
   function focusBox() {
@@ -346,6 +368,7 @@ export function createDive(ctx) {
     const list = D.hl ? D.parts.filter(s => D.hl.has(s.id)) : (D.core.length ? D.core : D.parts);
     for (const st of list) for (const sid of st.sids) { if (D.oneSide && M.nodes[sid].side === 'R') continue; const b = M.nodes[sid].box.clone(); b.translate(currentOffset(sid)); box.union(b); }
     if (box.isEmpty()) box.setFromCenterAndSize(D.centroid, new THREE.Vector3(0.05, 0.05, 0.05));
+    clampToSolid(box);
     return box;
   }
 
@@ -365,7 +388,7 @@ export function createDive(ctx) {
   }
   function cameraPose(want, fovDeg, dt, dragging) {
     if (!D.active || D.frame) return false;
-    if (!dragging) D.orbit += dt * 0.05;
+    if (!dragging && !window.__headStill) D.orbit += dt * 0.05;
     const fb = focusBox(), c = fb.getCenter(new THREE.Vector3()), sz = fb.getSize(new THREE.Vector3());
     D.fit.lerp(c, 1 - Math.exp(-dt * 3)); D.fitR += (Math.max(0.006, 0.5 * Math.max(sz.y, Math.hypot(sz.x, sz.z) * 0.85)) - D.fitR) * (1 - Math.exp(-dt * 3));
     // the focus fills ~60 % of the stage height; content zoom is only a gentle hint
@@ -409,7 +432,14 @@ export function createDive(ctx) {
     fillChapter();
     if (D.sel) ctx.fillPanel(D.sel);
   }
-  $('#dive-x').addEventListener('input', (e) => { D.explodeTarget = +e.target.value; });
+  $('#dive-x').addEventListener('input', (e) => { D.explodeTarget = +e.target.value; updateNav(); });
+  function updateNav() {
+    const T = ctx.ui(); const K = T.kid || {};
+    const ap = $('#dive-apart'); if (ap) { const on = D.explodeTarget > 0.3; ap.classList.toggle('on', on); ap.querySelector('.bl').textContent = on ? (K.together || 'Put together') : (K.apart || 'Take apart'); }
+    const nx = $('#dive-next'); if (nx && D.data) { const last = D.chapter >= (D.data.chapters || []).length - 1; nx.querySelector('.bl').textContent = last ? (K.done || 'Done') : (K.next || 'Next'); nx.dataset.last = last ? '1' : ''; }
+  }
+  $('#dive-apart').addEventListener('click', () => { D.explodeTarget = D.explodeTarget > 0.3 ? 0 : 0.8; updateNav(); ctx.sound?.tick(); });
+  $('#dive-next').addEventListener('click', () => { if (!D.data) return; if (D.chapter >= (D.data.chapters || []).length - 1) close(); else setChapter(D.chapter + 1); });
 
   return {
     D, loadIndex, entryFor, open, close, preloadFrame, setChapter, targetFor, cameraPose, step, selectPart, stepPart, applyLang,

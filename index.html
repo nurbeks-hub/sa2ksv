@@ -31,64 +31,77 @@
 </header>
 
 <nav id="top">
-  <button id="btn-search" class="icon" data-i18n-aria="searchAria"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/></svg></button>
-  <div id="sex" class="seg mono" role="group" data-i18n-aria="sexAria">
-    <button data-sex="m" class="on"><span class="glyph">♂</span><span class="lbl" data-i18n="sex.m"></span></button>
-    <button data-sex="f"><span class="glyph">♀</span><span class="lbl" data-i18n="sex.f"></span></button>
+  <button id="btn-search" class="icon big" data-i18n-aria="searchAria"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5"/></svg></button>
+  <div id="sex" class="seg" role="group" data-i18n-aria="sexAria">
+    <button data-sex="m" class="on"><svg class="sil" viewBox="0 0 24 24"><circle cx="12" cy="6.5" r="3.2"/><path d="M6.5 21v-5.5c0-3 2.4-5 5.5-5s5.5 2 5.5 5V21"/></svg><span class="lbl" data-i18n="kid.male"></span></button>
+    <button data-sex="f"><svg class="sil" viewBox="0 0 24 24"><circle cx="12" cy="6.5" r="3.2"/><path d="M6 21l2.2-7.2c.7-2.2 2-3.3 3.8-3.3s3.1 1.1 3.8 3.3L18 21"/><path d="M8.6 3.8c-1.4 1.2-2 3.4-1.4 5.6M15.4 3.8c1.4 1.2 2 3.4 1.4 5.6"/></svg><span class="lbl" data-i18n="kid.female"></span></button>
     <i class="knob"></i>
   </div>
-  <div id="langs" class="mono" role="group" data-i18n-aria="langAria">
+  <div id="langs" role="group" data-i18n-aria="langAria">
     <button class="lang" data-lang="kk" lang="kk">ҚАЗ</button>
     <button class="lang" data-lang="ru" lang="ru">РУС</button>
     <button class="lang" data-lang="en" lang="en">ENG</button>
   </div>
-  <button id="sound" class="icon" data-i18n-aria="sound"><svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path class="w1" d="M16 9.5c1 .8 1 4.2 0 5"/><path class="w2" d="M18.5 7c2.4 2 2.4 8 0 10"/></svg></button>
-  <button id="about" class="icon" data-i18n-aria="aboutAria"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.6" r=".6"/></svg></button>
+  <button id="sound" class="icon big" data-i18n-aria="sound"><svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path class="w1" d="M16 9.5c1 .8 1 4.2 0 5"/><path class="w2" d="M18.5 7c2.4 2 2.4 8 0 10"/></svg></button>
+  <button id="about" class="icon big" data-i18n-aria="aboutAria"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.6" r=".6"/></svg></button>
 </nav>
 
-<aside id="rail" aria-label="depth">
-  <div class="rail-label mono" data-i18n="depthLabel"></div>
+<aside id="rail" aria-label="layers">
+  <div class="rail-label" data-i18n="kid.inside"></div>
   <ol></ol>
-  <div class="rail-hint mono" data-i18n="depthHint"></div>
 </aside>
 
-<div id="caption" aria-live="polite"><div class="t"></div><div class="s mono"></div><div class="n mono"></div></div>
+<div id="caption" aria-live="polite"><div class="t"></div><div class="s"></div><div class="n"></div></div>
 
-<div id="hint" class="mono"></div>
+<div id="hint"></div>
+<div id="hand" aria-hidden="true">
+  <div class="hstep turn"><svg viewBox="0 0 64 64"><path class="arc" d="M14 40c6-10 30-10 36 0"/><path class="arr" d="M46 33l5 7-8 1"/></svg><b data-i18n="kid.turn"></b></div>
+  <div class="hand-ico"><svg viewBox="0 0 48 48"><path d="M19 27V9.5a3 3 0 016 0V23l0-5a3 3 0 016 0v6-3a3 3 0 016 0v10c0 7-4.5 12-11 12h-2c-4 0-6.6-1.8-8.6-5L9.7 30.5a3 3 0 015-3.3L19 32"/></svg><i class="ripple"></i></div>
+  <div class="hstep tap"><b data-i18n="kid.tap"></b></div>
+</div>
 
 <div id="dock">
-  <div id="sections" class="seg3" role="group">
-    <button data-sec="sagittal" data-i18n-title="section.sagittal"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="8" ry="9"/><path d="M12 2.5v19" class="hl"/></svg></button>
-    <button data-sec="axial" data-i18n-title="section.axial"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="8" ry="9"/><path d="M3.5 12h17" class="hl"/></svg></button>
-    <button data-sec="coronal" data-i18n-title="section.coronal"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="8" ry="9"/><ellipse cx="12" cy="12" rx="2.6" ry="9" class="hl"/></svg></button>
+  <div id="sections" class="subsec" role="group">
+    <button data-sec="sagittal"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="8" ry="9"/><path d="M12 2.5v19" class="hl"/></svg><span data-i18n="kid.side"></span></button>
+    <button data-sec="axial"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="8" ry="9"/><path d="M3.5 12h17" class="hl"/></svg><span data-i18n="kid.top"></span></button>
+    <button data-sec="coronal"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="8" ry="9"/><ellipse cx="12" cy="12" rx="2.6" ry="9" class="hl"/></svg><span data-i18n="kid.front"></span></button>
   </div>
-  <button id="btn-organs" class="pill mono ghostpill" data-i18n="organs.button"></button>
-  <button id="btn-tour" class="pill mono"></button>
+  <button id="btn-cut" class="bigbtn"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.3 8.1L20 18M8.3 15.9L20 6"/></svg><span class="bl" data-i18n="kid.cut"></span></button>
+  <button id="btn-organs" class="bigbtn primary"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="2"/></svg><span class="bl" data-i18n="kid.organs"></span></button>
+  <button id="btn-tour" class="bigbtn"><svg viewBox="0 0 24 24"><path class="play" d="M8 5.5v13l10.5-6.5z"/><path class="pause" d="M8 5h3v14H8zM13.5 5h3v14h-3z"/></svg><span class="bl"></span></button>
 </div>
 
 <aside id="panel" aria-live="polite">
-  <button id="panel-close" class="icon" data-i18n-aria="panel.close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-  <div class="sys mono"></div>
+  <button id="panel-close" class="icon big" data-i18n-aria="panel.close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <div class="sys"></div>
   <h1 class="name"></h1>
-  <div class="la"></div>
   <p class="role"></p>
-  <div class="alt mono"></div>
+  <div class="wow"><span class="star">★</span><span class="wt"></span></div>
   <div id="dive-links"></div>
-  <ul class="facts"></ul>
-  <div class="nav mono"><button id="prev">←</button><span class="keys" data-i18n="keys"></span><button id="next">→</button></div>
+  <button class="pmore"></button>
+  <div class="pdetail">
+    <div class="la"></div>
+    <div class="alt"></div>
+    <ul class="facts"></ul>
+  </div>
+  <div class="nav"><button id="prev" class="icon big">←</button><button id="next" class="icon big">→</button></div>
 </aside>
 
 <section id="dive" hidden>
-  <button id="dive-back" class="mono"><span>←</span> <b data-i18n="dive.back"></b></button>
+  <button id="dive-back" class="bigbtn"><span class="ar">←</span><span class="bl" data-i18n="kid.back"></span></button>
   <div class="dive-col">
-    <div class="eyebrow mono"></div>
+    <div class="eyebrow"></div>
     <div class="ct"></div>
     <div class="cx"></div>
-    <button class="more mono" hidden></button>
+    <button class="more" hidden></button>
     <ul class="dfacts"></ul>
   </div>
-  <ol class="dive-steps mono"></ol>
-  <div class="dive-explode mono"><span data-i18n="dive.explode"></span><input id="dive-x" type="range" min="0" max="1" step="0.001" value="0"></div>
+  <ol class="dive-steps"></ol>
+  <div class="dive-nav">
+    <button id="dive-apart" class="bigbtn"><svg viewBox="0 0 24 24"><path d="M9 9L4 4M4 4v4M4 4h4M15 9l5-5M20 4v4M20 4h-4M9 15l-5 5M4 20v-4M4 20h4M15 15l5 5M20 20v-4M20 20h-4"/></svg><span class="bl" data-i18n="kid.apart"></span></button>
+    <button id="dive-next" class="bigbtn primary"><span class="bl" data-i18n="kid.next"></span><span class="ar">→</span></button>
+  </div>
+  <div class="dive-explode"><input id="dive-x" type="range" min="0" max="1" step="0.001" value="0" aria-label="explode"></div>
   <svg class="dive-leaders" aria-hidden="true"></svg>
   <div class="dive-labels" aria-hidden="true"></div>
 </section>

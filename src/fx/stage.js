@@ -72,7 +72,7 @@ const CompositeShader = {
 const FinalShader = {
   uniforms: {
     tDiffuse: { value: null }, uTime: { value: 0 }, uExposure: { value: 1.0 },
-    uGrain: { value: 0.035 }, uVignette: { value: 1.0 }, uAberration: { value: 0.0012 }, uRes: { value: new THREE.Vector2(1, 1) },
+    uGrain: { value: 0.022 }, uVignette: { value: 1.0 }, uAberration: { value: 0.0012 }, uRes: { value: new THREE.Vector2(1, 1) },
   },
   vertexShader: /* glsl */`varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position.xy, 0.0, 1.0); }`,
   fragmentShader: /* glsl */`
@@ -94,7 +94,7 @@ const FinalShader = {
       col = toSRGB(ACES(col));
       float vig = smoothstep(0.95, 0.12, d * uVignette * 1.55);
       col *= mix(0.62, 1.0, vig);
-      float g = hash(vUv * uRes + fract(uTime * 13.7) * 100.0) - 0.5;
+      float g = hash(floor(vUv * uRes)) - 0.5;   // static grain: a fixed film texture, no frame-to-frame flicker
       col += g * uGrain * (0.3 + 0.7 * (1.0 - dot(col, vec3(0.3333))));
       gl_FragColor = vec4(col, 1.0);
     }`,

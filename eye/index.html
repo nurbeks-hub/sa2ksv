@@ -9,72 +9,91 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%23e9e3da'/%3E%3Ccircle cx='32' cy='32' r='13' fill='%237a4a1c'/%3E%3Ccircle cx='32' cy='32' r='6' fill='%23000'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="css/style.css">
 <script>/* set embed class before first paint so the standalone header never flashes inside the head atlas */
-if (new URLSearchParams(location.search).get('embed') === '1') document.documentElement.classList.add('embed', window.parent === window ? 'embed-top' : 'embed-frame');</script>
+(function () { var q = new URLSearchParams(location.search), h = document.documentElement;
+  if (q.get('embed') === '1') h.classList.add('embed', window.parent === window ? 'embed-top' : 'embed-frame');
+  if (q.get('kiosk') === '1') h.classList.add('kiosk'); })();</script>
 <script type="importmap">
 { "imports": { "three": "../vendor/three/three.module.js", "three/addons/": "../vendor/three/jsm/" } }
 </script>
 </head>
 <body>
-<canvas id="gl" aria-label="Interactive 3D model of the human eye"></canvas>
+<canvas id="gl" aria-label="3D"></canvas>
 
 <svg id="leaders" aria-hidden="true"></svg>
 <div id="labels" aria-hidden="true"></div>
 <div id="tip" aria-hidden="true"></div>
 
-<button id="back" class="mono" data-i18n-aria="backAria" aria-label="Back to the head"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span data-i18n="back">Back to the head</span></button>
+<button id="back" class="btn" data-i18n-aria="backAria"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg><span data-i18n="back">Back to the head</span></button>
 
 <header id="brand">
-  <div class="wordmark">THE EYE</div>
-  <div class="sub mono" data-i18n="sub">Human · right eye · 24 mm</div>
+  <div class="wordmark" data-i18n="brand">Көз</div>
+  <div class="sub" data-i18n="sub"></div>
 </header>
 
 <nav id="top">
-  <div id="langs" class="mono" role="group" data-i18n-aria="langAria">
+  <div id="langs" role="group" data-i18n-aria="langAria">
     <button class="lang" data-lang="kk" lang="kk" aria-label="Қазақша">ҚАЗ</button>
     <button class="lang" data-lang="ru" lang="ru" aria-label="Русский">РУС</button>
     <button class="lang" data-lang="en" lang="en" aria-label="English">ENG</button>
   </div>
-  <button id="sound" class="icon" aria-label="Sound" data-i18n-aria="sound"><svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path class="w1" d="M16 9.5c1 .8 1 4.2 0 5"/><path class="w2" d="M18.5 7c2.4 2 2.4 8 0 10"/></svg></button>
-  <button id="about" class="icon" aria-label="About and sources" data-i18n-aria="about"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.6" r=".6"/></svg></button>
+  <button id="sound" class="icon" data-i18n-aria="sound"><svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path class="w1" d="M16 9.5c1 .8 1 4.2 0 5"/><path class="w2" d="M18.5 7c2.4 2 2.4 8 0 10"/></svg></button>
+  <button id="about" class="icon" data-i18n-aria="about"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.6" r=".6"/></svg></button>
 </nav>
-
-<ol id="index" class="mono" aria-label="Parts"></ol>
 
 <div id="caption" aria-live="polite"></div>
 
-<div id="hint" class="mono"><span data-i18n="hint">Scroll to take it apart</span><i></i></div>
-
-<div id="dock">
-  <button id="btn-tour" class="pill mono" data-i18n="tour">▶ Tour</button>
-  <button id="btn-explode" class="pill mono" data-i18n="takeApart">Take apart</button>
-  <button id="btn-vessels" class="pill mono" data-i18n="vessels">Vessels</button>
+<!-- onboarding: an animated hand, gone after the first action -->
+<div id="hand" aria-hidden="true">
+  <svg class="glyph" viewBox="0 0 64 64"><path d="M26 34V14.5a4 4 0 0 1 8 0V30m0-4.5a4 4 0 0 1 8 0V32m0-3a4 4 0 0 1 8 0v9c0 9-6 16-15 16h-2c-5 0-8-2-11-6l-7-10a4 4 0 0 1 6-5l5 5"/></svg>
+  <i class="ring"></i>
+  <div class="say"><span data-i18n="handDrag">Drag to turn</span></div>
 </div>
 
+<div id="dock">
+  <button id="btn-tour" class="btn big"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="play" d="M8 5.5v13l10.5-6.5z"/><path class="stop" d="M7 7h10v10H7z"/></svg><span></span></button>
+  <button id="btn-explode" class="btn big"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3.5M12 18v3.5M2.5 12H6M18 12h3.5M5.3 5.3l2.4 2.4M16.3 16.3l2.4 2.4M5.3 18.7l2.4-2.4M16.3 7.7l2.4-2.4"/></svg><span></span></button>
+  <button id="btn-vessels" class="btn big"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21c0-5 0-7-3.5-10.5M12 21c0-4 1-6 4-9M8.5 10.5C6 8 6 5 6 3M8.5 10.5C10 9 11 7 11 4.5M16 12c2-2 3-4 3-7M16 12c-1-1.5-1.5-3.5-1.5-6"/></svg><span></span></button>
+  <button id="btn-parts" class="btn big"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.8"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.8"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.8"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.8"/></svg><span></span></button>
+</div>
+
+<!-- visual picker: big cards grouped the simple way -->
+<section id="picker" hidden>
+  <div class="box">
+    <button id="picker-close" class="icon" data-i18n-aria="close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <h2 data-i18n="pickerTitle">What is the eye made of?</h2>
+    <div class="groups"></div>
+  </div>
+</section>
+
 <aside id="panel" aria-live="polite">
-  <button id="panel-close" class="icon" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-  <div class="idx mono"></div>
+  <button id="panel-close" class="icon" data-i18n-aria="close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <div class="chip"></div>
   <h1 class="name"></h1>
-  <div class="group mono"></div>
-  <p class="desc"></p>
-  <ul class="facts"></ul>
-  <div class="nav mono">
-    <button id="prev" aria-label="Previous">←</button>
-    <span class="hintkeys" data-i18n="keys">drag to turn · scroll to zoom · esc</span>
-    <button id="next" aria-label="Next">→</button>
+  <p class="simple"></p>
+  <div class="wow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3.1-5.4 3.1 1.2-6L3.3 9.1l6.1-.7z"/></svg><div><div class="wl" data-i18n="wowLabel">Did you know?</div><div class="wv"></div><div class="wt"></div></div></div>
+  <button class="more-btn" aria-expanded="false"><span data-i18n="more">More</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+  <div class="more" hidden>
+    <div class="sci"></div>
+    <p class="desc"></p>
+    <ul class="facts"></ul>
+  </div>
+  <div class="nav">
+    <button id="prev" class="icon big" data-i18n-aria="prev"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button id="next" class="icon big" data-i18n-aria="next"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
   </div>
 </aside>
 
 <section id="aboutbox" hidden>
   <div class="inner">
-    <button id="about-close" class="icon" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <button id="about-close" class="icon" data-i18n-aria="close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     <h2 data-i18n="aboutTitle">About this model</h2>
     <div class="about-body"></div>
-    <h3 class="mono" data-i18n="sources">Sources</h3>
-    <ol class="sources mono"></ol>
+    <h3 data-i18n="sources">Sources</h3>
+    <ol class="sources"></ol>
   </div>
 </section>
 
-<div id="loader" class="mono"><span data-i18n="loading">Building the eye</span> <b>0</b></div>
+<div id="loader"><span data-i18n="loading">Building the eye</span> <b>0</b></div>
 
 <script type="module" src="src/main.js"></script>
 </body>

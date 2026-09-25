@@ -373,7 +373,7 @@ const SKIN_BUMP = /* glsl */`
     float hPn = hNoise(vRest * hPs);
     float hH = -smoothstep(0.72, 0.93, hPn) * 0.5 + (hNoise(vRest * 1900.0 + 7.7) - 0.5) * 0.12;
     float hFw = length(fwidth(vRest)) * hPs;
-    hH *= 0.00003 * (0.35 + 1.0 * vSkB.x) * (1.0 - vSkA.y * 0.6) * clamp(1.6 - hFw, 0.0, 1.0);
+    hH *= 0.00003 * (0.35 + 1.0 * vSkB.x) * (1.0 - vSkA.y * 0.6) * clamp(1.0 - hFw * 1.4, 0.0, 1.0);   // fade pores well before they alias (crawling speckle)
     vec3 hPos = -vViewPosition;
     vec3 hDpx = dFdx(hPos), hDpy = dFdy(hPos);
     float hDhx = dFdx(hH), hDhy = dFdy(hH);
