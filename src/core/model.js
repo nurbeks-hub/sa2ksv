@@ -69,7 +69,7 @@ export function buildModel(gltfs, opts = {}) {
       const sid = nodes.length;
       // bbox, sample points, centre
       const box = new THREE.Box3().setFromBufferAttribute(pos);
-      const step = Math.max(1, Math.floor(pos.count / 40));
+      const step = Math.max(1, Math.floor(pos.count / 160));   // dense scanned skins: enough samples that some are always on screen
       const samples = []; const sidx = [];
       for (let i = 0; i < pos.count; i += step) { samples.push(pos.getX(i), pos.getY(i), pos.getZ(i)); sidx.push(i); }
       const rec = {

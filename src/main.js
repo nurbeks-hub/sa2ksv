@@ -314,6 +314,8 @@ function stepState(dt) {
     if (forced) vis = true;
     else if (layerDis[r.group] >= 0.999 || r.allHidden) vis = false;
     else vis = secOn || S.depth >= r.reveal || (insp && ctx.has(r.group)) || r.sids.some(s => cur[s * 4] > 0.002);
+    // textured ♂/♀ skins: draw the other one only while the sex wipe is running (each is 800k triangles)
+    if (vis && r.variant && !forced && ((r.variant === 'f' && S.sex <= 0.001) || (r.variant === 'm' && S.sex >= 0.999))) vis = false;
     r.mesh.visible = vis;
     r.ghost.visible = vis && anyGhost;
   }
@@ -1352,7 +1354,7 @@ async function boot() {
   // opening film (src/hero): holds the 3D intro until the visitor picks whose head to enter
   heroHold = !!initHero({
     getLang: () => S.lang,
-    onEnter: sex => { setSex(sex === 'f'); S.sex = S.sexTarget; heroHold = false; S.intro = Math.max(S.intro, 0.35); S.lastActivity = performance.now(); },
+    onEnter: sex => { setSex(sex === 'f'); S.sex = S.sexTarget; heroHold = false; S.intro = Math.max(S.intro, 0.62); S.lastActivity = performance.now(); },
     onDone: sex => { heroHold = false; if (sex) heroDoneAt = performance.now(); S.lastActivity = performance.now(); },
   });
   if (Q.has('dpr')) stage.setDPR(+Q.get('dpr') || 1);

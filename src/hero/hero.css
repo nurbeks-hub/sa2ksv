@@ -10,22 +10,16 @@
 body.hero-on #rail, body.hero-on #dock, body.hero-on #caption, body.hero-on #hint, body.hero-on #hand,
 body.hero-on #brand, body.hero-on #panel { opacity: 0 !important; pointer-events: none !important; }
 
-.hero-stage {
-  position: absolute; inset: 0;
-  transform-origin: var(--fx, 50%) var(--fy, 40%);
-  transform: scale(calc(1 + var(--enter) * 1.9));
-  filter: blur(calc(var(--enter) * 14px)) brightness(calc(1 - var(--enter) * .9));
-  will-change: transform, filter;
-}
-.hero-idle, .hero-seq { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
-.hero-seq { opacity: 0; transition: opacity .35s var(--ease); }
-#hero.started .hero-seq { opacity: 1; }
-.hero-idle { transition: opacity .35s var(--ease); }
-#hero.started .hero-idle { opacity: 0; }
-
+.hero-stage { position: absolute; inset: 0; }
+.hero-photo { position: absolute; inset: 0; overflow: hidden; opacity: 0; transition: opacity .6s var(--ease); }
+#hero.photo-ready .hero-photo { opacity: 1; }
+.hero-photo img { position: absolute; max-width: none; will-change: transform; user-select: none; -webkit-user-drag: none; }
+.hero-dark { position: absolute; inset: 0; background: radial-gradient(90% 80% at 50% 40%, #16191c 0%, #0F1113 70%); pointer-events: none;
+  clip-path: inset(0 0 calc((1 - var(--scan, 0)) * 100%) 0); }
+.hero-3d { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; clip-path: inset(0 0 calc((1 - var(--scan, 0)) * 100%) 0); }
 /* soft studio falloff so type sits on the paper-grey, never on the people */
 .hero-shade {
-  position: absolute; inset: 0; pointer-events: none;
+  position: absolute; inset: 0; pointer-events: none; opacity: calc(1 - var(--scan, 0));
   background:
     radial-gradient(120% 90% at 78% 55%, transparent 55%, rgba(15, 17, 19, .16) 100%),
     linear-gradient(0deg, rgba(15, 17, 19, .22), transparent 22%);
@@ -80,7 +74,7 @@ body.hero-on #brand, body.hero-on #panel { opacity: 0 !important; pointer-events
   height: 40px; padding: 0 18px; border-radius: 999px; border: 1px solid rgba(15, 17, 19, .12);
   background: rgba(255, 255, 255, .42); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
   color: var(--ink); font: 600 13px/1 var(--font-body, 'Inter', sans-serif); letter-spacing: .02em; cursor: pointer;
-  transition: background .15s, transform .15s var(--ease); animation: hero-fade .6s var(--ease) 1.4s both;
+  transition: background .15s, transform .15s var(--ease), opacity .3s; animation: hero-slide .6s var(--ease) 1.4s both;
 }
 .hero-skip:hover { background: rgba(255, 255, 255, .7); }
 .hero-skip:active { transform: scale(.97); }
@@ -124,7 +118,7 @@ body.hero-on #brand, body.hero-on #panel { opacity: 0 !important; pointer-events
 .hero-pick:focus-visible { outline: none; }
 .hero-pick:focus-visible .ring { outline: 2px solid #fff; outline-offset: 6px; border-radius: 16px; }
 
-#hero.choosing .hero-ask { opacity: 1; transform: none; }
+#hero.choosing .hero-ask { opacity: 1; transform: none; color: #F7F7F8; }
 #hero.choosing .hero-pick { opacity: 1; transform: none; pointer-events: auto; }
 #hero.choosing .hero-pick[data-sex="m"] { transition-delay: .08s; }
 #hero.choosing .hero-choose:has(.hero-pick:hover) .hero-pick:not(:hover) { opacity: .45; }
@@ -135,7 +129,7 @@ body.hero-on #brand, body.hero-on #panel { opacity: 0 !important; pointer-events
   position: absolute; left: 0; right: 0; top: 0; height: 2px; pointer-events: none; opacity: 0;
   background: var(--lime); box-shadow: 0 0 24px 6px rgba(209, 254, 23, .55), 0 0 80px 20px rgba(209, 254, 23, .18);
 }
-#hero.entering .hero-scan { opacity: calc(1 - var(--enter)); transform: translateY(calc(var(--enter) * 100vh)); }
+.hero-scan { opacity: calc(min(var(--scan, 0), 1 - var(--scan, 0)) * 12); top: calc(var(--scan, 0) * 100% - 1px); }
 
 /* ------------------------------------------------ tall screens: photo pinned to the top, text on the ink band below */
 #hero.tall .hero-idle { height: var(--imgH); object-fit: cover; object-position: top; }
@@ -155,8 +149,16 @@ body.hero-on #brand, body.hero-on #panel { opacity: 0 !important; pointer-events
   .hero-ask { top: auto; bottom: 13vh; max-width: 86vw; font-size: clamp(26px, 7.4vw, 44px); }
   #hero:not(.tall) .hero-shade { background: linear-gradient(0deg, rgba(15, 17, 19, .8), rgba(15, 17, 19, 0) 44%); }
   #hero:not(.tall) .hero-title, #hero:not(.tall) .hero-ask, #hero:not(.tall) .hero-cue { color: #F7F7F8; }
+  #hero:not(.tall) .hero-sub { color: #D5D7DA; }
+  #hero:not(.tall) .hero-cue-line { background: rgba(255, 255, 255, .25); }
+  #hero:not(.tall) .hero-cue-line::after { background: #fff; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-h span, .hero-h mark, .hero-sub, .hero-cue, .hero-skip { animation: none; opacity: 1; transform: none; }
   .hero-pick .ring, .hero-cue-line::after { animation: none; }
 }
+
+/* the 3D heads are still loading when the push reaches the faces */
+@keyframes hero-wait { 50% { opacity: .35; } }
+#hero.waiting3d .hero-progress i { animation: hero-wait 1s ease-in-out infinite; }
+#hero.choosing .hero-progress, #hero.entering .hero-progress { opacity: 0; transition: opacity .3s; }
