@@ -40,14 +40,14 @@ function pca(pos, idxs) {
   return v;
 }
 
-export function buildModel(gltfs) {
+export function buildModel(gltfs, opts = {}) {
   const nodes = [];       // per structure-node record, index = sid
   const standalone = [];  // meshes kept separate
   const buckets = new Map();
   const tmpColor = new THREE.Color();
   let flipped = 0;
 
-  for (const { file, gltf } of gltfs) {
+  for (const { file, gltf, variant } of gltfs) {
     gltf.scene.updateMatrixWorld(true);
     gltf.scene.traverse((o) => {
       if (!o.isMesh) return;
@@ -55,6 +55,9 @@ export function buildModel(gltfs) {
       const c = classify(raw, file);
       if (c.helper) return;
       const geo = o.geometry;
+      // v3 textured skins (skin_m / skin_f): photographic PBR textures, no morph; cross-dissolved by sex in the shader
+      const tex = c.cls === 'skin' && o.material && o.material.map
+        ? { map: o.material.map, normalMap: o.material.normalMap, roughnessMap: o.material.roughnessMap, normalScale: o.material.normalScale ? o.material.normalScale.clone() : null } : null;
       if (!geo.attributes.normal) geo.computeVertexNormals();
       if (!o.matrixWorld.equals(IDENT)) geo.applyMatrix4(o.matrixWorld);
       const pos = geo.attributes.position;
@@ -89,6 +92,7 @@ export function buildModel(gltfs) {
         tmpColor.multiplyScalar(0.97 + 0.05 * h);
       }
       rec.tint.copy(tmpColor).convertSRGBToLinear();
+      if (tex) { rec.tint.setRGB(1, 1, 1); rec.textured = true; rec.variant = variant || 'm'; }
       if (c.cls === 'muscle') {
         const fo = fibreOverride(name, rec.center, side);
         if (fo) rec.fibre = fo;
@@ -96,12 +100,13 @@ export function buildModel(gltfs) {
       }
       nodes.push(rec);
 
-      if (c.cls === 'skin' && geo.index) { stripInteriorSkin(geo); weldSkinNormals(geo); }
+      if (c.cls === 'skin' && geo.index && !tex) { stripInteriorSkin(geo); weldSkinNormals(geo); }
       const hasMorph = geo.morphAttributes && Object.keys(geo.morphAttributes).length > 0;
-      if (c.rotate || hasMorph) {
+      if (c.rotate && opts.eyesRigid) rec.fibre[3] = -1;   // eyeballs: no sex field (rigid; the female eye offset moves the pivot in main.js)
+      if (c.rotate || hasMorph || tex) {
         const sidAttr = new THREE.Float32BufferAttribute(new Float32Array(pos.count).fill(sid), 1);
         geo.setAttribute('aSid', sidAttr);
-        standalone.push({ rec, geo, morphDict: o.morphTargetDictionary || null });
+        standalone.push({ rec, geo, morphDict: o.morphTargetDictionary || null, tex });
         return;
       }
       const key = c.cls === 'skin' ? 'skin' : `${c.group}|${c.cls}|${c.cap || '-'}|${side}`;   // all skin patches in one mesh → seamless normals
@@ -116,7 +121,11 @@ export function buildModel(gltfs) {
   if (scl.length) {
     const eye = scl[0].center.clone(); eye.x = Math.abs(eye.x);
     const eyeR = scl[0].box.getSize(new THREE.Vector3()).y / 2;
-    for (const s of standalone) if (s.rec.cls === 'skin') { geo_smoothCreases(s.geo, eye); weldSkinNormals(s.geo); skinAttributes(s.geo, eye, eyeR); }
+    for (const s of standalone) {
+      if (s.rec.cls !== 'skin') continue;
+      if (s.tex) { skinLandmarks(s.geo); continue; }
+      geo_smoothCreases(s.geo, eye); weldSkinNormals(s.geo); skinAttributes(s.geo, eye, eyeR);
+    }
   }
 
   // ---- merge buckets
@@ -205,6 +214,38 @@ function fixOrientation(geo, radial) {
 // subnasale, lips, stomion; eyes from the sclera; ears by position) plus a curvature-based cavity term.
 //   aSkinA = (redness, lips, thinness/translucency, beard)   aSkinB = (pore size, oiliness, cavity, periorbital)
 //   aSkinC = lid margin / caruncle (wet, darker, pinker)
+// midline profile landmarks (nose tip, subnasale, upper lip, stomion, lower lip) for region classification
+function skinLandmarks(geo) {
+  const P = geo.attributes.position.array, n = P.length / 3;
+  const bins = new Map(), bw = 0.0006;
+  let tip = { y: 1.56, z: -1 };
+  for (let i = 0; i < n; i++) {
+    const x = P[i * 3], y = P[i * 3 + 1], z = P[i * 3 + 2];
+    if (Math.abs(x) > 0.004 || y < 1.44 || y > 1.66) continue;
+    const b = Math.round(y / bw); if (!(bins.get(b) > z)) bins.set(b, z);
+    if (y > 1.5 && y < 1.62 && z > tip.z) tip = { y, z };
+  }
+  const zAt = (y) => bins.get(Math.round(y / bw)) ?? -1;
+  const extreme = (y0, y1, wantMax) => { let best = null; for (let y = y0; y <= y1; y += bw) { const z = zAt(y); if (z < -0.5) continue; if (!best || (wantMax ? z > best.z : z < best.z)) best = { y, z }; } return best || { y: (y0 + y1) / 2, z: tip.z - 0.02 }; };
+  // walk down the profile from the nose tip: alternate local minima / maxima of z (smoothed over 1.2 mm)
+  const zs = (y) => { let a = 0, c = 0; for (let k = -1; k <= 1; k++) { const z = zAt(y + k * bw); if (z > -0.5) { a += z; c++; } } return c ? a / c : -1; };
+  const walk = (y0, wantMax, maxLen) => {
+    let best = { y: y0, z: zs(y0) };
+    for (let y = y0 - bw; y > y0 - maxLen; y -= bw) {
+      const z = zs(y); if (z < -0.5) continue;
+      if (wantMax ? z > best.z : z < best.z) best = { y, z };
+      else if (Math.abs(z - best.z) > 0.0012) break;          // turned around by > 1.2 mm: extremum found
+    }
+    return best;
+  };
+  const sn = walk(tip.y - 0.004, false, 0.03);
+  const ls = walk(sn.y - bw, true, 0.02);
+  const st = walk(ls.y - bw, false, 0.016);
+  const li = walk(st.y - bw, true, 0.02);
+  geo.userData.landmarks = { tip, sn, ls, st, li };
+  return geo.userData.landmarks;
+}
+
 function skinAttributes(geo, eye, eyeR) {
   const P = geo.attributes.position.array, N = geo.attributes.normal.array, n = P.length / 3;
   // --- midline profile
@@ -496,6 +537,19 @@ const MAT_PARAMS = {
   sclera: { r: 0.3, env: 0.6 }, cornea: { r: 0.04, o: 1, env: 1.1 }, iris: { r: 0.72, env: 0.15 }, lens: { r: 0.1, o: 0.5, env: 1.2 },
   retina: { r: 0.5 }, vitreous: { r: 0.1, o: 0.14, env: 0.8 }, ciliary: { r: 0.6 },
 };
+
+// v3 textured skin: glTF base colour + normal + roughness maps, one material per variant (same shader program)
+export function skinTexMaterial(tex, variant) {
+  const m = new THREE.MeshStandardMaterial({
+    color: 0xffffff, map: tex.map, normalMap: tex.normalMap || null, roughnessMap: tex.roughnessMap || null,
+    roughness: 1, metalness: 0, side: THREE.DoubleSide, envMapIntensity: 0.3,
+  });
+  if (tex.normalScale && m.normalMap) m.normalScale.copy(tex.normalScale).multiplyScalar(0.8);
+  for (const t of [tex.map, tex.normalMap, tex.roughnessMap]) if (t) t.anisotropy = 8;
+  m.name = 'lit:skintex:' + variant;
+  patchLit(m, 'skintex');
+  return m;
+}
 
 export const ghostMaterial = patchGhost(new THREE.MeshMatcapMaterial({ transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.FrontSide }));
 ghostMaterial.name = 'ghost';

@@ -5,6 +5,8 @@
 //   (legacy form { affine:[12] } = row-major 3×4 [linear | const] is also accepted.)
 //   Final position = p + uSex · displacement(p); normals use the analytic Jacobian of the same field.
 //   Not applied to the Skin / Eyelashes nodes (they carry their own consistent 'female' morph target).
+//   v3 extras (optional): eyes:{L:[dx,dy,dz],R:[…]} rigid ♀ offsets of the eyeball centres (the globes are excluded from
+//   the field and their pivots move instead); bust:{m:[y0,w],f:[y0,w]} neck-base cut of each textured skin.
 // Missing / invalid file → identity field (no deformation), reported in the returned status.
 import * as THREE from 'three';
 import { U, MAX_SF } from './shader.js';
@@ -12,7 +14,13 @@ import { U, MAX_SF } from './shader.js';
 const num = (v) => typeof v === 'number' && Number.isFinite(v);
 const vec3ok = (a) => Array.isArray(a) && a.length === 3 && a.every(num);
 
+export const SF_EXTRA = { eyes: null, bust: null };
 export function setSexField(f) {
+  if (f && typeof f === 'object') {
+    const e = f.eyes; SF_EXTRA.eyes = e && vec3ok(e.L) && vec3ok(e.R) ? { L: new THREE.Vector3().fromArray(e.L), R: new THREE.Vector3().fromArray(e.R) } : null;
+    const b = f.bust, ok2 = (a) => Array.isArray(a) && a.length === 2 && a.every(num);
+    SF_EXTRA.bust = b && ok2(b.m) && ok2(b.f) ? { m: b.m, f: b.f } : null;
+  }
   if (!f || !Array.isArray(f.centers) || !Array.isArray(f.weights) || f.centers.length !== f.weights.length) return 'invalid';
   if (!f.centers.every(vec3ok) || !f.weights.every(vec3ok)) return 'invalid';
   let A = new Array(12).fill(0);

@@ -4,15 +4,16 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 import { createStage } from './fx/stage.js';
-import { buildModel, litMaterial, ghostMaterial, stencilBack, stencilFront, slug } from './core/model.js';
+import { buildModel, litMaterial, skinTexMaterial, ghostMaterial, stencilBack, stencilFront, slug } from './core/model.js';
 import { G, GROUP_DISSOLVE_AT, GROUP_REVEAL_AT, RAIL, RAIL_GROUPS, TRANSPARENT, EYE_INTERIOR } from './core/classify.js';
 import { U, patchPick } from './core/shader.js';
 import { createSection, CENTER } from './core/section.js';
-import { loadSexField } from './core/sexfield.js';
+import { loadSexField, SF_EXTRA } from './core/sexfield.js';
 import { loadContent } from './data/content.js';
 import { UI, LANGS, initialLang, storeLang } from './ui/i18n.js';
 import { Sound } from './audio/sound.js';
 import { createDive } from './core/dive.js';
+import { initHero } from './hero/hero.js';
 
 const Q = new URLSearchParams(location.search);
 const $ = (s) => document.querySelector(s);
@@ -25,8 +26,12 @@ const sound = new Sound();
 if (Q.has('clean')) document.body.classList.add('clean');   // screenshots / thumbnails: no UI
 if (Q.get('kiosk') === '1') { sound.enabled = false; stage.final.uniforms.uGrain.value = 0; }   // kiosk: silent until a visitor turns sound on; no grain
 const IS_TOUCH = matchMedia('(pointer: coarse)').matches;
+const LITE_TEX = Q.get('tex') === 'lite' || (Q.get('tex') !== 'full' && ((IS_TOUCH && Math.min(screen.width, screen.height) < 900) || (navigator.deviceMemory && navigator.deviceMemory <= 4)));
 const NO_INTRO = Q.has('nointro');
-const FILES = ['skin', 'bones', 'muscles', 'vessels', 'nerves', 'organs', 'joints', 'lymph'];
+// v3: two photographic textured skins (skin_m / skin_f, cross-dissolved by sex); ?skin=legacy loads the fitted ICT skin
+const SKIN_LEGACY = Q.get('skin') === 'legacy';
+const FILES = [...(SKIN_LEGACY ? ['skin'] : ['skin_m', 'skin_f']), 'bones', 'muscles', 'vessels', 'nerves', 'organs', 'joints', 'lymph'];
+const OLD_BUST = new THREE.Vector4(1.43, 0.2, 0.0, 0.35);   // anatomy-only neck cut (skin peeled)
 
 // ============================================================ state
 const S = {
@@ -73,6 +78,8 @@ const section = createSection({ rig, scene });
 
 let dive = null;             // organ deep-dive controller (core/dive.js)
 let hairMod = null;          // optional strand hair (see __head.attachHair)
+let heroHold = false;        // opening film is on screen: the 3D intro waits
+let heroDoneAt = -1e9;       // when the film handed over (the kiosk tour lets the head intro finish first)
 let M = null;                // model {nodes, merged, standalone, stateArr, stateTex}
 let content = null;
 const renderables = [];      // {mesh, ghost, group, cls, sids, eye}
@@ -83,8 +90,8 @@ const pickMat = patchPick(new THREE.MeshBasicMaterial({ side: THREE.DoubleSide }
 
 function setupScene() {
   const clip = section.clip;
-  const mkMain = (geo, cls, group, parent, sids, eye) => {
-    const mat = litMaterial(cls);
+  const mkMain = (geo, cls, group, parent, sids, eye, matOverride = null) => {
+    const mat = matOverride || litMaterial(cls);
     mat.clippingPlanes = clip;
     const mesh = new THREE.Mesh(geo, mat);
     mesh.frustumCulled = true;
@@ -120,7 +127,7 @@ function setupScene() {
     const iris = parts.find(p => p.rec.cls === 'iris');
     if (iris) { const ic = iris.rec.center, is = iris.rec.box.getSize(new THREE.Vector3()); U.uIris.value.set(Math.abs(ic.x), ic.y, Math.max(is.x, is.y) / 2); }
     const piv = new THREE.Group(); piv.position.copy(c); rig.add(piv);
-    eyes[side] = { pivot: piv, center: c, q: new THREE.Quaternion(), goal: new THREE.Quaternion() };
+    eyes[side] = { pivot: piv, center: c, q: new THREE.Quaternion(), goal: new THREE.Quaternion(), offF: SF_EXTRA.eyes ? SF_EXTRA.eyes[side].clone() : null, iris: iris ? iris.rec.center.clone() : null };
     for (const p of parts) {
       const r = mkMain(p.geo, p.rec.cls, p.rec.group, piv, [p.rec.sid], true);
       r.mesh.position.copy(c).multiplyScalar(-1); r.ghost.position.copy(r.mesh.position);
@@ -130,7 +137,8 @@ function setupScene() {
   // other standalone meshes (morph targets, e.g. a fitted skin with a 'female' target)
   for (const s of M.standalone) {
     if (s.rec.rotate) continue;
-    const r = mkMain(s.geo, s.rec.cls, s.rec.group, rig, [s.rec.sid], false);
+    const r = mkMain(s.geo, s.rec.cls, s.rec.group, rig, [s.rec.sid], false, s.tex ? skinTexMaterial(s.tex, s.rec.variant) : null);
+    if (s.tex) { r.variant = s.rec.variant; U[s.rec.variant === 'f' ? 'uSkinSidF' : 'uSkinSidM'].value = s.rec.sid; }
     if (s.morphDict && 'female' in s.morphDict) { r.morphIndex = s.morphDict.female; r.mesh.morphTargetInfluences = new Array(Object.keys(s.morphDict).length).fill(0); r.mesh.morphTargetDictionary = s.morphDict; }
     if (s.rec.cap) section.addStencil(r.mesh, s.rec.cap);
   }
@@ -349,7 +357,10 @@ for (const ev of ['pointerdown', 'wheel', 'keydown']) window.addEventListener(ev
 const REGION_LA = { auricle: 'Auricula', nose: 'Nasus externus', eye: 'Regio orbitalis', mouth: 'Regio oralis', forehead: 'Regio frontalis', scalp: 'Regio parietalis', cheek: 'Regio buccalis', chin: 'Regio mentalis', neck: 'Regio cervicalis' };
 const REGION_DIVE = { auricle: ['ear'], nose: ['nose-sinuses'], eye: ['eye'], mouth: ['tongue', 'teeth'], forehead: ['face-muscles'], cheek: ['face-muscles', 'teeth'], chin: ['face-muscles'], scalp: ['skull'], neck: ['larynx-voice'] };
 const skinRay = new THREE.Raycaster();
-function skinMesh() { const r = renderables.find(r => r.cls === 'skin'); return r ? r.mesh : null; }
+function skinMesh() {   // the skin currently shown (textured ♂/♀ pair: the one the sex switch is heading to)
+  const want = S.sexTarget > 0.5 ? 'f' : 'm';
+  const r = renderables.find(r => r.cls === 'skin' && (!r.variant || r.variant === want)); return r ? r.mesh : null;
+}
 function classifyRegion(p) {
   const m = skinMesh(); const L = m?.geometry.userData.landmarks; const e = U.uEye.value;
   if (!L) return null;
@@ -552,6 +563,7 @@ function buildRail() {
   railOl.replaceChildren(railMark);
   RAIL.forEach((name, i) => {
     const li = document.createElement('li'); li.dataset.layer = name; li.dataset.i = i;
+    li.style.setProperty('--i', i); li.tabIndex = 0; li.setAttribute('role', 'button');
     const dot = document.createElement('span'); dot.className = 'dot';
     const th = document.createElement('span'); th.className = 'thumb'; th.style.backgroundImage = `url(assets/ui/layer-${name}.jpg)`;
     const nm = document.createElement('span'); nm.className = 'nm';
@@ -563,6 +575,7 @@ function buildRail() {
     li.addEventListener('pointerleave', () => { cancel(); press = null; });
     li.addEventListener('pointerup', () => { if (press === 'long') { press = null; return; } cancel(); press = null; stopTour(); sound.start(); setDepth(i); });
     li.addEventListener('contextmenu', (e) => { e.preventDefault(); if (press && press !== 'long') clearTimeout(press); press = 'long'; toggleSystem(name); });
+    li.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); stopTour(); sound.start(); setDepth(i); } });
   });
   $('#rail').addEventListener('wheel', (e) => { e.preventDefault(); e.stopPropagation(); railWheel(e.deltaY); }, { passive: false });
 }
@@ -580,6 +593,7 @@ function updateRail() {
     const i = +li.dataset.i, name = li.dataset.layer;
     li.querySelector('.nm').textContent = T.layers[name];
     li.classList.toggle('cur', i === S.depthTarget);
+    if (i === S.depthTarget) li.setAttribute('aria-current', 'true'); else li.removeAttribute('aria-current');
     li.classList.toggle('above', i < S.depthTarget);
     li.classList.toggle('off', S.off.has(name));
     li.title = T.toggleSystemHint;
@@ -615,6 +629,7 @@ function fillPanel(id) {
   panel.querySelector('.wow .wt').textContent = wowT ? localNum(wowT) : '';
   panel.querySelector('.wow').classList.toggle('none', !wowT);
   panel.classList.remove('open');
+  if (id !== panel.dataset.id) { panel.dataset.id = id; replay(panel); }
   panel.querySelector('.pmore').textContent = (T.kid && T.kid.more) || 'More';
   for (const [fi, f] of facts.entries()) {
     const txt = (typeof f[S.lang] === 'string' && f[S.lang]) || f.en || '';
@@ -638,14 +653,21 @@ function fillPanel(id) {
     ids.filter(did => dive.D.index.some(e => e.id === did)).forEach((did, k) => {
       const entry = dive.D.index.find(e => e.id === did);
       const b = document.createElement('button');
-      if (k === 0) { b.className = 'pill'; b.textContent = (T.kid && T.kid.look) || 'Look inside'; b.id = 'btn-dive'; }
-      else { b.className = 'also mono'; b.textContent = `${T.organs?.also || 'Also'}: ${entry.title?.[S.lang] || entry.title?.en || did}`; }
+      if (k === 0) { b.className = 'cta'; b.id = 'btn-dive'; const sp = document.createElement('span'); sp.textContent = (T.kid && T.kid.look) || 'Look inside'; b.append(sp, arrowIcon()); }
+      else { b.className = 'also'; b.textContent = `${T.organs?.also || 'Also'}: ${entry.title?.[S.lang] || entry.title?.en || did}`; }
       b.dataset.dive = did;
       b.addEventListener('click', () => openDive(did));
       links.append(b);
     });
   }
 }
+function arrowIcon() {
+  const NS = 'http://www.w3.org/2000/svg', svg = document.createElementNS(NS, 'svg'), p = document.createElementNS(NS, 'path');
+  svg.setAttribute('viewBox', '0 0 24 24'); svg.setAttribute('aria-hidden', 'true'); p.setAttribute('d', 'M5 12h13.5M13 6l6 6-6 6'); svg.append(p);
+  return svg;
+}
+// re-run a CSS entrance (fade-in-up) on an element whose content was just replaced
+function replay(el, cls = 'swap') { el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); }
 function localNum(str) {
   if (S.lang === 'en' || !str) return str;
   return String(str).replace(/(\d),(\d{3})(?!\d)/g, '$1 $2').replace(/(\d)\.(\d)/g, '$1,$2');
@@ -671,7 +693,9 @@ function positionTip() {
 const capEl = $('#caption'); let capTimer = null;
 function caption(t, s = '', n = '', ms = 3200) {
   clearTimeout(capTimer);
+  const changed = capEl.querySelector('.t').textContent !== t || capEl.querySelector('.s').textContent !== s;
   capEl.querySelector('.t').textContent = t; capEl.querySelector('.s').textContent = s; capEl.querySelector('.n').textContent = n;
+  if (changed && capEl.classList.contains('show')) replay(capEl);
   capEl.classList.add('show');
   if (ms > 0) capTimer = setTimeout(() => capEl.classList.remove('show'), ms);
 }
@@ -756,6 +780,13 @@ function fillAbout() {
   box.querySelector('.credit').textContent = A.credit || '';
 }
 
+// «АДАМ БАСЫ» with the head-word in lime (Higgsfield <mark> heading pattern)
+function setBrand(el, T) {
+  const full = T.brand || '', mk = T.brandMark || '', i = mk ? full.indexOf(mk) : -1;
+  if (i < 0) { el.textContent = full; return; }
+  const m = document.createElement('mark'); m.textContent = mk;
+  el.replaceChildren(full.slice(0, i), m, full.slice(i + mk.length));
+}
 function tget(obj, path) { return path.split('.').reduce((o, k) => (o ? o[k] : undefined), obj); }
 function applyLang() {
   const T = UI[S.lang];
@@ -765,6 +796,8 @@ function applyLang() {
   document.querySelectorAll('[data-i18n-aria]').forEach(el => { const v = tget(T, el.dataset.i18nAria); if (typeof v === 'string') el.setAttribute('aria-label', v); });
   document.querySelectorAll('[data-i18n-title]').forEach(el => { const v = tget(T, el.dataset.i18nTitle); if (typeof v === 'string') { el.title = v; el.setAttribute('aria-label', v); } });
   document.querySelectorAll('.lang').forEach(b => b.classList.toggle('on', b.dataset.lang === S.lang));
+  document.querySelectorAll('[data-i18n-brand]').forEach(el => setBrand(el, T));
+  $('#langs .knob').style.transform = `translateX(${LANGS.indexOf(S.lang) * 100}%)`;
   $('#brand-sub').textContent = S.sexTarget > 0.5 ? (T.subF || T.sub) : (T.subM || T.sub);
   $('#hint').textContent = IS_TOUCH ? T.hintTouch : T.hint;
   qEl.placeholder = T.search.placeholder;
@@ -891,7 +924,8 @@ const endPointer = (e) => {
   canvas.classList.remove('dragging');
   const wasDrag = S.dragging; S.dragging = false;
   if (wasDrag && downAt && S.dragDist < 6 && performance.now() - downAt.t < 650 && e.type === 'pointerup') {
-    let sid = gpuPick(e.clientX, e.clientY);
+    // mouse: a click opens what the tooltip was showing (thin nerves and vessels drift a pixel with the breathing idle)
+    let sid = (e.pointerType === 'mouse' && downAt.hoverSid >= 0 && S.dragDist < 3) ? downAt.hoverSid : gpuPick(e.clientX, e.clientY);
     if (sid < 0 && downAt.hoverSid >= 0) sid = downAt.hoverSid;   // thin structures: trust what was highlighted under the finger
     const st = sid >= 0 ? sidToStruct[sid] : null;
     if (dive && dive.active) { dive.selectPart(st ? st.id : null); downAt = null; pickDirty = true; return; }
@@ -999,7 +1033,7 @@ function returnToOverview() {
 function tickIdle(now) {
   if (!S.ready) return;
   if (KIOSK && now - lastMove.t > 3000 && now - S.lastActivity > 3000) document.body.classList.add('cursor-hidden');
-  if (KIOSK && !tour.on && now - S.lastActivity > IDLE_MS) { returnToOverview(); startTour({ auto: true }); }
+  if (KIOSK && !tour.on && !heroHold && now - S.lastActivity > IDLE_MS) { returnToOverview(); startTour({ auto: true }); }
 }
 // organs menu
 const organsEl = $('#organs'); const diveMeta = {};
@@ -1007,12 +1041,12 @@ async function openOrgans() {
   stopTour(); organsEl.hidden = false;
   const T = UI[S.lang]; const grid = organsEl.querySelector('.ogrid'); grid.replaceChildren();
   for (const e of dive.D.index) {
-    const li = document.createElement('li'); li.tabIndex = 0; li.dataset.id = e.id;
+    const li = document.createElement('li'); li.tabIndex = 0; li.dataset.id = e.id; li.setAttribute('role', 'button'); li.style.setProperty('--i', grid.children.length);
     const im = document.createElement('div'); im.className = 'oimg'; im.style.backgroundImage = `url(assets/ui/organ-${e.id}.jpg)`;
-    const b = document.createElement('b'); b.textContent = e.title?.[S.lang] || e.title?.en || e.id;
+    const b = document.createElement('b'); b.className = 'h'; b.textContent = e.title?.[S.lang] || e.title?.en || e.id;
     const sp = document.createElement('span'); li.append(im, b, sp); grid.append(li);
     const open = () => { organsEl.hidden = true; openDive(e.id); };
-    li.addEventListener('click', open); li.addEventListener('keydown', (k) => { if (k.key === 'Enter') open(); });
+    li.addEventListener('click', open); li.addEventListener('keydown', (k) => { if (k.key === 'Enter' || k.key === ' ') { k.preventDefault(); open(); } });
     if (e.iframe) { sp.textContent = T.tourStops?.[7]?.s || ''; continue; }
     const meta = diveMeta[e.id] || (diveMeta[e.id] = await fetch(`src/content/deepdives/${e.id}.json`).then(r => r.ok ? r.json() : null).catch(() => null));
     if (meta) { const n = (meta.chapters || []).length; const c0 = meta.chapters?.[0]?.title; sp.textContent = `${n} ${T.organs?.chapters || ''} · ${c0?.[S.lang] || c0?.en || ''}`; }
@@ -1030,6 +1064,9 @@ $('#diveframe iframe').addEventListener('load', (ev) => {
   } catch {}
 });
 $('#organs-close').addEventListener('click', () => { organsEl.hidden = true; });
+// any full-screen overlay (organs, search, about) → body.overlay (hides the onboarding hand under the scrim)
+{ const ov = ['#organs', '#search', '#aboutbox'].map(s => $(s)); const sync = () => document.body.classList.toggle('overlay', ov.some(e => !e.hidden));
+  const mo = new MutationObserver(sync); ov.forEach(e => mo.observe(e, { attributes: true, attributeFilter: ['hidden'] })); }
 organsEl.addEventListener('click', (e) => { if (e.target === organsEl) organsEl.hidden = true; });
 
 // ============================================================ living head: gaze, breathing, micro-turn
@@ -1096,6 +1133,26 @@ function measureFlicker(n = 120) {
   });
 }
 
+// ♀ morph of the rigid parts: eyeball pivots (+ the eye uniforms the shaders use) and the neck-base cut, which follows
+// the textured skin's collar line while the skin is shown and returns to the anatomical cut when the skin is peeled
+const _bustS = new THREE.Vector4(), _eyeP = new THREE.Vector3();
+function applySexRig(sexE) {
+  for (const side of ['L', 'R']) {
+    const e = eyes[side]; if (!e || !e.offF) continue;
+    e.pivot.position.copy(e.center).addScaledVector(e.offF, sexE);
+    if (side === 'L') {
+      _eyeP.copy(e.center).addScaledVector(e.offF, sexE); U.uEye.value.set(Math.abs(_eyeP.x), _eyeP.y, _eyeP.z);
+      if (e.iris) { _eyeP.copy(e.iris).addScaledVector(e.offF, sexE); U.uIris.value.x = Math.abs(_eyeP.x); U.uIris.value.y = _eyeP.y; }
+    }
+  }
+  if (!SKIN_LEGACY && SF_EXTRA.bust) {
+    const bm = SF_EXTRA.bust.m, bf = SF_EXTRA.bust.f;
+    _bustS.set(bm[0] + (bf[0] - bm[0]) * sexE, OLD_BUST.y, 0, bm[1] + (bf[1] - bm[1]) * sexE);
+    U.uBust.value.lerpVectors(OLD_BUST, _bustS, 1 - layerDis[G.skin]);
+  }
+  U.uSkinMix.value = sexE;
+}
+
 // ============================================================ frame loop
 const clock = { last: performance.now(), getDelta() { const n = performance.now(), d = (n - this.last) / 1000; this.last = n; return d; } };
 const perf = { acc: 0, n: 0, win: 0, fps: 60, hist: [] };
@@ -1126,7 +1183,7 @@ function tick() {
   S.time += dt; const t = S.time;
   U.uTime.value = t;
   // intro: head emerges from darkness while the key light sweeps round
-  if (S.intro < 1) S.intro = Math.min(1, S.intro + dt / 5.2);
+  if (S.intro < 1 && !heroHold) S.intro = Math.min(1, S.intro + dt / 5.2);
   const ie = easeIO(clamp(S.intro * 1.15, 0, 1));
   stage.setLights(easeIO(clamp(S.intro * 1.05, 0, 1)));
   stage.final.uniforms.uExposure.value = THREE.MathUtils.lerp(0.02, 1.0, ie);
@@ -1164,6 +1221,7 @@ function tick() {
     try { hairMod.update?.({ skin: vis, sex: sexE, time: t, dt, camera }); } catch (e) { if (!hairMod._warned) { hairMod._warned = true; console.warn('[head] hair update', e); } }
   }
   for (const r of renderables) if (r.morphIndex != null) r.mesh.morphTargetInfluences[r.morphIndex] = sexE;   // every frame (URL ?sex=f starts at 1)
+  applySexRig(sexE);
   // eye interior darkness (living pupils are black) — lifted when the eye is cut or examined
   const insp = S.inspect ? structs.get(S.inspect) : null;
   const eyeOpen = (section.state.on > 0.5) || (insp && insp.group === G.eye);
@@ -1291,6 +1349,12 @@ window.__head = {
 // ============================================================ boot
 async function boot() {
   applyLang();
+  // opening film (src/hero): holds the 3D intro until the visitor picks whose head to enter
+  heroHold = !!initHero({
+    getLang: () => S.lang,
+    onEnter: sex => { setSex(sex === 'f'); S.sex = S.sexTarget; heroHold = false; S.intro = Math.max(S.intro, 0.35); S.lastActivity = performance.now(); },
+    onDone: sex => { heroHold = false; if (sex) heroDoneAt = performance.now(); S.lastActivity = performance.now(); },
+  });
   if (Q.has('dpr')) stage.setDPR(+Q.get('dpr') || 1);
   buildRail(); updateRail();
   if (!IS_TOUCH) $('#sound').classList.add('pulse');
@@ -1304,15 +1368,19 @@ async function boot() {
   const loader = new GLTFLoader(); loader.setDRACOLoader(draco);
   const t0 = performance.now();
   const gltfs = await Promise.all(FILES.map(async (file, i) => {
-    const buf = await fetchWithProgress(`assets/${file}.glb`, (a, b) => { sizes[i] = [a, b]; progress(); });
+    // phones get the skins with half-size textures (4096² colour maps exhaust mobile GPU memory); ?tex=full forces 4K
+    const url = (LITE_TEX && /^skin_[mf]$/.test(file)) ? `assets/${file}_2k.glb` : `assets/${file}.glb`;
+    const buf = await fetchWithProgress(url, (a, b) => { sizes[i] = [a, b]; progress(); });
     const gltf = await loader.parseAsync(buf, 'assets/');
-    return { file, gltf };
+    const v = /^skin_([mf])$/.exec(file);
+    return { file: v ? 'skin' : file, variant: v ? v[1] : null, gltf };
   }));
   window.__head.timing.fetched = Math.round(performance.now() - t0);
   content = await contentP;
   setProgress(0.86);
   await new Promise(r => setTimeout(r, 0));
-  M = buildModel(gltfs);
+  const sf = await sexP; window.__head.timing.sexfield = sf;   // (eye offsets are needed while building)
+  M = buildModel(gltfs, { eyesRigid: !!SF_EXTRA.eyes });
   draco.dispose();
   setupScene();
   initState();
@@ -1327,9 +1395,8 @@ async function boot() {
     afterExit: () => { resetView(); document.body.classList.remove('dive-card'); },
   });
   await dive.loadIndex();
-  const sf = await sexP; window.__head.timing.sexfield = sf;
   // strand hair (separate module): scalp hair ♂/♀ + eyebrows; the procedural brows switch off when strands exist
-  if (Q.get('hair') !== '0') {
+  if (Q.get('hair') !== '0' && SKIN_LEGACY) {   // v3 textured skins carry baked hair
     try {
       const { createHair } = await import('./fx/hair.js');
       const hair = await Promise.race([createHair(renderer, scene, { parent: rig, base: 'assets/', skinOffset: 0.0012 /* = skin shader's outward push */, clippingPlanes: section.clip }), new Promise(r => setTimeout(() => r(null), 15000))]);
@@ -1367,7 +1434,8 @@ async function boot() {
   if (Q.get('section')) setSection(Q.get('section'));
   if (Q.get('inspect')) { S.intro = 1; inspect(Q.get('inspect')); }
   if (Q.get('dive')) { S.intro = 1; openDive(Q.get('dive'), +(Q.get('chapter') || 0)); }
-  if (Q.has('tour') || KIOSK) setTimeout(() => startTour({ auto: KIOSK }), NO_INTRO ? 300 : 5600);
+  // with the opening film on screen the tour waits for it to hand over to the 3D head
+  if (Q.has('tour') || KIOSK) setTimeout(function go() { if (heroHold || performance.now() - heroDoneAt < 3500) return setTimeout(go, 500); if (!tour.on) startTour({ auto: KIOSK }); }, NO_INTRO ? 300 : 5600);
   // eye deep dive: load the eye page hidden in the background so it opens instantly
   // (a little later, when the visitor is not interacting: the eye page compiles its shaders on the main thread)
   const preload = () => { if (performance.now() - S.lastActivity < 4000 || tour.on && !KIOSK) return setTimeout(preload, 3000); try { dive.preloadFrame(); } catch (e) { console.warn("[head] eye preload", e); } };

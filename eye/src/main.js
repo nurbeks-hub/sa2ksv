@@ -301,6 +301,9 @@ function fillPanel(id) {
   const gid = KID_GROUP_OF[id], grp = KID_GROUPS.find(g => g.id === gid);
   const chip = panel.querySelector('.chip'); chip.textContent = KID_GROUP_NAMES[S.lang][gid] || ''; chip.style.setProperty('--c', grp?.color || '#f0b27a');
   panel.querySelector('.name').textContent = kidName(id);
+  const avail = PARTS.filter(p => partById[p.id]), pos = avail.findIndex(p => p.id === id);
+  panel.querySelector('.nav .count').textContent = pos < 0 ? '' : `${String(pos + 1).padStart(2, '0')} / ${avail.length}`;
+  panel.classList.remove('enter'); void panel.offsetWidth; panel.classList.add('enter');   // restart the staggered fade-in-up
   panel.querySelector('.simple').textContent = kl.s || c['desc_' + S.lang] || c.desc_en || '';
   const wow = panel.querySelector('.wow');
   wow.hidden = !kl.w;
@@ -401,7 +404,7 @@ function fillAbout() {
   const T = UI[S.lang];
   const body = $('#aboutbox .about-body'); body.replaceChildren();
   for (const para of T.aboutBody) { const p = document.createElement('p'); p.textContent = para; body.append(p); }
-  const cr = document.createElement('p'); cr.className = 'mono'; cr.style.cssText = 'font-size:11px;letter-spacing:.14em;color:var(--dim);text-transform:uppercase;margin-top:18px'; cr.textContent = T.credit; body.append(cr);
+  const cr = document.createElement('p'); cr.className = 'mono credit'; cr.textContent = T.credit; body.append(cr);
   const ol = $('#aboutbox .sources'); ol.replaceChildren();
   SOURCES.forEach(s => { const li = document.createElement('li'); const a = document.createElement('a'); a.href = s.url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = s.title; li.append(a); ol.append(li); });
 }

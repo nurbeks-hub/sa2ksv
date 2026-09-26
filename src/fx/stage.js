@@ -7,6 +7,7 @@ import * as THREE from 'three';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { FullScreenQuad } from 'three/addons/postprocessing/Pass.js';
+const ALPHA = new URLSearchParams(location.search).get('alpha') === '1';
 
 const CompositeShader = {
   uniforms: {
@@ -34,7 +35,11 @@ const CompositeShader = {
       vec2 q = (vUv - uBgCenter) * vec2(uRes.x / uRes.y, 1.0);
       float r = length(q);
       vec3 bg = mix(uBg1, uBg0, smoothstep(0.0, 0.95, r)) * uFade;
+      #ifdef ALPHA_OUT
+      if (d >= 0.99999) { gl_FragColor = vec4(col.rgb, col.a); return; }
+      #else
       if (d >= 0.99999) { gl_FragColor = vec4(bg + col.rgb, 1.0); return; }
+      #endif
       vec3 P = viewPos(vUv, d);
       vec2 px = 1.0 / uRes;
       vec3 Px = viewPos(vUv + vec2(px.x, 0.0), texture2D(tDepth, vUv + vec2(px.x, 0.0)).r);
@@ -68,6 +73,7 @@ const CompositeShader = {
       gl_FragColor = vec4(col.rgb * ao, 1.0);
     }`,
 };
+if (ALPHA) CompositeShader.defines = { ALPHA_OUT: 1 };
 
 const FinalShader = {
   uniforms: {
@@ -90,6 +96,11 @@ const FinalShader = {
     void main() {
       vec2 c = vUv - 0.5; float d = dot(c, c);
       vec2 off = c * uAberration * (0.3 + d * 4.0);
+      #ifdef ALPHA_OUT
+      vec4 t4 = texture2D(tDiffuse, vUv); float a = clamp(t4.a, 0.0, 1.0);
+      vec3 cc = a > 0.0001 ? t4.rgb / a : vec3(0.0);
+      gl_FragColor = vec4(toSRGB(ACES(cc)) * a, a); return;
+      #endif
       vec3 col = vec3(texture2D(tDiffuse, vUv + off).r, texture2D(tDiffuse, vUv).g, texture2D(tDiffuse, vUv - off).b);
       col = toSRGB(ACES(col));
       float vig = smoothstep(0.95, 0.12, d * uVignette * 1.55);
@@ -99,13 +110,14 @@ const FinalShader = {
       gl_FragColor = vec4(col, 1.0);
     }`,
 };
+if (ALPHA) FinalShader.defines = { ALPHA_OUT: 1 };
 
 export function createStage(canvas) {
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: false, stencil: true, depth: true, powerPreference: 'high-performance', preserveDrawingBuffer: false });
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: ALPHA, premultipliedAlpha: true, stencil: true, depth: true, powerPreference: 'high-performance', preserveDrawingBuffer: false });
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.NoToneMapping;
   renderer.localClippingEnabled = true;
-  renderer.setClearColor(0x000000, 1);
+  renderer.setClearColor(0x000000, ALPHA ? 0 : 1);
   renderer.autoClear = true;
 
   const scene = new THREE.Scene();
@@ -174,7 +186,7 @@ export function createStage(canvas) {
     composite.uniforms.uNear.value = camera.near; composite.uniforms.uFar.value = camera.far;
     renderer.setRenderTarget(postRT);
     quadC.render(renderer);
-    bloom.render(renderer, null, postRT, 0.016, false);
+    if (!ALPHA) bloom.render(renderer, null, postRT, 0.016, false);
     final.uniforms.tDiffuse.value = postRT.texture;
     renderer.setRenderTarget(null);
     quadF.render(renderer);

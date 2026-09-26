@@ -36,6 +36,9 @@ export const U = {
   uRigInv: { value: new THREE.Matrix4() },
   uLidShade: { value: 1 },
   uBrows: { value: 1 },
+  uSkinSidM: { value: -1 },   // v3 textured skins: structure index of the ♂ / ♀ skin (−1 = none)
+  uSkinSidF: { value: -1 },
+  uSkinMix: { value: 0 },     // 0 = ♂ skin, 1 = ♀ skin; in between an interlaced top-down wipe
 };
 
 // ------------------------------------------------------------------ GLSL
@@ -66,6 +69,9 @@ uniform vec3 uSFC[${MAX_SF}];
 uniform vec3 uSFW[${MAX_SF}];
 uniform mat3 uSFA;
 uniform vec3 uSFT;
+uniform float uSkinSidM;
+uniform float uSkinSidF;
+flat varying float vSkinV;  // 1 = textured ♂ skin, 2 = textured ♀ skin, 0 = anything else
 flat varying vec4 vState;   // ghost, highlight, dissolve (total), forced
 flat varying vec4 vTint;    // linear rgb, depth group
 flat varying float vSid;
@@ -108,6 +114,7 @@ const VERT_PROLOGUE = /* glsl */`
   vState = vec4(hS.r, hS.g, mix(max(hLd, hS.b), hS.b, hS.a), hS.a);
   vTint = hT0;
   vSid = float(hSid);
+  vSkinV = abs(vSid - uSkinSidM) < 0.5 ? 1.0 : abs(vSid - uSkinSidF) < 0.5 ? 2.0 : 0.0;
   vRest = position;
   vec3 hD = vec3(0.0); mat3 hJ = mat3(0.0); bool hHasField = uSex > 0.0001 && hT1.w > -0.5 && (uSFCount > 0 || uSFA[0][0] != 0.0 || uSFA[1][1] != 0.0 || uSFA[2][2] != 0.0 || dot(uSFT, uSFT) > 0.0);
   if (hHasField) hField(position, hD, hJ);
@@ -162,6 +169,8 @@ uniform vec3 uEye;      // |x|, y, z of the eyeball centres (rest space)
 uniform vec3 uIris;     // |x|, y of the iris centre, iris radius
 uniform float uSexF;    // eased sex blend (fragment side)
 uniform float uBrows;   // 1 = paint procedural brows (off when strand brows are loaded)
+uniform float uSkinMix;
+flat varying float vSkinV;
 flat varying vec4 vState;
 flat varying vec4 vTint;
 flat varying float vSid;
@@ -178,6 +187,16 @@ const FRAG_PROLOGUE = /* glsl */`
   // bust: a clean museum cut across the neck base and over the shoulders
   { float ax = abs(vRest.x); float yb = uBust.x + max(0.0, ax - uBust.y) * uBust.z + max(0.0, vRest.z + 0.005) * uBust.w; if (vRest.y < yb) discard; }
   if (vRest.y < uCordY && int(vTint.a + 0.5) == 6) discard;   // brain layer: keep only a short stub of the spinal cord
+  // ♂/♀ textured skins: interlaced top-down wipe (1.4 mm scanlines ahead of a noisy front), complementary sets
+  float hSkinEdge = 0.0;
+  if (vSkinV > 0.5) {
+    float hW = clamp((1.768 - vRest.y) / 0.34, 0.0, 1.0) * 0.84 + 0.16 * hNoise(vRest * 60.0);
+    float hDw = hW - (uSkinMix * 1.2 - 0.1);
+    bool hScan = fract(vRest.y * 714.0) > 0.5;
+    bool hShowF = hDw < 0.0 || (hDw < 0.05 && hScan);
+    if ((vSkinV < 1.5) == hShowF) discard;
+    hSkinEdge = (uSkinMix > 0.001 && uSkinMix < 0.999) ? (1.0 - smoothstep(0.0, 0.012, abs(hDw))) * (hScan ? 1.0 : 0.4) : 0.0;
+  }
   float hN = 0.0;
   float hDisEdge = 0.0, hGhostEdge = 0.0;
   if (vState.z > 0.0 || vState.x > 0.0) hN = hDisField(vRest);
@@ -286,6 +305,15 @@ const LIT_COLOR = /* glsl */`
     // inner surface (dermis tone) only in sections; elsewhere a back face seen through a fold of the fit keeps skin tone
     if (!gl_FrontFacing) diffuseColor.rgb = mix(diffuseColor.rgb * 0.85, vec3(0.42, 0.16, 0.12), uSecOn);
   #endif
+  #ifdef H_SKINTEX
+    // section: the inner side of the skin reads as dermis; the inner side of the baked hair shell stays dark
+    if (!gl_FrontFacing) {
+      vec3 hC = diffuseColor.rgb; float hLb = dot(hC, vec3(0.3, 0.5, 0.2));
+      float hSkinK = smoothstep(0.02, 0.07, hC.r - hC.b) * smoothstep(0.05, 0.14, hLb);   // warm skin vs grey/black hair
+      vec3 hIn = mix(hC * 0.25, vec3(0.42, 0.16, 0.12), hSkinK);                          // hair shell inside: dark
+      diffuseColor.rgb = mix(hC * 0.55, hIn, uSecOn);
+    }
+  #endif
   #ifdef H_LASH
   {
     // lash cards without a texture: fine dark strands; the lower lashes sparser
@@ -392,6 +420,9 @@ const SKIN_ROUGH = /* glsl */`
     roughnessFactor = mix(roughnessFactor, 0.3, clamp(vSkC, 0.0, 1.0));   // wet lid margin
     roughnessFactor += (hNoise(vRest * 240.0) - 0.5) * 0.08;
   #endif
+  #ifdef H_SKINTEX
+    roughnessFactor = clamp(0.3 + 0.7 * roughnessFactor, 0.52, 1.0);   // photographic skin: soft sheen, never plastic
+  #endif
 `;
 const EARLY_DECL = /* glsl */`
 #ifdef H_SKIN
@@ -411,6 +442,7 @@ const LIT_EMISSIVE = /* glsl */`
     float hFr = pow(1.0 - clamp(abs(dot(hNn, hV)), 0.0, 1.0), 3.0);
     totalEmissiveRadiance += vec3(1.0, 0.52, 0.22) * hDisEdge * mix(2.2, 0.9, uSecOn);
     totalEmissiveRadiance += vec3(0.55, 0.75, 1.0) * hGhostEdge * 1.4;
+    totalEmissiveRadiance += vec3(1.0, 0.86, 0.7) * hSkinEdge * 0.22;
     totalEmissiveRadiance += (vTint.rgb * 0.22 + vec3(0.05, 0.045, 0.04) + vec3(0.9, 0.75, 0.55) * hFr * 0.55) * max(vState.y, 0.0);
     #if NUM_CLIPPING_PLANES > 0
       float hKd = clippingPlanes[0].w - dot(vClipPosition, clippingPlanes[0].xyz);
@@ -432,6 +464,9 @@ const LIT_AFTER_LIGHTS = /* glsl */`
     }
     #endif
   #endif
+  #ifdef H_SKINTEX
+    { float hFr = pow(1.0 - saturate(dot(normal, geometryViewDir)), 4.0); reflectedLight.indirectSpecular += hFr * 0.03 * vec3(1.0, 0.86, 0.78); }
+  #endif
   #ifdef H_SKIN
     { float hFr = pow(1.0 - saturate(dot(normal, geometryViewDir)), 4.0); reflectedLight.indirectSpecular += hFr * 0.022 * vec3(1.0, 0.84, 0.76) * (1.0 - vSkB.z); }
     #if NUM_DIR_LIGHTS > 0
@@ -451,6 +486,7 @@ const LIT_AFTER_LIGHTS = /* glsl */`
 // ---------------------------------------------------------------- material factory
 const CLASS_DEFINES = {
   skin: { H_SKIN: 1, H_WRAP: 0.42, H_SSS: 'vec3(0.1, 0.035, 0.02)' },
+  skintex: { H_SKINTEX: 1, H_WRAP: 0.4, H_SSS: 'vec3(0.14, 0.045, 0.025)' },
   hair: { H_WRAP: 0.2, H_SSS: 'vec3(0.0)' },
   hairFine: { H_LASH: 1, H_WRAP: 0.2, H_SSS: 'vec3(0.0)' },
   muscle: { H_FIBRE: 1, H_WRAP: 0.35, H_SSS: 'vec3(0.22, 0.02, 0.01)' },
@@ -556,6 +592,8 @@ export function patchPick(mat) {
     let f = commonFragHead(shader.fragmentShader);
     f = f.replace('#include <clipping_planes_fragment>', '#include <clipping_planes_fragment>\n' + FRAG_PROLOGUE + `
       if (vState.x > 0.5) discard;
+      // textured skins have painted (closed) eyes: a click on the painted iris reaches the eyeball behind it
+      if (vSkinV > 0.5 && vRest.z > uEye.z && length(vec2(abs(vRest.x) - uIris.x, vRest.y - uIris.y)) < uIris.z * 0.95) discard;
     `);
     f = f.replace('#include <opaque_fragment>', `
       float hId = vSid + 1.0;

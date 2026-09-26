@@ -194,6 +194,7 @@ export function createDive(ctx) {
     D.anims = normAnims(arr(ch.anim).filter(a => a && a.type));
     stepsEl.querySelectorAll('li').forEach(li => li.classList.toggle('on', +li.dataset.i === D.chapter));
     fillChapter();
+    const col = el.querySelector('.dive-col'); col.classList.remove('swap'); void col.offsetWidth; col.classList.add('swap');   // chapter entrance
     if (!first) ctx.sound?.tick();
     ctx.dirty();
   }
@@ -410,6 +411,7 @@ export function createDive(ctx) {
     D.explode += (D.explodeTarget - D.explode) * (1 - Math.exp(-dt * 3.5));
     if (Math.abs(D.explode - D.explodeTarget) < 1e-4) D.explode = D.explodeTarget;
     const slider = $('#dive-x'); if (document.activeElement !== slider) slider.value = D.explodeTarget;
+    if (slider._v !== slider.value) { slider._v = slider.value; slider.style.setProperty('--v', slider.value); }   // lime fill of the track
     const pulseChanged = updateOffsets(t);
     updateLabels();
     return pulseChanged || Math.abs(prev - D.explode) > 1e-5 && false;
