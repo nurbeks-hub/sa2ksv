@@ -1186,7 +1186,7 @@ function tickSparks() {
     // built a moment after the head is on screen (the sampling runs in slices between frames)
     setTimeout(() => createSparks({
       M, renderables, parent: rig, renderer, camera, scene, reducedMotion: REDUCED_MOTION,
-      count: LITE_TEX || IS_TOUCH ? 45000 : 200000, minPer: LITE_TEX || IS_TOUCH ? 14 : 40,
+      count: LITE_TEX || IS_TOUCH ? 35000 : 130000, minPer: LITE_TEX || IS_TOUCH ? 14 : 40,
     }).then(s => { sparks = s; window.__head.timing.sparks = { count: s.count, byGroup: s.byGroup }; }).catch(e => console.warn('[head] sparks', e)), 600);
   }
   // deep dive opening: the chosen organ is rebuilt from light while everything else disintegrates
@@ -1199,7 +1199,7 @@ function tickSparks() {
   if (!sparks) return;
   const active = stateMoving || S.depth !== S.depthTarget || S.sex !== S.sexTarget || section.state.fx > 0;
   const secOn = !!S.section || section.state.on > 0.01;
-  sparks.update(active, stage.dpr < 0.85 ? 0.6 : 1, (g) => secOn || S.depth >= GROUP_REVEAL_AT[g] || S.depthTarget >= GROUP_REVEAL_AT[g] || (g === G.bone && S.depth > 2.5));
+  sparks.update(active, stage.dpr < 0.85 ? 0.6 : 1, (g) => secOn || S.depth >= GROUP_REVEAL_AT[g] || S.depthTarget >= GROUP_REVEAL_AT[g] || (g === G.bone && S.depth > 2.5), secOn);
 }
 
 // ============================================================ frame loop

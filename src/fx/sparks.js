@@ -21,7 +21,7 @@ ${VERT_HEAD}
 ${NOISE}
 attribute vec3 aNrm;
 attribute float aSeed;
-uniform float uTime, uSize, uViewH, uMotion, uSkinMix, uSecFx;
+uniform float uTime, uSize, uViewH, uMotion, uSkinMix, uSecFx, uCalm;
 uniform float uCover[8];
 uniform float uGrpOn[8];   // group is drawn at all at this depth (buried layers stay dark: no light from inside)
 uniform vec4 uSecPlane;
@@ -59,8 +59,8 @@ void main() {
   float dS = dot(uSecPlane.xyz, position) + uSecPlane.w;
   if (dS < 0.0) {
     // removed by the section: only the band next to the moving plane is alive
-    float a = -dS / 0.045;
-    if (uSecFx > 0.003 && solid && variantShown && gh < 0.5 && a < 1.0 && r2 < 0.55) { kind = 1; age = a; w = uSecFx * 0.8; away = -uSecPlane.xyz; }
+    float a = -dS / 0.018;
+    if (uSecFx > 0.003 && solid && variantShown && gh < 0.5 && a < 1.0 && r2 < 0.55) { kind = 1; age = a; w = uSecFx * 0.3; away = -uSecPlane.xyz; }
   } else {
     float a1 = (Fz - n) / H_DW;
     if (a1 > 0.0 && a1 < 1.0 && variantShown) { kind = 1; age = a1; }
@@ -84,6 +84,8 @@ void main() {
       }
     }
   }
+  // a section is open: the cut face is the information — keep light effects faint and sparse there
+  if (uCalm > 0.5) { if (kind == 2) kind = 0; else w *= 0.35; if (fract(aSeed * 7.13) > 0.45) kind = 0; } else w *= 0.8;
   // museum bust cut below the neck
   { float ax = abs(position.x); float yb = uBust.x + max(0.0, ax - uBust.y) * uBust.z + max(0.0, position.z + 0.005) * uBust.w; if (position.y < yb) kind = 0; }
   if (kind == 0) { gl_Position = vec4(0.0, 0.0, -2.0, 1.0); gl_PointSize = 0.0; vA = 0.0; vCol = vec3(0.0); vHot = 0.0; return; }
@@ -240,7 +242,7 @@ export async function createSparks({ M, renderables, parent, renderer, camera, s
   geo.setAttribute('aSeed', new THREE.BufferAttribute(seed.subarray(0, n), 1));
   geo.boundingSphere = new THREE.Sphere(new THREE.Vector3(0, 1.58, 0), 0.4);
 
-  const own = { uSize: { value: 0.00055 }, uViewH: { value: 1080 }, uMotion: { value: reducedMotion ? 0.15 : 1 }, uGrpOn: { value: new Float32Array(8).fill(1) } };
+  const own = { uSize: { value: 0.00055 }, uViewH: { value: 1080 }, uMotion: { value: reducedMotion ? 0.15 : 1 }, uGrpOn: { value: new Float32Array(8).fill(1) }, uCalm: { value: 0 } };
   const mat = new THREE.ShaderMaterial({
     uniforms: { ...U, ...own },
     vertexShader: VERT, fragmentShader: FRAG,
@@ -258,7 +260,8 @@ export async function createSparks({ M, renderables, parent, renderer, camera, s
     points, count: n, byGroup,
     // active: a transition is running this frame; fraction: share of the particles to draw (resolution budget)
     // groupOn(g): whether depth group g is drawn at all right now
-    update(active, fraction = 1, groupOn = null) {
+    update(active, fraction = 1, groupOn = null, calm = false) {
+      own.uCalm.value = calm ? 1 : 0;
       tail = active ? 3 : Math.max(0, tail - 1);
       points.visible = tail > 0;
       if (!points.visible) return;
