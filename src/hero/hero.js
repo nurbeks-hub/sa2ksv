@@ -1,8 +1,9 @@
-// Opening, entirely in real-time 3D: the two photoreal heads stand on glass cubes with the Higgsfield mark etched
-// inside. The camera rises out of a macro on the etched logo into a wide reveal (the hook, plays by itself), then the
-// scroll orbits in while a lime scan passes through both heads (a glimpse inside), and ends on the two faces: the
-// visitor picks whose head to enter and that head flies onto the atlas. Kiosk: it plays by itself.
-// Test hooks: window.__hero.{state(), set(p), enter('f'|'m'), skip()}.  ?nohero=1 bypasses it.
+// Opening / attract loop, entirely in real-time 3D (≈18 s, loops while nobody touches the site):
+// lime light particles construct both heads from the inside out on glass plinths (brain → skull → muscles → skin),
+// the photoreal skin solidifies, the heads come alive, a lime scan passes, then they disintegrate back into light.
+// Any activity (pointer, touch, key, wheel) snaps the loop to the finished heads and slides in the choice panel;
+// the chosen head flies onto the atlas. The engine calls initHero() again after inactivity (attract mode).
+// Test hooks: window.__hero.{state(), set(v), wake(), enter('f'|'m')}.  ?nohero=1 bypasses it.
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
@@ -27,9 +28,9 @@ const CUBE = 0.26, CH = 0.15;                 // glass plinth width/depth and he
 const HX = { f: -0.19, m: 0.19 };
 
 const T = {
-  kk: { sub: 'Ішіне үңілейік.', cue: 'Айналдырыңыз', cueTouch: 'Жоғары сырғытыңыз', ask: 'Кімнің басына кіреміз?', f: 'Әйел', m: 'Ер', skip: 'Өткізу' },
-  ru: { sub: 'Заглянем внутрь.', cue: 'Прокрутите', cueTouch: 'Проведите вверх', ask: 'В чью голову заглянем?', f: 'Женщина', m: 'Мужчина', skip: 'Пропустить' },
-  en: { sub: 'Let’s look inside.', cue: 'Scroll', cueTouch: 'Swipe up', ask: 'Whose head shall we explore?', f: 'Woman', m: 'Man', skip: 'Skip' },
+  kk: { sub: 'Бас пен мойынның интерактивті 3D атласы', cue: 'Бастау үшін қозғалтыңыз', cueTouch: 'Бастау үшін түртіңіз', ask: 'Кімді зерттейміз?', f: 'Ересек әйел', m: 'Ересек ер адам', go: 'Ішіне кіру' },
+  ru: { sub: 'Интерактивный 3D-атлас головы и шеи', cue: 'Пошевелите мышью, чтобы начать', cueTouch: 'Коснитесь, чтобы начать', ask: 'Кого изучим?', f: 'Взрослая женщина', m: 'Взрослый мужчина', go: 'Заглянуть внутрь' },
+  en: { sub: 'An interactive 3D atlas of the head and neck', cue: 'Move to begin', cueTouch: 'Tap to begin', ask: 'Who shall we explore?', f: 'Adult woman', m: 'Adult man', go: 'Look inside' },
 };
 
 const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
@@ -38,10 +39,12 @@ const easeIO = t => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 const easeOut = t => 1 - Math.pow(1 - t, 4);
 const lerp = (a, b, t) => a + (b - a) * t;
 
-export function initHero({ onEnter, onDone, getLang }) {
+export function initHero({ onEnter, onDone, getLang, idleReturn = false }) {
   const root = document.getElementById('hero');
-  if (!root || Q.has('nohero') || Q.has('still') || Q.has('alpha') || Q.get('inspect') || Q.get('dive') || Q.has('nointro')) { onDone?.(null); return null; }
+  if (!root || Q.has('nohero') || Q.has('still') || Q.has('alpha') || (!idleReturn && (Q.get('inspect') || Q.get('dive') || Q.has('nointro')))) { onDone?.(null); return null; }
+  if (!root.hidden && root.classList.contains('hero3d')) return window.__hero || null;   // already on screen
 
+  const face = k => `<button class="hero-pick" data-sex="${k}"><img src="${ROOT}assets/hero/face_${k}.webp" alt=""><span class="lbl"></span><span class="go"></span></button>`;
   root.innerHTML = `
     <div class="hero-stage">
       <canvas class="hero-3d"></canvas>
@@ -50,14 +53,12 @@ export function initHero({ onEnter, onDone, getLang }) {
         <h1 class="hero-h"></h1>
         <p class="hero-sub"></p>
       </div>
-      <div class="hero-cue"><span class="hero-cue-line"></span><span class="hero-cue-t"></span></div>
-      <div class="hero-choose">
+      <div class="hero-cue"><span class="hero-cue-dot"></span><span class="hero-cue-t"></span></div>
+      <div class="hero-brackets"><i data-sex="f"><b></b><b></b><b></b><b></b></i><i data-sex="m"><b></b><b></b><b></b><b></b></i></div>
+      <div class="hero-panel" role="dialog">
         <p class="hero-ask"></p>
-        <button class="hero-pick" data-sex="f"><span class="ring"><i></i><i></i><i></i><i></i></span><span class="lbl"></span></button>
-        <button class="hero-pick" data-sex="m"><span class="ring"><i></i><i></i><i></i><i></i></span><span class="lbl"></span></button>
+        <div class="hero-cards">${face('f')}${face('m')}</div>
       </div>
-      <button class="hero-skip"></button>
-      <div class="hero-progress"><i></i></div>
     </div>`;
   document.body.classList.add('hero-on');
   root.classList.add('hero3d');
@@ -77,8 +78,7 @@ export function initHero({ onEnter, onDone, getLang }) {
     $('.hero-sub').textContent = t.sub;
     $('.hero-cue-t').textContent = IS_TOUCH ? t.cueTouch : t.cue;
     $('.hero-ask').textContent = t.ask;
-    picks.forEach(b => { b.querySelector('.lbl').textContent = t[b.dataset.sex]; b.setAttribute('aria-label', t[b.dataset.sex]); });
-    $('.hero-skip').textContent = t.skip;
+    picks.forEach(b => { b.querySelector('.lbl').textContent = t[b.dataset.sex]; b.querySelector('.go').textContent = t.go; b.setAttribute('aria-label', t[b.dataset.sex]); });
     root.lang = L;
   }
   applyText();
@@ -178,17 +178,18 @@ export function initHero({ onEnter, onDone, getLang }) {
   holoMat.clippingPlanes = [scanHi, scanLo];
   // ---- assembly: lime particles build each head from the inside out (brain → skull → muscles → skin)
   const LAYERS = ['brain', 'skull', 'muscle', 'skin'];
-  const LSTART = [0.25, 1.35, 2.45, 3.55], LDUR = 1.1, LSPREAD = 0.95;          // seconds, per layer
+  const LSTART = [0.9, 3.3, 5.7, 8.1], LDUR = 1.6, LSPREAD = 1.4;              // seconds, per layer (loop clock)
   const ASSEMBLE_END = LSTART[3] + LSPREAD + LDUR + 0.25;                     // skin fully landed
   const SKIN_IN = [ASSEMBLE_END - 0.55, ASSEMBLE_END + 0.45];                  // the photoreal skin solidifies
+  const LOOP = 18, SCAN = [12.6, 14.3], OUT = [15.0, 17.3], READY = 12.5;     // alive → scan → disintegrate → dark
   const LCOL = [new THREE.Color(0xd9828c), new THREE.Color(0xd8ccb4), new THREE.Color(0xb3322c), new THREE.Color(0xd6a88a)].map(c => c.multiplyScalar(0.72));
   const ptsMat = new THREE.ShaderMaterial({
     transparent: true, depthWrite: true,
-    uniforms: { uT: { value: 0 }, uFade: { value: 0 }, uSize: { value: 0.0015 }, uPix: { value: 1 }, uBase: { value: new THREE.Vector3() }, uCol: { value: LCOL }, uLime: { value: new THREE.Color(0xd1fe17) } },
+    uniforms: { uT: { value: 0 }, uFade: { value: 0 }, uOut: { value: 0 }, uCtr: { value: new THREE.Vector3() }, uSize: { value: 0.0015 }, uPix: { value: 1 }, uBase: { value: new THREE.Vector3() }, uCol: { value: LCOL }, uLime: { value: new THREE.Color(0xd1fe17) } },
     vertexShader: `
       attribute float aSeed; attribute float aLayer; attribute float aDelay;
-      uniform float uT, uSize, uPix; uniform vec3 uBase; uniform vec3 uCol[4];
-      varying vec3 vCol; varying float vA; varying float vFly;
+      uniform float uT, uSize, uPix, uOut; uniform vec3 uBase, uCtr; uniform vec3 uCol[4];
+      varying vec3 vCol; varying float vA; varying float vFly; varying float vOut;
       float ease(float t){ return t < 0.5 ? 4.0*t*t*t : 1.0 - pow(-2.0*t + 2.0, 3.0) / 2.0; }
       void main(){
         float k = clamp((uT - aDelay) / ${LDUR.toFixed(2)}, 0.0, 1.0), e = ease(k);
@@ -200,18 +201,25 @@ export function initHero({ onEnter, onDone, getLang }) {
         float ang = (1.0 - e) * (2.2 + 2.0 * fract(aSeed * 7.1));
         vec3 d = p - axis; p = axis + vec3(d.x * cos(ang) - d.z * sin(ang), d.y, d.x * sin(ang) + d.z * cos(ang));
         p.y += sin((1.0 - e) * 3.14159) * 0.03 * fract(aSeed * 3.3);
+        // disintegration: staggered, particles lift off the surface, drift up and swirl away
+        float o = clamp((uOut - fract(aSeed * 5.3) * 0.45 - (position.y - uBase.y) * 1.2) / 0.55, 0.0, 1.0), eo = o * o;
+        vec3 away = normalize(position - uCtr + vec3(0.0, 0.02, 0.0));
+        p += (away * 0.22 + vec3(0.0, 0.32, 0.0)) * eo;
+        float ao = eo * (2.0 + 3.0 * fract(aSeed * 9.1)); vec3 dq = p - vec3(uCtr.x, p.y, uCtr.z);
+        p = vec3(uCtr.x, p.y, uCtr.z) + vec3(dq.x * cos(ao) - dq.z * sin(ao), dq.y, dq.x * sin(ao) + dq.z * cos(ao));
         vec4 mv = modelViewMatrix * vec4(p, 1.0); gl_Position = projectionMatrix * mv;
-        vFly = 1.0 - smoothstep(0.72, 1.0, k);
+        vFly = max(1.0 - smoothstep(0.72, 1.0, k), smoothstep(0.0, 0.25, o));
         gl_PointSize = uSize * uPix * (1.0 + vFly * 0.6) * (projectionMatrix[1][1] * 0.5) * 1080.0 / max(0.05, -mv.z) / 1.0;
         int li = int(aLayer + 0.5);
         vCol = li == 0 ? uCol[0] : li == 1 ? uCol[1] : li == 2 ? uCol[2] : uCol[3];
-        vA = smoothstep(0.0, 0.08, k);
+        vA = smoothstep(0.0, 0.08, k) * (1.0 - smoothstep(0.25, 0.85, o)) * (1.0 - 0.45 * smoothstep(0.0, 0.2, o)); vOut = o;
+        gl_PointSize *= 1.0 - 0.45 * o;
       }`,
     fragmentShader: `
-      uniform vec3 uLime; uniform float uFade; varying vec3 vCol; varying float vA; varying float vFly;
+      uniform vec3 uLime; uniform float uFade; varying vec3 vCol; varying float vA; varying float vFly; varying float vOut;
       void main(){
         vec2 q = gl_PointCoord - 0.5; float r = dot(q, q); if (r > 0.25) discard;
-        vec3 c = mix(vCol, uLime * 1.25, vFly);
+        vec3 c = mix(vCol, uLime * (1.25 - 0.55 * vOut), vFly);
         float a = vA * (1.0 - uFade) * smoothstep(0.25, 0.12, r);
         if (a < 0.02) discard;
         gl_FragColor = vec4(c, a);
@@ -261,7 +269,7 @@ export function initHero({ onEnter, onDone, getLang }) {
       await cloudP;
       let pts = null;
       if (clouds[k]) {
-        const mat = ptsMat.clone(); mat.uniforms.uCol.value = LCOL; mat.uniforms.uBase.value.set(c.x, box.min.y, c.z);
+        const mat = ptsMat.clone(); mat.uniforms.uCol.value = LCOL; mat.uniforms.uBase.value.set(c.x, box.min.y, c.z); mat.uniforms.uCtr.value.set(c.x, cy + 0.01, c.z);
         pts = new THREE.Points(clouds[k], mat); pts.frustumCulled = false; pts.renderOrder = 4; obj.add(pts);
       }
       const grp = new THREE.Group(); grp.add(obj); scene.add(grp); grp.traverse(o => o.layers.set(1));
@@ -277,45 +285,43 @@ export function initHero({ onEnter, onDone, getLang }) {
   }));
   beam.rotation.x = -Math.PI / 2; beam.scale.set(1, 0.02, 1); beam.visible = false; scene.add(beam);
 
-  // ------------------------------------------------------------ camera choreography
+  // ------------------------------------------------------------ camera
   const port = () => innerWidth / innerHeight < 0.9;
-  // fit distance so a width w (m) fills a fraction of the frame
   const fitDist = (w, frac) => (w / 2) / (Math.tan(THREE.MathUtils.degToRad(cam.fov / 2)) * cam.aspect * frac);
-  function pose(p, intro) {
+  const V3 = (x, y, z) => new THREE.Vector3(x, y, z);
+  function orbitPose(yaw, d, h, t) { return { pos: V3(t.x + Math.sin(yaw) * d, t.y + h, t.z + Math.cos(yaw) * d), t }; }
+  function loopPose(lt) {
     const P = port();
-    // wide establishing shot (landscape: the pair sits right of centre, the title owns the left)
-    const wide = { yaw: -0.52, d: P ? fitDist(0.9, 0.9) : 2.35, h: 0.36, t: new THREE.Vector3(P ? 0 : -0.36, P ? 0.02 : -0.04, 0) };
-    const mid = { yaw: -0.18, d: P ? fitDist(0.8, 0.95) : 1.55, h: 0.2, t: new THREE.Vector3(P ? 0 : -0.1, 0.06, 0) };
-    const close = { yaw: 0.0, d: P ? fitDist(0.64, 0.98) : 1.1, h: 0.04, t: new THREE.Vector3(0, 0.15, 0) };
-    const a = smooth(0.1, 0.5, p), b = smooth(0.5, 0.92, p);
-    let yaw = lerp(lerp(wide.yaw, mid.yaw, a), close.yaw, b), d = lerp(lerp(wide.d, mid.d, a), close.d, b), h = lerp(lerp(wide.h, mid.h, a), close.h, b);
-    const t = wide.t.clone().lerp(mid.t, a).lerp(close.t, b);
-    const pos = new THREE.Vector3(t.x + Math.sin(yaw) * d, t.y + h, t.z + Math.cos(yaw) * d);
-    // the hook: rise out of a macro on the etched mark of her cube
-    if (intro < 1) {
-      // close, slowly orbiting while the heads assemble; the wide reveal comes once they are built
-      const e = easeIO(smooth(0.62, 1, intro));
-      const ang = lerp(0.42, -0.12, easeIO(smooth(0, 0.7, intro))), R0 = 0.95;
-      const mt = new THREE.Vector3(0.0, 0.12, 0), m0 = new THREE.Vector3(mt.x + Math.sin(ang) * R0, 0.19, mt.z + Math.cos(ang) * R0);
-      pos.lerpVectors(m0, pos, e); t.lerpVectors(mt, t, e);
-    }
-    return { pos, t };
+    // close and slowly orbiting while the heads assemble; wide reveal (title) while they live; back in for the next loop
+    const ca = lerp(0.42, -0.12, easeIO(smooth(0, 11, lt)));
+    const angle = lt > 15 ? lerp(-0.12, 0.42, smooth(15, 18, lt)) : ca;
+    const close = orbitPose(angle, P ? fitDist(0.78, 0.95) : 0.95, 0.07, V3(0, 0.12, 0));
+    const wide = orbitPose(-0.52 + Math.sin(lt * 0.25) * 0.08, P ? fitDist(0.9, 0.9) : 2.3, 0.34, V3(P ? 0 : -0.36, P ? 0.04 : -0.04, 0));
+    const b = smooth(10.6, 12.4, lt) * (1 - smooth(15.4, 17.6, lt));
+    return { pos: close.pos.clone().lerp(wide.pos, easeIO(b)), t: close.t.clone().lerp(wide.t, easeIO(b)) };
+  }
+  function choosePose() {
+    const P = port();
+    return orbitPose(0, P ? fitDist(0.64, 0.98) : 1.2, 0.02, V3(0, P ? 0.15 : 0.06, 0));
   }
 
-  // ------------------------------------------------------------ progress (virtual scroll with inertia)
-  let target = 0, p = 0, state = 'film', autoT = null;
-  const push = d => { if (state !== 'film') return; target = clamp(target + d, 0, 1); root.classList.add('moved'); };
-  const onWheel = e => { e.preventDefault(); push((e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY) / 2600); };
-  let ty = null;
-  const onTouchStart = e => { ty = e.touches[0].clientY; };
-  const onTouchMove = e => { if (ty == null) return; e.preventDefault(); const y = e.touches[0].clientY; push((ty - y) / (innerHeight * 2.2)); ty = y; };
-  const onTouchEnd = () => { ty = null; };
-  const onKey = e => {
-    if (state === 'gone') return;
-    if (['ArrowDown', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); push(0.12); }
-    else if (['ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); push(-0.12); }
-    else if (e.key === 'Escape') skip();
-  };
+  // ------------------------------------------------------------ state: loop (attract) ↔ choose → enter → gone
+  let state = 'loop', lt = 0, rush = false, chooseK = 0, lastAct = performance.now(), chosen = null, enterT0 = 0;
+  const CHOOSE_IDLE = Q.has('idle') ? Math.max(4000, +Q.get('idle')) : 25000;
+  function wake() {
+    lastAct = performance.now();
+    if (state !== 'loop') return;
+    state = 'choose'; root.classList.add('choosing');
+    // snap the loop to the finished heads: mid-disintegration → rebuild fast; mid-assembly → fast-forward
+    if (lt >= OUT[0]) lt = LSTART[0];
+    rush = lt < READY;
+    if (!rush) lt = READY;
+  }
+  function sleep() { state = 'loop'; root.classList.remove('choosing'); }
+  let mv0 = null;
+  const onMove = e => { if (!mv0) { mv0 = [e.clientX, e.clientY]; return; } if (Math.hypot(e.clientX - mv0[0], e.clientY - mv0[1]) > 6) wake(); else lastAct = performance.now(); };
+  const onAny = () => wake();
+  const onKey = e => { if (state === 'gone') return; if (e.key === 'Escape' && state === 'choose') { sleep(); return; } wake(); };
   function resize() {
     const dpr = Math.min(devicePixelRatio || 1, LITE ? 1.5 : 2);
     renderer.setPixelRatio(dpr); renderer.setSize(innerWidth, innerHeight, false);
@@ -324,139 +330,120 @@ export function initHero({ onEnter, onDone, getLang }) {
     cam.aspect = innerWidth / innerHeight; cam.updateProjectionMatrix();
     root.classList.toggle('tall', port());
   }
-  root.addEventListener('wheel', onWheel, { passive: false });
-  root.addEventListener('touchstart', onTouchStart, { passive: true });
-  root.addEventListener('touchmove', onTouchMove, { passive: false });
-  root.addEventListener('touchend', onTouchEnd);
+  root.addEventListener('pointermove', onMove);
+  root.addEventListener('pointerdown', onAny);
+  root.addEventListener('wheel', onAny, { passive: true });
+  root.addEventListener('touchstart', onAny, { passive: true });
   addEventListener('keydown', onKey);
   addEventListener('resize', resize);
   picks.forEach(b => b.addEventListener('click', e => { e.stopPropagation(); enter(b.dataset.sex); }));
-  $('.hero-skip').addEventListener('click', () => skip());
-  root.addEventListener('click', e => { if (state === 'film' && !e.target.closest('button') && target < 0.9) autoTo(1, 3.4); });
+  root.querySelectorAll('.hero-brackets i').forEach(b => b.addEventListener('click', e => { e.stopPropagation(); if (state === 'choose') enter(b.dataset.sex); }));
 
-  function autoTo(to, secs) {
-    const from = target, t0 = performance.now();
-    cancelAnimationFrame(autoT);
-    const step = () => { const k = clamp((performance.now() - t0) / (secs * 1000), 0, 1); target = from + (to - from) * easeIO(k); if (k < 1 && state === 'film') autoT = requestAnimationFrame(step); };
-    root.classList.add('moved'); autoT = requestAnimationFrame(step);
-  }
-
-  // ------------------------------------------------------------ choose / enter / leave
-  let chosen = null, enterT0 = 0, kioskPick = null;
-  function toChoose() {
-    state = 'choose'; root.classList.add('choosing');
-    if (KIOSK) kioskPick = setTimeout(() => enter(sessionStorage.getItem('heroLast') === 'f' ? 'm' : 'f'), 3200);
-  }
   function enter(sex) {
     if (state === 'enter' || state === 'gone') return;
-    clearTimeout(kioskPick); cancelAnimationFrame(autoT);
-    target = 1; p = 1; introT = 1; aT = Math.max(aT, 99);
+    if (state === 'loop') { lt = READY; rush = false; }
     try { sessionStorage.setItem('heroLast', sex); } catch {}
     chosen = sex; state = 'enter'; enterT0 = performance.now();
     root.classList.add('entering', 'enter-' + sex);
     onEnter?.(sex);
   }
-  function skip() { if (state === 'enter' || state === 'gone') return; enter(sessionStorage.getItem('heroLast') === 'f' ? 'm' : 'f'); }
   function finish() {
     state = 'gone'; mo.disconnect();
     removeEventListener('keydown', onKey); removeEventListener('resize', resize);
     composer.dispose(); renderer.dispose(); pmrem.dispose();
-    document.body.classList.remove('hero-on'); root.hidden = true; root.innerHTML = ''; root.classList.remove('hero3d');
+    document.body.classList.remove('hero-on'); root.hidden = true; root.innerHTML = ''; root.className = ''; root.removeAttribute('style');
+    if (window.__hero === api) window.__hero = null;
     onDone?.(chosen);
   }
   const V = new THREE.Vector3();
-  function placePicks() {
-    for (const b of picks) {
+  function placeBrackets() {
+    for (const b of root.querySelectorAll('.hero-brackets i')) {
       const h = heads[b.dataset.sex]; if (!h) continue;
       V.copy(h.grp.position).project(cam);
       const x = (V.x * 0.5 + 0.5) * innerWidth, y = (-V.y * 0.5 + 0.5) * innerHeight;
-      V.copy(h.grp.position).add(new THREE.Vector3(0, h.hm / 2, 0)).project(cam);
+      V.copy(h.grp.position).add(V3(0, h.hm / 2, 0)).project(cam);
       const r = Math.abs(y - (-V.y * 0.5 + 0.5) * innerHeight) * 1.05;
       b.style.left = x + 'px'; b.style.top = y + 'px'; b.style.setProperty('--r', r + 'px');
     }
   }
 
   // ------------------------------------------------------------ loop
-  const tStart = performance.now(); let last = tStart, t3 = 0, introT = REDUCED ? 1 : 0;
-  const INTRO_S = ASSEMBLE_END + 0.9; let aT = REDUCED ? 99 : 0;
+  let last = performance.now(), t3 = 0;
   function tick(now) {
     if (state === 'gone') return;
     const dt = Math.min(0.05, (now - last) / 1000); last = now; t3 += dt;
-    if (headsReady === true || headsReady === 'failed') { aT += dt; introT = Math.min(1, introT + dt / INTRO_S); }
-    root.classList.toggle('intro-done', aT >= ASSEMBLE_END - 0.3);
-    if (KIOSK && state === 'film' && target === 0 && aT > ASSEMBLE_END + 2.2) autoTo(1, 7.5);
-    if (REDUCED && state === 'film') target = 1;
-    // the heads must be loaded before the camera reaches them
-    const cap = headsReady === true || headsReady === 'failed' ? 1 : 0.3;
-    p += (Math.min(target, cap) - p) * (REDUCED ? 1 : 1 - Math.pow(0.002, dt));
-    if (Math.abs(target - p) < 0.0004 && cap === 1) p = target;
-    root.classList.toggle('waiting3d', target > 0.3 && cap < 1);
-    root.style.setProperty('--title', (1 - smooth(0.02, 0.16, p)).toFixed(3));
-    root.classList.toggle('started', p > 0.012);
-    $('.hero-progress i').style.transform = `scaleX(${smooth(0.0, 0.95, p).toFixed(4)})`;
-    if (state === 'film' && p > 0.955) toChoose();
-    if (state === 'choose' && target < 0.9) { state = 'film'; root.classList.remove('choosing'); clearTimeout(kioskPick); }
+    const ready = headsReady === true || headsReady === 'failed';
+    if (ready) {
+      if (state === 'loop') lt = REDUCED ? READY : (lt + dt) % LOOP;
+      else if (rush) { lt += dt * 7; if (lt >= READY) { lt = READY; rush = false; } }
+      else if (state === 'choose' || state === 'enter') lt = READY;
+    }
+    if (state === 'choose' && now - lastAct > CHOOSE_IDLE) sleep();
+    chooseK += ((state === 'loop' ? 0 : 1) - chooseK) * (1 - Math.pow(0.0005, dt));
+    root.classList.toggle('show-title', state === 'loop' && lt > 11.2 && lt < 16.2);
+    root.classList.toggle('show-cue', state === 'loop');
 
-    // camera: hook (time) × scroll (p), with a slow breathing drift
-    const { pos, t } = pose(p, introT);
-    pos.x += Math.sin(t3 * 0.23) * 0.02 * (1 - p); pos.y += Math.sin(t3 * 0.31) * 0.01;
-    cam.position.copy(pos); cam.lookAt(t);
+    // camera
+    const a = loopPose(lt), c = choosePose(), k = easeIO(chooseK);
+    const pos = a.pos.lerp(c.pos, k), tgt = a.t.lerp(c.t, k);
+    pos.x += Math.sin(t3 * 0.23) * 0.015; pos.y += Math.sin(t3 * 0.31) * 0.008;
+    cam.position.copy(pos); cam.lookAt(tgt);
 
-    // scan: a lime beam slides down through both heads while the camera orbits in (p 0.36 → 0.72)
-    const sc = smooth(0.36, 0.72, p), scanOn = sc > 0.001 && sc < 0.999;
+    // scan beam while the heads live
+    const sc = state === 'loop' ? smooth(SCAN[0], SCAN[1], lt) : 0, scanOn = sc > 0.001 && sc < 0.999;
     const yTop = 0.33, yBot = -0.02, sy = lerp(yTop, yBot, sc), w = 0.075;
-    scanHi.constant = -(sy - w); scanLo.constant = sy + w * 0.35;            // holo shell: sy−w < y < sy+0.35w
-    skinA.constant = -(sy + w * 0.35); skinB.constant = sy - w;              // skin: everything outside that band
-    if (!scanOn) { skinA.constant = 1e3; skinB.constant = 1e3; scanHi.constant = -1e3; scanLo.constant = -1e3; }   // skin whole, shell hidden
+    scanHi.constant = -(sy - w); scanLo.constant = sy + w * 0.35;
+    skinA.constant = -(sy + w * 0.35); skinB.constant = sy - w;
+    if (!scanOn) { skinA.constant = 1e3; skinB.constant = 1e3; scanHi.constant = -1e3; scanLo.constant = -1e3; }
     beam.visible = scanOn; beam.position.y = sy + w * 0.35; beam.material.opacity = Math.min(1, Math.min(sc, 1 - sc) * 10);
 
-    // enter: the chosen head flies onto the atlas head (same place, size and turn); everything else goes dark
     const en = state === 'enter' ? easeOut(clamp((now - enterT0) / 1500, 0, 1)) : 0;
-    for (const k of ['f', 'm']) {
-      cubes[k].logo.material.opacity = (0.55 + 0.45 * smooth(0.15, 0.6, introT)) * (1 - smooth(0, 0.6, en));
-      cubes[k].g.visible = en < 0.99;
-    }
+    for (const kk of ['f', 'm']) { cubes[kk].logo.material.opacity = 1 - smooth(0, 0.6, en); cubes[kk].g.visible = en < 0.99; }
     glassMatReal.opacity = 0.1 * (1 - en);
     dim.material.opacity = LITE ? 1 : 0.8 + 0.2 * en;
     if (headsReady === true) {
-      const alive = smooth(0.6, 1, p);
-      for (const k of ['f', 'm']) {
-        const h = heads[k], ph0 = k === 'f' ? 0 : 1.9;
-        const skinIn = smooth(SKIN_IN[0], SKIN_IN[1], aT - (k === 'f' ? 0.35 : 0));
-        let op = skinIn;
-        if (h.pts) { const u = h.pts.material.uniforms; u.uT.value = aT - (k === 'f' ? 0.35 : 0); u.uFade.value = smooth(SKIN_IN[0] + 0.3, SKIN_IN[1] + 0.25, u.uT.value); u.uPix.value = renderer.getPixelRatio() * innerHeight / 1080; h.pts.visible = u.uFade.value < 0.999 && state !== 'enter'; }
+      const alive = smooth(11.6, 13, lt) * (1 - smooth(OUT[0], OUT[0] + 0.5, lt));
+      for (const kk of ['f', 'm']) {
+        const h = heads[kk], ph0 = kk === 'f' ? 0 : 1.9, off = kk === 'f' ? 0.35 : 0;
+        const tl = Math.min(lt, READY + 99) - (lt < OUT[0] ? off : 0);
+        let op = smooth(SKIN_IN[0], SKIN_IN[1], tl) * (1 - smooth(OUT[0], OUT[0] + 0.45, lt));
+        if (h.pts) {
+          const u = h.pts.material.uniforms; u.uT.value = tl;
+          u.uOut.value = smooth(OUT[0], OUT[1], lt) * 1.2;
+          u.uFade.value = lt >= OUT[0] ? 0 : smooth(SKIN_IN[0] + 0.3, SKIN_IN[1] + 0.25, tl);
+          u.uPix.value = renderer.getPixelRatio() * innerHeight / 1080;
+          h.pts.visible = u.uFade.value < 0.999 && state !== 'enter';
+        }
         if (state !== 'enter') {
-          // at rest they look slightly toward each other; as we come close they turn to the viewer and breathe
-          const face = (k === 'f' ? 0.28 : -0.22) * (1 - alive);
-          h.grp.rotation.y = face + Math.sin(t3 * 0.5 + ph0) * (0.1 + 0.18 * alive);
+          const turn = (kk === 'f' ? 0.28 : -0.22) * (1 - Math.max(alive, chooseK));
+          h.grp.rotation.y = turn + Math.sin(t3 * 0.5 + ph0) * (0.06 + 0.16 * Math.max(alive, chooseK));
           h.grp.rotation.x = Math.sin(t3 * 0.4 + ph0) * 0.02;
           h.grp.position.copy(h.base);
-        } else if (k === chosen) {
+        } else if (kk === chosen) {
           if (!h.goal) {
             const P = port(), tn = Math.tan(THREE.MathUtils.degToRad(cam.fov / 2));
             const gx = innerWidth * (P ? 0.462 : 0.388), gy = innerHeight * (P ? 0.405 : 0.453), gh = innerHeight * (P ? 0.321 : 0.497);
             const D = h.hm * (innerHeight / 2) / (gh * tn);
-            const local = new THREE.Vector3((gx - innerWidth / 2) / (innerHeight / 2) * D * tn, -(gy - innerHeight / 2) / (innerHeight / 2) * D * tn, -D);
+            const local = V3((gx - innerWidth / 2) / (innerHeight / 2) * D * tn, -(gy - innerHeight / 2) / (innerHeight / 2) * D * tn, -D);
             cam.updateMatrixWorld(); h.goal = local.applyMatrix4(cam.matrixWorld);
             h.from = h.grp.position.clone(); h.yawFrom = h.grp.rotation.y;
-            const camYaw = Math.atan2(cam.position.x - h.goal.x, cam.position.z - h.goal.z);
-            h.yawTo = camYaw + 0.52;
+            h.yawTo = Math.atan2(cam.position.x - h.goal.x, cam.position.z - h.goal.z) + 0.52;
           }
           h.grp.position.lerpVectors(h.from, h.goal, en);
           h.grp.rotation.y = lerp(h.yawFrom, h.yawTo, en); h.grp.rotation.x *= 1 - en;
         } else op *= 1 - smooth(0, 0.5, en);
         for (const m of h.mats) { m.opacity = op; m.depthWrite = op > 0.9; m.visible = op > 0.004; }
-        holoMat.uniforms.uOp.value = op;
+        holoMat.uniforms.uOp.value = 1;
         h.grp.visible = op > 0.003 || (h.pts && h.pts.visible);
       }
-      placePicks();
+      placeBrackets();
     }
     rim.intensity = 0.45 * (1 - en);
     composer.render();
     if (state === 'enter') {
-      const k = clamp((now - enterT0) / 1600, 0, 1);
-      root.style.setProperty('--enter', easeOut(k).toFixed(4));
-      if (k >= 1) { finish(); return; }
+      const kx = clamp((now - enterT0) / 1600, 0, 1);
+      root.style.setProperty('--enter', easeOut(kx).toFixed(4));
+      if (kx >= 1) { finish(); return; }
     }
     requestAnimationFrame(tick);
   }
@@ -464,9 +451,9 @@ export function initHero({ onEnter, onDone, getLang }) {
   requestAnimationFrame(tick);
 
   const api = {
-    state: () => ({ state, p: +p.toFixed(3), headsReady, intro: +introT.toFixed(2), assemble: +aT.toFixed(2), chosen }),
-    set: v => { introT = 1; aT = 99; target = clamp(v, 0, 1); p = Math.min(target, headsReady === true ? 1 : 0.3); },
-    enter, skip,
+    state: () => ({ state, loop: +lt.toFixed(2), headsReady, chosen, rush }),
+    set: v => { lt = clamp(v, 0, LOOP - 0.001); },
+    wake, enter, sleep,
   };
   window.__hero = api;
   return api;

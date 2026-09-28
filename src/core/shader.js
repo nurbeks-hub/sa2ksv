@@ -39,10 +39,15 @@ export const U = {
   uSkinSidM: { value: -1 },   // v3 textured skins: structure index of the ♂ / ♀ skin (−1 = none)
   uSkinSidF: { value: -1 },
   uSkinMix: { value: 0 },     // 0 = ♂ skin, 1 = ♀ skin; in between an interlaced top-down wipe
+  // light-particle transitions (fx/sparks.js): per depth group, how far the layer covering it has peeled (0..1)
+  uCover: { value: new Float32Array(8) },
+  uSecFx: { value: 0 },       // section plane sweeping / being dragged (0..1): lime cut contour + particles
+  uSecPlane: { value: new THREE.Vector4(0, 1, 0, 1000) },   // section plane in rest (rig) space, kept side n·p + w ≥ 0
 };
+export const LIME_LINEAR = 'vec3(0.637, 0.991, 0.0085)';   // brand lime #D1FE17 in linear RGB (effects only, never anatomy)
 
 // ------------------------------------------------------------------ GLSL
-const NOISE = /* glsl */`
+export const NOISE = /* glsl */`
 float hHash13(vec3 p) { p = fract(p * 0.1031); p += dot(p, p.zyx + 31.32); return fract((p.x + p.y) * p.z); }
 float hNoise(vec3 p) {
   vec3 i = floor(p), f = fract(p); f = f * f * (3.0 - 2.0 * f);
@@ -55,9 +60,14 @@ float hDisField(vec3 p) {
   f = clamp((f - 0.22) / 0.56, 0.0, 1.0);
   return clamp(f * 0.8 + (1.745 - p.y) * 0.55 - 0.02, 0.0, 1.0);
 }
+// dissolve front for a dissolve value z: the surface is gone where field < front. The front runs H_DW past the
+// field's range so that at z = 1 every light particle emitted by the front (fx/sparks.js) has finished its flight;
+// the surface itself is fully gone at z ≈ 0.72 and the rest of the transition belongs to the particles.
+#define H_DW 0.42
+float hDisF(float z) { return z * (1.06 + H_DW) - 0.06; }
 `;
 
-const VERT_HEAD = /* glsl */`
+export const VERT_HEAD = /* glsl */`
 attribute float aSid;
 uniform sampler2D uState;
 uniform sampler2D uStatic;
@@ -170,6 +180,8 @@ uniform vec3 uIris;     // |x|, y of the iris centre, iris radius
 uniform float uSexF;    // eased sex blend (fragment side)
 uniform float uBrows;   // 1 = paint procedural brows (off when strand brows are loaded)
 uniform float uSkinMix;
+uniform float uCover[8];
+uniform float uSecFx;
 flat varying float vSkinV;
 flat varying vec4 vState;
 flat varying vec4 vTint;
@@ -198,19 +210,25 @@ const FRAG_PROLOGUE = /* glsl */`
     hSkinEdge = (uSkinMix > 0.001 && uSkinMix < 0.999) ? (1.0 - smoothstep(0.0, 0.012, abs(hDw))) * (hScan ? 1.0 : 0.4) : 0.0;
   }
   float hN = 0.0;
-  float hDisEdge = 0.0, hGhostEdge = 0.0;
-  if (vState.z > 0.0 || vState.x > 0.0) hN = hDisField(vRest);
+  float hDisEdge = 0.0, hGhostEdge = 0.0, hRevEdge = 0.0;
+  float hCv = uCover[int(vTint.a + 0.5)];
+  bool hCvOn = hCv > 0.0 && hCv < 1.0;
+  if (vState.z > 0.0 || vState.x > 0.0 || hCvOn) hN = hDisField(vRest);
   if (vState.z > 0.0) {
-    float thr = vState.z * 1.12 - 0.06;
+    // disintegration front: a thin, grainy lime seam (the light particles leave from it)
+    float thr = hDisF(vState.z);
     if (hN < thr) discard;
-    hDisEdge = (vState.z < 0.999) ? 1.0 - smoothstep(0.0, 0.05, hN - thr) : 0.0;
+    float hG = hN - thr;
+    hDisEdge = (vState.z < 0.999) ? (1.0 - smoothstep(0.0, 0.022, hG)) * (0.5 + 0.9 * step(0.55, hNoise(vRest * 900.0))) + 0.06 * (1.0 - smoothstep(0.0, 0.06, hG)) : 0.0;
   }
+  // the layer underneath is built from light where the covering layer has just peeled away (a fading lime sheen)
+  if (hCvOn && vState.x < 0.5) { float hD = hDisF(hCv) - hN; hRevEdge = hD > 0.0 ? (1.0 - smoothstep(0.0, 0.16, hD)) * step(0.74, hNoise(vRest * 1500.0)) : 0.0; }
 `;
 const FRAG_GHOST_HANDOFF = /* glsl */`
   if (vState.x > 0.0) {
-    float thg = vState.x * 1.12 - 0.06;
+    float thg = hDisF(vState.x);
     if (hN < thg) discard;
-    hGhostEdge = (vState.x < 0.999) ? 1.0 - smoothstep(0.0, 0.05, hN - thg) : 0.0;
+    hGhostEdge = (vState.x < 0.999) ? 1.0 - smoothstep(0.0, 0.03, hN - thg) : 0.0;
   }
 `;
 
@@ -440,13 +458,15 @@ const LIT_EMISSIVE = /* glsl */`
     vec3 hV = normalize(vViewPosition);
     vec3 hNn = normalize(vNormal) * (gl_FrontFacing ? 1.0 : -1.0);
     float hFr = pow(1.0 - clamp(abs(dot(hNn, hV)), 0.0, 1.0), 3.0);
-    totalEmissiveRadiance += vec3(1.0, 0.52, 0.22) * hDisEdge * mix(2.2, 0.9, uSecOn);
-    totalEmissiveRadiance += vec3(0.55, 0.75, 1.0) * hGhostEdge * 1.4;
-    totalEmissiveRadiance += vec3(1.0, 0.86, 0.7) * hSkinEdge * 0.22;
+    vec3 hLime = ${LIME_LINEAR};
+    totalEmissiveRadiance += hLime * hDisEdge * mix(2.0, 1.0, uSecOn);
+    totalEmissiveRadiance += hLime * hGhostEdge * 1.2;
+    totalEmissiveRadiance += hLime * hSkinEdge * 0.9;
+    totalEmissiveRadiance += hLime * hRevEdge * 0.9;
     totalEmissiveRadiance += (vTint.rgb * 0.22 + vec3(0.05, 0.045, 0.04) + vec3(0.9, 0.75, 0.55) * hFr * 0.55) * max(vState.y, 0.0);
     #if NUM_CLIPPING_PLANES > 0
       float hKd = clippingPlanes[0].w - dot(vClipPosition, clippingPlanes[0].xyz);
-      totalEmissiveRadiance += vec3(1.0, 0.7, 0.42) * uSecOn * exp(-max(hKd, 0.0) / 0.00035) * 0.9;
+      totalEmissiveRadiance += mix(vec3(1.0, 0.7, 0.42) * 0.9, hLime * 2.2, uSecFx) * uSecOn * exp(-max(hKd, 0.0) / mix(0.00035, 0.0006, uSecFx));
     #endif
   }
 `;
@@ -568,7 +588,7 @@ export function patchGhost(mat) {
     f = f.replace('#include <clipping_planes_fragment>', '#include <clipping_planes_fragment>\n' + FRAG_PROLOGUE + `
       if (vState.x < 0.004) discard;
       float hGs = vState.x;
-      if (hGs < 0.999 && hN > hGs * 1.12 - 0.06 + 0.05) discard;   // not yet handed off from the solid
+      if (hGs < 0.999 && hN > hDisF(hGs) + 0.05) discard;   // not yet handed off from the solid
     `);
     f = f.replace('vec3 outgoingLight = diffuseColor.rgb * matcapColor.rgb;', `
       float hFr = pow(1.0 - clamp(abs(dot(normal, viewDir)), 0.0, 1.0), 2.6);

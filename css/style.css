@@ -1,4 +1,4 @@
-/* АДАМ БАСЫ — fonts: Inter (variable, wght + opsz; opsz 32 = Inter Display), Space Grotesk (variable), IBM Plex Mono. All SIL OFL 1.1, self-hosted in ../fonts. */
+/* Inside the Head — fonts: Inter (variable, wght + opsz; opsz 32 = Inter Display), Space Grotesk (variable), IBM Plex Mono. All SIL OFL 1.1, self-hosted in ../fonts. */
 @font-face { font-family: 'Inter'; font-style: italic; font-weight: 100 900; font-display: swap; src: url('../fonts/inter-cyrillic-ext-italic.woff2') format('woff2'); unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
 @font-face { font-family: 'Inter'; font-style: italic; font-weight: 100 900; font-display: swap; src: url('../fonts/inter-cyrillic-italic.woff2') format('woff2'); unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
 @font-face { font-family: 'Inter'; font-style: italic; font-weight: 100 900; font-display: swap; src: url('../fonts/inter-latin-ext-italic.woff2') format('woff2'); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
@@ -20,7 +20,7 @@
 @font-face { font-family: 'Plex Mono'; src: url('../fonts/ibm-plex-mono-cyrillic-ext-500-normal.woff2') format('woff2'); font-weight: 500; unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F; }
 
 /* =====================================================================================================================
-   АДАМ БАСЫ / The Head — UI v3 in the Higgsfield design language (specs/higgsfield-style.md).
+   Бастың ішінде / Голова изнутри / Inside the Head — UI v3 in the Higgsfield design language (specs/higgsfield-style.md).
    Quiet near-black chrome over the live 3D; lime only for the primary action, active states, focus and the brand.
    ===================================================================================================================== */
 :root {
@@ -172,6 +172,10 @@ body.ready #btn-cut { animation-delay: .42s; } body.ready #btn-organs { animatio
 .brand-by { display: inline-flex; align-items: center; gap: 7px; margin-left: 16px; padding-left: 16px; height: 20px; border-left: 1px solid var(--border-strong); }
 .by { font: 500 12px/1 var(--font); letter-spacing: .01em; color: var(--text-2); transform: translateY(-.5px); }
 .brand-by img, .about-by img, .lby img { display: block; width: 72px; height: auto; }
+/* «built with Claude Opus 5.5»: a second lockup after «by Higgsfield», same hairline divider and small label; the model name in white */
+.brand-with { display: inline-flex; align-items: center; gap: 6px; margin-left: 14px; padding-left: 14px; height: 20px; border-left: 1px solid var(--border-strong); white-space: nowrap; }
+.brand-with b { font: 600 12px/1 var(--font); letter-spacing: .005em; color: var(--text); transform: translateY(-.5px); }
+.brand-with .by:empty { display: none; }
 #brand .sub { margin-top: 2px; font: 500 13px/18px var(--font); letter-spacing: -.005em; color: var(--text-2); white-space: nowrap; }
 
 /* ---------------------------------------------------------------- top nav */
@@ -443,6 +447,7 @@ body.kiosk #organs .ogrid li b { font-size: 19px; }
 #aboutbox li { margin: 0 0 4px; padding-left: 2px; }
 #aboutbox li::marker { color: var(--text-3); }
 #aboutbox ul.lic { font-size: 14px; }
+#aboutbox ul.made b { font-weight: 600; color: var(--text-strong); }
 #aboutbox .sources { font: 400 12.5px/20px var(--font-mono); color: var(--text-2); }
 #aboutbox a { color: inherit; text-decoration: underline; text-decoration-color: var(--border-strong); text-underline-offset: 3px; overflow-wrap: anywhere; transition: color .15s, text-decoration-color .15s; }
 #aboutbox a:hover { color: var(--text); text-decoration-color: var(--lime); }
@@ -589,6 +594,13 @@ body.clean #brand, body.clean #top, body.clean #rail, body.clean #dock, body.cle
   #rail ol { gap: 5px; }
 }
 
+/* ---------------------------------------------------------------- mid widths: the «built with» lockup would run into the top-right
+   controls, so it drops to its own line under the wordmark (the subtitle moves down with it) */
+@media (max-width: 1240px) and (min-width: 901px) {
+  .brand-with { position: absolute; left: 0; top: calc(var(--ctl) + 2px); margin: 0; padding: 0; border: 0; height: 16px; }
+  #brand .sub { margin-top: 22px; }
+}
+
 /* ---------------------------------------------------------------- tablets: compact header */
 @media (max-width: 1080px) and (min-width: 761px) {
   #sex { min-width: 0; width: 112px; }
@@ -599,7 +611,9 @@ body.clean #brand, body.clean #top, body.clean #rail, body.clean #dock, body.cle
 @media (max-width: 900px) and (min-width: 761px) {
   .brand-row { flex-wrap: wrap; height: auto; min-height: var(--ctl); align-content: center; row-gap: 6px; }
   .wordmark { font-size: 20px; }
-  .brand-by { flex-basis: 100%; margin-left: 0; padding-left: 0; border-left: 0; height: 14px; }
+  .wordmark { flex-basis: 100%; }
+  .brand-by { margin-left: 0; padding-left: 0; border-left: 0; height: 14px; }
+  .brand-with { flex-basis: 100%; margin-left: 0; padding-left: 0; border-left: 0; height: 14px; }
   #brand .sub { display: none; }
 }
 
@@ -639,6 +653,7 @@ body.clean #brand, body.clean #top, body.clean #rail, body.clean #dock, body.cle
   .brand-by { margin-left: 12px; padding-left: 12px; height: 16px; gap: 6px; }
   .brand-by img { width: 60px; }
   .by { font-size: 11px; }
+  .brand-with { display: none; }   /* no room beside the wordmark on a phone; the credit stays in About */
   #brand .sub { display: none; }
   #top { left: var(--pad); right: var(--pad); top: 50px; gap: 6px; justify-content: space-between; }
   #sex { min-width: 0; width: 112px; flex: none; }

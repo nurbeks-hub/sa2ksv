@@ -55,7 +55,7 @@ export const UI = {
           "Модельдің пропорциялары ересек адамға тән типтік мәндерге сәйкес келеді. Шынайы бейнелегенде бұл масштабта көрінбей қалатын жерлерде модель әдейі асыра көрсетеді: қан тамырлары көрінуі үшін олардың калибрі үлкейтілген, шынытәрізді дене мен конъюнктива тірі көздегіден айқынырақ бейнеленген, ал түстер белгілі бір адамдікі емес, жалпыланған. Тамырлар режиміндегі ағып өтетін импульстер қан ағысының бағытын көрсетеді; олар оның симуляциясы емес.",
           "Бұл — оқып-үйренуге және таңырқауға арналған иллюстрация; медициналық немесе диагностикалық құрал емес."
       ],
-      "credit": "Claude (Opus 5.5) жасаған"
+      "credit": "Бастың ішінде · Claude Opus 5.5 көмегімен жасалған"
   },
   en: {
     sub: 'Human · right eye · 24 mm',
@@ -84,7 +84,7 @@ export const UI = {
       'Proportions follow typical adult values. Where the truth would be invisible at this scale, the model exaggerates on purpose: blood-vessel calibres are enlarged so they can be seen, the vitreous and conjunctiva are shown more visibly than in life, and colours are representative rather than of one person. The flowing pulses in vessel mode indicate the direction of blood flow; they are not a simulation of it.',
       'An illustration for learning and wonder, not a medical or diagnostic tool.',
     ],
-    credit: 'Built by Claude (Opus 5.5)',
+    credit: 'Inside the Head · built with Claude Opus 5.5',
   },
   ru: {
     sub: 'Человек · правый глаз · 24 мм',
@@ -113,7 +113,7 @@ export const UI = {
       'Пропорции соответствуют типичным значениям для взрослого. Там, где правда в таком масштабе была бы невидима, модель сознательно преувеличивает: калибр сосудов увеличен, чтобы их было видно, стекловидное тело и конъюнктива показаны заметнее, чем в жизни, цвета обобщённые, а не конкретного человека. Бегущие импульсы в режиме сосудов показывают направление тока крови, а не его симуляцию.',
       'Это иллюстрация для обучения и удивления, а не медицинский или диагностический инструмент.',
     ],
-    credit: 'Сделано Claude (Opus 5.5)',
+    credit: 'Голова изнутри · создано с помощью Claude Opus 5.5',
   },
 };
 

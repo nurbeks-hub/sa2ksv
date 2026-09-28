@@ -14,6 +14,7 @@ import { UI, LANGS, initialLang, storeLang } from './ui/i18n.js';
 import { Sound } from './audio/sound.js';
 import { createDive } from './core/dive.js';
 import { initHero } from './hero/hero.js';
+import { createSparks } from './fx/sparks.js';
 
 const Q = new URLSearchParams(location.search);
 const $ = (s) => document.querySelector(s);
@@ -77,6 +78,8 @@ pivot.add(rig); world.add(pivot); scene.add(world);
 const section = createSection({ rig, scene });
 
 let dive = null;             // organ deep-dive controller (core/dive.js)
+let sparks = null, sparksStarted = false, stateMoving = false, lastDiveId = null;   // light-particle transitions (fx/sparks.js)
+const REDUCED_MOTION = matchMedia('(prefers-reduced-motion: reduce)').matches;
 let hairMod = null;          // optional strand hair (see __head.attachHair)
 let heroHold = false;        // opening film is on screen: the 3D intro waits
 let heroDoneAt = -1e9;       // when the film handed over (the kiosk tour lets the head intro finish first)
@@ -297,12 +300,17 @@ function stepState(dt) {
     if (ng > 0.002) anyGhost = true;
   }
   if (changed) { M.stateTex.needsUpdate = true; for (const r of renderables) r.allHidden = r.sids.every(s => tOwn[s] >= 1 && cur[s * 4 + 2] >= 0.999 && tForce[s] === 0 && cur[s * 4 + 3] < 0.001); }
+  stateMoving = changed;
   // layer dissolves
   for (let g = 0; g < 8; g++) {
     const ri = railIndexOfGroup(g);
     const off = ri >= 0 && S.off.has(RAIL[ri]) ? 1 : 0;
     toggleDis[g] = toggleDis[g] < off ? Math.min(off, toggleDis[g] + dt / 0.9) : Math.max(off, toggleDis[g] - dt / 0.9);
     layerDis[g] = Math.max(depthDissolve(g, S.depth), toggleDis[g]);
+    if (toggleDis[g] > 0 && toggleDis[g] < 1) stateMoving = true;
+    // how far the layer covering this group has peeled (the uncovered surface sparkles as it is "built")
+    const at = GROUP_DISSOLVE_AT[g];
+    U.uCover.value[g] = g === G.brain ? clamp(S.depth - 4, 0, 1) : (at == null || at === 0) ? 0 : clamp(S.depth - (g === G.organ ? 2 : at - 1), 0, 1);
   }
   // visibility / culling
   const secOn = !!S.section || section.state.on > 0.01;
@@ -764,6 +772,12 @@ function fillAbout() {
   box.querySelector('h2').textContent = A.title || '';
   const body = box.querySelector('.about-body'); body.replaceChildren();
   for (const para of A.body || []) { const p = document.createElement('p'); p.textContent = para; body.append(p); }
+  // «How it was made»: tool name (before « — ») in bold, what it did after it
+  const madeT = box.querySelector('.made-t'), madeL = box.querySelector('.made');
+  if (madeT && madeL) {
+    madeT.textContent = A.madeTitle || ''; madeL.replaceChildren();
+    for (const s of A.made || []) { const li = document.createElement('li'), k = s.indexOf(' — '); if (k > 0) { const b = document.createElement('b'); b.textContent = s.slice(0, k); li.append(b, s.slice(k)); } else li.textContent = s; madeL.append(li); }
+  }
   box.querySelector('.simpl-t').textContent = A.simplTitle || '';
   const sl = box.querySelector('.simpl'); sl.replaceChildren();
   for (const s of A.simpl || []) { const li = document.createElement('li'); li.textContent = s; sl.append(li); }
@@ -1032,10 +1046,20 @@ function returnToOverview() {
   exitInspect(); closeDiveForTour(); closeSearch(); $('#aboutbox').hidden = true; $('#organs').hidden = true;
   setSection(null); resetView();
 }
+// opening / attract loop (src/hero): on load, and again whenever the site has been idle (kiosk and web)
+function startHero(idleReturn) {
+  heroHold = !!initHero({
+    getLang: () => S.lang, idleReturn,
+    onEnter: sex => { setSex(sex === 'f'); S.sex = S.sexTarget; heroHold = false; S.intro = Math.max(S.intro, 0.62); S.lastActivity = performance.now(); },
+    onDone: sex => { heroHold = false; if (sex) heroDoneAt = performance.now(); S.lastActivity = performance.now(); },
+  });
+  return heroHold;
+}
+const WEB_IDLE_MS = +(Q.get('idle') || 90000);
 function tickIdle(now) {
   if (!S.ready) return;
   if (KIOSK && now - lastMove.t > 3000 && now - S.lastActivity > 3000) document.body.classList.add('cursor-hidden');
-  if (KIOSK && !tour.on && !heroHold && now - S.lastActivity > IDLE_MS) { returnToOverview(); startTour({ auto: true }); }
+  if (!heroHold && !(tour.on && !tour.auto) && now - S.lastActivity > (KIOSK ? IDLE_MS : WEB_IDLE_MS)) { stopTour(); returnToOverview(); if (!startHero(true)) S.lastActivity = now; }
 }
 // organs menu
 const organsEl = $('#organs'); const diveMeta = {};
@@ -1155,6 +1179,29 @@ function applySexRig(sexE) {
   U.uSkinMix.value = sexE;
 }
 
+// ============================================================ light-particle transitions
+function tickSparks() {
+  if (!sparksStarted && S.ready && M) {
+    sparksStarted = true;
+    // built a moment after the head is on screen (the sampling runs in slices between frames)
+    setTimeout(() => createSparks({
+      M, renderables, parent: rig, renderer, camera, scene, reducedMotion: REDUCED_MOTION,
+      count: LITE_TEX || IS_TOUCH ? 45000 : 200000, minPer: LITE_TEX || IS_TOUCH ? 14 : 40,
+    }).then(s => { sparks = s; window.__head.timing.sparks = { count: s.count, byGroup: s.byGroup }; }).catch(e => console.warn('[head] sparks', e)), 600);
+  }
+  // deep dive opening: the chosen organ is rebuilt from light while everything else disintegrates
+  const did = dive && dive.active ? dive.active : null;
+  if (did !== lastDiveId) {
+    lastDiveId = did;
+    if (did && !REDUCED_MOTION) for (const sid of dive.D.sids) { const o = sid * 4; if (cur[o + 2] < 0.5) cur[o + 2] = 1.7; }   // (>1: waits ~0.4 s while the head around it disintegrates)
+    if (did) { M.stateTex.needsUpdate = true; stateMoving = true; }
+  }
+  if (!sparks) return;
+  const active = stateMoving || S.depth !== S.depthTarget || S.sex !== S.sexTarget || section.state.fx > 0;
+  const secOn = !!S.section || section.state.on > 0.01;
+  sparks.update(active, stage.dpr < 0.85 ? 0.6 : 1, (g) => secOn || S.depth >= GROUP_REVEAL_AT[g] || S.depthTarget >= GROUP_REVEAL_AT[g] || (g === G.bone && S.depth > 2.5));
+}
+
 // ============================================================ frame loop
 const clock = { last: performance.now(), getDelta() { const n = performance.now(), d = (n - this.last) / 1000; this.last = n; return d; } };
 const perf = { acc: 0, n: 0, win: 0, fps: 60, hist: [] };
@@ -1205,7 +1252,7 @@ function tick() {
   const prevDepth = S.depth;
   {  // eased constant-speed travel: every layer gets a readable ~1 s dissolve, long jumps go faster
     const diff = S.depthTarget - S.depth, ad = Math.abs(diff);
-    const speed = Math.max(0.95, ad * 0.85) * Math.min(1, 0.25 + ad * 3);
+    const speed = Math.max(0.8, ad * 0.85) * Math.min(1, 0.25 + ad * 3);   // ~1.3 s per layer: the light particles need the time to read
     S.depth += Math.sign(diff) * Math.min(ad, speed * dt);
     if (Math.abs(S.depth - S.depthTarget) < 0.001) S.depth = S.depthTarget;
   }
@@ -1236,6 +1283,7 @@ function tick() {
   updateLife(dt, t);
   section.update(dt);
   stepState(dt);
+  tickSparks();
   hoverPick(performance.now());
   updateCamera(dt);
   if (S.section) updateGrip();
@@ -1352,11 +1400,7 @@ window.__head = {
 async function boot() {
   applyLang();
   // opening film (src/hero): holds the 3D intro until the visitor picks whose head to enter
-  heroHold = !!initHero({
-    getLang: () => S.lang,
-    onEnter: sex => { setSex(sex === 'f'); S.sex = S.sexTarget; heroHold = false; S.intro = Math.max(S.intro, 0.62); S.lastActivity = performance.now(); },
-    onDone: sex => { heroHold = false; if (sex) heroDoneAt = performance.now(); S.lastActivity = performance.now(); },
-  });
+  startHero(false);
   if (Q.has('dpr')) stage.setDPR(+Q.get('dpr') || 1);
   buildRail(); updateRail();
   if (!IS_TOUCH) $('#sound').classList.add('pulse');
@@ -1437,7 +1481,7 @@ async function boot() {
   if (Q.get('inspect')) { S.intro = 1; inspect(Q.get('inspect')); }
   if (Q.get('dive')) { S.intro = 1; openDive(Q.get('dive'), +(Q.get('chapter') || 0)); }
   // with the opening film on screen the tour waits for it to hand over to the 3D head
-  if (Q.has('tour') || KIOSK) setTimeout(function go() { if (heroHold || performance.now() - heroDoneAt < 3500) return setTimeout(go, 500); if (!tour.on) startTour({ auto: KIOSK }); }, NO_INTRO ? 300 : 5600);
+  if (Q.has('tour')) setTimeout(function go() { if (heroHold || performance.now() - heroDoneAt < 3500) return setTimeout(go, 500); if (!tour.on) startTour({ auto: KIOSK }); }, NO_INTRO ? 300 : 5600);
   // eye deep dive: load the eye page hidden in the background so it opens instantly
   // (a little later, when the visitor is not interacting: the eye page compiles its shaders on the main thread)
   const preload = () => { if (performance.now() - S.lastActivity < 4000 || tour.on && !KIOSK) return setTimeout(preload, 3000); try { dive.preloadFrame(); } catch (e) { console.warn("[head] eye preload", e); } };
