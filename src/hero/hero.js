@@ -176,10 +176,78 @@ export function initHero({ onEnter, onDone, getLang }) {
       }`,
   });
   holoMat.clippingPlanes = [scanHi, scanLo];
+  // ---- assembly: lime particles build each head from the inside out (brain → skull → muscles → skin)
+  const LAYERS = ['brain', 'skull', 'muscle', 'skin'];
+  const LSTART = [0.25, 1.35, 2.45, 3.55], LDUR = 1.1, LSPREAD = 0.95;          // seconds, per layer
+  const ASSEMBLE_END = LSTART[3] + LSPREAD + LDUR + 0.25;                     // skin fully landed
+  const SKIN_IN = [ASSEMBLE_END - 0.55, ASSEMBLE_END + 0.45];                  // the photoreal skin solidifies
+  const LCOL = [new THREE.Color(0xd9828c), new THREE.Color(0xd8ccb4), new THREE.Color(0xb3322c), new THREE.Color(0xd6a88a)].map(c => c.multiplyScalar(0.72));
+  const ptsMat = new THREE.ShaderMaterial({
+    transparent: true, depthWrite: true,
+    uniforms: { uT: { value: 0 }, uFade: { value: 0 }, uSize: { value: 0.0015 }, uPix: { value: 1 }, uBase: { value: new THREE.Vector3() }, uCol: { value: LCOL }, uLime: { value: new THREE.Color(0xd1fe17) } },
+    vertexShader: `
+      attribute float aSeed; attribute float aLayer; attribute float aDelay;
+      uniform float uT, uSize, uPix; uniform vec3 uBase; uniform vec3 uCol[4];
+      varying vec3 vCol; varying float vA; varying float vFly;
+      float ease(float t){ return t < 0.5 ? 4.0*t*t*t : 1.0 - pow(-2.0*t + 2.0, 3.0) / 2.0; }
+      void main(){
+        float k = clamp((uT - aDelay) / ${LDUR.toFixed(2)}, 0.0, 1.0), e = ease(k);
+        // born in a ring of light on the glass, spirals up into place
+        float a0 = aSeed * 6.2831853 * 7.0, r0 = 0.03 + 0.09 * fract(aSeed * 13.7);
+        vec3 start = uBase + vec3(cos(a0) * r0, 0.0, sin(a0) * r0);
+        vec3 p = mix(start, position, e);
+        vec3 axis = vec3(uBase.x, p.y, uBase.z);
+        float ang = (1.0 - e) * (2.2 + 2.0 * fract(aSeed * 7.1));
+        vec3 d = p - axis; p = axis + vec3(d.x * cos(ang) - d.z * sin(ang), d.y, d.x * sin(ang) + d.z * cos(ang));
+        p.y += sin((1.0 - e) * 3.14159) * 0.03 * fract(aSeed * 3.3);
+        vec4 mv = modelViewMatrix * vec4(p, 1.0); gl_Position = projectionMatrix * mv;
+        vFly = 1.0 - smoothstep(0.72, 1.0, k);
+        gl_PointSize = uSize * uPix * (1.0 + vFly * 0.6) * (projectionMatrix[1][1] * 0.5) * 1080.0 / max(0.05, -mv.z) / 1.0;
+        int li = int(aLayer + 0.5);
+        vCol = li == 0 ? uCol[0] : li == 1 ? uCol[1] : li == 2 ? uCol[2] : uCol[3];
+        vA = smoothstep(0.0, 0.08, k);
+      }`,
+    fragmentShader: `
+      uniform vec3 uLime; uniform float uFade; varying vec3 vCol; varying float vA; varying float vFly;
+      void main(){
+        vec2 q = gl_PointCoord - 0.5; float r = dot(q, q); if (r > 0.25) discard;
+        vec3 c = mix(vCol, uLime * 1.25, vFly);
+        float a = vA * (1.0 - uFade) * smoothstep(0.25, 0.12, r);
+        if (a < 0.02) discard;
+        gl_FragColor = vec4(c, a);
+      }`,
+  });
+  const clouds = {};
+  const cloudP = fetch(ROOT + 'assets/hero/assemble.bin').then(r => r.arrayBuffer()).then(buf => {
+    const hl = new DataView(buf).getUint32(0, true); const hdr = JSON.parse(new TextDecoder().decode(new Uint8Array(buf, 4, hl)));
+    const base = 4 + hl, ctr = hdr.center, half = hdr.half;
+    for (const sex of ['m', 'f']) {
+      const ls = hdr.layers.filter(l => l.sex === sex); const n = ls.reduce((a, l) => a + l.n, 0);
+      const pos = new Float32Array(n * 3), seed = new Float32Array(n), lay = new Float32Array(n), del = new Float32Array(n);
+      let o = 0;
+      for (const l of ls) {
+        const q = new Int16Array(buf, base + l.offset, l.n * 3), li = LAYERS.indexOf(l.layer);
+        let y0 = Infinity, y1 = -Infinity;
+        for (let i = 0; i < l.n; i++) { const y = ctr[1] + q[i * 3 + 1] / 32767 * half; y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
+        for (let i = 0; i < l.n; i++) {
+          const j = o + i;
+          for (let c = 0; c < 3; c++) pos[j * 3 + c] = ctr[c] + q[i * 3 + c] / 32767 * half;
+          seed[j] = Math.random(); lay[j] = li;
+          // bottom-up wave inside each layer, with jitter
+          del[j] = LSTART[li] + ((pos[j * 3 + 1] - y0) / Math.max(1e-4, y1 - y0)) * LSPREAD * 0.7 + Math.random() * LSPREAD * 0.3;
+        }
+        o += l.n;
+      }
+      const g = new THREE.BufferGeometry();
+      g.setAttribute('position', new THREE.BufferAttribute(pos, 3)); g.setAttribute('aSeed', new THREE.BufferAttribute(seed, 1));
+      g.setAttribute('aLayer', new THREE.BufferAttribute(lay, 1)); g.setAttribute('aDelay', new THREE.BufferAttribute(del, 1));
+      clouds[sex] = g;
+    }
+  }).catch(e => { console.warn('[hero] assembly cloud', e); });
   {
     const loader = new GLTFLoader(); const draco = new DRACOLoader(); draco.setDecoderPath(ROOT + 'vendor/three/jsm/libs/draco/'); loader.setDRACOLoader(draco);
     const suffix = LITE ? '_2k' : '';
-    Promise.all(['f', 'm'].map(k => loader.loadAsync(`${ROOT}assets/skin_${k}${suffix}.glb`).then(g => {
+    Promise.all(['f', 'm'].map(k => loader.loadAsync(`${ROOT}assets/skin_${k}${suffix}.glb`).then(async g => {
       const obj = g.scene; const box = new THREE.Box3().setFromObject(obj);
       const mats = [], shells = [];
       const meshes = []; obj.traverse(o => { if (o.isMesh) meshes.push(o); });
@@ -190,10 +258,16 @@ export function initHero({ onEnter, onDone, getLang }) {
       });
       const top = box.max.y, chin = CHIN[k], cy = (top + chin) / 2, c = box.getCenter(new THREE.Vector3());
       obj.position.set(-c.x, -cy, -c.z);
+      await cloudP;
+      let pts = null;
+      if (clouds[k]) {
+        const mat = ptsMat.clone(); mat.uniforms.uCol.value = LCOL; mat.uniforms.uBase.value.set(c.x, box.min.y, c.z);
+        pts = new THREE.Points(clouds[k], mat); pts.frustumCulled = false; pts.renderOrder = 4; obj.add(pts);
+      }
       const grp = new THREE.Group(); grp.add(obj); scene.add(grp); grp.traverse(o => o.layers.set(1));
       const neck = box.min.y - cy;                                     // neck cut, relative to the group origin
       grp.position.set(HX[k], -neck + 0.002, 0);
-      heads[k] = { grp, obj, mats, shells, hm: top - chin, base: grp.position.clone() };
+      heads[k] = { grp, obj, mats, shells, pts, hm: top - chin, base: grp.position.clone() };
     }))).then(() => { headsReady = true; draco.dispose(); }).catch(e => { console.warn('[hero] 3D heads', e); headsReady = 'failed'; });
   }
   // the scan beam: a thin lime sheet that slides down through both heads
@@ -219,8 +293,10 @@ export function initHero({ onEnter, onDone, getLang }) {
     const pos = new THREE.Vector3(t.x + Math.sin(yaw) * d, t.y + h, t.z + Math.cos(yaw) * d);
     // the hook: rise out of a macro on the etched mark of her cube
     if (intro < 1) {
-      const e = easeIO(intro);
-      const m0 = new THREE.Vector3(HX.f + 0.05, FLOOR_Y + CH * 0.5, CUBE / 2 + 0.16), mt = new THREE.Vector3(HX.f + 0.01, FLOOR_Y + CH * 0.5, CUBE / 2 - 0.012);
+      // close, slowly orbiting while the heads assemble; the wide reveal comes once they are built
+      const e = easeIO(smooth(0.62, 1, intro));
+      const ang = lerp(0.42, -0.12, easeIO(smooth(0, 0.7, intro))), R0 = 0.95;
+      const mt = new THREE.Vector3(0.0, 0.12, 0), m0 = new THREE.Vector3(mt.x + Math.sin(ang) * R0, 0.19, mt.z + Math.cos(ang) * R0);
       pos.lerpVectors(m0, pos, e); t.lerpVectors(mt, t, e);
     }
     return { pos, t };
@@ -274,7 +350,7 @@ export function initHero({ onEnter, onDone, getLang }) {
   function enter(sex) {
     if (state === 'enter' || state === 'gone') return;
     clearTimeout(kioskPick); cancelAnimationFrame(autoT);
-    target = 1; p = 1; introT = 1;
+    target = 1; p = 1; introT = 1; aT = Math.max(aT, 99);
     try { sessionStorage.setItem('heroLast', sex); } catch {}
     chosen = sex; state = 'enter'; enterT0 = performance.now();
     root.classList.add('entering', 'enter-' + sex);
@@ -302,13 +378,13 @@ export function initHero({ onEnter, onDone, getLang }) {
 
   // ------------------------------------------------------------ loop
   const tStart = performance.now(); let last = tStart, t3 = 0, introT = REDUCED ? 1 : 0;
-  const INTRO_S = 3.2;
+  const INTRO_S = ASSEMBLE_END + 0.9; let aT = REDUCED ? 99 : 0;
   function tick(now) {
     if (state === 'gone') return;
     const dt = Math.min(0.05, (now - last) / 1000); last = now; t3 += dt;
-    introT = Math.min(1, introT + dt / INTRO_S);
-    root.classList.toggle('intro-done', introT >= 0.55);
-    if (KIOSK && state === 'film' && target === 0 && now - tStart > 5200) autoTo(1, 7.5);
+    if (headsReady === true || headsReady === 'failed') { aT += dt; introT = Math.min(1, introT + dt / INTRO_S); }
+    root.classList.toggle('intro-done', aT >= ASSEMBLE_END - 0.3);
+    if (KIOSK && state === 'film' && target === 0 && aT > ASSEMBLE_END + 2.2) autoTo(1, 7.5);
     if (REDUCED && state === 'film') target = 1;
     // the heads must be loaded before the camera reaches them
     const cap = headsReady === true || headsReady === 'failed' ? 1 : 0.3;
@@ -346,7 +422,9 @@ export function initHero({ onEnter, onDone, getLang }) {
       const alive = smooth(0.6, 1, p);
       for (const k of ['f', 'm']) {
         const h = heads[k], ph0 = k === 'f' ? 0 : 1.9;
-        let op = smooth(0.0, 0.6, introT);
+        const skinIn = smooth(SKIN_IN[0], SKIN_IN[1], aT - (k === 'f' ? 0.35 : 0));
+        let op = skinIn;
+        if (h.pts) { const u = h.pts.material.uniforms; u.uT.value = aT - (k === 'f' ? 0.35 : 0); u.uFade.value = smooth(SKIN_IN[0] + 0.3, SKIN_IN[1] + 0.25, u.uT.value); u.uPix.value = renderer.getPixelRatio() * innerHeight / 1080; h.pts.visible = u.uFade.value < 0.999 && state !== 'enter'; }
         if (state !== 'enter') {
           // at rest they look slightly toward each other; as we come close they turn to the viewer and breathe
           const face = (k === 'f' ? 0.28 : -0.22) * (1 - alive);
@@ -367,9 +445,9 @@ export function initHero({ onEnter, onDone, getLang }) {
           h.grp.position.lerpVectors(h.from, h.goal, en);
           h.grp.rotation.y = lerp(h.yawFrom, h.yawTo, en); h.grp.rotation.x *= 1 - en;
         } else op *= 1 - smooth(0, 0.5, en);
-        for (const m of h.mats) m.opacity = op;
+        for (const m of h.mats) { m.opacity = op; m.depthWrite = op > 0.9; m.visible = op > 0.004; }
         holoMat.uniforms.uOp.value = op;
-        h.grp.visible = op > 0.003;
+        h.grp.visible = op > 0.003 || (h.pts && h.pts.visible);
       }
       placePicks();
     }
@@ -386,8 +464,8 @@ export function initHero({ onEnter, onDone, getLang }) {
   requestAnimationFrame(tick);
 
   const api = {
-    state: () => ({ state, p: +p.toFixed(3), headsReady, intro: +introT.toFixed(2), chosen }),
-    set: v => { introT = 1; target = clamp(v, 0, 1); p = Math.min(target, headsReady === true ? 1 : 0.3); },
+    state: () => ({ state, p: +p.toFixed(3), headsReady, intro: +introT.toFixed(2), assemble: +aT.toFixed(2), chosen }),
+    set: v => { introT = 1; aT = 99; target = clamp(v, 0, 1); p = Math.min(target, headsReady === true ? 1 : 0.3); },
     enter, skip,
   };
   window.__hero = api;
