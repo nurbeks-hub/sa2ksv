@@ -162,3 +162,21 @@ body.hero-on #brand, body.hero-on #panel { opacity: 0 !important; pointer-events
 @keyframes hero-wait { 50% { opacity: .35; } }
 #hero.waiting3d .hero-progress i { animation: hero-wait 1s ease-in-out infinite; }
 #hero.choosing .hero-progress, #hero.entering .hero-progress { opacity: 0; transition: opacity .3s; }
+
+/* ------------------------------------------------ v3.2: the opening is a dark 3D stage (heads on glass cubes) */
+#hero.hero3d { background: #0b0d0f; }
+#hero.hero3d .hero-3d { clip-path: none; }
+#hero.hero3d .hero-vignette { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(120% 90% at 60% 45%, transparent 55%, rgba(0,0,0,.55) 100%); }
+#hero.hero3d .hero-title, #hero.hero3d .hero-ask, #hero.hero3d .hero-cue { color: #F7F7F8; }
+#hero.hero3d .hero-sub { color: #A9ACB0; }
+#hero.hero3d .hero-h mark { color: #131517; }
+#hero.hero3d .hero-cue-line { background: rgba(255,255,255,.2); }
+#hero.hero3d .hero-cue-line::after { background: #fff; }
+#hero.hero3d .hero-skip { background: rgba(35,38,42,.72); color: #F7F7F8; border-color: rgba(255,255,255,.1); }
+#hero.hero3d .hero-progress { background: rgba(255,255,255,.07); }
+/* the title waits for the camera to rise out of the macro */
+#hero.hero3d .hero-title, #hero.hero3d .hero-cue { visibility: hidden; }
+#hero.hero3d.intro-done .hero-title, #hero.hero3d.intro-done .hero-cue { visibility: visible; }
+#hero.hero3d:not(.intro-done) .hero-h span, #hero.hero3d:not(.intro-done) .hero-h mark, #hero.hero3d:not(.intro-done) .hero-sub, #hero.hero3d:not(.intro-done) .hero-cue { animation: none; }
+#hero.hero3d.tall .hero-title { top: auto; bottom: 15vh; }
+#hero.hero3d.tall .hero-ask { top: 9vh; bottom: auto; }
