@@ -1,0 +1,6279 @@
+[
+{
+"id": "anterior-belly-of-digastric-muscle-el",
+"name_en_raw": "Anterior belly of digastric muscle.el",
+"system": "bones",
+"nodes": [
+"Anterior belly of digastric muscle.el"
+],
+"verts": 160
+},
+{
+"id": "anterior-belly-of-digastric-muscle-er",
+"name_en_raw": "Anterior belly of digastric muscle.er",
+"system": "bones",
+"nodes": [
+"Anterior belly of digastric muscle.er"
+],
+"verts": 160
+},
+{
+"id": "anterior-cells-of-ethmoid-bone",
+"name_en_raw": "Anterior cells of ethmoid bone",
+"system": "bones",
+"nodes": [
+"Anterior cells of ethmoid bone.l",
+"Anterior cells of ethmoid bone.r"
+],
+"verts": 744
+},
+{
+"id": "arytenoid-cartilage",
+"name_en_raw": "Arytenoid cartilage",
+"system": "bones",
+"nodes": [
+"Arytenoid cartilage.l",
+"Arytenoid cartilage.r"
+],
+"verts": 3784
+},
+{
+"id": "ascending-part-of-trapezius-muscle-el",
+"name_en_raw": "Ascending part of trapezius muscle.el",
+"system": "bones",
+"nodes": [
+"Ascending part of trapezius muscle.el"
+],
+"verts": 184
+},
+{
+"id": "ascending-part-of-trapezius-muscle-er",
+"name_en_raw": "Ascending part of trapezius muscle.er",
+"system": "bones",
+"nodes": [
+"Ascending part of trapezius muscle.er"
+],
+"verts": 184
+},
+{
+"id": "atlas-c1",
+"name_en_raw": "Atlas (C1)",
+"system": "bones",
+"nodes": [
+"Atlas (C1)"
+],
+"verts": 1106
+},
+{
+"id": "axis-c2",
+"name_en_raw": "Axis (C2)",
+"system": "bones",
+"nodes": [
+"Axis (C2)"
+],
+"verts": 1168
+},
+{
+"id": "corniculate-cartilage",
+"name_en_raw": "Corniculate cartilage",
+"system": "bones",
+"nodes": [
+"Corniculate cartilage.l",
+"Corniculate cartilage.r"
+],
+"verts": 140
+},
+{
+"id": "cricoid-cartilage",
+"name_en_raw": "Cricoid cartilage",
+"system": "bones",
+"nodes": [
+"Cricoid cartilage"
+],
+"verts": 941
+},
+{
+"id": "ethmoid-bone",
+"name_en_raw": "Ethmoid bone",
+"system": "bones",
+"nodes": [
+"Ethmoid bone"
+],
+"verts": 5082
+},
+{
+"id": "frontal-bone",
+"name_en_raw": "Frontal bone",
+"system": "bones",
+"nodes": [
+"Frontal bone"
+],
+"verts": 3902
+},
+{
+"id": "geniohyoid-muscle-el",
+"name_en_raw": "Geniohyoid muscle.el",
+"system": "bones",
+"nodes": [
+"Geniohyoid muscle.el"
+],
+"verts": 296
+},
+{
+"id": "geniohyoid-muscle-er",
+"name_en_raw": "Geniohyoid muscle.er",
+"system": "bones",
+"nodes": [
+"Geniohyoid muscle.er"
+],
+"verts": 296
+},
+{
+"id": "hyoid-bone",
+"name_en_raw": "Hyoid bone",
+"system": "bones",
+"nodes": [
+"Hyoid bone"
+],
+"verts": 664
+},
+{
+"id": "incus",
+"name_en_raw": "Incus",
+"system": "bones",
+"nodes": [
+"Incus.l",
+"Incus.r"
+],
+"verts": 2536
+},
+{
+"id": "inferior-nasal-concha-bone",
+"name_en_raw": "Inferior nasal concha bone",
+"system": "bones",
+"nodes": [
+"Inferior nasal concha bone.l",
+"Inferior nasal concha bone.r"
+],
+"verts": 476
+},
+{
+"id": "lacrimal-bone",
+"name_en_raw": "Lacrimal bone",
+"system": "bones",
+"nodes": [
+"Lacrimal bone.l",
+"Lacrimal bone.r"
+],
+"verts": 592
+},
+{
+"id": "lateral-process-of-nasal-septal-cartilage",
+"name_en_raw": "Lateral process of nasal septal cartilage",
+"system": "bones",
+"nodes": [
+"Lateral process of nasal septal cartilage.l",
+"Lateral process of nasal septal cartilage.r"
+],
+"verts": 348
+},
+{
+"id": "levator-scapulae-el",
+"name_en_raw": "Levator scapulae.el",
+"system": "bones",
+"nodes": [
+"Levator scapulae.el"
+],
+"verts": 5668
+},
+{
+"id": "levator-scapulae-er",
+"name_en_raw": "Levator scapulae.er",
+"system": "bones",
+"nodes": [
+"Levator scapulae.er"
+],
+"verts": 5668
+},
+{
+"id": "levatores-longi-costarum-e1l",
+"name_en_raw": "Levatores longi costarum.e1l",
+"system": "bones",
+"nodes": [
+"Levatores longi costarum.e1l"
+],
+"verts": 670
+},
+{
+"id": "levatores-longi-costarum-e1r",
+"name_en_raw": "Levatores longi costarum.e1r",
+"system": "bones",
+"nodes": [
+"Levatores longi costarum.e1r"
+],
+"verts": 670
+},
+{
+"id": "levatores-longi-costarum-el",
+"name_en_raw": "Levatores longi costarum.el",
+"system": "bones",
+"nodes": [
+"Levatores longi costarum.el"
+],
+"verts": 442
+},
+{
+"id": "levatores-longi-costarum-er",
+"name_en_raw": "Levatores longi costarum.er",
+"system": "bones",
+"nodes": [
+"Levatores longi costarum.er"
+],
+"verts": 442
+},
+{
+"id": "longissimus-thoracis-muscle-e20l",
+"name_en_raw": "Longissimus thoracis muscle.e20l",
+"system": "bones",
+"nodes": [
+"Longissimus thoracis muscle.e20l"
+],
+"verts": 286
+},
+{
+"id": "longissimus-thoracis-muscle-e20r",
+"name_en_raw": "Longissimus thoracis muscle.e20r",
+"system": "bones",
+"nodes": [
+"Longissimus thoracis muscle.e20r"
+],
+"verts": 286
+},
+{
+"id": "longissimus-thoracis-muscle-e21l",
+"name_en_raw": "Longissimus thoracis muscle.e21l",
+"system": "bones",
+"nodes": [
+"Longissimus thoracis muscle.e21l"
+],
+"verts": 216
+},
+{
+"id": "longissimus-thoracis-muscle-e21r",
+"name_en_raw": "Longissimus thoracis muscle.e21r",
+"system": "bones",
+"nodes": [
+"Longissimus thoracis muscle.e21r"
+],
+"verts": 216
+},
+{
+"id": "longissimus-thoracis-muscle-e22l",
+"name_en_raw": "Longissimus thoracis muscle.e22l",
+"system": "bones",
+"nodes": [
+"Longissimus thoracis muscle.e22l"
+],
+"verts": 180
+},
+{
+"id": "longissimus-thoracis-muscle-e22r",
+"name_en_raw": "Longissimus thoracis muscle.e22r",
+"system": "bones",
+"nodes": [
+"Longissimus thoracis muscle.e22r"
+],
+"verts": 180
+},
+{
+"id": "longissimus-thoracis-muscle-e23l",
+"name_en_raw": "Longissimus thoracis muscle.e23l",
+"system": "bones",
+"nodes": [
+"Longissimus thoracis muscle.e23l"
+],
+"verts": 150
+},
+{
+"id": "longissimus-thoracis-muscle-e23r",
+"name_en_raw": "Longissimus thoracis muscle.e23r",
+"system": "bones",
+"nodes": [
+"Longissimus thoracis muscle.e23r"
+],
+"verts": 150
+},
+{
+"id": "longissimus-thoracis-muscle-e24l",
+"name_en_raw": "Longissimus thoracis muscle.e24l",
+"system": "bones",
+"nodes": [
+"Longissimus thoracis muscle.e24l"
+],
+"verts": 250
+},
+{
+"id": "longissimus-thoracis-muscle-e24r",
+"name_en_raw": "Longissimus thoracis muscle.e24r",
+"system": "bones",
+"nodes": [
+"Longissimus thoracis muscle.e24r"
+],
+"verts": 250
+},
+{
+"id": "longissimus-thoracis-muscle-e25l",
+"name_en_raw": "Longissimus thoracis muscle.e25l",
+"system": "bones",
+"nodes": [
+"Longissimus thoracis muscle.e25l"
+],
+"verts": 176
+},
+{
+"id": "longissimus-thoracis-muscle-e25r",
+"name_en_raw": "Longissimus thoracis muscle.e25r",
+"system": "bones",
+"nodes": [
+"Longissimus thoracis muscle.e25r"
+],
+"verts": 176
+},
+{
+"id": "lower-canine",
+"name_en_raw": "Lower canine",
+"system": "bones",
+"nodes": [
+"Lower canine.l",
+"Lower canine.r"
+],
+"verts": 1280
+},
+{
+"id": "lower-first-molar-tooth",
+"name_en_raw": "Lower first molar tooth",
+"system": "bones",
+"nodes": [
+"Lower first molar tooth.l",
+"Lower first molar tooth.r"
+],
+"verts": 4520
+},
+{
+"id": "lower-first-premolar",
+"name_en_raw": "Lower first premolar",
+"system": "bones",
+"nodes": [
+"Lower first premolar.l",
+"Lower first premolar.r"
+],
+"verts": 1226
+},
+{
+"id": "lower-lateral-incisor",
+"name_en_raw": "Lower lateral incisor",
+"system": "bones",
+"nodes": [
+"Lower lateral incisor.l",
+"Lower lateral incisor.r"
+],
+"verts": 1044
+},
+{
+"id": "lower-medial-incisor",
+"name_en_raw": "Lower medial incisor",
+"system": "bones",
+"nodes": [
+"Lower medial incisor.l",
+"Lower medial incisor.r"
+],
+"verts": 988
+},
+{
+"id": "lower-second-molar-tooth",
+"name_en_raw": "Lower second molar tooth",
+"system": "bones",
+"nodes": [
+"Lower second molar tooth.l",
+"Lower second molar tooth.r"
+],
+"verts": 1680
+},
+{
+"id": "lower-second-premolar",
+"name_en_raw": "Lower second premolar",
+"system": "bones",
+"nodes": [
+"Lower second premolar.l",
+"Lower second premolar.r"
+],
+"verts": 1184
+},
+{
+"id": "major-alar-cartilage",
+"name_en_raw": "Major alar cartilage",
+"system": "bones",
+"nodes": [
+"Major alar cartilage.l",
+"Major alar cartilage.r"
+],
+"verts": 348
+},
+{
+"id": "malleus",
+"name_en_raw": "Malleus",
+"system": "bones",
+"nodes": [
+"Malleus.l",
+"Malleus.r"
+],
+"verts": 3986
+},
+{
+"id": "mandible",
+"name_en_raw": "Mandible",
+"system": "bones",
+"nodes": [
+"Mandible"
+],
+"verts": 9388
+},
+{
+"id": "masseter-el",
+"name_en_raw": "Masseter.el",
+"system": "bones",
+"nodes": [
+"Masseter.el"
+],
+"verts": 360
+},
+{
+"id": "masseter-er",
+"name_en_raw": "Masseter.er",
+"system": "bones",
+"nodes": [
+"Masseter.er"
+],
+"verts": 360
+},
+{
+"id": "maxilla",
+"name_en_raw": "Maxilla",
+"system": "bones",
+"nodes": [
+"Maxilla.l",
+"Maxilla.r"
+],
+"verts": 4798
+},
+{
+"id": "medial-pterygoid-muscle-el",
+"name_en_raw": "Medial pterygoid muscle.el",
+"system": "bones",
+"nodes": [
+"Medial pterygoid muscle.el"
+],
+"verts": 172
+},
+{
+"id": "medial-pterygoid-muscle-er",
+"name_en_raw": "Medial pterygoid muscle.er",
+"system": "bones",
+"nodes": [
+"Medial pterygoid muscle.er"
+],
+"verts": 172
+},
+{
+"id": "middle-cells-of-ethmoid-bone",
+"name_en_raw": "Middle cells of ethmoid bone",
+"system": "bones",
+"nodes": [
+"Middle cells of ethmoid bone.l",
+"Middle cells of ethmoid bone.r"
+],
+"verts": 968
+},
+{
+"id": "nasal-bone",
+"name_en_raw": "Nasal bone",
+"system": "bones",
+"nodes": [
+"Nasal bone.l",
+"Nasal bone.r"
+],
+"verts": 296
+},
+{
+"id": "nasal-septal-cartilage",
+"name_en_raw": "Nasal septal cartilage",
+"system": "bones",
+"nodes": [
+"Nasal septal cartilage"
+],
+"verts": 182
+},
+{
+"id": "obliquus-inferior-capitis-muscle-el",
+"name_en_raw": "Obliquus inferior capitis muscle.el",
+"system": "bones",
+"nodes": [
+"Obliquus inferior capitis muscle.el"
+],
+"verts": 174
+},
+{
+"id": "obliquus-inferior-capitis-muscle-er",
+"name_en_raw": "Obliquus inferior capitis muscle.er",
+"system": "bones",
+"nodes": [
+"Obliquus inferior capitis muscle.er"
+],
+"verts": 174
+},
+{
+"id": "occipital-bone",
+"name_en_raw": "Occipital bone",
+"system": "bones",
+"nodes": [
+"Occipital bone"
+],
+"verts": 3757
+},
+{
+"id": "omohyoid-muscle-el",
+"name_en_raw": "Omohyoid muscle.el",
+"system": "bones",
+"nodes": [
+"Omohyoid muscle.el"
+],
+"verts": 132
+},
+{
+"id": "omohyoid-muscle-er",
+"name_en_raw": "Omohyoid muscle.er",
+"system": "bones",
+"nodes": [
+"Omohyoid muscle.er"
+],
+"verts": 132
+},
+{
+"id": "palatine-bone",
+"name_en_raw": "Palatine bone",
+"system": "bones",
+"nodes": [
+"Palatine bone.l",
+"Palatine bone.r"
+],
+"verts": 1464
+},
+{
+"id": "parietal-bone",
+"name_en_raw": "Parietal bone",
+"system": "bones",
+"nodes": [
+"Parietal bone.l",
+"Parietal bone.r"
+],
+"verts": 6829
+},
+{
+"id": "posterior-cells-of-ethmoid-bone",
+"name_en_raw": "Posterior cells of ethmoid bone",
+"system": "bones",
+"nodes": [
+"Posterior cells of ethmoid bone.l",
+"Posterior cells of ethmoid bone.r"
+],
+"verts": 1228
+},
+{
+"id": "procerus-muscle-el",
+"name_en_raw": "Procerus muscle.el",
+"system": "bones",
+"nodes": [
+"Procerus muscle.el"
+],
+"verts": 136
+},
+{
+"id": "rectus-anterior-capitis-muscle-el",
+"name_en_raw": "Rectus anterior capitis muscle.el",
+"system": "bones",
+"nodes": [
+"Rectus anterior capitis muscle.el"
+],
+"verts": 180
+},
+{
+"id": "rectus-anterior-capitis-muscle-er",
+"name_en_raw": "Rectus anterior capitis muscle.er",
+"system": "bones",
+"nodes": [
+"Rectus anterior capitis muscle.er"
+],
+"verts": 180
+},
+{
+"id": "rectus-posterior-major-capitis-muscle-el",
+"name_en_raw": "Rectus posterior major capitis muscle.el",
+"system": "bones",
+"nodes": [
+"Rectus posterior major capitis muscle.el"
+],
+"verts": 162
+},
+{
+"id": "rectus-posterior-major-capitis-muscle-er",
+"name_en_raw": "Rectus posterior major capitis muscle.er",
+"system": "bones",
+"nodes": [
+"Rectus posterior major capitis muscle.er"
+],
+"verts": 162
+},
+{
+"id": "rectus-posterior-minor-capitis-muscle-el",
+"name_en_raw": "Rectus posterior minor capitis muscle.el",
+"system": "bones",
+"nodes": [
+"Rectus posterior minor capitis muscle.el"
+],
+"verts": 244
+},
+{
+"id": "rectus-posterior-minor-capitis-muscle-er",
+"name_en_raw": "Rectus posterior minor capitis muscle.er",
+"system": "bones",
+"nodes": [
+"Rectus posterior minor capitis muscle.er"
+],
+"verts": 244
+},
+{
+"id": "scalenus-anterior-muscle-e1l",
+"name_en_raw": "Scalenus anterior muscle.e1l",
+"system": "bones",
+"nodes": [
+"Scalenus anterior muscle.e1l"
+],
+"verts": 150
+},
+{
+"id": "scalenus-anterior-muscle-e1r",
+"name_en_raw": "Scalenus anterior muscle.e1r",
+"system": "bones",
+"nodes": [
+"Scalenus anterior muscle.e1r"
+],
+"verts": 150
+},
+{
+"id": "scalenus-anterior-muscle-e2l",
+"name_en_raw": "Scalenus anterior muscle.e2l",
+"system": "bones",
+"nodes": [
+"Scalenus anterior muscle.e2l"
+],
+"verts": 94
+},
+{
+"id": "scalenus-anterior-muscle-e2r",
+"name_en_raw": "Scalenus anterior muscle.e2r",
+"system": "bones",
+"nodes": [
+"Scalenus anterior muscle.e2r"
+],
+"verts": 94
+},
+{
+"id": "scalenus-anterior-muscle-el",
+"name_en_raw": "Scalenus anterior muscle.el",
+"system": "bones",
+"nodes": [
+"Scalenus anterior muscle.el"
+],
+"verts": 198
+},
+{
+"id": "scalenus-anterior-muscle-er",
+"name_en_raw": "Scalenus anterior muscle.er",
+"system": "bones",
+"nodes": [
+"Scalenus anterior muscle.er"
+],
+"verts": 198
+},
+{
+"id": "scalenus-medius-muscle-e1l",
+"name_en_raw": "Scalenus medius muscle.e1l",
+"system": "bones",
+"nodes": [
+"Scalenus medius muscle.e1l"
+],
+"verts": 212
+},
+{
+"id": "scalenus-medius-muscle-e1r",
+"name_en_raw": "Scalenus medius muscle.e1r",
+"system": "bones",
+"nodes": [
+"Scalenus medius muscle.e1r"
+],
+"verts": 212
+},
+{
+"id": "scalenus-medius-muscle-el",
+"name_en_raw": "Scalenus medius muscle.el",
+"system": "bones",
+"nodes": [
+"Scalenus medius muscle.el"
+],
+"verts": 288
+},
+{
+"id": "scalenus-medius-muscle-er",
+"name_en_raw": "Scalenus medius muscle.er",
+"system": "bones",
+"nodes": [
+"Scalenus medius muscle.er"
+],
+"verts": 288
+},
+{
+"id": "scalenus-posterior-muscle-el",
+"name_en_raw": "Scalenus posterior muscle.el",
+"system": "bones",
+"nodes": [
+"Scalenus posterior muscle.el"
+],
+"verts": 302
+},
+{
+"id": "scalenus-posterior-muscle-er",
+"name_en_raw": "Scalenus posterior muscle.er",
+"system": "bones",
+"nodes": [
+"Scalenus posterior muscle.er"
+],
+"verts": 302
+},
+{
+"id": "serratus-anterior-muscle-el",
+"name_en_raw": "Serratus anterior muscle.el",
+"system": "bones",
+"nodes": [
+"Serratus anterior muscle.el"
+],
+"verts": 902
+},
+{
+"id": "serratus-anterior-muscle-er",
+"name_en_raw": "Serratus anterior muscle.er",
+"system": "bones",
+"nodes": [
+"Serratus anterior muscle.er"
+],
+"verts": 902
+},
+{
+"id": "serratus-posterior-superior-muscle-e1l",
+"name_en_raw": "Serratus posterior superior muscle.e1l",
+"system": "bones",
+"nodes": [
+"Serratus posterior superior muscle.e1l"
+],
+"verts": 1012
+},
+{
+"id": "serratus-posterior-superior-muscle-el",
+"name_en_raw": "Serratus posterior superior muscle.el",
+"system": "bones",
+"nodes": [
+"Serratus posterior superior muscle.el"
+],
+"verts": 1064
+},
+{
+"id": "sinus-of-frontal-bone",
+"name_en_raw": "Sinus of frontal bone",
+"system": "bones",
+"nodes": [
+"Sinus of frontal bone"
+],
+"verts": 770
+},
+{
+"id": "sinus-of-sphenoid-bone",
+"name_en_raw": "Sinus of sphenoid bone",
+"system": "bones",
+"nodes": [
+"Sinus of sphenoid bone"
+],
+"verts": 210
+},
+{
+"id": "sphenoid-bone",
+"name_en_raw": "Sphenoid bone",
+"system": "bones",
+"nodes": [
+"Sphenoid bone"
+],
+"verts": 3650
+},
+{
+"id": "spinalis-capitis-muscle-el",
+"name_en_raw": "Spinalis capitis muscle.el",
+"system": "bones",
+"nodes": [
+"Spinalis capitis muscle.el"
+],
+"verts": 228
+},
+{
+"id": "spinalis-capitis-muscle-er",
+"name_en_raw": "Spinalis capitis muscle.er",
+"system": "bones",
+"nodes": [
+"Spinalis capitis muscle.er"
+],
+"verts": 228
+},
+{
+"id": "splenius-colli-muscle-e1l",
+"name_en_raw": "Splenius colli muscle.e1l",
+"system": "bones",
+"nodes": [
+"Splenius colli muscle.e1l"
+],
+"verts": 282
+},
+{
+"id": "splenius-colli-muscle-e1r",
+"name_en_raw": "Splenius colli muscle.e1r",
+"system": "bones",
+"nodes": [
+"Splenius colli muscle.e1r"
+],
+"verts": 282
+},
+{
+"id": "splenius-colli-muscle-el",
+"name_en_raw": "Splenius colli muscle.el",
+"system": "bones",
+"nodes": [
+"Splenius colli muscle.el"
+],
+"verts": 128
+},
+{
+"id": "splenius-colli-muscle-er",
+"name_en_raw": "Splenius colli muscle.er",
+"system": "bones",
+"nodes": [
+"Splenius colli muscle.er"
+],
+"verts": 128
+},
+{
+"id": "stapes",
+"name_en_raw": "Stapes",
+"system": "bones",
+"nodes": [
+"Stapes.l",
+"Stapes.r"
+],
+"verts": 4342
+},
+{
+"id": "sternocleidomastoid-muscle-el",
+"name_en_raw": "Sternocleidomastoid muscle.el",
+"system": "bones",
+"nodes": [
+"Sternocleidomastoid muscle.el"
+],
+"verts": 1458
+},
+{
+"id": "sternocleidomastoid-muscle-er",
+"name_en_raw": "Sternocleidomastoid muscle.er",
+"system": "bones",
+"nodes": [
+"Sternocleidomastoid muscle.er"
+],
+"verts": 1458
+},
+{
+"id": "sternohyoid-muscle-el",
+"name_en_raw": "Sternohyoid muscle.el",
+"system": "bones",
+"nodes": [
+"Sternohyoid muscle.el"
+],
+"verts": 228
+},
+{
+"id": "sternohyoid-muscle-er",
+"name_en_raw": "Sternohyoid muscle.er",
+"system": "bones",
+"nodes": [
+"Sternohyoid muscle.er"
+],
+"verts": 228
+},
+{
+"id": "supraspinatus-muscle-el",
+"name_en_raw": "Supraspinatus muscle.el",
+"system": "bones",
+"nodes": [
+"Supraspinatus muscle.el"
+],
+"verts": 676
+},
+{
+"id": "supraspinatus-muscle-er",
+"name_en_raw": "Supraspinatus muscle.er",
+"system": "bones",
+"nodes": [
+"Supraspinatus muscle.er"
+],
+"verts": 676
+},
+{
+"id": "temporal-bone",
+"name_en_raw": "Temporal bone",
+"system": "bones",
+"nodes": [
+"Temporal bone.l",
+"Temporal bone.r"
+],
+"verts": 14102
+},
+{
+"id": "temporalis-muscle-el",
+"name_en_raw": "Temporalis muscle.el",
+"system": "bones",
+"nodes": [
+"Temporalis muscle.el"
+],
+"verts": 912
+},
+{
+"id": "temporalis-muscle-er",
+"name_en_raw": "Temporalis muscle.er",
+"system": "bones",
+"nodes": [
+"Temporalis muscle.er"
+],
+"verts": 912
+},
+{
+"id": "thyrohyoid-muscle-el",
+"name_en_raw": "Thyrohyoid muscle.el",
+"system": "bones",
+"nodes": [
+"Thyrohyoid muscle.el"
+],
+"verts": 590
+},
+{
+"id": "thyrohyoid-muscle-er",
+"name_en_raw": "Thyrohyoid muscle.er",
+"system": "bones",
+"nodes": [
+"Thyrohyoid muscle.er"
+],
+"verts": 590
+},
+{
+"id": "thyroid-cartilage",
+"name_en_raw": "Thyroid cartilage",
+"system": "bones",
+"nodes": [
+"Thyroid cartilage"
+],
+"verts": 2247
+},
+{
+"id": "upper-canine",
+"name_en_raw": "Upper canine",
+"system": "bones",
+"nodes": [
+"Upper canine.l",
+"Upper canine.r"
+],
+"verts": 1474
+},
+{
+"id": "upper-first-molar-tooth",
+"name_en_raw": "Upper first molar tooth",
+"system": "bones",
+"nodes": [
+"Upper first molar tooth.l",
+"Upper first molar tooth.r"
+],
+"verts": 2180
+},
+{
+"id": "upper-first-premolar",
+"name_en_raw": "Upper first premolar",
+"system": "bones",
+"nodes": [
+"Upper first premolar.l",
+"Upper first premolar.r"
+],
+"verts": 1688
+},
+{
+"id": "upper-lateral-incisor",
+"name_en_raw": "Upper lateral incisor",
+"system": "bones",
+"nodes": [
+"Upper lateral incisor.l",
+"Upper lateral incisor.r"
+],
+"verts": 1452
+},
+{
+"id": "upper-medial-incisor",
+"name_en_raw": "Upper medial incisor",
+"system": "bones",
+"nodes": [
+"Upper medial incisor.l",
+"Upper medial incisor.r"
+],
+"verts": 1372
+},
+{
+"id": "upper-second-molar-tooth",
+"name_en_raw": "Upper second molar tooth",
+"system": "bones",
+"nodes": [
+"Upper second molar tooth.l",
+"Upper second molar tooth.r"
+],
+"verts": 1848
+},
+{
+"id": "upper-second-premolar",
+"name_en_raw": "Upper second premolar",
+"system": "bones",
+"nodes": [
+"Upper second premolar.l",
+"Upper second premolar.r"
+],
+"verts": 1558
+},
+{
+"id": "vertebra-c3",
+"name_en_raw": "Vertebra C3",
+"system": "bones",
+"nodes": [
+"Vertebra C3"
+],
+"verts": 1216
+},
+{
+"id": "vertebra-c4",
+"name_en_raw": "Vertebra C4",
+"system": "bones",
+"nodes": [
+"Vertebra C4"
+],
+"verts": 972
+},
+{
+"id": "vertebra-c5",
+"name_en_raw": "Vertebra C5",
+"system": "bones",
+"nodes": [
+"Vertebra C5"
+],
+"verts": 1164
+},
+{
+"id": "vertebra-c6",
+"name_en_raw": "Vertebra C6",
+"system": "bones",
+"nodes": [
+"Vertebra C6"
+],
+"verts": 1148
+},
+{
+"id": "vertebra-c7",
+"name_en_raw": "Vertebra C7",
+"system": "bones",
+"nodes": [
+"Vertebra C7"
+],
+"verts": 1078
+},
+{
+"id": "vomer",
+"name_en_raw": "Vomer",
+"system": "bones",
+"nodes": [
+"Vomer"
+],
+"verts": 514
+},
+{
+"id": "zygomatic-bone",
+"name_en_raw": "Zygomatic bone",
+"system": "bones",
+"nodes": [
+"Zygomatic bone.l",
+"Zygomatic bone.r"
+],
+"verts": 1332
+},
+{
+"id": "anterior-belly-of-digastric-muscle",
+"name_en_raw": "Anterior belly of digastric muscle",
+"system": "muscles",
+"nodes": [
+"Anterior belly of digastric muscle.l",
+"Anterior belly of digastric muscle.r"
+],
+"verts": 396
+},
+{
+"id": "ary-epiglottic-part-of-oblique-arytenoid-muscle",
+"name_en_raw": "Ary-epiglottic part of oblique arytenoid muscle",
+"system": "muscles",
+"nodes": [
+"Ary-epiglottic part of oblique arytenoid muscle.l",
+"Ary-epiglottic part of oblique arytenoid muscle.r"
+],
+"verts": 1026
+},
+{
+"id": "ascending-part-of-trapezius-muscle",
+"name_en_raw": "Ascending part of trapezius muscle",
+"system": "muscles",
+"nodes": [
+"Ascending part of trapezius muscle.l",
+"Ascending part of trapezius muscle.r"
+],
+"verts": 4596
+},
+{
+"id": "bucinator",
+"name_en_raw": "Bucinator",
+"system": "muscles",
+"nodes": [
+"Bucinator.l",
+"Bucinator.r"
+],
+"verts": 888
+},
+{
+"id": "common-tendinous-ring",
+"name_en_raw": "Common tendinous ring",
+"system": "muscles",
+"nodes": [
+"Common tendinous ring.l",
+"Common tendinous ring.r"
+],
+"verts": 362
+},
+{
+"id": "corrugator-supercilii",
+"name_en_raw": "Corrugator supercilii",
+"system": "muscles",
+"nodes": [
+"Corrugator supercilii.l",
+"Corrugator supercilii.r"
+],
+"verts": 282
+},
+{
+"id": "deep-part-of-masseter",
+"name_en_raw": "Deep part of masseter",
+"system": "muscles",
+"nodes": [
+"Deep part of masseter.l",
+"Deep part of masseter.r"
+],
+"verts": 994
+},
+{
+"id": "depressor-anguli-oris",
+"name_en_raw": "Depressor anguli oris",
+"system": "muscles",
+"nodes": [
+"Depressor anguli oris.l",
+"Depressor anguli oris.r"
+],
+"verts": 598
+},
+{
+"id": "depressor-labii-inferioris",
+"name_en_raw": "Depressor labii inferioris",
+"system": "muscles",
+"nodes": [
+"Depressor labii inferioris.l",
+"Depressor labii inferioris.r"
+],
+"verts": 836
+},
+{
+"id": "depressor-septi-nasi",
+"name_en_raw": "Depressor septi nasi",
+"system": "muscles",
+"nodes": [
+"Depressor septi nasi.l",
+"Depressor septi nasi.r"
+],
+"verts": 280
+},
+{
+"id": "epicranial-aponeurosis",
+"name_en_raw": "Epicranial aponeurosis",
+"system": "muscles",
+"nodes": [
+"Epicranial aponeurosis.l",
+"Epicranial aponeurosis.r"
+],
+"verts": 20110
+},
+{
+"id": "external-part-of-thyro-arytenoid-muscle",
+"name_en_raw": "External part of thyro-arytenoid muscle",
+"system": "muscles",
+"nodes": [
+"External part of thyro-arytenoid muscle.l",
+"External part of thyro-arytenoid muscle.r"
+],
+"verts": 2240
+},
+{
+"id": "frontalis-muscle",
+"name_en_raw": "Frontalis muscle",
+"system": "muscles",
+"nodes": [
+"Frontalis muscle.l",
+"Frontalis muscle.r"
+],
+"verts": 5866
+},
+{
+"id": "genioglossus-muscle",
+"name_en_raw": "Genioglossus muscle",
+"system": "muscles",
+"nodes": [
+"Genioglossus muscle.l",
+"Genioglossus muscle.r"
+],
+"verts": 3750
+},
+{
+"id": "geniohyoid-muscle",
+"name_en_raw": "Geniohyoid muscle",
+"system": "muscles",
+"nodes": [
+"Geniohyoid muscle.l",
+"Geniohyoid muscle.r"
+],
+"verts": 534
+},
+{
+"id": "hyoglossus-muscle",
+"name_en_raw": "Hyoglossus muscle",
+"system": "muscles",
+"nodes": [
+"Hyoglossus muscle.l",
+"Hyoglossus muscle.r"
+],
+"verts": 1428
+},
+{
+"id": "inferior-head-of-lateral-pterygoid-muscle",
+"name_en_raw": "Inferior head of lateral pterygoid muscle",
+"system": "muscles",
+"nodes": [
+"Inferior head of lateral pterygoid muscle.l",
+"Inferior head of lateral pterygoid muscle.r"
+],
+"verts": 328
+},
+{
+"id": "inferior-oblique-muscle",
+"name_en_raw": "Inferior oblique muscle",
+"system": "muscles",
+"nodes": [
+"Inferior oblique muscle.l",
+"Inferior oblique muscle.r"
+],
+"verts": 1152
+},
+{
+"id": "inferior-pharyngeal-constrictor",
+"name_en_raw": "Inferior pharyngeal constrictor",
+"system": "muscles",
+"nodes": [
+"Inferior pharyngeal constrictor.l",
+"Inferior pharyngeal constrictor.r"
+],
+"verts": 3700
+},
+{
+"id": "inferior-rectus-muscle",
+"name_en_raw": "Inferior rectus muscle",
+"system": "muscles",
+"nodes": [
+"Inferior rectus muscle.l",
+"Inferior rectus muscle.r"
+],
+"verts": 1740
+},
+{
+"id": "inferior-tarsus",
+"name_en_raw": "Inferior tarsus",
+"system": "muscles",
+"nodes": [
+"Inferior tarsus.l",
+"Inferior tarsus.r"
+],
+"verts": 112
+},
+{
+"id": "intermediate-tendon-of-digastric-muscle",
+"name_en_raw": "Intermediate tendon of digastric muscle",
+"system": "muscles",
+"nodes": [
+"Intermediate tendon of digastric muscle.l",
+"Intermediate tendon of digastric muscle.r"
+],
+"verts": 232
+},
+{
+"id": "interspinales-colli-muscles",
+"name_en_raw": "Interspinales colli muscles",
+"system": "muscles",
+"nodes": [
+"Interspinales colli muscles.l",
+"Interspinales colli muscles.r"
+],
+"verts": 468
+},
+{
+"id": "interspinales-thoracis-muscles",
+"name_en_raw": "Interspinales thoracis muscles",
+"system": "muscles",
+"nodes": [
+"Interspinales thoracis muscles.l",
+"Interspinales thoracis muscles.r"
+],
+"verts": 218
+},
+{
+"id": "intertubercular-tendon-sheath",
+"name_en_raw": "Intertubercular tendon sheath",
+"system": "muscles",
+"nodes": [
+"Intertubercular tendon sheath.l",
+"Intertubercular tendon sheath.r"
+],
+"verts": 552
+},
+{
+"id": "lateral-crico-arytenoid-muscle",
+"name_en_raw": "Lateral crico-arytenoid muscle",
+"system": "muscles",
+"nodes": [
+"Lateral crico-arytenoid muscle.l",
+"Lateral crico-arytenoid muscle.r"
+],
+"verts": 1630
+},
+{
+"id": "lateral-rectus-muscle",
+"name_en_raw": "Lateral rectus muscle",
+"system": "muscles",
+"nodes": [
+"Lateral rectus muscle.l",
+"Lateral rectus muscle.r"
+],
+"verts": 1604
+},
+{
+"id": "levator-anguli-oris",
+"name_en_raw": "Levator anguli oris",
+"system": "muscles",
+"nodes": [
+"Levator anguli oris.l",
+"Levator anguli oris.r"
+],
+"verts": 330
+},
+{
+"id": "levator-labii-superioris",
+"name_en_raw": "Levator labii superioris",
+"system": "muscles",
+"nodes": [
+"Levator labii superioris.l",
+"Levator labii superioris.r"
+],
+"verts": 544
+},
+{
+"id": "levator-nasolabialis",
+"name_en_raw": "Levator nasolabialis",
+"system": "muscles",
+"nodes": [
+"Levator nasolabialis.l",
+"Levator nasolabialis.r"
+],
+"verts": 176
+},
+{
+"id": "levator-palpebrae-superioris",
+"name_en_raw": "Levator palpebrae superioris",
+"system": "muscles",
+"nodes": [
+"Levator palpebrae superioris.l",
+"Levator palpebrae superioris.r"
+],
+"verts": 2158
+},
+{
+"id": "levator-scapulae",
+"name_en_raw": "Levator scapulae",
+"system": "muscles",
+"nodes": [
+"Levator scapulae.l",
+"Levator scapulae.r"
+],
+"verts": 3086
+},
+{
+"id": "longissimus-capitis-muscle",
+"name_en_raw": "Longissimus capitis muscle",
+"system": "muscles",
+"nodes": [
+"Longissimus capitis muscle.l",
+"Longissimus capitis muscle.r"
+],
+"verts": 1570
+},
+{
+"id": "longissimus-colli-muscle",
+"name_en_raw": "Longissimus colli muscle",
+"system": "muscles",
+"nodes": [
+"Longissimus colli muscle.l",
+"Longissimus colli muscle.r"
+],
+"verts": 1524
+},
+{
+"id": "longus-capitis-muscle",
+"name_en_raw": "Longus capitis muscle",
+"system": "muscles",
+"nodes": [
+"Longus capitis muscle.l",
+"Longus capitis muscle.r"
+],
+"verts": 1976
+},
+{
+"id": "longus-colli-muscle",
+"name_en_raw": "Longus colli muscle",
+"system": "muscles",
+"nodes": [
+"Longus colli muscle.l",
+"Longus colli muscle.r"
+],
+"verts": 6308
+},
+{
+"id": "masseteric-fascia",
+"name_en_raw": "Masseteric fascia",
+"system": "muscles",
+"nodes": [
+"Masseteric fascia.l",
+"Masseteric fascia.r"
+],
+"verts": 452
+},
+{
+"id": "medial-pterygoid-muscle",
+"name_en_raw": "Medial pterygoid muscle",
+"system": "muscles",
+"nodes": [
+"Medial pterygoid muscle.l",
+"Medial pterygoid muscle.r"
+],
+"verts": 498
+},
+{
+"id": "medial-rectus-muscle",
+"name_en_raw": "Medial rectus muscle",
+"system": "muscles",
+"nodes": [
+"Medial rectus muscle.l",
+"Medial rectus muscle.r"
+],
+"verts": 1256
+},
+{
+"id": "mentalis-muscle",
+"name_en_raw": "Mentalis muscle",
+"system": "muscles",
+"nodes": [
+"Mentalis muscle.l",
+"Mentalis muscle.r"
+],
+"verts": 170
+},
+{
+"id": "middle-pharyngeal-constrictor",
+"name_en_raw": "Middle pharyngeal constrictor",
+"system": "muscles",
+"nodes": [
+"Middle pharyngeal constrictor.l",
+"Middle pharyngeal constrictor.r"
+],
+"verts": 2952
+},
+{
+"id": "multifidus-colli-muscle",
+"name_en_raw": "Multifidus colli muscle",
+"system": "muscles",
+"nodes": [
+"Multifidus colli muscle.l",
+"Multifidus colli muscle.r"
+],
+"verts": 1392
+},
+{
+"id": "mylohyoid-muscle",
+"name_en_raw": "Mylohyoid muscle",
+"system": "muscles",
+"nodes": [
+"Mylohyoid muscle.l",
+"Mylohyoid muscle.r"
+],
+"verts": 1122
+},
+{
+"id": "nasalis-muscle",
+"name_en_raw": "Nasalis muscle",
+"system": "muscles",
+"nodes": [
+"Nasalis muscle.l",
+"Nasalis muscle.r"
+],
+"verts": 704
+},
+{
+"id": "oblique-part-of-cricothyroid-muscle",
+"name_en_raw": "Oblique part of cricothyroid muscle",
+"system": "muscles",
+"nodes": [
+"Oblique part of cricothyroid muscle.l",
+"Oblique part of cricothyroid muscle.r"
+],
+"verts": 2064
+},
+{
+"id": "obliquus-inferior-capitis-muscle",
+"name_en_raw": "Obliquus inferior capitis muscle",
+"system": "muscles",
+"nodes": [
+"Obliquus inferior capitis muscle.l",
+"Obliquus inferior capitis muscle.r"
+],
+"verts": 544
+},
+{
+"id": "obliquus-superior-capitis-muscle",
+"name_en_raw": "Obliquus superior capitis muscle",
+"system": "muscles",
+"nodes": [
+"Obliquus superior capitis muscle.l",
+"Obliquus superior capitis muscle.r"
+],
+"verts": 650
+},
+{
+"id": "occipitalis-muscle",
+"name_en_raw": "Occipitalis muscle",
+"system": "muscles",
+"nodes": [
+"Occipitalis muscle.l",
+"Occipitalis muscle.r"
+],
+"verts": 2594
+},
+{
+"id": "omohyoid-muscle",
+"name_en_raw": "Omohyoid muscle",
+"system": "muscles",
+"nodes": [
+"Omohyoid muscle.l",
+"Omohyoid muscle.r"
+],
+"verts": 2710
+},
+{
+"id": "orbicularis-oris-muscle",
+"name_en_raw": "Orbicularis oris muscle",
+"system": "muscles",
+"nodes": [
+"Orbicularis oris muscle.l",
+"Orbicularis oris muscle.r"
+],
+"verts": 1880
+},
+{
+"id": "orbital-part-of-orbicularis-oculi",
+"name_en_raw": "Orbital part of orbicularis oculi",
+"system": "muscles",
+"nodes": [
+"Orbital part of orbicularis oculi.l",
+"Orbital part of orbicularis oculi.r"
+],
+"verts": 2390
+},
+{
+"id": "palatopharyngeus-muscle",
+"name_en_raw": "Palatopharyngeus muscle",
+"system": "muscles",
+"nodes": [
+"Palatopharyngeus muscle.l",
+"Palatopharyngeus muscle.r"
+],
+"verts": 15284
+},
+{
+"id": "palpebral-part-of-orbicularis-oculi",
+"name_en_raw": "Palpebral part of orbicularis oculi",
+"system": "muscles",
+"nodes": [
+"Palpebral part of orbicularis oculi.l",
+"Palpebral part of orbicularis oculi.r"
+],
+"verts": 830
+},
+{
+"id": "platysma",
+"name_en_raw": "Platysma",
+"system": "muscles",
+"nodes": [
+"Platysma.l",
+"Platysma.r"
+],
+"verts": 6552
+},
+{
+"id": "posterior-belly-of-digastric-muscle",
+"name_en_raw": "Posterior belly of digastric muscle",
+"system": "muscles",
+"nodes": [
+"Posterior belly of digastric muscle.l",
+"Posterior belly of digastric muscle.r"
+],
+"verts": 1276
+},
+{
+"id": "posterior-crico-arytenoid-muscle",
+"name_en_raw": "Posterior crico-arytenoid muscle",
+"system": "muscles",
+"nodes": [
+"Posterior crico-arytenoid muscle.l",
+"Posterior crico-arytenoid muscle.r"
+],
+"verts": 1816
+},
+{
+"id": "procerus-muscle",
+"name_en_raw": "Procerus muscle",
+"system": "muscles",
+"nodes": [
+"Procerus muscle.l",
+"Procerus muscle.r"
+],
+"verts": 546
+},
+{
+"id": "rectus-anterior-capitis-muscle",
+"name_en_raw": "Rectus anterior capitis muscle",
+"system": "muscles",
+"nodes": [
+"Rectus anterior capitis muscle.l",
+"Rectus anterior capitis muscle.r"
+],
+"verts": 400
+},
+{
+"id": "rectus-lateralis-capitis-muscle",
+"name_en_raw": "Rectus lateralis capitis muscle",
+"system": "muscles",
+"nodes": [
+"Rectus lateralis capitis muscle.l",
+"Rectus lateralis capitis muscle.r"
+],
+"verts": 364
+},
+{
+"id": "rectus-posterior-major-capitis-muscle",
+"name_en_raw": "Rectus posterior major capitis muscle",
+"system": "muscles",
+"nodes": [
+"Rectus posterior major capitis muscle.l",
+"Rectus posterior major capitis muscle.r"
+],
+"verts": 792
+},
+{
+"id": "rectus-posterior-minor-capitis-muscle",
+"name_en_raw": "Rectus posterior minor capitis muscle",
+"system": "muscles",
+"nodes": [
+"Rectus posterior minor capitis muscle.l",
+"Rectus posterior minor capitis muscle.r"
+],
+"verts": 428
+},
+{
+"id": "rhomboid-minor-muscle",
+"name_en_raw": "Rhomboid minor muscle",
+"system": "muscles",
+"nodes": [
+"Rhomboid minor muscle.l",
+"Rhomboid minor muscle.r"
+],
+"verts": 1306
+},
+{
+"id": "risorius-muscle",
+"name_en_raw": "Risorius muscle",
+"system": "muscles",
+"nodes": [
+"Risorius muscle.l",
+"Risorius muscle.r"
+],
+"verts": 592
+},
+{
+"id": "scalenus-anterior-muscle",
+"name_en_raw": "Scalenus anterior muscle",
+"system": "muscles",
+"nodes": [
+"Scalenus anterior muscle.l",
+"Scalenus anterior muscle.r"
+],
+"verts": 1400
+},
+{
+"id": "scalenus-medius-muscle",
+"name_en_raw": "Scalenus medius muscle",
+"system": "muscles",
+"nodes": [
+"Scalenus medius muscle.l",
+"Scalenus medius muscle.r"
+],
+"verts": 2074
+},
+{
+"id": "scalenus-posterior-muscle",
+"name_en_raw": "Scalenus posterior muscle",
+"system": "muscles",
+"nodes": [
+"Scalenus posterior muscle.l",
+"Scalenus posterior muscle.r"
+],
+"verts": 1330
+},
+{
+"id": "semispinalis-colli-muscle",
+"name_en_raw": "Semispinalis colli muscle",
+"system": "muscles",
+"nodes": [
+"Semispinalis colli muscle.l",
+"Semispinalis colli muscle.r"
+],
+"verts": 2510
+},
+{
+"id": "serratus-posterior-superior-muscle",
+"name_en_raw": "Serratus posterior superior muscle",
+"system": "muscles",
+"nodes": [
+"Serratus posterior superior muscle.l",
+"Serratus posterior superior muscle.r"
+],
+"verts": 4552
+},
+{
+"id": "spinalis-capitis-muscle",
+"name_en_raw": "Spinalis capitis muscle",
+"system": "muscles",
+"nodes": [
+"Spinalis capitis muscle.l",
+"Spinalis capitis muscle.r"
+],
+"verts": 2550
+},
+{
+"id": "spinalis-colli-muscle",
+"name_en_raw": "Spinalis colli muscle",
+"system": "muscles",
+"nodes": [
+"Spinalis colli muscle.l",
+"Spinalis colli muscle.r"
+],
+"verts": 596
+},
+{
+"id": "splenius-capitis-muscle",
+"name_en_raw": "Splenius capitis muscle",
+"system": "muscles",
+"nodes": [
+"Splenius capitis muscle.l",
+"Splenius capitis muscle.r"
+],
+"verts": 5098
+},
+{
+"id": "splenius-colli-muscle",
+"name_en_raw": "Splenius colli muscle",
+"system": "muscles",
+"nodes": [
+"Splenius colli muscle.l",
+"Splenius colli muscle.r"
+],
+"verts": 2010
+},
+{
+"id": "sternocleidomastoid-muscle",
+"name_en_raw": "Sternocleidomastoid muscle",
+"system": "muscles",
+"nodes": [
+"Sternocleidomastoid muscle.l",
+"Sternocleidomastoid muscle.r"
+],
+"verts": 4990
+},
+{
+"id": "sternohyoid-muscle",
+"name_en_raw": "Sternohyoid muscle",
+"system": "muscles",
+"nodes": [
+"Sternohyoid muscle.l",
+"Sternohyoid muscle.r"
+],
+"verts": 1394
+},
+{
+"id": "sternothyroid-muscle",
+"name_en_raw": "Sternothyroid muscle",
+"system": "muscles",
+"nodes": [
+"Sternothyroid muscle.l",
+"Sternothyroid muscle.r"
+],
+"verts": 1116
+},
+{
+"id": "straight-part-of-cricothyroid-muscle",
+"name_en_raw": "Straight part of cricothyroid muscle",
+"system": "muscles",
+"nodes": [
+"Straight part of cricothyroid muscle.l",
+"Straight part of cricothyroid muscle.r"
+],
+"verts": 1184
+},
+{
+"id": "stylohyoid-muscle",
+"name_en_raw": "Stylohyoid muscle",
+"system": "muscles",
+"nodes": [
+"Stylohyoid muscle.l",
+"Stylohyoid muscle.r"
+],
+"verts": 698
+},
+{
+"id": "stylopharyngeus-muscle",
+"name_en_raw": "Stylopharyngeus muscle",
+"system": "muscles",
+"nodes": [
+"Stylopharyngeus muscle.l",
+"Stylopharyngeus muscle.r"
+],
+"verts": 9480
+},
+{
+"id": "subtendinous-bursa-of-trapezius-muscle",
+"name_en_raw": "Subtendinous bursa of trapezius muscle",
+"system": "muscles",
+"nodes": [
+"Subtendinous bursa of trapezius muscle.l",
+"Subtendinous bursa of trapezius muscle.r"
+],
+"verts": 2509
+},
+{
+"id": "superficial-investing-cervical-fascia",
+"name_en_raw": "Superficial investing cervical fascia",
+"system": "muscles",
+"nodes": [
+"Superficial investing cervical fascia.l",
+"Superficial investing cervical fascia.r"
+],
+"verts": 3478
+},
+{
+"id": "superficial-layer-of-temporal-fascia",
+"name_en_raw": "Superficial layer of temporal fascia",
+"system": "muscles",
+"nodes": [
+"Superficial layer of temporal fascia.l",
+"Superficial layer of temporal fascia.r"
+],
+"verts": 756
+},
+{
+"id": "superficial-part-of-masseter",
+"name_en_raw": "Superficial part of masseter",
+"system": "muscles",
+"nodes": [
+"Superficial part of masseter.l",
+"Superficial part of masseter.r"
+],
+"verts": 1404
+},
+{
+"id": "superior-head-of-lateral-pterygoid-muscle",
+"name_en_raw": "Superior head of lateral pterygoid muscle",
+"system": "muscles",
+"nodes": [
+"Superior head of lateral pterygoid muscle.l",
+"Superior head of lateral pterygoid muscle.r"
+],
+"verts": 230
+},
+{
+"id": "superior-oblique-muscle",
+"name_en_raw": "Superior oblique muscle",
+"system": "muscles",
+"nodes": [
+"Superior oblique muscle.l",
+"Superior oblique muscle.r"
+],
+"verts": 1754
+},
+{
+"id": "superior-pharyngeal-constrictor",
+"name_en_raw": "Superior pharyngeal constrictor",
+"system": "muscles",
+"nodes": [
+"Superior pharyngeal constrictor.l",
+"Superior pharyngeal constrictor.r"
+],
+"verts": 5338
+},
+{
+"id": "superior-rectus-muscle",
+"name_en_raw": "Superior rectus muscle",
+"system": "muscles",
+"nodes": [
+"Superior rectus muscle.l",
+"Superior rectus muscle.r"
+],
+"verts": 1288
+},
+{
+"id": "superior-tarsus",
+"name_en_raw": "Superior tarsus",
+"system": "muscles",
+"nodes": [
+"Superior tarsus.l",
+"Superior tarsus.r"
+],
+"verts": 182
+},
+{
+"id": "supraspinatus-muscle",
+"name_en_raw": "Supraspinatus muscle",
+"system": "muscles",
+"nodes": [
+"Supraspinatus muscle.l",
+"Supraspinatus muscle.r"
+],
+"verts": 1452
+},
+{
+"id": "temporalis-muscle",
+"name_en_raw": "Temporalis muscle",
+"system": "muscles",
+"nodes": [
+"Temporalis muscle.l",
+"Temporalis muscle.r"
+],
+"verts": 10252
+},
+{
+"id": "temporoparietalis-muscle",
+"name_en_raw": "Temporoparietalis muscle",
+"system": "muscles",
+"nodes": [
+"Temporoparietalis muscle.l",
+"Temporoparietalis muscle.r"
+],
+"verts": 11948
+},
+{
+"id": "thyro-epiglottic-part-of-thyro-arytenoid-muscle",
+"name_en_raw": "Thyro-epiglottic part of thyro-arytenoid muscle",
+"system": "muscles",
+"nodes": [
+"Thyro-epiglottic part of thyro-arytenoid muscle.l",
+"Thyro-epiglottic part of thyro-arytenoid muscle.r"
+],
+"verts": 3114
+},
+{
+"id": "thyrohyoid-muscle",
+"name_en_raw": "Thyrohyoid muscle",
+"system": "muscles",
+"nodes": [
+"Thyrohyoid muscle.l",
+"Thyrohyoid muscle.r"
+],
+"verts": 704
+},
+{
+"id": "transverse-arytenoid-muscle",
+"name_en_raw": "Transverse arytenoid muscle",
+"system": "muscles",
+"nodes": [
+"Transverse arytenoid muscle"
+],
+"verts": 913
+},
+{
+"id": "transverse-part-of-trapezius-muscle",
+"name_en_raw": "Transverse part of trapezius muscle",
+"system": "muscles",
+"nodes": [
+"Transverse part of trapezius muscle.l",
+"Transverse part of trapezius muscle.r"
+],
+"verts": 2874
+},
+{
+"id": "trochlea-of-superior-oblique-muscle",
+"name_en_raw": "Trochlea of superior oblique muscle",
+"system": "muscles",
+"nodes": [
+"Trochlea of superior oblique muscle.l",
+"Trochlea of superior oblique muscle.r"
+],
+"verts": 196
+},
+{
+"id": "zygomaticus-major-muscle",
+"name_en_raw": "Zygomaticus major muscle",
+"system": "muscles",
+"nodes": [
+"Zygomaticus major muscle.l",
+"Zygomaticus major muscle.r"
+],
+"verts": 794
+},
+{
+"id": "zygomaticus-minor-muscle",
+"name_en_raw": "Zygomaticus minor muscle",
+"system": "muscles",
+"nodes": [
+"Zygomaticus minor muscle.l",
+"Zygomaticus minor muscle.r"
+],
+"verts": 436
+},
+{
+"id": "posterior-transverse-collateral-sulcus",
+"name_en_raw": "Posterior transverse collateral sulcus",
+"system": "nerves",
+"nodes": [
+" Posterior transverse collateral sulcus.l",
+" Posterior transverse collateral sulcus.r"
+],
+"verts": 204
+},
+{
+"id": "abducens-nerve-vi",
+"name_en_raw": "Abducens nerve (VI)",
+"system": "nerves",
+"nodes": [
+"Abducens nerve (VI).l",
+"Abducens nerve (VI).r"
+],
+"verts": 5040
+},
+{
+"id": "accessory-nerve-xi",
+"name_en_raw": "Accessory nerve (XI)",
+"system": "nerves",
+"nodes": [
+"Accessory nerve (XI).l",
+"Accessory nerve (XI).r"
+],
+"verts": 14472
+},
+{
+"id": "accessory-nucleus-of-oculomotor-nerve",
+"name_en_raw": "Accessory nucleus of oculomotor nerve",
+"system": "nerves",
+"nodes": [
+"Accessory nucleus of oculomotor nerve.l",
+"Accessory nucleus of oculomotor nerve.r"
+],
+"verts": 772
+},
+{
+"id": "ampulla-of-lacrimal-canaliculus",
+"name_en_raw": "Ampulla of lacrimal canaliculus",
+"system": "nerves",
+"nodes": [
+"Ampulla of lacrimal canaliculus.l",
+"Ampulla of lacrimal canaliculus.r"
+],
+"verts": 248
+},
+{
+"id": "amygdaloid-body",
+"name_en_raw": "Amygdaloid body",
+"system": "nerves",
+"nodes": [
+"Amygdaloid body.l",
+"Amygdaloid body.r"
+],
+"verts": 388
+},
+{
+"id": "angular-gyrus",
+"name_en_raw": "Angular gyrus",
+"system": "nerves",
+"nodes": [
+"Angular gyrus.l",
+"Angular gyrus.r"
+],
+"verts": 1518
+},
+{
+"id": "anterior-chamber-of-eyeball",
+"name_en_raw": "Anterior chamber of eyeball",
+"system": "nerves",
+"nodes": [
+"Anterior chamber of eyeball.l",
+"Anterior chamber of eyeball.r"
+],
+"verts": 8708
+},
+{
+"id": "anterior-cochlear-nucleus",
+"name_en_raw": "Anterior cochlear nucleus",
+"system": "nerves",
+"nodes": [
+"Anterior cochlear nucleus.l",
+"Anterior cochlear nucleus.r"
+],
+"verts": 196
+},
+{
+"id": "anterior-commissure",
+"name_en_raw": "Anterior commissure",
+"system": "nerves",
+"nodes": [
+"Anterior commissure"
+],
+"verts": 402
+},
+{
+"id": "anterior-division-of-mandibular-nerve",
+"name_en_raw": "Anterior division of mandibular nerve",
+"system": "nerves",
+"nodes": [
+"Anterior division of mandibular nerve.l",
+"Anterior division of mandibular nerve.r"
+],
+"verts": 648
+},
+{
+"id": "anterior-occipital-sulcus",
+"name_en_raw": "Anterior occipital sulcus*",
+"system": "nerves",
+"nodes": [
+"Anterior occipital sulcus*.l",
+"Anterior occipital sulcus*.r"
+],
+"verts": 368
+},
+{
+"id": "anterior-quadrangular-lobule",
+"name_en_raw": "Anterior quadrangular lobule",
+"system": "nerves",
+"nodes": [
+"Anterior quadrangular lobule.l",
+"Anterior quadrangular lobule.r"
+],
+"verts": 6540
+},
+{
+"id": "anterior-segment-of-eyeball",
+"name_en_raw": "Anterior segment of eyeball",
+"system": "nerves",
+"nodes": [
+"Anterior segment of eyeball.l",
+"Anterior segment of eyeball.r"
+],
+"verts": 3328
+},
+{
+"id": "aqueduct-of-midbrain",
+"name_en_raw": "Aqueduct of midbrain",
+"system": "nerves",
+"nodes": [
+"Aqueduct of midbrain"
+],
+"verts": 235
+},
+{
+"id": "auditory-tube",
+"name_en_raw": "Auditory tube",
+"system": "nerves",
+"nodes": [
+"Auditory tube.l",
+"Auditory tube.r"
+],
+"verts": 1844
+},
+{
+"id": "base-of-peduncle",
+"name_en_raw": "Base of peduncle",
+"system": "nerves",
+"nodes": [
+"Base of peduncle.l",
+"Base of peduncle.r"
+],
+"verts": 5062
+},
+{
+"id": "biventral-lobule",
+"name_en_raw": "Biventral lobule",
+"system": "nerves",
+"nodes": [
+"Biventral lobule.l",
+"Biventral lobule.r"
+],
+"verts": 8928
+},
+{
+"id": "buccal-nerve",
+"name_en_raw": "Buccal nerve",
+"system": "nerves",
+"nodes": [
+"Buccal nerve.l",
+"Buccal nerve.r"
+],
+"verts": 2736
+},
+{
+"id": "calcarine-sulcus",
+"name_en_raw": "Calcarine sulcus",
+"system": "nerves",
+"nodes": [
+"Calcarine sulcus.l",
+"Calcarine sulcus.r"
+],
+"verts": 874
+},
+{
+"id": "caudate-nucleus",
+"name_en_raw": "Caudate nucleus",
+"system": "nerves",
+"nodes": [
+"Caudate nucleus.l",
+"Caudate nucleus.r"
+],
+"verts": 2574
+},
+{
+"id": "central-canal",
+"name_en_raw": "Central canal'",
+"system": "nerves",
+"nodes": [
+"Central canal'"
+],
+"verts": 300
+},
+{
+"id": "central-lobule",
+"name_en_raw": "Central lobule",
+"system": "nerves",
+"nodes": [
+"Central lobule"
+],
+"verts": 505
+},
+{
+"id": "central-sulcus",
+"name_en_raw": "Central sulcus",
+"system": "nerves",
+"nodes": [
+"Central sulcus.l",
+"Central sulcus.r"
+],
+"verts": 1444
+},
+{
+"id": "chorda-tympani",
+"name_en_raw": "Chorda tympani",
+"system": "nerves",
+"nodes": [
+"Chorda tympani.l",
+"Chorda tympani.r"
+],
+"verts": 1800
+},
+{
+"id": "choroid-plexus",
+"name_en_raw": "Choroid plexus",
+"system": "nerves",
+"nodes": [
+"Choroid plexus.l",
+"Choroid plexus.r"
+],
+"verts": 2648
+},
+{
+"id": "cingulate-gyrus-posteroventral-part",
+"name_en_raw": "Cingulate gyrus (Posteroventral part*)",
+"system": "nerves",
+"nodes": [
+"Cingulate gyrus (Posteroventral part*).l",
+"Cingulate gyrus (Posteroventral part*).r"
+],
+"verts": 306
+},
+{
+"id": "cingulate-gyrus-and-sulcus-middle-anterior-part",
+"name_en_raw": "Cingulate gyrus and sulcus (Middle anterior part)",
+"system": "nerves",
+"nodes": [
+"Cingulate gyrus and sulcus (Middle anterior part).l",
+"Cingulate gyrus and sulcus (Middle anterior part).r"
+],
+"verts": 740
+},
+{
+"id": "cingulate-gyrus-and-sulcus-middle-posterior-part",
+"name_en_raw": "Cingulate gyrus and sulcus (Middle posterior part)",
+"system": "nerves",
+"nodes": [
+"Cingulate gyrus and sulcus (Middle posterior part).l",
+"Cingulate gyrus and sulcus (Middle posterior part).r"
+],
+"verts": 604
+},
+{
+"id": "cingulate-gyrus-and-sulcus-posterior-dorsal-part",
+"name_en_raw": "Cingulate gyrus and sulcus (Posterior dorsal part)",
+"system": "nerves",
+"nodes": [
+"Cingulate gyrus and sulcus (Posterior dorsal part).l",
+"Cingulate gyrus and sulcus (Posterior dorsal part).r"
+],
+"verts": 414
+},
+{
+"id": "cingulate-sulcus-marginal-part",
+"name_en_raw": "Cingulate sulcus (Marginal part*)",
+"system": "nerves",
+"nodes": [
+"Cingulate sulcus (Marginal part*).l",
+"Cingulate sulcus (Marginal part*).r"
+],
+"verts": 548
+},
+{
+"id": "circular-sulcus-of-insula",
+"name_en_raw": "Circular sulcus of insula",
+"system": "nerves",
+"nodes": [
+"Circular sulcus of insula.l",
+"Circular sulcus of insula.r"
+],
+"verts": 802
+},
+{
+"id": "cochlea",
+"name_en_raw": "Cochlea",
+"system": "nerves",
+"nodes": [
+"Cochlea.l",
+"Cochlea.r"
+],
+"verts": 6220
+},
+{
+"id": "cochlear-nerve",
+"name_en_raw": "Cochlear nerve",
+"system": "nerves",
+"nodes": [
+"Cochlear nerve",
+"Cochlear nerve.l"
+],
+"verts": 1349
+},
+{
+"id": "collateral-sulcus",
+"name_en_raw": "Collateral sulcus",
+"system": "nerves",
+"nodes": [
+"Collateral sulcus.l",
+"Collateral sulcus.r"
+],
+"verts": 1150
+},
+{
+"id": "cornea",
+"name_en_raw": "Cornea",
+"system": "nerves",
+"nodes": [
+"Cornea.l",
+"Cornea.r"
+],
+"verts": 2692
+},
+{
+"id": "corpus-callosum",
+"name_en_raw": "Corpus callosum",
+"system": "nerves",
+"nodes": [
+"Corpus callosum"
+],
+"verts": 2000
+},
+{
+"id": "culmen",
+"name_en_raw": "Culmen",
+"system": "nerves",
+"nodes": [
+"Culmen"
+],
+"verts": 1194
+},
+{
+"id": "cuneate-fasciculus",
+"name_en_raw": "Cuneate fasciculus",
+"system": "nerves",
+"nodes": [
+"Cuneate fasciculus"
+],
+"verts": 1584
+},
+{
+"id": "cuneus",
+"name_en_raw": "Cuneus",
+"system": "nerves",
+"nodes": [
+"Cuneus.l",
+"Cuneus.r"
+],
+"verts": 950
+},
+{
+"id": "declive",
+"name_en_raw": "Declive",
+"system": "nerves",
+"nodes": [
+"Declive"
+],
+"verts": 1067
+},
+{
+"id": "facial-nerve-vii",
+"name_en_raw": "Facial nerve (VII)",
+"system": "nerves",
+"nodes": [
+"Facial nerve (VII).l",
+"Facial nerve (VII).r"
+],
+"verts": 27936
+},
+{
+"id": "falx-cerebri",
+"name_en_raw": "Falx cerebri",
+"system": "nerves",
+"nodes": [
+"Falx cerebri"
+],
+"verts": 7091
+},
+{
+"id": "flocculus",
+"name_en_raw": "Flocculus",
+"system": "nerves",
+"nodes": [
+"Flocculus.l",
+"Flocculus.r"
+],
+"verts": 3738
+},
+{
+"id": "folium-of-vermis",
+"name_en_raw": "Folium of vermis",
+"system": "nerves",
+"nodes": [
+"Folium of vermis"
+],
+"verts": 410
+},
+{
+"id": "fornix",
+"name_en_raw": "Fornix",
+"system": "nerves",
+"nodes": [
+"Fornix.l",
+"Fornix.r"
+],
+"verts": 2162
+},
+{
+"id": "fourth-ventricle",
+"name_en_raw": "Fourth ventricle",
+"system": "nerves",
+"nodes": [
+"Fourth ventricle"
+],
+"verts": 2915
+},
+{
+"id": "globus-pallidus",
+"name_en_raw": "Globus pallidus",
+"system": "nerves",
+"nodes": [
+"Globus pallidus.l",
+"Globus pallidus.r"
+],
+"verts": 5280
+},
+{
+"id": "glossopharyngeal-nerve-ix",
+"name_en_raw": "Glossopharyngeal nerve (IX)",
+"system": "nerves",
+"nodes": [
+"Glossopharyngeal nerve (IX).l",
+"Glossopharyngeal nerve (IX).r"
+],
+"verts": 13752
+},
+{
+"id": "gracile-lobule",
+"name_en_raw": "Gracile lobule",
+"system": "nerves",
+"nodes": [
+"Gracile lobule.l",
+"Gracile lobule.r"
+],
+"verts": 6976
+},
+{
+"id": "habenula",
+"name_en_raw": "Habenula",
+"system": "nerves",
+"nodes": [
+"Habenula"
+],
+"verts": 204
+},
+{
+"id": "hippocampal-commissure",
+"name_en_raw": "Hippocampal commissure",
+"system": "nerves",
+"nodes": [
+"Hippocampal commissure"
+],
+"verts": 4936
+},
+{
+"id": "hippocampus",
+"name_en_raw": "Hippocampus",
+"system": "nerves",
+"nodes": [
+"Hippocampus.l",
+"Hippocampus.r"
+],
+"verts": 1024
+},
+{
+"id": "hypoglossal-nerve-xii",
+"name_en_raw": "Hypoglossal nerve (XII)",
+"system": "nerves",
+"nodes": [
+"Hypoglossal nerve (XII).l",
+"Hypoglossal nerve (XII).r"
+],
+"verts": 16704
+},
+{
+"id": "hypothalamus",
+"name_en_raw": "Hypothalamus",
+"system": "nerves",
+"nodes": [
+"Hypothalamus"
+],
+"verts": 2147
+},
+{
+"id": "inferior-alveolar-nerve",
+"name_en_raw": "Inferior alveolar nerve",
+"system": "nerves",
+"nodes": [
+"Inferior alveolar nerve.l",
+"Inferior alveolar nerve.r"
+],
+"verts": 17568
+},
+{
+"id": "inferior-colliculus",
+"name_en_raw": "Inferior colliculus",
+"system": "nerves",
+"nodes": [
+"Inferior colliculus.l",
+"Inferior colliculus.r"
+],
+"verts": 472
+},
+{
+"id": "inferior-frontal-sulcus",
+"name_en_raw": "Inferior frontal sulcus",
+"system": "nerves",
+"nodes": [
+"Inferior frontal sulcus.l",
+"Inferior frontal sulcus.r"
+],
+"verts": 826
+},
+{
+"id": "inferior-occipital-gyrus-and-sulcus",
+"name_en_raw": "Inferior occipital gyrus and sulcus*",
+"system": "nerves",
+"nodes": [
+"Inferior occipital gyrus and sulcus*.l",
+"Inferior occipital gyrus and sulcus*.r"
+],
+"verts": 898
+},
+{
+"id": "inferior-salivatory-nucleus",
+"name_en_raw": "Inferior salivatory nucleus",
+"system": "nerves",
+"nodes": [
+"Inferior salivatory nucleus.l",
+"Inferior salivatory nucleus.r"
+],
+"verts": 772
+},
+{
+"id": "inferior-semilunar-lobule",
+"name_en_raw": "Inferior semilunar lobule",
+"system": "nerves",
+"nodes": [
+"Inferior semilunar lobule.l",
+"Inferior semilunar lobule.r"
+],
+"verts": 7802
+},
+{
+"id": "inferior-temporal-gyrus",
+"name_en_raw": "Inferior temporal gyrus",
+"system": "nerves",
+"nodes": [
+"Inferior temporal gyrus.l",
+"Inferior temporal gyrus.r"
+],
+"verts": 1500
+},
+{
+"id": "inferior-temporal-sulcus",
+"name_en_raw": "Inferior temporal sulcus",
+"system": "nerves",
+"nodes": [
+"Inferior temporal sulcus.l",
+"Inferior temporal sulcus.r"
+],
+"verts": 250
+},
+{
+"id": "insula-subcentral-gyrus-and-ant-and-post-sulci",
+"name_en_raw": "Insula (Subcentral gyrus and ant. and post. sulci*)",
+"system": "nerves",
+"nodes": [
+"Insula (Subcentral gyrus and ant. and post. sulci*).l",
+"Insula (Subcentral gyrus and ant. and post. sulci*).r"
+],
+"verts": 744
+},
+{
+"id": "interpeduncular-fossa",
+"name_en_raw": "Interpeduncular fossa",
+"system": "nerves",
+"nodes": [
+"Interpeduncular fossa.l",
+"Interpeduncular fossa.r"
+],
+"verts": 62
+},
+{
+"id": "intraparietal-sulcus",
+"name_en_raw": "Intraparietal sulcus",
+"system": "nerves",
+"nodes": [
+"Intraparietal sulcus.l",
+"Intraparietal sulcus.r"
+],
+"verts": 856
+},
+{
+"id": "iris",
+"name_en_raw": "Iris",
+"system": "nerves",
+"nodes": [
+"Iris.l",
+"Iris.r"
+],
+"verts": 3468
+},
+{
+"id": "lacrimal-canaliculus",
+"name_en_raw": "Lacrimal canaliculus",
+"system": "nerves",
+"nodes": [
+"Lacrimal canaliculus.l",
+"Lacrimal canaliculus.r"
+],
+"verts": 420
+},
+{
+"id": "lacrimal-gland",
+"name_en_raw": "Lacrimal gland",
+"system": "nerves",
+"nodes": [
+"Lacrimal gland.l",
+"Lacrimal gland.r"
+],
+"verts": 1814
+},
+{
+"id": "lacrimal-sac",
+"name_en_raw": "Lacrimal sac",
+"system": "nerves",
+"nodes": [
+"Lacrimal sac.l",
+"Lacrimal sac.r"
+],
+"verts": 388
+},
+{
+"id": "lat-fis-ant-horizont",
+"name_en_raw": "Lat_Fis-ant-Horizont",
+"system": "nerves",
+"nodes": [
+"Lat_Fis-ant-Horizont.l",
+"Lat_Fis-ant-Horizont.r"
+],
+"verts": 178
+},
+{
+"id": "lat-fis-ant-vertical",
+"name_en_raw": "Lat_Fis-ant-Vertical",
+"system": "nerves",
+"nodes": [
+"Lat_Fis-ant-Vertical.l",
+"Lat_Fis-ant-Vertical.r"
+],
+"verts": 198
+},
+{
+"id": "lat-fis-post",
+"name_en_raw": "Lat_Fis-post",
+"system": "nerves",
+"nodes": [
+"Lat_Fis-post.l",
+"Lat_Fis-post.r"
+],
+"verts": 484
+},
+{
+"id": "lateral-geniculate-body",
+"name_en_raw": "Lateral geniculate body",
+"system": "nerves",
+"nodes": [
+"Lateral geniculate body.l",
+"Lateral geniculate body.r"
+],
+"verts": 608
+},
+{
+"id": "lateral-occipital-gyrus-middle-occipital-gyrus",
+"name_en_raw": "Lateral occipital gyrus (Middle occipital gyrus*)",
+"system": "nerves",
+"nodes": [
+"Lateral occipital gyrus (Middle occipital gyrus*).l",
+"Lateral occipital gyrus (Middle occipital gyrus*).r"
+],
+"verts": 858
+},
+{
+"id": "lateral-occipitotemporal-gyrus",
+"name_en_raw": "Lateral occipitotemporal gyrus",
+"system": "nerves",
+"nodes": [
+"Lateral occipitotemporal gyrus.l",
+"Lateral occipitotemporal gyrus.r"
+],
+"verts": 940
+},
+{
+"id": "lateral-ventricle",
+"name_en_raw": "Lateral ventricle",
+"system": "nerves",
+"nodes": [
+"Lateral ventricle.l",
+"Lateral ventricle.r"
+],
+"verts": 2902
+},
+{
+"id": "lens",
+"name_en_raw": "Lens",
+"system": "nerves",
+"nodes": [
+"Lens.l",
+"Lens.r"
+],
+"verts": 1602
+},
+{
+"id": "lentiform-nucleus",
+"name_en_raw": "Lentiform nucleus",
+"system": "nerves",
+"nodes": [
+"Lentiform nucleus.l",
+"Lentiform nucleus.r"
+],
+"verts": 2148
+},
+{
+"id": "lingual-gyrus",
+"name_en_raw": "Lingual gyrus",
+"system": "nerves",
+"nodes": [
+"Lingual gyrus.l",
+"Lingual gyrus.r"
+],
+"verts": 1682
+},
+{
+"id": "lingual-nerve",
+"name_en_raw": "Lingual nerve",
+"system": "nerves",
+"nodes": [
+"Lingual nerve.l",
+"Lingual nerve.r"
+],
+"verts": 2664
+},
+{
+"id": "lingula-of-cerebellum",
+"name_en_raw": "Lingula of cerebellum",
+"system": "nerves",
+"nodes": [
+"Lingula of cerebellum"
+],
+"verts": 530
+},
+{
+"id": "lunate-sulcus",
+"name_en_raw": "Lunate sulcus",
+"system": "nerves",
+"nodes": [
+"Lunate sulcus.l",
+"Lunate sulcus.r"
+],
+"verts": 390
+},
+{
+"id": "mamillary-body",
+"name_en_raw": "Mamillary body",
+"system": "nerves",
+"nodes": [
+"Mamillary body.l",
+"Mamillary body.r"
+],
+"verts": 224
+},
+{
+"id": "medial-geniculate-body",
+"name_en_raw": "Medial geniculate body",
+"system": "nerves",
+"nodes": [
+"Medial geniculate body.l",
+"Medial geniculate body.r"
+],
+"verts": 202
+},
+{
+"id": "medial-occipitotemporal-gyrus-parahippocampal",
+"name_en_raw": "Medial occipitotemporal gyrus (Parahippocampal*)",
+"system": "nerves",
+"nodes": [
+"Medial occipitotemporal gyrus (Parahippocampal*).l",
+"Medial occipitotemporal gyrus (Parahippocampal*).r"
+],
+"verts": 954
+},
+{
+"id": "medulla-oblongata",
+"name_en_raw": "Medulla oblongata",
+"system": "nerves",
+"nodes": [
+"Medulla oblongata.l",
+"Medulla oblongata.r"
+],
+"verts": 6084
+},
+{
+"id": "mental-nerve",
+"name_en_raw": "Mental nerve",
+"system": "nerves",
+"nodes": [
+"Mental nerve.l",
+"Mental nerve.r"
+],
+"verts": 2808
+},
+{
+"id": "midbrain",
+"name_en_raw": "Midbrain",
+"system": "nerves",
+"nodes": [
+"Midbrain.l",
+"Midbrain.r"
+],
+"verts": 6098
+},
+{
+"id": "middle-frontal-gyrus",
+"name_en_raw": "Middle frontal gyrus",
+"system": "nerves",
+"nodes": [
+"Middle frontal gyrus.l",
+"Middle frontal gyrus.r"
+],
+"verts": 2282
+},
+{
+"id": "middle-temporal-gyrus",
+"name_en_raw": "Middle temporal gyrus",
+"system": "nerves",
+"nodes": [
+"Middle temporal gyrus.l",
+"Middle temporal gyrus.r"
+],
+"verts": 1314
+},
+{
+"id": "motor-nucleus-of-facial-nerve",
+"name_en_raw": "Motor nucleus of facial nerve",
+"system": "nerves",
+"nodes": [
+"Motor nucleus of facial nerve.l",
+"Motor nucleus of facial nerve.r"
+],
+"verts": 772
+},
+{
+"id": "motor-root-of-trigeminal-nerve",
+"name_en_raw": "Motor root of trigeminal nerve",
+"system": "nerves",
+"nodes": [
+"Motor root of trigeminal nerve.l",
+"Motor root of trigeminal nerve.r"
+],
+"verts": 964
+},
+{
+"id": "nasolacrimal-duct",
+"name_en_raw": "Nasolacrimal duct",
+"system": "nerves",
+"nodes": [
+"Nasolacrimal duct.l",
+"Nasolacrimal duct.r"
+],
+"verts": 448
+},
+{
+"id": "nerve-to-mylohyoid-muscle",
+"name_en_raw": "Nerve to mylohyoid muscle",
+"system": "nerves",
+"nodes": [
+"Nerve to mylohyoid muscle.l",
+"Nerve to mylohyoid muscle.r"
+],
+"verts": 3600
+},
+{
+"id": "nodule-of-vermis",
+"name_en_raw": "Nodule of vermis",
+"system": "nerves",
+"nodes": [
+"Nodule of vermis"
+],
+"verts": 512
+},
+{
+"id": "nucleus-ambiguus",
+"name_en_raw": "Nucleus ambiguus",
+"system": "nerves",
+"nodes": [
+"Nucleus ambiguus.l",
+"Nucleus ambiguus.r"
+],
+"verts": 772
+},
+{
+"id": "nucleus-of-abducens-nerve",
+"name_en_raw": "Nucleus of abducens nerve",
+"system": "nerves",
+"nodes": [
+"Nucleus of abducens nerve.l",
+"Nucleus of abducens nerve.r"
+],
+"verts": 772
+},
+{
+"id": "nucleus-of-accessory-nerve",
+"name_en_raw": "Nucleus of accessory nerve",
+"system": "nerves",
+"nodes": [
+"Nucleus of accessory nerve.l",
+"Nucleus of accessory nerve.r"
+],
+"verts": 1796
+},
+{
+"id": "nucleus-of-hypoglossal-nerve",
+"name_en_raw": "Nucleus of hypoglossal nerve",
+"system": "nerves",
+"nodes": [
+"Nucleus of hypoglossal nerve.l",
+"Nucleus of hypoglossal nerve.r"
+],
+"verts": 772
+},
+{
+"id": "nucleus-of-oculomotor-nerve",
+"name_en_raw": "Nucleus of oculomotor nerve",
+"system": "nerves",
+"nodes": [
+"Nucleus of oculomotor nerve.l",
+"Nucleus of oculomotor nerve.r"
+],
+"verts": 772
+},
+{
+"id": "nucleus-of-solitary-tract",
+"name_en_raw": "Nucleus of solitary tract",
+"system": "nerves",
+"nodes": [
+"Nucleus of solitary tract.l",
+"Nucleus of solitary tract.r"
+],
+"verts": 1348
+},
+{
+"id": "nucleus-of-trochlear-nerve",
+"name_en_raw": "Nucleus of trochlear nerve",
+"system": "nerves",
+"nodes": [
+"Nucleus of trochlear nerve.l",
+"Nucleus of trochlear nerve.r"
+],
+"verts": 772
+},
+{
+"id": "occipital-pole",
+"name_en_raw": "Occipital pole",
+"system": "nerves",
+"nodes": [
+"Occipital pole.l",
+"Occipital pole.r"
+],
+"verts": 958
+},
+{
+"id": "occipitotemporal-sulcus-lateral-part",
+"name_en_raw": "Occipitotemporal sulcus (Lateral part*)",
+"system": "nerves",
+"nodes": [
+"Occipitotemporal sulcus (Lateral part*).l",
+"Occipitotemporal sulcus (Lateral part*).r"
+],
+"verts": 490
+},
+{
+"id": "oculomotor-nerve-iii",
+"name_en_raw": "Oculomotor nerve (III)",
+"system": "nerves",
+"nodes": [
+"Oculomotor nerve (III).l",
+"Oculomotor nerve (III).r"
+],
+"verts": 9144
+},
+{
+"id": "olfactory-nerve-i",
+"name_en_raw": "Olfactory nerve (I)",
+"system": "nerves",
+"nodes": [
+"Olfactory nerve (I).l",
+"Olfactory nerve (I).r"
+],
+"verts": 28152
+},
+{
+"id": "olfactory-sulcus",
+"name_en_raw": "Olfactory sulcus",
+"system": "nerves",
+"nodes": [
+"Olfactory sulcus.l",
+"Olfactory sulcus.r"
+],
+"verts": 550
+},
+{
+"id": "olive",
+"name_en_raw": "Olive",
+"system": "nerves",
+"nodes": [
+"Olive.l",
+"Olive.r"
+],
+"verts": 964
+},
+{
+"id": "opercular-part-of-inferior-frontal-gyrus",
+"name_en_raw": "Opercular part of inferior frontal gyrus",
+"system": "nerves",
+"nodes": [
+"Opercular part of inferior frontal gyrus.l",
+"Opercular part of inferior frontal gyrus.r"
+],
+"verts": 744
+},
+{
+"id": "ophthalmic-nerve",
+"name_en_raw": "Ophthalmic nerve",
+"system": "nerves",
+"nodes": [
+"Ophthalmic nerve.l",
+"Ophthalmic nerve.r"
+],
+"verts": 6984
+},
+{
+"id": "optic-chiasm",
+"name_en_raw": "Optic chiasm",
+"system": "nerves",
+"nodes": [
+"Optic chiasm.l",
+"Optic chiasm.r"
+],
+"verts": 896
+},
+{
+"id": "optic-nerve-ii",
+"name_en_raw": "Optic nerve (II)",
+"system": "nerves",
+"nodes": [
+"Optic nerve (II).l",
+"Optic nerve (II).r"
+],
+"verts": 1800
+},
+{
+"id": "optic-tract",
+"name_en_raw": "Optic tract",
+"system": "nerves",
+"nodes": [
+"Optic tract.l",
+"Optic tract.r"
+],
+"verts": 2336
+},
+{
+"id": "orbital-gyri-frontomarginal-gyrus-and-sulcus",
+"name_en_raw": "Orbital gyri (Frontomarginal gyrus and sulcus*)",
+"system": "nerves",
+"nodes": [
+"Orbital gyri (Frontomarginal gyrus and sulcus*).l",
+"Orbital gyri (Frontomarginal gyrus and sulcus*).r"
+],
+"verts": 660
+},
+{
+"id": "orbital-gyri",
+"name_en_raw": "Orbital gyri",
+"system": "nerves",
+"nodes": [
+"Orbital gyri.l",
+"Orbital gyri.r"
+],
+"verts": 1512
+},
+{
+"id": "orbital-part-of-inferior-frontal-gyrus",
+"name_en_raw": "Orbital part of  inferior frontal gyrus",
+"system": "nerves",
+"nodes": [
+"Orbital part of  inferior frontal gyrus.l",
+"Orbital part of  inferior frontal gyrus.r"
+],
+"verts": 190
+},
+{
+"id": "orbital-sulci-h-shaped-orbital-sulci",
+"name_en_raw": "Orbital sulci (H-shaped orbital sulci*)",
+"system": "nerves",
+"nodes": [
+"Orbital sulci (H-shaped orbital sulci*).l",
+"Orbital sulci (H-shaped orbital sulci*).r"
+],
+"verts": 766
+},
+{
+"id": "orbital-sulci-lateral-orbital-sulcus",
+"name_en_raw": "Orbital sulci (Lateral Orbital sulcus*)",
+"system": "nerves",
+"nodes": [
+"Orbital sulci (Lateral Orbital sulcus*).l",
+"Orbital sulci (Lateral Orbital sulcus*).r"
+],
+"verts": 204
+},
+{
+"id": "paracentral-gyrus-and-sulcus",
+"name_en_raw": "Paracentral gyrus and sulcus*",
+"system": "nerves",
+"nodes": [
+"Paracentral gyrus and sulcus*.l",
+"Paracentral gyrus and sulcus*.r"
+],
+"verts": 754
+},
+{
+"id": "paracentral-sulcus",
+"name_en_raw": "Paracentral sulcus",
+"system": "nerves",
+"nodes": [
+"Paracentral sulcus.l",
+"Paracentral sulcus.r"
+],
+"verts": 676
+},
+{
+"id": "parieto-occipital-sulcus",
+"name_en_raw": "Parieto-occipital sulcus",
+"system": "nerves",
+"nodes": [
+"Parieto-occipital sulcus.l",
+"Parieto-occipital sulcus.r"
+],
+"verts": 1648
+},
+{
+"id": "peduncle-of-flocculus",
+"name_en_raw": "Peduncle of flocculus",
+"system": "nerves",
+"nodes": [
+"Peduncle of flocculus.l",
+"Peduncle of flocculus.r"
+],
+"verts": 2432
+},
+{
+"id": "pons",
+"name_en_raw": "Pons",
+"system": "nerves",
+"nodes": [
+"Pons.l",
+"Pons.r"
+],
+"verts": 10176
+},
+{
+"id": "postcentral-gyrus",
+"name_en_raw": "Postcentral gyrus",
+"system": "nerves",
+"nodes": [
+"Postcentral gyrus.l",
+"Postcentral gyrus.r"
+],
+"verts": 1156
+},
+{
+"id": "postcentral-sulcus",
+"name_en_raw": "Postcentral sulcus",
+"system": "nerves",
+"nodes": [
+"Postcentral sulcus.l",
+"Postcentral sulcus.r"
+],
+"verts": 1190
+},
+{
+"id": "posterior-cochlear-nucleus",
+"name_en_raw": "Posterior cochlear nucleus",
+"system": "nerves",
+"nodes": [
+"Posterior cochlear nucleus.l",
+"Posterior cochlear nucleus.r"
+],
+"verts": 964
+},
+{
+"id": "posterior-commissure",
+"name_en_raw": "Posterior commissure",
+"system": "nerves",
+"nodes": [
+"Posterior commissure"
+],
+"verts": 434
+},
+{
+"id": "posterior-division-of-mandibular-nerve",
+"name_en_raw": "Posterior division of mandibular nerve",
+"system": "nerves",
+"nodes": [
+"Posterior division of mandibular nerve.l",
+"Posterior division of mandibular nerve.r"
+],
+"verts": 936
+},
+{
+"id": "posterior-nucleus-of-vagus-nerve",
+"name_en_raw": "Posterior nucleus of vagus nerve",
+"system": "nerves",
+"nodes": [
+"Posterior nucleus of vagus nerve.l",
+"Posterior nucleus of vagus nerve.r"
+],
+"verts": 772
+},
+{
+"id": "posterior-quadrangular-lobule",
+"name_en_raw": "Posterior quadrangular lobule",
+"system": "nerves",
+"nodes": [
+"Posterior quadrangular lobule.l",
+"Posterior quadrangular lobule.r"
+],
+"verts": 3632
+},
+{
+"id": "posterior-segment-of-eyeball",
+"name_en_raw": "Posterior segment of eyeball",
+"system": "nerves",
+"nodes": [
+"Posterior segment of eyeball.l",
+"Posterior segment of eyeball.r"
+],
+"verts": 6532
+},
+{
+"id": "precentral-gyrus",
+"name_en_raw": "Precentral gyrus",
+"system": "nerves",
+"nodes": [
+"Precentral gyrus.l",
+"Precentral gyrus.r"
+],
+"verts": 1534
+},
+{
+"id": "precentral-sulcus-inferior-part",
+"name_en_raw": "Precentral sulcus (inferior part)*",
+"system": "nerves",
+"nodes": [
+"Precentral sulcus (inferior part)*.l",
+"Precentral sulcus (inferior part)*.r"
+],
+"verts": 782
+},
+{
+"id": "precentral-sulcus-superior-part",
+"name_en_raw": "Precentral sulcus (Superior part)*",
+"system": "nerves",
+"nodes": [
+"Precentral sulcus (Superior part)*.l",
+"Precentral sulcus (Superior part)*.r"
+],
+"verts": 572
+},
+{
+"id": "precuneus",
+"name_en_raw": "Precuneus",
+"system": "nerves",
+"nodes": [
+"Precuneus.l",
+"Precuneus.r"
+],
+"verts": 1304
+},
+{
+"id": "putamen",
+"name_en_raw": "Putamen",
+"system": "nerves",
+"nodes": [
+"Putamen.l",
+"Putamen.r"
+],
+"verts": 1154
+},
+{
+"id": "pyramid-of-medulla-oblongata",
+"name_en_raw": "Pyramid of medulla oblongata",
+"system": "nerves",
+"nodes": [
+"Pyramid of medulla oblongata.l",
+"Pyramid of medulla oblongata.r"
+],
+"verts": 964
+},
+{
+"id": "pyramis-of-vermis",
+"name_en_raw": "Pyramis of vermis",
+"system": "nerves",
+"nodes": [
+"Pyramis of vermis"
+],
+"verts": 593
+},
+{
+"id": "red-nucleus",
+"name_en_raw": "Red nucleus",
+"system": "nerves",
+"nodes": [
+"Red nucleus.l",
+"Red nucleus.r"
+],
+"verts": 708
+},
+{
+"id": "retina",
+"name_en_raw": "Retina",
+"system": "nerves",
+"nodes": [
+"Retina.l",
+"Retina.r"
+],
+"verts": 6308
+},
+{
+"id": "sclera",
+"name_en_raw": "Sclera",
+"system": "nerves",
+"nodes": [
+"Sclera.l",
+"Sclera.r"
+],
+"verts": 4610
+},
+{
+"id": "sensory-root-of-trigeminal-nerve",
+"name_en_raw": "Sensory root of trigeminal nerve",
+"system": "nerves",
+"nodes": [
+"Sensory root of trigeminal nerve.l",
+"Sensory root of trigeminal nerve.r"
+],
+"verts": 2756
+},
+{
+"id": "septal-nuclei",
+"name_en_raw": "Septal nuclei",
+"system": "nerves",
+"nodes": [
+"Septal nuclei"
+],
+"verts": 278
+},
+{
+"id": "septum-pellucidum",
+"name_en_raw": "Septum pellucidum",
+"system": "nerves",
+"nodes": [
+"Septum pellucidum"
+],
+"verts": 1187
+},
+{
+"id": "straight-gyrus-gyrus-rectus",
+"name_en_raw": "Straight gyrus (Gyrus rectus)",
+"system": "nerves",
+"nodes": [
+"Straight gyrus (Gyrus rectus).l",
+"Straight gyrus (Gyrus rectus).r"
+],
+"verts": 512
+},
+{
+"id": "stria-medullaris-thalami",
+"name_en_raw": "Stria medullaris thalami",
+"system": "nerves",
+"nodes": [
+"Stria medullaris thalami.l",
+"Stria medullaris thalami.r"
+],
+"verts": 846
+},
+{
+"id": "stria-terminalis",
+"name_en_raw": "Stria terminalis",
+"system": "nerves",
+"nodes": [
+"Stria terminalis.l",
+"Stria terminalis.r"
+],
+"verts": 762
+},
+{
+"id": "subparietal-sulcus",
+"name_en_raw": "Subparietal sulcus",
+"system": "nerves",
+"nodes": [
+"Subparietal sulcus.l",
+"Subparietal sulcus.r"
+],
+"verts": 566
+},
+{
+"id": "sulcus-interm-prim-jensen",
+"name_en_raw": "Sulcus interm_prim-Jensen",
+"system": "nerves",
+"nodes": [
+"Sulcus interm_prim-Jensen.l",
+"Sulcus interm_prim-Jensen.r"
+],
+"verts": 364
+},
+{
+"id": "superior-cerebellar-peduncle",
+"name_en_raw": "Superior cerebellar peduncle",
+"system": "nerves",
+"nodes": [
+"Superior cerebellar peduncle.l",
+"Superior cerebellar peduncle.r"
+],
+"verts": 8688
+},
+{
+"id": "superior-colliculus",
+"name_en_raw": "Superior colliculus",
+"system": "nerves",
+"nodes": [
+"Superior colliculus.l",
+"Superior colliculus.r"
+],
+"verts": 466
+},
+{
+"id": "superior-frontal-gyrus",
+"name_en_raw": "Superior frontal gyrus",
+"system": "nerves",
+"nodes": [
+"Superior frontal gyrus.l",
+"Superior frontal gyrus.r"
+],
+"verts": 3744
+},
+{
+"id": "superior-frontal-sulcus",
+"name_en_raw": "Superior frontal sulcus",
+"system": "nerves",
+"nodes": [
+"Superior frontal sulcus.l",
+"Superior frontal sulcus.r"
+],
+"verts": 1294
+},
+{
+"id": "superior-occipital-gyri",
+"name_en_raw": "Superior occipital gyri",
+"system": "nerves",
+"nodes": [
+"Superior occipital gyri.l",
+"Superior occipital gyri.r"
+],
+"verts": 674
+},
+{
+"id": "superior-parietal-lobule",
+"name_en_raw": "Superior parietal lobule",
+"system": "nerves",
+"nodes": [
+"Superior parietal lobule.l",
+"Superior parietal lobule.r"
+],
+"verts": 1206
+},
+{
+"id": "superior-salivatory-nucleus",
+"name_en_raw": "Superior salivatory nucleus",
+"system": "nerves",
+"nodes": [
+"Superior salivatory nucleus.l",
+"Superior salivatory nucleus.r"
+],
+"verts": 772
+},
+{
+"id": "superior-semilunar-lobule",
+"name_en_raw": "Superior semilunar lobule",
+"system": "nerves",
+"nodes": [
+"Superior semilunar lobule.l",
+"Superior semilunar lobule.r"
+],
+"verts": 8736
+},
+{
+"id": "superior-temporal-gyrus-lateral-part",
+"name_en_raw": "Superior temporal gyrus (Lateral part)",
+"system": "nerves",
+"nodes": [
+"Superior temporal gyrus (Lateral part).l",
+"Superior temporal gyrus (Lateral part).r"
+],
+"verts": 1076
+},
+{
+"id": "superior-temporal-sulcus",
+"name_en_raw": "Superior temporal sulcus",
+"system": "nerves",
+"nodes": [
+"Superior temporal sulcus.l",
+"Superior temporal sulcus.r"
+],
+"verts": 2378
+},
+{
+"id": "supramarginal-gyrus",
+"name_en_raw": "Supramarginal gyrus",
+"system": "nerves",
+"nodes": [
+"Supramarginal gyrus.l",
+"Supramarginal gyrus.r"
+],
+"verts": 1512
+},
+{
+"id": "suspensory-ligament-of-eyeball",
+"name_en_raw": "Suspensory ligament of eyeball",
+"system": "nerves",
+"nodes": [
+"Suspensory ligament of eyeball.l",
+"Suspensory ligament of eyeball.r"
+],
+"verts": 5510
+},
+{
+"id": "temporal-plane",
+"name_en_raw": "Temporal plane",
+"system": "nerves",
+"nodes": [
+"Temporal plane.l",
+"Temporal plane.r"
+],
+"verts": 560
+},
+{
+"id": "temporal-pole",
+"name_en_raw": "Temporal pole",
+"system": "nerves",
+"nodes": [
+"Temporal pole.l",
+"Temporal pole.r"
+],
+"verts": 548
+},
+{
+"id": "tentorium-cerebelli",
+"name_en_raw": "Tentorium cerebelli",
+"system": "nerves",
+"nodes": [
+"Tentorium cerebelli.l",
+"Tentorium cerebelli.r"
+],
+"verts": 4484
+},
+{
+"id": "thalamus",
+"name_en_raw": "Thalamus",
+"system": "nerves",
+"nodes": [
+"Thalamus.l",
+"Thalamus.r"
+],
+"verts": 762
+},
+{
+"id": "third-ventricle",
+"name_en_raw": "Third ventricle",
+"system": "nerves",
+"nodes": [
+"Third ventricle"
+],
+"verts": 2158
+},
+{
+"id": "tonsil-of-cerebellum",
+"name_en_raw": "Tonsil of cerebellum",
+"system": "nerves",
+"nodes": [
+"Tonsil of cerebellum.l",
+"Tonsil of cerebellum.r"
+],
+"verts": 3642
+},
+{
+"id": "transverse-frontopolar-gyrus-and-sulcus",
+"name_en_raw": "Transverse frontopolar gyrus and sulcus*",
+"system": "nerves",
+"nodes": [
+"Transverse frontopolar gyrus and sulcus*.l",
+"Transverse frontopolar gyrus and sulcus*.r"
+],
+"verts": 246
+},
+{
+"id": "transverse-occipital-sulcus",
+"name_en_raw": "Transverse occipital sulcus",
+"system": "nerves",
+"nodes": [
+"Transverse occipital sulcus.l",
+"Transverse occipital sulcus.r"
+],
+"verts": 690
+},
+{
+"id": "transverse-temporal-gyri",
+"name_en_raw": "Transverse temporal gyri",
+"system": "nerves",
+"nodes": [
+"Transverse temporal gyri.l",
+"Transverse temporal gyri.r"
+],
+"verts": 238
+},
+{
+"id": "triangular-part-of-inferior-frontal-gyrus",
+"name_en_raw": "Triangular part of inferior frontal gyrus",
+"system": "nerves",
+"nodes": [
+"Triangular part of inferior frontal gyrus.l",
+"Triangular part of inferior frontal gyrus.r"
+],
+"verts": 508
+},
+{
+"id": "trigeminal-nerve-v",
+"name_en_raw": "Trigeminal nerve (V)",
+"system": "nerves",
+"nodes": [
+"Trigeminal nerve (V).l",
+"Trigeminal nerve (V).r"
+],
+"verts": 2448
+},
+{
+"id": "trochlear-nerve-iv",
+"name_en_raw": "Trochlear nerve (IV)",
+"system": "nerves",
+"nodes": [
+"Trochlear nerve (IV).l",
+"Trochlear nerve (IV).r"
+],
+"verts": 3816
+},
+{
+"id": "tuber-of-vermis",
+"name_en_raw": "Tuber of vermis",
+"system": "nerves",
+"nodes": [
+"Tuber of vermis"
+],
+"verts": 591
+},
+{
+"id": "tympanic-membrane",
+"name_en_raw": "Tympanic membrane",
+"system": "nerves",
+"nodes": [
+"Tympanic membrane.l",
+"Tympanic membrane.r"
+],
+"verts": 1576
+},
+{
+"id": "uvula-of-vermis",
+"name_en_raw": "Uvula of vermis",
+"system": "nerves",
+"nodes": [
+"Uvula of vermis"
+],
+"verts": 1118
+},
+{
+"id": "vagus-nerve-x",
+"name_en_raw": "Vagus nerve (X)",
+"system": "nerves",
+"nodes": [
+"Vagus nerve (X).l"
+],
+"verts": 6816
+},
+{
+"id": "vestibular-nerve",
+"name_en_raw": "Vestibular nerve",
+"system": "nerves",
+"nodes": [
+"Vestibular nerve.l",
+"Vestibular nerve.r"
+],
+"verts": 4896
+},
+{
+"id": "vestibular-nuclei",
+"name_en_raw": "Vestibular nuclei",
+"system": "nerves",
+"nodes": [
+"Vestibular nuclei.l",
+"Vestibular nuclei.r"
+],
+"verts": 1572
+},
+{
+"id": "vestibule",
+"name_en_raw": "Vestibule",
+"system": "nerves",
+"nodes": [
+"Vestibule.l",
+"Vestibule.r"
+],
+"verts": 8632
+},
+{
+"id": "vestibulocochlear-nerve-viii",
+"name_en_raw": "Vestibulocochlear nerve (VIII)",
+"system": "nerves",
+"nodes": [
+"Vestibulocochlear nerve (VIII).l",
+"Vestibulocochlear nerve (VIII).r"
+],
+"verts": 1872
+},
+{
+"id": "vitreous-body",
+"name_en_raw": "Vitreous body",
+"system": "nerves",
+"nodes": [
+"Vitreous body.l",
+"Vitreous body.r"
+],
+"verts": 5550
+},
+{
+"id": "white-matter-of-telencephalon",
+"name_en_raw": "White matter of telencephalon",
+"system": "nerves",
+"nodes": [
+"White matter of telencephalon.l",
+"White matter of telencephalon.r"
+],
+"verts": 135292
+},
+{
+"id": "wing-of-central-lobule",
+"name_en_raw": "Wing of central lobule",
+"system": "nerves",
+"nodes": [
+"Wing of central lobule.l",
+"Wing of central lobule.r"
+],
+"verts": 3170
+},
+{
+"id": "zonular-fibres",
+"name_en_raw": "Zonular fibres",
+"system": "nerves",
+"nodes": [
+"Zonular fibres.l",
+"Zonular fibres.r"
+],
+"verts": 34692
+},
+{
+"id": "x",
+"name_en_raw": "?x",
+"system": "vessels",
+"nodes": [
+"?x.l",
+"?x.r"
+],
+"verts": 1558
+},
+{
+"id": "accessory-branch-of-middle-meningeal-artery",
+"name_en_raw": "Accessory branch of middle meningeal artery",
+"system": "vessels",
+"nodes": [
+"Accessory branch of middle meningeal artery.l",
+"Accessory branch of middle meningeal artery.r"
+],
+"verts": 608
+},
+{
+"id": "angular-artery",
+"name_en_raw": "Angular artery",
+"system": "vessels",
+"nodes": [
+"Angular artery.l",
+"Angular artery.r"
+],
+"verts": 5006
+},
+{
+"id": "angular-vein",
+"name_en_raw": "Angular vein",
+"system": "vessels",
+"nodes": [
+"Angular vein.l",
+"Angular vein.r"
+],
+"verts": 1818
+},
+{
+"id": "anterior-cerebral-artery",
+"name_en_raw": "Anterior cerebral artery",
+"system": "vessels",
+"nodes": [
+"Anterior cerebral artery.l",
+"Anterior cerebral artery.r"
+],
+"verts": 378
+},
+{
+"id": "anterior-communicating-artery",
+"name_en_raw": "Anterior communicating artery",
+"system": "vessels",
+"nodes": [
+"Anterior communicating artery"
+],
+"verts": 23
+},
+{
+"id": "anterior-deep-temporal-artery",
+"name_en_raw": "Anterior deep temporal artery",
+"system": "vessels",
+"nodes": [
+"Anterior deep temporal artery.l",
+"Anterior deep temporal artery.r"
+],
+"verts": 1712
+},
+{
+"id": "anterior-division-of-retromandibular-vein",
+"name_en_raw": "Anterior division of retromandibular vein",
+"system": "vessels",
+"nodes": [
+"Anterior division of retromandibular vein.l",
+"Anterior division of retromandibular vein.r"
+],
+"verts": 260
+},
+{
+"id": "anterior-ethmoidal-artery",
+"name_en_raw": "Anterior ethmoidal artery",
+"system": "vessels",
+"nodes": [
+"Anterior ethmoidal artery.l",
+"Anterior ethmoidal artery.r"
+],
+"verts": 1558
+},
+{
+"id": "anterior-inferior-cerebellar-artery",
+"name_en_raw": "Anterior inferior cerebellar artery",
+"system": "vessels",
+"nodes": [
+"Anterior inferior cerebellar artery.l",
+"Anterior inferior cerebellar artery.r"
+],
+"verts": 1912
+},
+{
+"id": "anterior-intercavernous-sinus",
+"name_en_raw": "Anterior intercavernous sinus",
+"system": "vessels",
+"nodes": [
+"Anterior intercavernous sinus"
+],
+"verts": 130
+},
+{
+"id": "anterior-jugular-vein",
+"name_en_raw": "Anterior jugular vein",
+"system": "vessels",
+"nodes": [
+"Anterior jugular vein.l",
+"Anterior jugular vein.r"
+],
+"verts": 726
+},
+{
+"id": "anterior-septal-branches-of-anterior-ethmoidal-artery",
+"name_en_raw": "Anterior septal branches of anterior ethmoidal artery",
+"system": "vessels",
+"nodes": [
+"Anterior septal branches of anterior ethmoidal artery.l",
+"Anterior septal branches of anterior ethmoidal artery.r"
+],
+"verts": 1204
+},
+{
+"id": "anterior-spinal-artery",
+"name_en_raw": "Anterior spinal artery",
+"system": "vessels",
+"nodes": [
+"Anterior spinal artery.l",
+"Anterior spinal artery.r"
+],
+"verts": 732
+},
+{
+"id": "anterior-temporal-branch",
+"name_en_raw": "Anterior temporal branch",
+"system": "vessels",
+"nodes": [
+"Anterior temporal branch.l",
+"Anterior temporal branch.r"
+],
+"verts": 4344
+},
+{
+"id": "artery-of-central-sulcus",
+"name_en_raw": "Artery of central sulcus",
+"system": "vessels",
+"nodes": [
+"Artery of central sulcus.l",
+"Artery of central sulcus.r"
+],
+"verts": 1904
+},
+{
+"id": "artery-of-precentral-sulcus",
+"name_en_raw": "Artery of precentral sulcus",
+"system": "vessels",
+"nodes": [
+"Artery of precentral sulcus.l",
+"Artery of precentral sulcus.r"
+],
+"verts": 5226
+},
+{
+"id": "artery-of-pterygoid-canal",
+"name_en_raw": "Artery of pterygoid canal",
+"system": "vessels",
+"nodes": [
+"Artery of pterygoid canal.l",
+"Artery of pterygoid canal.r"
+],
+"verts": 614
+},
+{
+"id": "ascending-pharyngeal-artery",
+"name_en_raw": "Ascending pharyngeal artery",
+"system": "vessels",
+"nodes": [
+"Ascending pharyngeal artery.l",
+"Ascending pharyngeal artery.r"
+],
+"verts": 2536
+},
+{
+"id": "basilar-artery",
+"name_en_raw": "Basilar artery",
+"system": "vessels",
+"nodes": [
+"Basilar artery"
+],
+"verts": 189
+},
+{
+"id": "basilar-venous-plexus",
+"name_en_raw": "Basilar venous plexus",
+"system": "vessels",
+"nodes": [
+"Basilar venous plexus"
+],
+"verts": 11809
+},
+{
+"id": "brachiocephalic-trunk",
+"name_en_raw": "Brachiocephalic trunk",
+"system": "vessels",
+"nodes": [
+"Brachiocephalic trunk"
+],
+"verts": 142
+},
+{
+"id": "branch-to-angular-gyrus",
+"name_en_raw": "Branch to angular gyrus",
+"system": "vessels",
+"nodes": [
+"Branch to angular gyrus.l",
+"Branch to angular gyrus.r"
+],
+"verts": 370
+},
+{
+"id": "buccal-artery",
+"name_en_raw": "Buccal artery",
+"system": "vessels",
+"nodes": [
+"Buccal artery.l",
+"Buccal artery.r"
+],
+"verts": 614
+},
+{
+"id": "callosomarginal-artery",
+"name_en_raw": "Callosomarginal artery",
+"system": "vessels",
+"nodes": [
+"Callosomarginal artery.l",
+"Callosomarginal artery.r"
+],
+"verts": 6254
+},
+{
+"id": "cavernous-sinus",
+"name_en_raw": "Cavernous sinus",
+"system": "vessels",
+"nodes": [
+"Cavernous sinus.l",
+"Cavernous sinus.r"
+],
+"verts": 4184
+},
+{
+"id": "central-retinal-artery",
+"name_en_raw": "Central retinal artery",
+"system": "vessels",
+"nodes": [
+"Central retinal artery.l",
+"Central retinal artery.r"
+],
+"verts": 86888
+},
+{
+"id": "common-facial-vein",
+"name_en_raw": "Common facial vein",
+"system": "vessels",
+"nodes": [
+"Common facial vein.l",
+"Common facial vein.r"
+],
+"verts": 260
+},
+{
+"id": "costocervical-trunk",
+"name_en_raw": "Costocervical trunk",
+"system": "vessels",
+"nodes": [
+"Costocervical trunk.l",
+"Costocervical trunk.r"
+],
+"verts": 142
+},
+{
+"id": "deep-cervical-artery",
+"name_en_raw": "Deep cervical artery",
+"system": "vessels",
+"nodes": [
+"Deep cervical artery.l",
+"Deep cervical artery.r"
+],
+"verts": 1320
+},
+{
+"id": "descending-palatine-artery",
+"name_en_raw": "Descending palatine artery",
+"system": "vessels",
+"nodes": [
+"Descending palatine artery.l",
+"Descending palatine artery.r"
+],
+"verts": 1440
+},
+{
+"id": "distal-lateral-striate-branches",
+"name_en_raw": "Distal lateral striate branches",
+"system": "vessels",
+"nodes": [
+"Distal lateral striate branches.l",
+"Distal lateral striate branches.r"
+],
+"verts": 3966
+},
+{
+"id": "external-carotid-artery",
+"name_en_raw": "External carotid artery",
+"system": "vessels",
+"nodes": [
+"External carotid artery.l",
+"External carotid artery.r"
+],
+"verts": 732
+},
+{
+"id": "external-jugular-vein",
+"name_en_raw": "External jugular vein",
+"system": "vessels",
+"nodes": [
+"External jugular vein.l",
+"External jugular vein.r"
+],
+"verts": 850
+},
+{
+"id": "facial-artery",
+"name_en_raw": "Facial artery",
+"system": "vessels",
+"nodes": [
+"Facial artery.l",
+"Facial artery.r"
+],
+"verts": 1086
+},
+{
+"id": "facial-vein",
+"name_en_raw": "Facial vein",
+"system": "vessels",
+"nodes": [
+"Facial vein.l",
+"Facial vein.r"
+],
+"verts": 1440
+},
+{
+"id": "frontal-branch-of-superficial-temporal-artery",
+"name_en_raw": "Frontal branch of superficial temporal artery",
+"system": "vessels",
+"nodes": [
+"Frontal branch of superficial temporal artery.l",
+"Frontal branch of superficial temporal artery.r"
+],
+"verts": 1912
+},
+{
+"id": "frontal-branches-of-callosomarginal-artery",
+"name_en_raw": "Frontal branches of callosomarginal artery",
+"system": "vessels",
+"nodes": [
+"Frontal branches of callosomarginal artery.l",
+"Frontal branches of callosomarginal artery.r"
+],
+"verts": 850
+},
+{
+"id": "greater-palatine-artery",
+"name_en_raw": "Greater palatine artery",
+"system": "vessels",
+"nodes": [
+"Greater palatine artery.l",
+"Greater palatine artery.r"
+],
+"verts": 844
+},
+{
+"id": "inferior-alveolar-artery",
+"name_en_raw": "Inferior alveolar artery",
+"system": "vessels",
+"nodes": [
+"Inferior alveolar artery.l",
+"Inferior alveolar artery.r"
+],
+"verts": 2148
+},
+{
+"id": "inferior-labial-artery",
+"name_en_raw": "Inferior labial artery",
+"system": "vessels",
+"nodes": [
+"Inferior labial artery.l",
+"Inferior labial artery.r"
+],
+"verts": 968
+},
+{
+"id": "inferior-labial-veins",
+"name_en_raw": "Inferior labial veins",
+"system": "vessels",
+"nodes": [
+"Inferior labial veins.l",
+"Inferior labial veins.r"
+],
+"verts": 2550
+},
+{
+"id": "inferior-ophthalmic-vein",
+"name_en_raw": "Inferior ophthalmic vein",
+"system": "vessels",
+"nodes": [
+"Inferior ophthalmic vein.l",
+"Inferior ophthalmic vein.r"
+],
+"verts": 370
+},
+{
+"id": "inferior-petrosal-sinus",
+"name_en_raw": "Inferior petrosal sinus",
+"system": "vessels",
+"nodes": [
+"Inferior petrosal sinus.l",
+"Inferior petrosal sinus.r"
+],
+"verts": 732
+},
+{
+"id": "inferior-sagittal-sinus",
+"name_en_raw": "Inferior sagittal sinus",
+"system": "vessels",
+"nodes": [
+"Inferior sagittal sinus"
+],
+"verts": 720
+},
+{
+"id": "inferior-thyroid-artery",
+"name_en_raw": "Inferior thyroid artery",
+"system": "vessels",
+"nodes": [
+"Inferior thyroid artery.l",
+"Inferior thyroid artery.r"
+],
+"verts": 638
+},
+{
+"id": "infra-orbital-artery",
+"name_en_raw": "Infra-orbital artery",
+"system": "vessels",
+"nodes": [
+"Infra-orbital artery.l",
+"Infra-orbital artery.r"
+],
+"verts": 496
+},
+{
+"id": "insular-branches-of-middle-cerebral-artery-m2",
+"name_en_raw": "Insular branches of middle cerebral artery (M2)",
+"system": "vessels",
+"nodes": [
+"Insular branches of middle cerebral artery (M2).r"
+],
+"verts": 378
+},
+{
+"id": "insular-branches-of-middle-cerebral-artery-m2-segment",
+"name_en_raw": "Insular branches of middle cerebral artery (M2-segment)",
+"system": "vessels",
+"nodes": [
+"Insular branches of middle cerebral artery (M2-segment).l"
+],
+"verts": 378
+},
+{
+"id": "internal-carotid-artery",
+"name_en_raw": "Internal carotid artery",
+"system": "vessels",
+"nodes": [
+"Internal carotid artery.l",
+"Internal carotid artery.r"
+],
+"verts": 1204
+},
+{
+"id": "internal-jugular-vein",
+"name_en_raw": "Internal jugular vein",
+"system": "vessels",
+"nodes": [
+"Internal jugular vein.l",
+"Internal jugular vein.r"
+],
+"verts": 1440
+},
+{
+"id": "lacrimal-artery",
+"name_en_raw": "Lacrimal artery",
+"system": "vessels",
+"nodes": [
+"Lacrimal artery.l",
+"Lacrimal artery.r"
+],
+"verts": 1842
+},
+{
+"id": "lateral-frontobasal-artery",
+"name_en_raw": "Lateral frontobasal artery",
+"system": "vessels",
+"nodes": [
+"Lateral frontobasal artery.l",
+"Lateral frontobasal artery.r"
+],
+"verts": 2404
+},
+{
+"id": "lateral-occipital-artery",
+"name_en_raw": "Lateral occipital artery",
+"system": "vessels",
+"nodes": [
+"Lateral occipital artery.l",
+"Lateral occipital artery.r"
+],
+"verts": 1794
+},
+{
+"id": "lateral-pontine-branches-of-basilar-artery",
+"name_en_raw": "Lateral pontine branches of basilar artery",
+"system": "vessels",
+"nodes": [
+"Lateral pontine branches of basilar artery.l",
+"Lateral pontine branches of basilar artery.r"
+],
+"verts": 1458
+},
+{
+"id": "left-brachiocephalic-vein",
+"name_en_raw": "Left brachiocephalic vein",
+"system": "vessels",
+"nodes": [
+"Left brachiocephalic vein"
+],
+"verts": 160
+},
+{
+"id": "left-common-carotid-artery",
+"name_en_raw": "Left common carotid artery",
+"system": "vessels",
+"nodes": [
+"Left common carotid artery"
+],
+"verts": 248
+},
+{
+"id": "lingual-vein",
+"name_en_raw": "Lingual vein",
+"system": "vessels",
+"nodes": [
+"Lingual vein.l",
+"Lingual vein.r"
+],
+"verts": 496
+},
+{
+"id": "long-posterior-ciliary-arteries",
+"name_en_raw": "Long posterior ciliary arteries",
+"system": "vessels",
+"nodes": [
+"Long posterior ciliary arteries.l",
+"Long posterior ciliary arteries.r"
+],
+"verts": 1842
+},
+{
+"id": "medial-occipital-artery",
+"name_en_raw": "Medial occipital artery",
+"system": "vessels",
+"nodes": [
+"Medial occipital artery.l",
+"Medial occipital artery.r"
+],
+"verts": 2148
+},
+{
+"id": "medial-pontine-branches-of-basilar-artery",
+"name_en_raw": "Medial pontine branches of basilar artery",
+"system": "vessels",
+"nodes": [
+"Medial pontine branches of basilar artery.l",
+"Medial pontine branches of basilar artery.r"
+],
+"verts": 990
+},
+{
+"id": "mental-branch-of-inferior-alveolar-artery",
+"name_en_raw": "Mental branch of inferior alveolar artery",
+"system": "vessels",
+"nodes": [
+"Mental branch of inferior alveolar artery.l",
+"Mental branch of inferior alveolar artery.r"
+],
+"verts": 520
+},
+{
+"id": "middle-cerebral-artery-m1-segment",
+"name_en_raw": "Middle cerebral artery (M1-segment)",
+"system": "vessels",
+"nodes": [
+"Middle cerebral artery (M1-segment).l",
+"Middle cerebral artery (M1-segment).r"
+],
+"verts": 614
+},
+{
+"id": "middle-cerebral-artery-m3-segment",
+"name_en_raw": "Middle cerebral artery (M3 segment)",
+"system": "vessels",
+"nodes": [
+"Middle cerebral artery (M3 segment).l",
+"Middle cerebral artery (M3-segment).r"
+],
+"verts": 1558
+},
+{
+"id": "middle-meningeal-artery",
+"name_en_raw": "Middle meningeal artery",
+"system": "vessels",
+"nodes": [
+"Middle meningeal artery.l",
+"Middle meningeal artery.r"
+],
+"verts": 610
+},
+{
+"id": "mylohyoid-branch-of-inferior-alveolar-artery",
+"name_en_raw": "Mylohyoid branch of inferior alveolar artery",
+"system": "vessels",
+"nodes": [
+"Mylohyoid branch of inferior alveolar artery.l",
+"Mylohyoid branch of inferior alveolar artery.r"
+],
+"verts": 1368
+},
+{
+"id": "occipital-artery",
+"name_en_raw": "Occipital artery",
+"system": "vessels",
+"nodes": [
+"Occipital artery.l",
+"Occipital artery.r"
+],
+"verts": 5754
+},
+{
+"id": "occipital-sinus",
+"name_en_raw": "Occipital sinus",
+"system": "vessels",
+"nodes": [
+"Occipital sinus"
+],
+"verts": 248
+},
+{
+"id": "occipital-vein",
+"name_en_raw": "Occipital vein",
+"system": "vessels",
+"nodes": [
+"Occipital vein.l",
+"Occipital vein.r"
+],
+"verts": 2168
+},
+{
+"id": "ophthalmic-artery",
+"name_en_raw": "Ophthalmic artery",
+"system": "vessels",
+"nodes": [
+"Ophthalmic artery.l",
+"Ophthalmic artery.r"
+],
+"verts": 732
+},
+{
+"id": "orbitofrontal-branches-of-anterior-cerebral-artery",
+"name_en_raw": "Orbitofrontal branches of anterior cerebral artery",
+"system": "vessels",
+"nodes": [
+"Orbitofrontal branches of anterior cerebral artery.l",
+"Orbitofrontal branches of anterior cerebral artery.r"
+],
+"verts": 1932
+},
+{
+"id": "parietal-branches-of-middle-cerebral-artery",
+"name_en_raw": "Parietal branches of middle cerebral artery",
+"system": "vessels",
+"nodes": [
+"Parietal branches of middle cerebral artery.l",
+"Parietal branches of middle cerebral artery.r"
+],
+"verts": 1692
+},
+{
+"id": "parieto-occipital-artery",
+"name_en_raw": "Parieto-occipital artery",
+"system": "vessels",
+"nodes": [
+"Parieto-occipital artery.l",
+"Parieto-occipital artery.r"
+],
+"verts": 3494
+},
+{
+"id": "pericallosal-artery",
+"name_en_raw": "Pericallosal artery",
+"system": "vessels",
+"nodes": [
+"Pericallosal artery.l",
+"Pericallosal artery.r"
+],
+"verts": 13476
+},
+{
+"id": "postcentral-arterial-branch",
+"name_en_raw": "Postcentral arterial branch",
+"system": "vessels",
+"nodes": [
+"Postcentral arterial branch.l",
+"Postcentral arterial branch.r"
+],
+"verts": 2050
+},
+{
+"id": "posterior-auricular-vein",
+"name_en_raw": "Posterior auricular vein",
+"system": "vessels",
+"nodes": [
+"Posterior auricular vein.l",
+"Posterior auricular vein.r"
+],
+"verts": 846
+},
+{
+"id": "posterior-cerebral-artery",
+"name_en_raw": "Posterior cerebral artery",
+"system": "vessels",
+"nodes": [
+"Posterior cerebral artery.l",
+"Posterior cerebral artery.r"
+],
+"verts": 14100
+},
+{
+"id": "posterior-communicating-artery",
+"name_en_raw": "Posterior communicating artery",
+"system": "vessels",
+"nodes": [
+"Posterior communicating artery.l",
+"Posterior communicating artery.r"
+],
+"verts": 378
+},
+{
+"id": "posterior-deep-temporal-artery",
+"name_en_raw": "Posterior deep temporal artery",
+"system": "vessels",
+"nodes": [
+"Posterior deep temporal artery.l",
+"Posterior deep temporal artery.r"
+],
+"verts": 1604
+},
+{
+"id": "posterior-division-of-retromandibular-vein",
+"name_en_raw": "Posterior division of retromandibular vein",
+"system": "vessels",
+"nodes": [
+"Posterior division of retromandibular vein.l",
+"Posterior division of retromandibular vein.r"
+],
+"verts": 260
+},
+{
+"id": "posterior-ethmoidal-artery",
+"name_en_raw": "Posterior ethmoidal artery",
+"system": "vessels",
+"nodes": [
+"Posterior ethmoidal artery.l",
+"Posterior ethmoidal artery.r"
+],
+"verts": 260
+},
+{
+"id": "posterior-inferior-cerebellar-artery",
+"name_en_raw": "Posterior inferior cerebellar artery",
+"system": "vessels",
+"nodes": [
+"Posterior inferior cerebellar artery.l",
+"Posterior inferior cerebellar artery.r"
+],
+"verts": 15778
+},
+{
+"id": "posterior-intercavernous-sinus",
+"name_en_raw": "Posterior intercavernous sinus",
+"system": "vessels",
+"nodes": [
+"Posterior intercavernous sinus"
+],
+"verts": 307
+},
+{
+"id": "posterior-lateral-nasal-branches-of-sphenopalatine-artery",
+"name_en_raw": "Posterior lateral nasal branches of sphenopalatine artery.",
+"system": "vessels",
+"nodes": [
+"Posterior lateral nasal branches of sphenopalatine artery..l",
+"Posterior lateral nasal branches of sphenopalatine artery..r"
+],
+"verts": 6448
+},
+{
+"id": "posterior-parietal-artery",
+"name_en_raw": "Posterior parietal artery",
+"system": "vessels",
+"nodes": [
+"Posterior parietal artery.l",
+"Posterior parietal artery.r"
+],
+"verts": 3854
+},
+{
+"id": "posterior-septal-branches-of-sphenopalatine-artery",
+"name_en_raw": "Posterior septal branches of sphenopalatine artery",
+"system": "vessels",
+"nodes": [
+"Posterior septal branches of sphenopalatine artery.l",
+"Posterior septal branches of sphenopalatine artery.r"
+],
+"verts": 1676
+},
+{
+"id": "posterior-superior-alveolar-artery",
+"name_en_raw": "Posterior superior alveolar artery",
+"system": "vessels",
+"nodes": [
+"Posterior superior alveolar artery.l",
+"Posterior superior alveolar artery.r"
+],
+"verts": 1086
+},
+{
+"id": "posterior-temporal-branch",
+"name_en_raw": "Posterior temporal branch",
+"system": "vessels",
+"nodes": [
+"Posterior temporal branch.l",
+"Posterior temporal branch.r"
+],
+"verts": 1816
+},
+{
+"id": "prefrontal-artery",
+"name_en_raw": "Prefrontal artery",
+"system": "vessels",
+"nodes": [
+"Prefrontal artery.l",
+"Prefrontal artery.r"
+],
+"verts": 2644
+},
+{
+"id": "proximal-lateral-striate-branches",
+"name_en_raw": "Proximal lateral striate branches",
+"system": "vessels",
+"nodes": [
+"Proximal lateral striate branches.l",
+"Proximal lateral striate branches.r"
+],
+"verts": 3312
+},
+{
+"id": "retromandibular-vein",
+"name_en_raw": "Retromandibular vein",
+"system": "vessels",
+"nodes": [
+"Retromandibular vein.l",
+"Retromandibular vein.r"
+],
+"verts": 260
+},
+{
+"id": "right-brachiocephalic-vein",
+"name_en_raw": "Right brachiocephalic vein",
+"system": "vessels",
+"nodes": [
+"Right brachiocephalic vein"
+],
+"verts": 102
+},
+{
+"id": "right-common-carotid-artery",
+"name_en_raw": "Right common carotid artery",
+"system": "vessels",
+"nodes": [
+"Right common carotid artery"
+],
+"verts": 189
+},
+{
+"id": "septal-branches-of-posterior-ethmoidal-artery",
+"name_en_raw": "Septal branches of posterior ethmoidal artery",
+"system": "vessels",
+"nodes": [
+"Septal branches of posterior ethmoidal artery.l",
+"Septal branches of posterior ethmoidal artery.r"
+],
+"verts": 1204
+},
+{
+"id": "short-posterior-ciliary-arteries",
+"name_en_raw": "Short posterior ciliary arteries",
+"system": "vessels",
+"nodes": [
+"Short posterior ciliary arteries.l",
+"Short posterior ciliary arteries.r"
+],
+"verts": 1110
+},
+{
+"id": "sigmoid-sinus",
+"name_en_raw": "Sigmoid sinus",
+"system": "vessels",
+"nodes": [
+"Sigmoid sinus.l",
+"Sigmoid sinus.r"
+],
+"verts": 378
+},
+{
+"id": "straight-sinus",
+"name_en_raw": "Straight sinus",
+"system": "vessels",
+"nodes": [
+"Straight sinus"
+],
+"verts": 484
+},
+{
+"id": "submental-artery",
+"name_en_raw": "Submental artery",
+"system": "vessels",
+"nodes": [
+"Submental artery.l",
+"Submental artery.r"
+],
+"verts": 1840
+},
+{
+"id": "submental-vein",
+"name_en_raw": "Submental vein",
+"system": "vessels",
+"nodes": [
+"Submental vein.l",
+"Submental vein.r"
+],
+"verts": 968
+},
+{
+"id": "superficial-temporal-artery",
+"name_en_raw": "Superficial temporal artery",
+"system": "vessels",
+"nodes": [
+"Superficial temporal artery.l",
+"Superficial temporal artery.r"
+],
+"verts": 11038
+},
+{
+"id": "superficial-temporal-veins",
+"name_en_raw": "Superficial temporal veins",
+"system": "vessels",
+"nodes": [
+"Superficial temporal veins.l",
+"Superficial temporal veins.r"
+],
+"verts": 1452
+},
+{
+"id": "superior-cerebellar-artery",
+"name_en_raw": "Superior cerebellar artery",
+"system": "vessels",
+"nodes": [
+"Superior cerebellar artery.l",
+"Superior cerebellar artery.r"
+],
+"verts": 4578
+},
+{
+"id": "superior-labial-artery",
+"name_en_raw": "Superior labial artery",
+"system": "vessels",
+"nodes": [
+"Superior labial artery.l",
+"Superior labial artery.r"
+],
+"verts": 496
+},
+{
+"id": "superior-labial-vein",
+"name_en_raw": "Superior labial vein",
+"system": "vessels",
+"nodes": [
+"Superior labial vein.l",
+"Superior labial vein.r"
+],
+"verts": 494
+},
+{
+"id": "superior-ophthalmic-vein",
+"name_en_raw": "Superior ophthalmic vein",
+"system": "vessels",
+"nodes": [
+"Superior ophthalmic vein.l",
+"Superior ophthalmic vein.r"
+],
+"verts": 496
+},
+{
+"id": "superior-petrosal-sinus",
+"name_en_raw": "Superior petrosal sinus",
+"system": "vessels",
+"nodes": [
+"Superior petrosal sinus.l",
+"Superior petrosal sinus.r"
+],
+"verts": 730
+},
+{
+"id": "superior-sagittal-sinus",
+"name_en_raw": "Superior sagittal sinus",
+"system": "vessels",
+"nodes": [
+"Superior sagittal sinus"
+],
+"verts": 1309
+},
+{
+"id": "superior-thyroid-vein",
+"name_en_raw": "Superior thyroid vein",
+"system": "vessels",
+"nodes": [
+"Superior thyroid vein.l",
+"Superior thyroid vein.r"
+],
+"verts": 488
+},
+{
+"id": "supra-orbital-artery",
+"name_en_raw": "Supra-orbital artery",
+"system": "vessels",
+"nodes": [
+"Supra-orbital artery.l",
+"Supra-orbital artery.r"
+],
+"verts": 3472
+},
+{
+"id": "supratrochlear-artery",
+"name_en_raw": "Supratrochlear artery",
+"system": "vessels",
+"nodes": [
+"Supratrochlear artery.l",
+"Supratrochlear artery.r"
+],
+"verts": 2450
+},
+{
+"id": "temporal-branches-of-middle-cerebral-artery",
+"name_en_raw": "Temporal branches of middle cerebral artery",
+"system": "vessels",
+"nodes": [
+"Temporal branches of middle cerebral artery.l",
+"Temporal branches of middle cerebral artery.r"
+],
+"verts": 2172
+},
+{
+"id": "temporo-occipital-branch",
+"name_en_raw": "Temporo-occipital branch",
+"system": "vessels",
+"nodes": [
+"Temporo-occipital branch.l",
+"Temporo-occipital branch.r"
+],
+"verts": 3486
+},
+{
+"id": "thyrocervical-trunk",
+"name_en_raw": "Thyrocervical trunk",
+"system": "vessels",
+"nodes": [
+"Thyrocervical trunk.l",
+"Thyrocervical trunk.r"
+],
+"verts": 142
+},
+{
+"id": "transverse-cervical-artery",
+"name_en_raw": "Transverse cervical artery",
+"system": "vessels",
+"nodes": [
+"Transverse cervical artery.l",
+"Transverse cervical artery.r"
+],
+"verts": 1370
+},
+{
+"id": "transverse-facial-artery",
+"name_en_raw": "Transverse facial artery",
+"system": "vessels",
+"nodes": [
+"Transverse facial artery.l",
+"Transverse facial artery.r"
+],
+"verts": 1676
+},
+{
+"id": "transverse-sinus",
+"name_en_raw": "Transverse sinus",
+"system": "vessels",
+"nodes": [
+"Transverse sinus.l",
+"Transverse sinus.r"
+],
+"verts": 850
+},
+{
+"id": "vertebral-artery",
+"name_en_raw": "Vertebral artery",
+"system": "vessels",
+"nodes": [
+"Vertebral artery.l",
+"Vertebral artery.r"
+],
+"verts": 2030
+},
+{
+"id": "vertebral-vein",
+"name_en_raw": "Vertebral vein",
+"system": "vessels",
+"nodes": [
+"Vertebral vein.l",
+"Vertebral vein.r"
+],
+"verts": 1440
+},
+{
+"id": "accessory-parotid-gland",
+"name_en_raw": "(Accessory parotid gland)",
+"system": "organs",
+"nodes": [
+"(Accessory parotid gland).l",
+"(Accessory parotid gland).r"
+],
+"verts": 216
+},
+{
+"id": "adenohypophysis",
+"name_en_raw": "Adenohypophysis",
+"system": "organs",
+"nodes": [
+"Adenohypophysis"
+],
+"verts": 369
+},
+{
+"id": "epiglottis",
+"name_en_raw": "Epiglottis",
+"system": "organs",
+"nodes": [
+"Epiglottis"
+],
+"verts": 1650
+},
+{
+"id": "gingiva",
+"name_en_raw": "Gingiva",
+"system": "organs",
+"nodes": [
+"Gingiva"
+],
+"verts": 12304
+},
+{
+"id": "inferior-parathyroid-gland",
+"name_en_raw": "Inferior parathyroid gland",
+"system": "organs",
+"nodes": [
+"Inferior parathyroid gland.l",
+"Inferior parathyroid gland.r"
+],
+"verts": 132
+},
+{
+"id": "laryngopharynx",
+"name_en_raw": "Laryngopharynx",
+"system": "organs",
+"nodes": [
+"Laryngopharynx"
+],
+"verts": 1238
+},
+{
+"id": "mucosa-of-nasal-cavity",
+"name_en_raw": "Mucosa of nasal cavity",
+"system": "organs",
+"nodes": [
+"Mucosa of nasal cavity"
+],
+"verts": 4860
+},
+{
+"id": "nasopharynx",
+"name_en_raw": "Nasopharynx",
+"system": "organs",
+"nodes": [
+"Nasopharynx"
+],
+"verts": 978
+},
+{
+"id": "neurohypophysis",
+"name_en_raw": "Neurohypophysis",
+"system": "organs",
+"nodes": [
+"Neurohypophysis"
+],
+"verts": 325
+},
+{
+"id": "oropharynx",
+"name_en_raw": "Oropharynx",
+"system": "organs",
+"nodes": [
+"Oropharynx"
+],
+"verts": 1274
+},
+{
+"id": "parotid-duct",
+"name_en_raw": "Parotid duct",
+"system": "organs",
+"nodes": [
+"Parotid duct.l",
+"Parotid duct.r"
+],
+"verts": 1176
+},
+{
+"id": "parotid-gland",
+"name_en_raw": "Parotid gland",
+"system": "organs",
+"nodes": [
+"Parotid gland.l",
+"Parotid gland.r"
+],
+"verts": 1708
+},
+{
+"id": "pineal-gland",
+"name_en_raw": "Pineal gland",
+"system": "organs",
+"nodes": [
+"Pineal gland"
+],
+"verts": 319
+},
+{
+"id": "soft-palate",
+"name_en_raw": "Soft palate",
+"system": "organs",
+"nodes": [
+"Soft palate"
+],
+"verts": 1884
+},
+{
+"id": "sublingual-gland",
+"name_en_raw": "Sublingual gland",
+"system": "organs",
+"nodes": [
+"Sublingual gland.l",
+"Sublingual gland.r"
+],
+"verts": 328
+},
+{
+"id": "submandibular-duct",
+"name_en_raw": "Submandibular duct",
+"system": "organs",
+"nodes": [
+"Submandibular duct.l",
+"Submandibular duct.r"
+],
+"verts": 1176
+},
+{
+"id": "submandibular-gland",
+"name_en_raw": "Submandibular gland",
+"system": "organs",
+"nodes": [
+"Submandibular gland.l",
+"Submandibular gland.r"
+],
+"verts": 396
+},
+{
+"id": "superior-parathyroid-gland",
+"name_en_raw": "Superior parathyroid gland",
+"system": "organs",
+"nodes": [
+"Superior parathyroid gland.l",
+"Superior parathyroid gland.r"
+],
+"verts": 132
+},
+{
+"id": "thyroid-gland",
+"name_en_raw": "Thyroid gland",
+"system": "organs",
+"nodes": [
+"Thyroid gland"
+],
+"verts": 1302
+},
+{
+"id": "tongue",
+"name_en_raw": "Tongue",
+"system": "organs",
+"nodes": [
+"Tongue"
+],
+"verts": 343
+},
+{
+"id": "trachea",
+"name_en_raw": "Trachea",
+"system": "organs",
+"nodes": [
+"Trachea"
+],
+"verts": 1858
+},
+{
+"id": "uvula-of-palate",
+"name_en_raw": "Uvula of palate",
+"system": "organs",
+"nodes": [
+"Uvula of palate"
+],
+"verts": 753
+},
+{
+"id": "articular-capsule-of-temporomandibular-joint",
+"name_en_raw": "Articular capsule of temporomandibular joint",
+"system": "joints",
+"nodes": [
+"Articular capsule of temporomandibular joint.l",
+"Articular capsule of temporomandibular joint.r"
+],
+"verts": 1800
+},
+{
+"id": "articular-disc-of-temporomandibular-joint",
+"name_en_raw": "Articular disc of temporomandibular joint",
+"system": "joints",
+"nodes": [
+"Articular disc of temporomandibular joint.l",
+"Articular disc of temporomandibular joint.r"
+],
+"verts": 292
+},
+{
+"id": "conoid-ligament",
+"name_en_raw": "Conoid ligament",
+"system": "joints",
+"nodes": [
+"Conoid ligament.l",
+"Conoid ligament.r"
+],
+"verts": 60
+},
+{
+"id": "cricopharyngeal-ligament",
+"name_en_raw": "Cricopharyngeal ligament",
+"system": "joints",
+"nodes": [
+"Cricopharyngeal ligament.l",
+"Cricopharyngeal ligament.r"
+],
+"verts": 3080
+},
+{
+"id": "intervertebral-disc-c2-c3",
+"name_en_raw": "Intervertebral disc C2-C3",
+"system": "joints",
+"nodes": [
+"Intervertebral disc C2-C3"
+],
+"verts": 426
+},
+{
+"id": "intervertebral-disc-c3-c4",
+"name_en_raw": "Intervertebral disc C3-C4",
+"system": "joints",
+"nodes": [
+"Intervertebral disc C3-C4"
+],
+"verts": 346
+},
+{
+"id": "intervertebral-disc-c4-c5",
+"name_en_raw": "Intervertebral disc C4-C5",
+"system": "joints",
+"nodes": [
+"Intervertebral disc C4-C5"
+],
+"verts": 430
+},
+{
+"id": "intervertebral-disc-c5-c6",
+"name_en_raw": "Intervertebral disc C5-C6",
+"system": "joints",
+"nodes": [
+"Intervertebral disc C5-C6"
+],
+"verts": 486
+},
+{
+"id": "intervertebral-disc-c6-c7",
+"name_en_raw": "Intervertebral disc C6-C7",
+"system": "joints",
+"nodes": [
+"Intervertebral disc C6-C7"
+],
+"verts": 415
+},
+{
+"id": "lateral-temporomandibular-ligament",
+"name_en_raw": "Lateral temporomandibular ligament",
+"system": "joints",
+"nodes": [
+"Lateral temporomandibular ligament.l",
+"Lateral temporomandibular ligament.r"
+],
+"verts": 80
+},
+{
+"id": "lateral-thyrohyoid-ligament",
+"name_en_raw": "Lateral thyrohyoid ligament",
+"system": "joints",
+"nodes": [
+"Lateral thyrohyoid ligament.l",
+"Lateral thyrohyoid ligament.r"
+],
+"verts": 916
+},
+{
+"id": "median-cricothyroid-ligament",
+"name_en_raw": "Median cricothyroid ligament",
+"system": "joints",
+"nodes": [
+"Median cricothyroid ligament"
+],
+"verts": 1068
+},
+{
+"id": "median-thyrohyoid-ligament",
+"name_en_raw": "Median thyrohyoid ligament",
+"system": "joints",
+"nodes": [
+"Median thyrohyoid ligament"
+],
+"verts": 1388
+},
+{
+"id": "nuchal-ligament",
+"name_en_raw": "Nuchal ligament",
+"system": "joints",
+"nodes": [
+"Nuchal ligament"
+],
+"verts": 326
+},
+{
+"id": "nucleus-pulposus-c2-c3",
+"name_en_raw": "Nucleus pulposus C2-C3",
+"system": "joints",
+"nodes": [
+"Nucleus pulposus C2-C3"
+],
+"verts": 482
+},
+{
+"id": "nucleus-pulposus-c3-c4",
+"name_en_raw": "Nucleus pulposus C3-C4",
+"system": "joints",
+"nodes": [
+"Nucleus pulposus C3-C4"
+],
+"verts": 482
+},
+{
+"id": "nucleus-pulposus-c4-c5",
+"name_en_raw": "Nucleus pulposus C4-C5",
+"system": "joints",
+"nodes": [
+"Nucleus pulposus C4-C5"
+],
+"verts": 482
+},
+{
+"id": "nucleus-pulposus-c5-c6",
+"name_en_raw": "Nucleus pulposus C5-C6",
+"system": "joints",
+"nodes": [
+"Nucleus pulposus C5-C6"
+],
+"verts": 482
+},
+{
+"id": "nucleus-pulposus-c6-c7",
+"name_en_raw": "Nucleus pulposus C6-C7",
+"system": "joints",
+"nodes": [
+"Nucleus pulposus C6-C7"
+],
+"verts": 482
+},
+{
+"id": "quadrangular-membrane",
+"name_en_raw": "Quadrangular membrane",
+"system": "joints",
+"nodes": [
+"Quadrangular membrane.l",
+"Quadrangular membrane.r"
+],
+"verts": 4592
+},
+{
+"id": "sphenomandibular-ligament",
+"name_en_raw": "Sphenomandibular ligament",
+"system": "joints",
+"nodes": [
+"Sphenomandibular ligament.l",
+"Sphenomandibular ligament.r"
+],
+"verts": 292
+},
+{
+"id": "stylohyoid-ligament",
+"name_en_raw": "Stylohyoid ligament",
+"system": "joints",
+"nodes": [
+"Stylohyoid ligament.l",
+"Stylohyoid ligament.r"
+],
+"verts": 628
+},
+{
+"id": "stylomandibular-ligament",
+"name_en_raw": "Stylomandibular ligament",
+"system": "joints",
+"nodes": [
+"Stylomandibular ligament.l",
+"Stylomandibular ligament.r"
+],
+"verts": 48
+},
+{
+"id": "trapezoid-ligament",
+"name_en_raw": "Trapezoid ligament",
+"system": "joints",
+"nodes": [
+"Trapezoid ligament.l",
+"Trapezoid ligament.r"
+],
+"verts": 60
+},
+{
+"id": "anterior-inferior-jugular-nodes",
+"name_en_raw": "Anterior inferior jugular nodes",
+"system": "lymph",
+"nodes": [
+"Anterior inferior jugular nodes.l",
+"Anterior inferior jugular nodes.r"
+],
+"verts": 1032
+},
+{
+"id": "brachiocephalic-nodes",
+"name_en_raw": "Brachiocephalic nodes",
+"system": "lymph",
+"nodes": [
+"Brachiocephalic nodes"
+],
+"verts": 258
+},
+{
+"id": "bucinator-node",
+"name_en_raw": "Bucinator node",
+"system": "lymph",
+"nodes": [
+"Bucinator node.l",
+"Bucinator node.r"
+],
+"verts": 516
+},
+{
+"id": "inferior-deep-lateral-cervical-nodes",
+"name_en_raw": "Inferior deep lateral cervical nodes",
+"system": "lymph",
+"nodes": [
+"Inferior deep lateral cervical nodes.l",
+"Inferior deep lateral cervical nodes.r"
+],
+"verts": 688
+},
+{
+"id": "infra-auricular-nodes",
+"name_en_raw": "Infra-auricular nodes",
+"system": "lymph",
+"nodes": [
+"Infra-auricular nodes.l",
+"Infra-auricular nodes.r"
+],
+"verts": 344
+},
+{
+"id": "intraglandular-parotid-nodes",
+"name_en_raw": "Intraglandular parotid nodes",
+"system": "lymph",
+"nodes": [
+"Intraglandular parotid nodes.l",
+"Intraglandular parotid nodes.r"
+],
+"verts": 516
+},
+{
+"id": "jugulodigastric-node",
+"name_en_raw": "Jugulodigastric node",
+"system": "lymph",
+"nodes": [
+"Jugulodigastric node.l",
+"Jugulodigastric node.r"
+],
+"verts": 172
+},
+{
+"id": "lateral-superior-jugular-node",
+"name_en_raw": "Lateral superior jugular node",
+"system": "lymph",
+"nodes": [
+"Lateral superior jugular node.l",
+"Lateral superior jugular node.r"
+],
+"verts": 860
+},
+{
+"id": "mandibular-node",
+"name_en_raw": "Mandibular node",
+"system": "lymph",
+"nodes": [
+"Mandibular node.l",
+"Mandibular node.r"
+],
+"verts": 516
+},
+{
+"id": "mastoid-nodes",
+"name_en_raw": "Mastoid nodes",
+"system": "lymph",
+"nodes": [
+"Mastoid nodes.l",
+"Mastoid nodes.r"
+],
+"verts": 860
+},
+{
+"id": "nasolabial-node",
+"name_en_raw": "Nasolabial node",
+"system": "lymph",
+"nodes": [
+"Nasolabial node.l",
+"Nasolabial node.r"
+],
+"verts": 172
+},
+{
+"id": "occipital-nodes",
+"name_en_raw": "Occipital nodes",
+"system": "lymph",
+"nodes": [
+"Occipital nodes.l",
+"Occipital nodes.r"
+],
+"verts": 344
+},
+{
+"id": "palatine-tonsil",
+"name_en_raw": "Palatine tonsil",
+"system": "lymph",
+"nodes": [
+"Palatine tonsil.l",
+"Palatine tonsil.r"
+],
+"verts": 172
+},
+{
+"id": "paratracheal-cervical-nodes",
+"name_en_raw": "Paratracheal cervical nodes",
+"system": "lymph",
+"nodes": [
+"Paratracheal cervical nodes"
+],
+"verts": 516
+},
+{
+"id": "pre-auricular-nodes",
+"name_en_raw": "Pre-auricular nodes",
+"system": "lymph",
+"nodes": [
+"Pre-auricular nodes.l",
+"Pre-auricular nodes.r"
+],
+"verts": 516
+},
+{
+"id": "prepericardial-nodes",
+"name_en_raw": "Prepericardial nodes",
+"system": "lymph",
+"nodes": [
+"Prepericardial nodes"
+],
+"verts": 172
+},
+{
+"id": "pretracheal-nodes",
+"name_en_raw": "Pretracheal nodes",
+"system": "lymph",
+"nodes": [
+"Pretracheal nodes.l",
+"Pretracheal nodes.r"
+],
+"verts": 516
+},
+{
+"id": "retropharyngeal-nodes",
+"name_en_raw": "Retropharyngeal nodes",
+"system": "lymph",
+"nodes": [
+"Retropharyngeal nodes.l",
+"Retropharyngeal nodes.r"
+],
+"verts": 344
+},
+{
+"id": "submandibular-nodes",
+"name_en_raw": "Submandibular nodes",
+"system": "lymph",
+"nodes": [
+"Submandibular nodes.l",
+"Submandibular nodes.r"
+],
+"verts": 516
+},
+{
+"id": "submental-nodes",
+"name_en_raw": "Submental nodes",
+"system": "lymph",
+"nodes": [
+"Submental nodes.l",
+"Submental nodes.r"
+],
+"verts": 688
+},
+{
+"id": "superficial-anterior-cervical-nodes",
+"name_en_raw": "Superficial anterior cervical nodes",
+"system": "lymph",
+"nodes": [
+"Superficial anterior cervical nodes"
+],
+"verts": 516
+},
+{
+"id": "superficial-lateral-cervical-nodes",
+"name_en_raw": "Superficial lateral cervical nodes",
+"system": "lymph",
+"nodes": [
+"Superficial lateral cervical nodes.l",
+"Superficial lateral cervical nodes.r"
+],
+"verts": 1032
+},
+{
+"id": "superficial-parotid-nodes",
+"name_en_raw": "Superficial parotid nodes",
+"system": "lymph",
+"nodes": [
+"Superficial parotid nodes.l",
+"Superficial parotid nodes.r"
+],
+"verts": 516
+},
+{
+"id": "thyroid-nodes",
+"name_en_raw": "Thyroid nodes",
+"system": "lymph",
+"nodes": [
+"Thyroid nodes.l",
+"Thyroid nodes.r"
+],
+"verts": 344
+},
+{
+"id": "angle-of-mouth",
+"name_en_raw": "Angle of mouth",
+"system": "skin",
+"nodes": [
+"Angle of mouth.l",
+"Angle of mouth.r"
+],
+"verts": 84
+},
+{
+"id": "anterior-notch-of-auricle",
+"name_en_raw": "Anterior notch of auricle",
+"system": "skin",
+"nodes": [
+"Anterior notch of auricle.l",
+"Anterior notch of auricle.r"
+],
+"verts": 76
+},
+{
+"id": "antihelix",
+"name_en_raw": "Antihelix",
+"system": "skin",
+"nodes": [
+"Antihelix.l",
+"Antihelix.r"
+],
+"verts": 128
+},
+{
+"id": "antitragus",
+"name_en_raw": "Antitragus",
+"system": "skin",
+"nodes": [
+"Antitragus.l",
+"Antitragus.r"
+],
+"verts": 58
+},
+{
+"id": "apex-of-auricle",
+"name_en_raw": "Apex of auricle",
+"system": "skin",
+"nodes": [
+"Apex of auricle.l",
+"Apex of auricle.r"
+],
+"verts": 54
+},
+{
+"id": "auricular-region",
+"name_en_raw": "Auricular region",
+"system": "skin",
+"nodes": [
+"Auricular region.l",
+"Auricular region.r"
+],
+"verts": 296
+},
+{
+"id": "auricular-tubercle",
+"name_en_raw": "Auricular tubercle",
+"system": "skin",
+"nodes": [
+"Auricular tubercle.l",
+"Auricular tubercle.r"
+],
+"verts": 40
+},
+{
+"id": "buccal-region",
+"name_en_raw": "Buccal region",
+"system": "skin",
+"nodes": [
+"Buccal region.l",
+"Buccal region.r"
+],
+"verts": 432
+},
+{
+"id": "carotid-triangle",
+"name_en_raw": "Carotid triangle",
+"system": "skin",
+"nodes": [
+"Carotid triangle.l",
+"Carotid triangle.r"
+],
+"verts": 88
+},
+{
+"id": "cavity-of-concha",
+"name_en_raw": "Cavity of concha",
+"system": "skin",
+"nodes": [
+"Cavity of concha.l",
+"Cavity of concha.r"
+],
+"verts": 244
+},
+{
+"id": "concha-of-auricle",
+"name_en_raw": "Concha of auricle",
+"system": "skin",
+"nodes": [
+"Concha of auricle.l",
+"Concha of auricle.r"
+],
+"verts": 102
+},
+{
+"id": "crura-of-antihelix",
+"name_en_raw": "Crura of antihelix",
+"system": "skin",
+"nodes": [
+"Crura of antihelix.l",
+"Crura of antihelix.r"
+],
+"verts": 138
+},
+{
+"id": "cymba-conchae",
+"name_en_raw": "Cymba conchae",
+"system": "skin",
+"nodes": [
+"Cymba conchae.l",
+"Cymba conchae.r"
+],
+"verts": 118
+},
+{
+"id": "eminentia-conchae",
+"name_en_raw": "Eminentia conchae",
+"system": "skin",
+"nodes": [
+"Eminentia conchae.l",
+"Eminentia conchae.r"
+],
+"verts": 90
+},
+{
+"id": "eminentia-fossae-triangularis",
+"name_en_raw": "Eminentia fossae triangularis",
+"system": "skin",
+"nodes": [
+"Eminentia fossae triangularis.l",
+"Eminentia fossae triangularis.r"
+],
+"verts": 78
+},
+{
+"id": "eminentia-scaphae",
+"name_en_raw": "Eminentia scaphae",
+"system": "skin",
+"nodes": [
+"Eminentia scaphae.l",
+"Eminentia scaphae.r"
+],
+"verts": 144
+},
+{
+"id": "eyebrow",
+"name_en_raw": "Eyebrow",
+"system": "skin",
+"nodes": [
+"Eyebrow.l",
+"Eyebrow.r"
+],
+"verts": 56
+},
+{
+"id": "eyelashes",
+"name_en_raw": "Eyelashes",
+"system": "skin",
+"nodes": [
+"Eyelashes.l",
+"Eyelashes.r"
+],
+"verts": 604
+},
+{
+"id": "fossa-antihelica",
+"name_en_raw": "Fossa antihelica",
+"system": "skin",
+"nodes": [
+"Fossa antihelica.l",
+"Fossa antihelica.r"
+],
+"verts": 84
+},
+{
+"id": "frontal-region",
+"name_en_raw": "Frontal region",
+"system": "skin",
+"nodes": [
+"Frontal region.l",
+"Frontal region.r"
+],
+"verts": 556
+},
+{
+"id": "hairs-of-eyebrow",
+"name_en_raw": "Hairs of eyebrow",
+"system": "skin",
+"nodes": [
+"Hairs of eyebrow.l",
+"Hairs of eyebrow.r"
+],
+"verts": 794
+},
+{
+"id": "hairs-of-head",
+"name_en_raw": "Hairs of head",
+"system": "skin",
+"nodes": [
+"Hairs of head"
+],
+"verts": 8283
+},
+{
+"id": "helix",
+"name_en_raw": "Helix",
+"system": "skin",
+"nodes": [
+"Helix.l",
+"Helix.r"
+],
+"verts": 578
+},
+{
+"id": "infra-orbital-region",
+"name_en_raw": "Infra-orbital region",
+"system": "skin",
+"nodes": [
+"Infra-orbital region.l",
+"Infra-orbital region.r"
+],
+"verts": 148
+},
+{
+"id": "intertragic-incisure",
+"name_en_raw": "Intertragic incisure",
+"system": "skin",
+"nodes": [
+"Intertragic incisure.l",
+"Intertragic incisure.r"
+],
+"verts": 92
+},
+{
+"id": "labial-commissure",
+"name_en_raw": "Labial commissure",
+"system": "skin",
+"nodes": [
+"Labial commissure.l",
+"Labial commissure.r"
+],
+"verts": 144
+},
+{
+"id": "lateral-region-of-neck",
+"name_en_raw": "Lateral region of neck",
+"system": "skin",
+"nodes": [
+"Lateral region of neck.l",
+"Lateral region of neck.r"
+],
+"verts": 464
+},
+{
+"id": "lobule-of-auricle",
+"name_en_raw": "Lobule of auricle",
+"system": "skin",
+"nodes": [
+"Lobule of auricle.l",
+"Lobule of auricle.r"
+],
+"verts": 256
+},
+{
+"id": "mastoid-region",
+"name_en_raw": "Mastoid region",
+"system": "skin",
+"nodes": [
+"Mastoid region.l",
+"Mastoid region.r"
+],
+"verts": 120
+},
+{
+"id": "mental-region",
+"name_en_raw": "Mental region",
+"system": "skin",
+"nodes": [
+"Mental region.l",
+"Mental region.r"
+],
+"verts": 212
+},
+{
+"id": "mentolabial-sulcus",
+"name_en_raw": "Mentolabial sulcus",
+"system": "skin",
+"nodes": [
+"Mentolabial sulcus.l",
+"Mentolabial sulcus.r"
+],
+"verts": 112
+},
+{
+"id": "muscular-triangle",
+"name_en_raw": "Muscular triangle",
+"system": "skin",
+"nodes": [
+"Muscular triangle.l",
+"Muscular triangle.r"
+],
+"verts": 264
+},
+{
+"id": "nasal-region",
+"name_en_raw": "Nasal region",
+"system": "skin",
+"nodes": [
+"Nasal region.l",
+"Nasal region.r"
+],
+"verts": 608
+},
+{
+"id": "nasolabial-sulcus",
+"name_en_raw": "Nasolabial sulcus",
+"system": "skin",
+"nodes": [
+"Nasolabial sulcus.l",
+"Nasolabial sulcus.r"
+],
+"verts": 100
+},
+{
+"id": "occipital-region",
+"name_en_raw": "Occipital region",
+"system": "skin",
+"nodes": [
+"Occipital region.l",
+"Occipital region.r"
+],
+"verts": 348
+},
+{
+"id": "oral-region",
+"name_en_raw": "Oral region",
+"system": "skin",
+"nodes": [
+"Oral region.l",
+"Oral region.r"
+],
+"verts": 676
+},
+{
+"id": "orbital-region",
+"name_en_raw": "Orbital region",
+"system": "skin",
+"nodes": [
+"Orbital region.l",
+"Orbital region.r"
+],
+"verts": 584
+},
+{
+"id": "parietal-region",
+"name_en_raw": "Parietal region",
+"system": "skin",
+"nodes": [
+"Parietal region.l",
+"Parietal region.r"
+],
+"verts": 508
+},
+{
+"id": "parotideomasseteric-region",
+"name_en_raw": "Parotideomasseteric region",
+"system": "skin",
+"nodes": [
+"Parotideomasseteric region.l",
+"Parotideomasseteric region.r"
+],
+"verts": 236
+},
+{
+"id": "philtrum",
+"name_en_raw": "Philtrum",
+"system": "skin",
+"nodes": [
+"Philtrum.l",
+"Philtrum.r"
+],
+"verts": 60
+},
+{
+"id": "posterior-auricular-groove",
+"name_en_raw": "Posterior auricular groove",
+"system": "skin",
+"nodes": [
+"Posterior auricular groove.l",
+"Posterior auricular groove.r"
+],
+"verts": 188
+},
+{
+"id": "posterior-region-of-neck",
+"name_en_raw": "Posterior region of neck",
+"system": "skin",
+"nodes": [
+"Posterior region of neck.l",
+"Posterior region of neck.r"
+],
+"verts": 688
+},
+{
+"id": "scapha",
+"name_en_raw": "Scapha",
+"system": "skin",
+"nodes": [
+"Scapha.l",
+"Scapha.r"
+],
+"verts": 94
+},
+{
+"id": "sternocleidomastoid-region",
+"name_en_raw": "Sternocleidomastoid region",
+"system": "skin",
+"nodes": [
+"Sternocleidomastoid region.l",
+"Sternocleidomastoid region.r"
+],
+"verts": 548
+},
+{
+"id": "submandibular-triangle",
+"name_en_raw": "Submandibular triangle",
+"system": "skin",
+"nodes": [
+"Submandibular triangle.l",
+"Submandibular triangle.r"
+],
+"verts": 160
+},
+{
+"id": "submental-triangle",
+"name_en_raw": "Submental triangle",
+"system": "skin",
+"nodes": [
+"Submental triangle.l",
+"Submental triangle.r"
+],
+"verts": 128
+},
+{
+"id": "temporal-region",
+"name_en_raw": "Temporal region",
+"system": "skin",
+"nodes": [
+"Temporal region.l",
+"Temporal region.r"
+],
+"verts": 440
+},
+{
+"id": "tragus",
+"name_en_raw": "Tragus",
+"system": "skin",
+"nodes": [
+"Tragus.l",
+"Tragus.r"
+],
+"verts": 100
+},
+{
+"id": "triangular-fossa",
+"name_en_raw": "Triangular fossa",
+"system": "skin",
+"nodes": [
+"Triangular fossa.l",
+"Triangular fossa.r"
+],
+"verts": 82
+},
+{
+"id": "tubercle-of-upper-lip",
+"name_en_raw": "Tubercle of upper lip",
+"system": "skin",
+"nodes": [
+"Tubercle of upper lip.l",
+"Tubercle of upper lip.r"
+],
+"verts": 24
+},
+{
+"id": "zygomatic-region",
+"name_en_raw": "Zygomatic region",
+"system": "skin",
+"nodes": [
+"Zygomatic region.l",
+"Zygomatic region.r"
+],
+"verts": 216
+}
+]
